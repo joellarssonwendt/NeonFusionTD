@@ -1,2 +1,2 @@
-# MAPP_Grupp08
- School project
+# MAPP Projektarbete VT2024
+ Hello World!
