@@ -2,4 +2,5 @@
 ```
 Repository för Grupp 08's projektarbete i kursen MAPP VT2024 Stockholms Universitet.
 Webhook aktiverad.
+Jobba i branchen "Dev", aldrig i "main"!
 ```
