@@ -165,9 +165,9 @@ MonoBehaviour:
   turretRotationPoint: {fileID: 1613359485890013219}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   targetingRange: 3
-  rotationSpeed: 5
+  rotationSpeed: 250
 --- !u!1 &7184617406174347299
 GameObject:
   m_ObjectHideFlags: 0
