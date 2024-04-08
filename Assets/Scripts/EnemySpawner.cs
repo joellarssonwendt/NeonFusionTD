@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class EnemySpawner : MonoBehaviour
 {
     // Events
-    public static UnityEvent onEnemyDestroy;
+    public static UnityEvent onEnemyDestroy = new UnityEvent();
 
     // Variables
     [SerializeField] private GameObject[] enemyTypes;
@@ -51,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void StartWave()
     {
+        Debug.Log("Wave Started!");
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
     }
