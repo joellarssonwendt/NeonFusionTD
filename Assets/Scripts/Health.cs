@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
         if(hitPoints<= 0)
         {
-            //EnemySpawner.onEnemyDestroyInvoke(); // If there's an EnemySpawner, invoke its onEnemyDestroyInvoke method (commented out for now)
+            EnemySpawner.onEnemyDestroy.Invoke();
             Destroy(gameObject);
         }
     }

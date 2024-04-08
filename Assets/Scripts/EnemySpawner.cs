@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+    // Events
+    public static UnityEvent onEnemyDestroy;
+
     // Variables
     [SerializeField] private GameObject[] enemyTypes;
     [SerializeField] private int baseAmount = 8;
@@ -14,6 +18,11 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
+
+    void Awake()
+    {
+        onEnemyDestroy.AddListener(EnemyDestroyed);
+    }
 
     void Start()
     {
@@ -33,6 +42,11 @@ public class EnemySpawner : MonoBehaviour
             enemiesAlive++;
             timeSinceLastSpawn = 0f;
         }
+    }
+
+    private void EnemyDestroyed()
+    {
+        enemiesAlive--;
     }
 
     private void StartWave()
