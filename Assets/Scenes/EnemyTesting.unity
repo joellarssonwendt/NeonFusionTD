@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
       propertyPath: m_Name
-      value: BasicTurret
+      value: Normalturret
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3065,12 +3065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d645e074240c5f04e885fecb81690f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypes:
-  - {fileID: 8054526396113401650, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
-  baseAmount: 8
-  enemiesPerSecond: 1
-  timeBetweenWaves: 5
-  difficultyScalingFactor: 0.75
 --- !u!1 &1979438697
 GameObject:
   m_ObjectHideFlags: 0

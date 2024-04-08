@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-public class BasicTurret : MonoBehaviour
+public class SuperNormalTurret : MonoBehaviour
 {
     [Header("References")] // Header to group serialized fields in the inspector
     [SerializeField] private Transform turretRotationPoint;

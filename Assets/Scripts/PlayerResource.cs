@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
@@ -37,5 +37,5 @@ public class PlayerResource : MonoBehaviour
 
 //Ska finnas en metod som adderar när en fiende dör
 
-
+*/
 
