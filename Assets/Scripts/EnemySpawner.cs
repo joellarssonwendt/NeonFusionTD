@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+    // Events
+    public static UnityEvent onEnemyDestroy = new UnityEvent();
+
     // Variables
     [SerializeField] private GameObject[] enemyTypes;
     [SerializeField] private int baseAmount = 8;
@@ -15,20 +19,39 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
 
+    void Awake()
+    {
+        onEnemyDestroy.AddListener(EnemyDestroyed);
+    }
+
+    void Start()
+    {
+        StartWave();
+    }
+
     void Update()
     {
         if (!isSpawning) return;
 
         timeSinceLastSpawn += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= 1f / enemiesPerSecond)
+        if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
         {
-            Debug.Log("Enemy Spawned!");
+            SpawnEnemy();
+            enemiesLeftToSpawn--;
+            enemiesAlive++;
+            timeSinceLastSpawn = 0f;
         }
+    }
+
+    private void EnemyDestroyed()
+    {
+        enemiesAlive--;
     }
 
     private void StartWave()
     {
+        Debug.Log("Wave Started!");
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
     }
@@ -36,5 +59,11 @@ public class EnemySpawner : MonoBehaviour
     private int EnemiesPerWave()
     {
         return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
+    }
+
+    private void SpawnEnemy()
+    {
+        GameObject enemyToSpawn = enemyTypes[Random.Range(0, enemyTypes.Length)];
+        Instantiate(enemyToSpawn, LevelManager.main.spawnPoint.position, Quaternion.identity);
     }
 }
