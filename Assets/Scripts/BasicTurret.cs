@@ -13,6 +13,7 @@ public class BasicTurret : MonoBehaviour
     [SerializeField] private float targetingRange = 3f;
     [SerializeField] private float rotationSpeed = 250f;
     [SerializeField] private float pps = 1f; // Projectiles Per Second 
+    [SerializeField] private GameObject TemporaryTurretSprite;
 
     private Transform target;
     private float timeUntilFire;
@@ -81,4 +82,20 @@ public class BasicTurret : MonoBehaviour
         Handles.color = Color.green;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
+    private void SpawnTemporaryTowerSprite()
+    {
+        Instantiate(TemporaryTurretSprite, transform.position, Quaternion.identity);
+    }
+    private void MoveTemporaryTowerSprite()
+    {
+        
+    }
+    private void TouchPosition()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+    }
+
 }
