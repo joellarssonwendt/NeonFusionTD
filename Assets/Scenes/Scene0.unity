@@ -135,17 +135,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicTurret
       objectReference: {fileID: 0}
-    - target: {fileID: 5090088755035559536, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
-      propertyPath: rotationSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 5090088755035559536, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
-      propertyPath: enemyMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
       propertyPath: m_LocalPosition.y
@@ -293,6 +285,7 @@ GameObject:
   - component: {fileID: 1886689949}
   - component: {fileID: 1886689948}
   - component: {fileID: 1886689947}
+  - component: {fileID: 1886689952}
   m_Layer: 6
   m_Name: EnemyGoblin
   m_TagString: Untagged
@@ -437,6 +430,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1886689952
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886689946}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!4 &1932932348303511584
 Transform:
   m_ObjectHideFlags: 0

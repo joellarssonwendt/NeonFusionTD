@@ -6,12 +6,16 @@ public class BasicTurret : MonoBehaviour
     [Header("References")] // Header to group serialized fields in the inspector
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firingPoint;
 
     [Header("Attribute")] // Header to group serialized fields in the inspector
     [SerializeField] private float targetingRange = 3f;
     [SerializeField] private float rotationSpeed = 250f;
+    [SerializeField] private float pps = 1f; // Projectiles Per Second 
 
     private Transform target;
+    private float timeUntilFire;
 
     private void Update()
     {
@@ -27,6 +31,23 @@ public class BasicTurret : MonoBehaviour
         {
             target = null;
         }
+        else
+        {
+            timeUntilFire += Time.deltaTime;
+
+            if(timeUntilFire >= 1f / pps)
+            {
+                Shoot();
+                timeUntilFire = 0f;
+            }
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
+        Projectile projectileScript = projectileObject.GetComponent<Projectile>();
+        projectileScript.SetTarget(target);
     }
 
     private void FindTarget()
