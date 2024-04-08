@@ -10,9 +10,9 @@ public class SuperNormalTurret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
 
     [Header("Attribute")] // Header to group serialized fields in the inspector
-    [SerializeField] private float targetingRange = 3f;
-    [SerializeField] private float rotationSpeed = 250f;
-    [SerializeField] private float pps = 1f; // Projectiles Per Second 
+    [SerializeField] private float targetingRange = 5f;
+    [SerializeField] private float rotationSpeed = 300f;
+    [SerializeField] private float pps = 2f; // Projectiles Per Second 
 
     private Transform target;
     private float timeUntilFire;
