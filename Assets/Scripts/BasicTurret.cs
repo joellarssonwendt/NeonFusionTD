@@ -27,15 +27,15 @@ public class BasicTurret : MonoBehaviour
 
         RotateTowardsTarget();
 
-        if(!CheckTargetIsInRange())
+        if(!CheckTargetIsInRange()) // If the target is out of range, reset target to null
         {
             target = null;
         }
         else
         {
-            timeUntilFire += Time.deltaTime;
+            timeUntilFire += Time.deltaTime; // Increment timeUntilFire and shoot if it's time to fire
 
-            if(timeUntilFire >= 1f / pps)
+            if (timeUntilFire >= 1f / pps)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -43,7 +43,7 @@ public class BasicTurret : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    private void Shoot() // Instantiate a projectile and set its target
     {
         GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
         Projectile projectileScript = projectileObject.GetComponent<Projectile>();

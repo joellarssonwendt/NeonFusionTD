@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float projectileSpeed = 5f;
+    [SerializeField] private int projectileDamage = 1;
 
     private Transform target;
 
@@ -20,13 +21,15 @@ public class Projectile : MonoBehaviour
     private void FixedUpdate()
     {
         if (!target) return;
-        Vector2 direction = (target.position - transform.position).normalized;
+        Vector2 direction = (target.position - transform.position).normalized; // Calculate the direction towards the target and normalize it
 
-        rb.velocity = direction * projectileSpeed;
+        rb.velocity = direction * projectileSpeed; // Set the velocity of the Rigidbody to move the projectile towards the target
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject); //Damage enemy
+        // If the projectile collides with an object, deal damage to its health and destroy the projectile
+        other.gameObject.GetComponent<Health>().TakeDamage(projectileDamage);
+        Destroy(gameObject);
     }
 }

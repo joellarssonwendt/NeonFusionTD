@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 1886689948}
   - component: {fileID: 1886689947}
   - component: {fileID: 1886689952}
+  - component: {fileID: 1886689953}
   m_Layer: 6
   m_Name: EnemyGoblin
   m_TagString: Untagged
@@ -457,6 +458,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1886689953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886689946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c43ef3873dce54ead1a7571adb3b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 2
 --- !u!4 &1932932348303511584
 Transform:
   m_ObjectHideFlags: 0
