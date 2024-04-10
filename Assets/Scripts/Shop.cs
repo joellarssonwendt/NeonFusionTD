@@ -12,12 +12,13 @@ public class Shop : MonoBehaviour
     }
     public void SelectStandardTurret()
     {
-        Debug.Log("basic turret vald");
-        buildManager.SetTurretToBUild(buildManager.standardTurretPrefab);
+        //Debug.Log("basic turret vald");
+        buildManager.SetTurretToBuild(buildManager.standardTurretPrefab);
+
     }
     public void SelectFireTurret()
     {
-        Debug.Log("fire turret vald");
-        buildManager.SetTurretToBUild(buildManager.fireTurretPrefab);
+        //Debug.Log("fire turret vald");
+        buildManager.SetTurretToBuild(buildManager.fireTurretPrefab);
     }
 }

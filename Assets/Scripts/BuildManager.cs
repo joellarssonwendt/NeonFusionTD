@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
+    [SerializeField] List<Tile> listOfAllTiles;
     public static BuildManager instance;
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
@@ -25,8 +26,23 @@ public class BuildManager : MonoBehaviour
         return turretToBuild;
     }
 
-    public void SetTurretToBUild (GameObject turret)
+    public void SetTurretToBuild (GameObject turret)
     {
         turretToBuild = turret;
+    }
+    public void SetTurretToBuildIsNull()
+    {
+        turretToBuild = null;
+    }
+    public bool checkIfMouseIsOverATile()
+    {
+        foreach (Tile tile in listOfAllTiles)
+        {
+            if(tile.isOverATile == true)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
