@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         // If the projectile collides with an object, deal damage to its health and destroy the projectile
-        Health health = other.gameObject.GetComponent<Health>();
+        Enemy health = other.gameObject.GetComponent<Enemy>();
         if (health != null)
         {
             health.TakeDamage(projectileDamage);
