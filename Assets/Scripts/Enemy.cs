@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private int pathIndex = 0;
     private float currentHealth;
+    private Dictionary<DotProjectile, float> dotEffects = new Dictionary<DotProjectile, float>(); // Dictionary to store DoT effects
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Move();
+        ApplyDotEffects();
     }
 
     private void Move()
@@ -50,14 +53,49 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            EnemySpawner.onEnemyDestroy.Invoke();
-            animator.Play("Ghost_Death");
-            Invoke("EnemyDeath", 1f);
+            Die();
         }
     }
 
-    private void EnemyDeath()
+    public void TakeDotDamage(float dotDamage, DotProjectile dotProjectile)
     {
-        Destroy(gameObject);
+        // Add the dotDamage to the total DoT effect for this dotProjectile
+        if (dotEffects.ContainsKey(dotProjectile))
+        {
+            dotEffects[dotProjectile] += dotDamage;
+        }
+        else
+        {
+            dotEffects.Add(dotProjectile, dotDamage);
+        }
+
+        // Log the total DoT effect for this dotProjectile
+        Debug.Log($"DoT effect added to: {dotEffects[dotProjectile]}");
+    }
+
+
+    private void ApplyDotEffects()
+    {
+        foreach (var dotEffect in dotEffects)
+        {
+            float damageApplied = dotEffect.Value * Time.deltaTime;
+            currentHealth -= damageApplied;
+
+            // Log the damage applied by the DoT effect
+            Debug.Log($"DoT effect dealt {damageApplied} damage");
+        }
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+
+    private void Die()
+    {
+        EnemySpawner.onEnemyDestroy.Invoke();
+        animator.Play("Ghost_Death");
+        Destroy(gameObject, 1f);
     }
 }
