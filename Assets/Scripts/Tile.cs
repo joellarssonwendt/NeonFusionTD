@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
-    
     private SpriteRenderer spriteRenderer;
     private Color grayColor = Color.gray;
     private Color whiteColor = Color.white;
@@ -38,14 +37,10 @@ public class Tile : MonoBehaviour
     }
     public void PlaceTurret()
     {
-        if(buildManager.GetTurretToBuild() == null)
-        {
-            Debug.Log("turret is null");
-            return;
-        }
         if(turret != null)
         {
             Debug.Log("Already a turret here");
+            buildManager.SetTurretToBuildIsNull();
             return;
         }
         GameObject turretToBuild = buildManager.GetTurretToBuild();

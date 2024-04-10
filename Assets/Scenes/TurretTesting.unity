@@ -2730,7 +2730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempTurretHolder: {fileID: 1931560907}
-  attackRangeSprite: {fileID: 0}
+  attackRangeSprite: {fileID: 1380879629}
 --- !u!114 &371765498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,14 +2744,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ca7a692e5d972954488cb6e04ad66b16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae0d803f89cd67e43a7e55b53d5fe76e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7935,8 +7935,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136845069}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.4, y: -7.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8117,7 +8117,7 @@ Transform:
   - {fileID: 352352915}
   - {fileID: 1441420384}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &1139600609 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
@@ -8385,11 +8385,11 @@ MonoBehaviour:
   - {fileID: 1659944065}
   - {fileID: 1441420385}
   tempNormalTurret: {fileID: 1520910871}
-  tempFireTurret: {fileID: 3056856402117988083, guid: c06cadc6b157b384e956227960c2239e, type: 3}
+  tempFireTurret: {fileID: 1931560907}
   tempIceTurret: {fileID: 0}
   tempLightningTurret: {fileID: 0}
   standardTurretPrefab: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
-  fireTurretPrefab: {fileID: 3056856402117988083, guid: c06cadc6b157b384e956227960c2239e, type: 3}
+  fireTurretPrefab: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
 --- !u!4 &1160034903
 Transform:
   m_ObjectHideFlags: 0
@@ -11274,7 +11274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1520910872
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13514,7 +13514,19 @@ PrefabInstance:
     - target: {fileID: 1242215376626485649, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ca7a692e5d972954488cb6e04ad66b16, type: 3}
+      objectReference: {fileID: 21300000, guid: ae0d803f89cd67e43a7e55b53d5fe76e, type: 3}
+    - target: {fileID: 1242215376626485649, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.13968495
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242215376626485649, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.13968495
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242215376626485649, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6886792
+      objectReference: {fileID: 0}
     - target: {fileID: 2353413637006770180, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_text
       value: Fire Cannon
@@ -13618,15 +13630,15 @@ PrefabInstance:
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempFireTurret
       value: 
-      objectReference: {fileID: 3056856402117988083, guid: c06cadc6b157b384e956227960c2239e, type: 3}
+      objectReference: {fileID: 1931560907}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: fireTurretSprite
       value: 
-      objectReference: {fileID: 80405776157410960, guid: 2a0738be07df18344b94db23b54870c6, type: 3}
+      objectReference: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempNormalTurret
       value: 
-      objectReference: {fileID: 1931560907}
+      objectReference: {fileID: 1520910871}
     m_RemovedComponents:
     - {fileID: 7876965552444021156, guid: 8933870538464bd428c667759443e0a3, type: 3}
     m_RemovedGameObjects: []

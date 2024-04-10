@@ -33,7 +33,7 @@ public class BuildManager : MonoBehaviour
     }
     public void SetTurretToBuildIsNull()
     {
-        tempNormalTurret.SetActive(false);
+        deactivateTempTurretSprites();
         turretToBuild = null;
     }
     public bool checkIfMouseIsOverATile()
@@ -46,5 +46,13 @@ public class BuildManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void deactivateTempTurretSprites()
+    {
+        tempNormalTurret.SetActive(false);
+        tempFireTurret.SetActive(false);
+       // tempIceTurret.SetActive(false);
+       // tempLightningTurret.SetActive(false);
     }
 }
