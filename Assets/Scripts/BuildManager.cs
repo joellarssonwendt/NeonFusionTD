@@ -11,6 +11,7 @@ public class BuildManager : MonoBehaviour
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
     private GameObject turretToBuild;
+    private Tile tileWithTurret;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class BuildManager : MonoBehaviour
         {
             if(tile.isOverATile == true)
             {
+                tileWithTurret = tile;
                 return true;
             }
         }
@@ -54,5 +56,13 @@ public class BuildManager : MonoBehaviour
         tempFireTurret.SetActive(false);
        // tempIceTurret.SetActive(false);
        // tempLightningTurret.SetActive(false);
+    }
+
+    public void initiateTurretMove()
+    {
+        if(checkIfMouseIsOverATile() && turretToBuild == null)
+        {
+           // tileWithTurret
+        }
     }
 }

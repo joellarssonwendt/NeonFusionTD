@@ -8,7 +8,6 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firingPoint;
-    [SerializeField] private GameObject TemporaryTurretSprite;
 
     [Header("Stats")] 
     [SerializeField] private TurretStats turretStats; 
@@ -84,20 +83,5 @@ public class NormalTurret : MonoBehaviour
         // Draws a circle in the scene view to visualize the turret's targeting range
         Handles.color = Color.green;
         Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
-    }
-    private void SpawnTemporaryTowerSprite()
-    {
-        Instantiate(TemporaryTurretSprite, transform.position, Quaternion.identity);
-    }
-    private void MoveTemporaryTowerSprite()
-    {
-
-    }
-    private void TouchPosition()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
     }
 }
