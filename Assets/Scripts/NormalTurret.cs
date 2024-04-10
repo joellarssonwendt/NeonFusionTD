@@ -8,6 +8,7 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firingPoint;
+    BuildManager buildManager;
 
     [Header("Stats")] 
     [SerializeField] private TurretStats turretStats; 
@@ -15,7 +16,12 @@ public class NormalTurret : MonoBehaviour
 
     private Transform target;
     private float timeUntilFire;
+    private GameObject currentTurretOnPointer;
 
+    private void Start()
+    {
+        buildManager = BuildManager.instance;
+    }
     private void Update()
     {
         if (target == null)
@@ -83,5 +89,20 @@ public class NormalTurret : MonoBehaviour
         // Draws a circle in the scene view to visualize the turret's targeting range
         Handles.color = Color.green;
         Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
+    }
+
+    private void OnMouseDown()
+    {
+        currentTurretOnPointer = gameObject;
+        buildManager.selectedTurret = currentTurretOnPointer;
+        buildManager.selectBuiltTurret();
+        
+    }
+
+    
+
+    public GameObject GetTurret()
+    {
+        return currentTurretOnPointer;
     }
 }

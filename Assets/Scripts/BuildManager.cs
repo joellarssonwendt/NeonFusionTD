@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour
     public GameObject fireTurretPrefab;
     private GameObject turretToBuild;
     private Tile tileWithTurret;
+    public GameObject selectedTurret;
 
     private void Awake()
     {
@@ -58,11 +59,19 @@ public class BuildManager : MonoBehaviour
        // tempLightningTurret.SetActive(false);
     }
 
-    public void initiateTurretMove()
+    public void selectBuiltTurret()
     {
-        if(checkIfMouseIsOverATile() && turretToBuild == null)
+        if (turretToBuild == null && tileWithTurret.GetTurret() != null)
         {
-           // tileWithTurret
+            Debug.Log("turretSelcted");
+           if(selectedTurret.GetComponent<NormalTurret>() != null)
+           {
+                Debug.Log("normalTurretOnTileSelected");
+           }
+           else if (selectedTurret.GetComponent<FireTurret>() != null)
+           {
+                Debug.Log("FireTurretOnTileSelected");
+            }
         }
     }
 }

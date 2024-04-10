@@ -70,4 +70,8 @@ public class Tile : MonoBehaviour
         spriteRenderer.color = whiteColor;
         isOverATile = false;
     }
+    public GameObject GetTurret()
+    {
+        return turret;
+    }
 }
