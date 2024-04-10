@@ -7,15 +7,18 @@ public class SuperNormalTurret : MonoBehaviour
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firingPoint;
+    [SerializeField] private Transform firingPoint1;
+    [SerializeField] private Transform firingPoint2;
 
     [Header("Attribute")] // Header to group serialized fields in the inspector
-    [SerializeField] private float targetingRange = 5f;
-    [SerializeField] private float rotationSpeed = 300f;
+    [SerializeField] private float targetingRange = 4f;
+    [SerializeField] private float rotationSpeed = 400f;
     [SerializeField] private float pps = 2f; // Projectiles Per Second 
+    [SerializeField] private GameObject TemporaryTurretSprite;
 
     private Transform target;
     private float timeUntilFire;
+    private bool useFiringPoint1 = true;
 
     private void Update()
     {
@@ -45,9 +48,16 @@ public class SuperNormalTurret : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
-        GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
+        // Determine which firing point to use based on the flag
+        Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
+
+        // Instantiate a projectile at the current firing point
+        GameObject projectileObject = Instantiate(projectilePrefab, currentFiringPoint.position, Quaternion.identity);
         Projectile projectileScript = projectileObject.GetComponent<Projectile>();
         projectileScript.SetTarget(target);
+
+        // Toggle the flag for the next shot
+        useFiringPoint1 = !useFiringPoint1;
     }
 
     private void FindTarget()
@@ -81,4 +91,20 @@ public class SuperNormalTurret : MonoBehaviour
         Handles.color = Color.green;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }
+    private void SpawnTemporaryTowerSprite()
+    {
+        Instantiate(TemporaryTurretSprite, transform.position, Quaternion.identity);
+    }
+    private void MoveTemporaryTowerSprite()
+    {
+        
+    }
+    private void TouchPosition()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+    }
+
 }

@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Attributes")]
-    [SerializeField] private float projectileSpeed = 5f;
+    [SerializeField] private float projectileSpeed = 7f;
     [SerializeField] private int projectileDamage = 1;
 
     private Transform target;
