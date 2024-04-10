@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Attributes")]
-    [SerializeField] private int hitPoints = 2;
+    [SerializeField] private float hitPoints = 2;
 
     private Animator ani;
     private void Start()
@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
         ani = GetComponent<Animator>();
     }
 
-    public void TakeDamage(int dmg)
+    public void TakeDamage(float dmg)
     {
         hitPoints -= dmg;
 

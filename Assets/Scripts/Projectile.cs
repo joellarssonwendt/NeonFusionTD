@@ -9,13 +9,18 @@ public class Projectile : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float projectileSpeed = 7f;
-    [SerializeField] private int projectileDamage = 1;
+    private float projectileDamage = 0;
 
     private Transform target;
 
     public void SetTarget(Transform _target)
     {
         target = _target;
+    }
+
+    public void SetDamage(float damage)
+    {
+        projectileDamage = damage; // Method to set the damage value
     }
 
     private void FixedUpdate()
@@ -29,7 +34,11 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         // If the projectile collides with an object, deal damage to its health and destroy the projectile
-        other.gameObject.GetComponent<Health>().TakeDamage(projectileDamage);
+        Health health = other.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDamage(projectileDamage);
+        }
         Destroy(gameObject);
     }
 }

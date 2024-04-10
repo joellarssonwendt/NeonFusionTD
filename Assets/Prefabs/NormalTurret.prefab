@@ -251,9 +251,7 @@ MonoBehaviour:
     m_Bits: 64
   projectilePrefab: {fileID: 4404795518819960278, guid: 55a16761925acf444a7ce5b8cdd53f62, type: 3}
   firingPoint: {fileID: 4151991782168928605}
-  targetingRange: 2.5
-  rotationSpeed: 250
-  pps: 1
+  turretStats: {fileID: 11400000, guid: 39fbe74ebd447ee438ca10364086f799, type: 2}
   TemporaryTurretSprite: {fileID: 0}
 --- !u!1 &4484780674428449404
 GameObject:

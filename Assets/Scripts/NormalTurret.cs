@@ -8,19 +8,18 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firingPoint;
-
-    [Header("Attribute")] // Header to group serialized fields in the inspector
-    [SerializeField] private float targetingRange = 3f;
-    [SerializeField] private float rotationSpeed = 250f;
-    [SerializeField] private float pps = 1f; // Projectiles Per Second 
     [SerializeField] private GameObject TemporaryTurretSprite;
+
+    [Header("Stats")] // Header to group serialized fields in the inspector
+    [SerializeField] private TurretStats turretStats; 
+    
 
     private Transform target;
     private float timeUntilFire;
 
     private void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             FindTarget();
             return;
@@ -28,7 +27,7 @@ public class NormalTurret : MonoBehaviour
 
         RotateTowardsTarget();
 
-        if(!CheckTargetIsInRange()) // If the target is out of range, reset target to null
+        if (!CheckTargetIsInRange()) // If the target is out of range, reset target to null
         {
             target = null;
         }
@@ -36,7 +35,7 @@ public class NormalTurret : MonoBehaviour
         {
             timeUntilFire += Time.deltaTime; // Increment timeUntilFire and shoot if it's time to fire
 
-            if (timeUntilFire >= 1f / pps)
+            if (timeUntilFire >= 1f / turretStats.projectilesPerSecond)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -48,13 +47,17 @@ public class NormalTurret : MonoBehaviour
     {
         GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
         Projectile projectileScript = projectileObject.GetComponent<Projectile>();
+
+        // Set the damage value of the projectile from the Scriptable Object
+        projectileScript.SetDamage(turretStats.projectileDamage);
+
         projectileScript.SetTarget(target);
     }
 
     private void FindTarget()
     {
         // Raycast in a circle around the turret's position to find enemies within targeting range
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0) // If enemies are found within range, set the first one as target
         {
@@ -64,7 +67,7 @@ public class NormalTurret : MonoBehaviour
 
     private bool CheckTargetIsInRange()
     {
-        return Vector2.Distance(target.position, transform.position) <= targetingRange;
+        return Vector2.Distance(target.position, transform.position) <= turretStats.targetingRange;
     }
 
     private void RotateTowardsTarget()
@@ -73,14 +76,14 @@ public class NormalTurret : MonoBehaviour
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
     private void OnDrawGizmosSelected()
     {
         // Draws a circle in the scene view to visualize the turret's targeting range
         Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
     }
     private void SpawnTemporaryTowerSprite()
     {
@@ -88,7 +91,7 @@ public class NormalTurret : MonoBehaviour
     }
     private void MoveTemporaryTowerSprite()
     {
-        
+
     }
     private void TouchPosition()
     {
@@ -97,5 +100,4 @@ public class NormalTurret : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
-
 }

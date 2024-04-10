@@ -9,12 +9,11 @@ public class SuperNormalTurret : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firingPoint1;
     [SerializeField] private Transform firingPoint2;
-
-    [Header("Attribute")] // Header to group serialized fields in the inspector
-    [SerializeField] private float targetingRange = 4f;
-    [SerializeField] private float rotationSpeed = 400f;
-    [SerializeField] private float pps = 2f; // Projectiles Per Second 
     [SerializeField] private GameObject TemporaryTurretSprite;
+
+    [Header("Stats")] // Header to group serialized fields in the inspector
+    [SerializeField] private TurretStats turretStats;
+
 
     private Transform target;
     private float timeUntilFire;
@@ -38,7 +37,7 @@ public class SuperNormalTurret : MonoBehaviour
         {
             timeUntilFire += Time.deltaTime; // Increment timeUntilFire and shoot if it's time to fire
 
-            if (timeUntilFire >= 1f / pps)
+            if (timeUntilFire >= 1f / turretStats.projectilesPerSecond)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -54,6 +53,7 @@ public class SuperNormalTurret : MonoBehaviour
         // Instantiate a projectile at the current firing point
         GameObject projectileObject = Instantiate(projectilePrefab, currentFiringPoint.position, Quaternion.identity);
         Projectile projectileScript = projectileObject.GetComponent<Projectile>();
+        projectileScript.SetDamage(turretStats.projectileDamage);
         projectileScript.SetTarget(target);
 
         // Toggle the flag for the next shot
@@ -63,7 +63,7 @@ public class SuperNormalTurret : MonoBehaviour
     private void FindTarget()
     {
         // Raycast in a circle around the turret's position to find enemies within targeting range
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
         if (hits.Length > 0) // If enemies are found within range, set the first one as target
         {
@@ -73,7 +73,7 @@ public class SuperNormalTurret : MonoBehaviour
 
     private bool CheckTargetIsInRange()
     {
-        return Vector2.Distance(target.position, transform.position) <= targetingRange;
+        return Vector2.Distance(target.position, transform.position) <= turretStats.targetingRange;
     }
 
     private void RotateTowardsTarget()
@@ -82,14 +82,14 @@ public class SuperNormalTurret : MonoBehaviour
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
     private void OnDrawGizmosSelected()
     {
         // Draws a circle in the scene view to visualize the turret's targeting range
         Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
     }
     private void SpawnTemporaryTowerSprite()
     {
