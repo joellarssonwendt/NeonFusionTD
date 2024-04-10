@@ -7,6 +7,12 @@ public class Health : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private int hitPoints = 2;
 
+    private Animator ani;
+    private void Start()
+    {
+        ani = GetComponent<Animator>();
+    }
+
     public void TakeDamage(int dmg)
     {
         hitPoints -= dmg;
@@ -14,8 +20,13 @@ public class Health : MonoBehaviour
         if(hitPoints<= 0)
         {
             EnemySpawner.onEnemyDestroy.Invoke();
-            Destroy(gameObject);
+            ani.Play("Ghost_Death");
+            Invoke("EnemyDeath", 1f);
         }
     }
 
+    private void EnemyDeath()
+    {
+        Destroy(gameObject);
+    }
 }
