@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2109791518228323326}
   - component: {fileID: 6840920213962087367}
   - component: {fileID: 4575580365546535011}
-  - component: {fileID: -1760238258521513714}
+  - component: {fileID: 4165044277036703918}
   - component: {fileID: 2740704371177925090}
   m_Layer: 0
-  m_Name: LaserBallDoT
+  m_Name: BasicProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &-1760238258521513714
+--- !u!114 &4165044277036703918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,11 +159,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4404795518819960278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1df45ab0e7685147b7ccd549d3f7eb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 98bf11c86c9d78c449e0a887c0b46532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4575580365546535011}
   projectileSpeed: 7
+  projectileDamage: 1
 --- !u!96 &2740704371177925090
 TrailRenderer:
   serializedVersion: 3

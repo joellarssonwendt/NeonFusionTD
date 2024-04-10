@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2109791518228323326}
   - component: {fileID: 6840920213962087367}
   - component: {fileID: 4575580365546535011}
-  - component: {fileID: 4165044277036703918}
+  - component: {fileID: -1760238258521513714}
   - component: {fileID: 2740704371177925090}
   m_Layer: 0
-  m_Name: LaserBall
+  m_Name: FireProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fc2c75754411dc546a02684dbdda51b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ffb3331851b8cc4a8cb44003a690933, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4165044277036703918
+--- !u!114 &-1760238258521513714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,12 +159,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4404795518819960278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98bf11c86c9d78c449e0a887c0b46532, type: 3}
+  m_Script: {fileID: 11500000, guid: a1df45ab0e7685147b7ccd549d3f7eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4575580365546535011}
   projectileSpeed: 7
-  projectileDamage: 1
+  dotDuration: 3
+  dotDamage: 5
 --- !u!96 &2740704371177925090
 TrailRenderer:
   serializedVersion: 3
@@ -238,8 +239,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.8000001, b: 0, a: 1}
-      key1: {r: 0.22352943, g: 0.57254905, b: 0.22352943, a: 0}
+      key0: {r: 0.6666667, g: 0.08235294, b: 0.08627451, a: 1}
+      key1: {r: 0.6666667, g: 0.08235294, b: 0.08627451, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
