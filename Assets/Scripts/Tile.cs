@@ -11,6 +11,7 @@ public class Tile : MonoBehaviour
     private Color grayColor = Color.gray;
     private Color whiteColor = Color.white;
     private GameObject turret;
+    public GameObject currentTile;
 
     BuildManager buildManager;
     void Start()
@@ -18,8 +19,14 @@ public class Tile : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         buildManager = BuildManager.instance;
     }
-
-    public void OnMouseUp()
+    void Update()
+    {
+        if(Input.GetMouseButtonUp(0) && currentTile != null) 
+        {
+            PlaceTurret();
+        }
+    }
+    public void PlaceTurret()
     {
         if(buildManager.GetTurretToBuild() == null)
         {
@@ -31,11 +38,12 @@ public class Tile : MonoBehaviour
             return;
         }
         GameObject turretToBuild = buildManager.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, transform.position, Quaternion.identity);
+        turret = (GameObject)Instantiate(turretToBuild, currentTile.transform.position, Quaternion.identity);
     }
     
     private void OnMouseEnter()
     {
+        currentTile = gameObject;
         if(buildManager.GetTurretToBuild() != null)
         {
             spriteRenderer.color = grayColor;
@@ -43,12 +51,7 @@ public class Tile : MonoBehaviour
     }
     private void OnMouseExit()
     {
+        currentTile = null;
         spriteRenderer.color = whiteColor;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

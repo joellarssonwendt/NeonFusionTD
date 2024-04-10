@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EndPoint
   - Enemy
+  - Shop
   layers:
   - Default
   - TransparentFX

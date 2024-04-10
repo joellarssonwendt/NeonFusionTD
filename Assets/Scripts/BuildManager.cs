@@ -18,7 +18,6 @@ public class BuildManager : MonoBehaviour
             return;
         }
         instance = this;
-
     }
 
     public GameObject GetTurretToBuild()
