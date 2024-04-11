@@ -11,7 +11,7 @@ public class BuildManager : MonoBehaviour
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
     private GameObject turretToBuild;
-    public Tile tileWithTurret;
+    public Tile tileObject;
     public GameObject selectedTurret;
 
     private void Awake()
@@ -25,9 +25,9 @@ public class BuildManager : MonoBehaviour
     }
     private void Update()
     {
-        if (tileWithTurret != null)
+        if (tileObject != null)
         {
-            if (tileWithTurret.GetTurret() != null)
+            if (tileObject.GetTurret() != null)
             {
                 Debug.Log("get Turret är inte null");
             }
@@ -58,7 +58,7 @@ public class BuildManager : MonoBehaviour
         {
             if(tile.isOverATile == true)
             {
-                tileWithTurret = tile;
+                tileObject = tile;
                 return true;
             }
         }

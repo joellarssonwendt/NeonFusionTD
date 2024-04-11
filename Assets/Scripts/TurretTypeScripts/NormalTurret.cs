@@ -10,29 +10,21 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firingPoint;
-    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret;
     [SerializeField] private GameObject tilePrefab;
     BuildManager buildManager;
-    private Tile tile;
-    private Tile tileScriptWhenTowerWasClicked;
     private GameObject currentTurretOnPointer;
-    private GameObject tileWhenTowerWasClicked;
 
-    [Header("Stats")] 
-    [SerializeField] private TurretStats turretStats; 
-    
+    [Header("Stats")]
+    [SerializeField] private TurretStats turretStats;
+
 
     private Transform target;
     private float timeUntilFire;
+    public GameObject turretsTile;
 
     private void Start()
     {
         buildManager = BuildManager.instance;
-        tempNormalTurret = GameObject.FindWithTag("TemporaryNormalSprite");
-        tempFireTurret = GameObject.FindWithTag("TemporaryFireSprite");
-        tempIceTurret = GameObject.FindWithTag("TemporaryIceSprite");
-        tempLightningTurret = GameObject.FindWithTag("TemporaryLightningSprite");
-        tile = tilePrefab.GetComponent<Tile>();
     }
     private void Update()
     {
@@ -107,31 +99,30 @@ public class NormalTurret : MonoBehaviour
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
         buildManager.selectBuiltTurret();
-       // tileWhenTowerWasClicked = tile.currentTile;
-        // tileScriptWhenTowerWasClicked = tileWhenTowerWasClicked.GetComponent<Tile>();
-
+        buildManager.tileObject.SetTurretToNull();
     }
 
     private void OnMouseUp()
     {
-        if (buildManager.tileWithTurret.GetTurret() != null)
+        if (buildManager.tileObject.GetTurret() != null)
         {
             //här kan merge koden vara sen
             buildManager.deselectBuiltTurret();
             Debug.Log("deselect, Men kan köra merge också sen");
         }
-        if (buildManager.tileWithTurret.GetTurret() == null)
+        if (buildManager.tileObject.GetTurret() == null)
         {
             if (buildManager.checkIfMouseIsOverATile())
             {
-                Debug.Log("flytta turret");  
-                buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
-                buildManager.tileWithTurret.SetTurretToNull();
+                //här flyttas turreten till tilen som musen är över
+                Debug.Log("flytta turret");
+                buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
+                buildManager.tileObject.SetTurretToNull();
                 buildManager.deselectBuiltTurret();
-               // tileScriptWhenTowerWasClicked.SetTurretToNull();
             }
             else
             {
+                //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
                 buildManager.deselectBuiltTurret();
                 Debug.Log("deselect");
             }
