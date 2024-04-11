@@ -11,7 +11,7 @@ public class BuildManager : MonoBehaviour
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
     private GameObject turretToBuild;
-    private Tile tileWithTurret;
+    public Tile tileWithTurret;
     public GameObject selectedTurret;
 
     private void Awake()
@@ -22,6 +22,17 @@ public class BuildManager : MonoBehaviour
             return;
         }
         instance = this;
+    }
+    private void Update()
+    {
+        if(turretToBuild != null)
+        {
+            Debug.Log("Turret to build är inte null");
+        }
+        else
+        {
+            Debug.Log("TurretToBuild == null");
+        }
     }
 
     public GameObject GetTurretToBuild()
@@ -61,17 +72,24 @@ public class BuildManager : MonoBehaviour
 
     public void selectBuiltTurret()
     {
-        if (turretToBuild == null && tileWithTurret.GetTurret() != null)
+        if (turretToBuild == null)
         {
             Debug.Log("turretSelcted");
            if(selectedTurret.GetComponent<NormalTurret>() != null)
            {
                 Debug.Log("normalTurretOnTileSelected");
+                tempNormalTurret.SetActive(true);
            }
            else if (selectedTurret.GetComponent<FireTurret>() != null)
            {
                 Debug.Log("FireTurretOnTileSelected");
+                tempFireTurret.SetActive(true);
             }
         }
+    }
+    public void deselectBuiltTurret()
+    {
+        selectedTurret = null;
+        deactivateTempTurretSprites();
     }
 }

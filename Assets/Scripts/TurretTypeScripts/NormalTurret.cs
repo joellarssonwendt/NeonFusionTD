@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using Unity.VisualScripting;
 
 public class NormalTurret : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret;
     BuildManager buildManager;
 
     [Header("Stats")] 
@@ -21,6 +23,10 @@ public class NormalTurret : MonoBehaviour
     private void Start()
     {
         buildManager = BuildManager.instance;
+        tempNormalTurret = GameObject.FindWithTag("TemporaryNormalSprite");
+        tempNormalTurret = GameObject.FindWithTag("TemporaryFireSprite");
+        tempNormalTurret = GameObject.FindWithTag("TemporaryIceSprite");
+        tempNormalTurret = GameObject.FindWithTag("TemporaryLightningSprite");
     }
     private void Update()
     {
@@ -95,12 +101,31 @@ public class NormalTurret : MonoBehaviour
     {
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
-        
+        buildManager.selectBuiltTurret(); 
     }
-
-    
-
+    private void OnMouseUp()
+    {
+        if(buildManager.tileWithTurret.GetTurret() != null)
+        {
+            //här kan merge koden vara sen
+            buildManager.deselectBuiltTurret();
+            Debug.Log("deselect, Men kan köra merge också sen");
+        }
+        if(buildManager.tileWithTurret.GetTurret() == null)
+        {
+            if(buildManager.checkIfMouseIsOverATile())
+            {
+                Debug.Log("flytta turret");
+                //buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
+                buildManager.deselectBuiltTurret();
+            }
+            else
+            {
+                buildManager.deselectBuiltTurret();
+                Debug.Log("deselect");
+            }
+        }
+    }
     public GameObject GetTurret()
     {
         return currentTurretOnPointer;

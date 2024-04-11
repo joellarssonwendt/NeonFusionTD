@@ -29,17 +29,11 @@ public class Tile : MonoBehaviour
         {
             RemoveMisplacedTurret();
         }
-
-        if (buildManager.checkIfMouseIsOverATile())
-        {
-            Debug.Log("checkIfMouseIsOverATile");
-        }
     }
     public void PlaceTurret()
     {
         if(turret != null)
         {
-            Debug.Log("Already a turret here");
             buildManager.SetTurretToBuildIsNull();
             return;
         }
@@ -49,7 +43,6 @@ public class Tile : MonoBehaviour
     }
     public void RemoveMisplacedTurret()
     {
-            Debug.Log("Can't place turret here.");
             buildManager.SetTurretToBuildIsNull();
             return;
     }
@@ -57,7 +50,6 @@ public class Tile : MonoBehaviour
     {
         isOverATile = true;
         currentTile = gameObject;
-        Debug.Log("currentTile is this Tile");
         if (buildManager.GetTurretToBuild() != null)
         {
             spriteRenderer.color = grayColor;
@@ -65,7 +57,6 @@ public class Tile : MonoBehaviour
     }
     private void OnMouseExit()
     {
-        Debug.Log("currentTile is NULL");
         currentTile = null;
         spriteRenderer.color = whiteColor;
         isOverATile = false;

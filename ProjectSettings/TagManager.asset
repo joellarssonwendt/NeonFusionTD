@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - Shop
   - TemporaryTurretSprites
+  - TemporaryNormalSprite
+  - TemporaryFireSprite
+  - TemporaryIceSprite
+  - TemporaryLightningSprite
   layers:
   - Default
   - TransparentFX
