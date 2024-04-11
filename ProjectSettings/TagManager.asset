@@ -52,3 +52,6 @@ TagManager:
   - name: Turret
     uniqueID: 3357261321
     locked: 0
+  - name: Buff/Debuff
+    uniqueID: 1828744649
+    locked: 0
