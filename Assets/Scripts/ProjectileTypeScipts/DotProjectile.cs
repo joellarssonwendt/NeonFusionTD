@@ -8,8 +8,8 @@ public class DotProjectile : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private float projectileSpeed = 7f;
-    [SerializeField] private float dotDuration = 3f; // Duration of the DoT effect
-    [SerializeField] private float dotDamage = 5f; // Damage per second for the DoT effect
+    [SerializeField] private float dotDuration; // Duration of the DoT effect
+    [SerializeField] private float dotDamage; // Damage per second for the DoT effect
     private float projectileDamage = 0;
 
     private Transform target;
