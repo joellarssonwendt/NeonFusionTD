@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private int pathIndex = 0;
     private float currentHealth;
+    private bool isDead = false;
     private Dictionary<DotProjectile, float> dotEffects = new Dictionary<DotProjectile, float>(); // Dictionary to store DoT effects
 
     private void Start()
@@ -51,7 +52,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead) // Check if the enemy is not already dead
         {
             Die();
         }
@@ -76,24 +77,27 @@ public class Enemy : MonoBehaviour
 
     private void ApplyDotEffects()
     {
+        if (isDead) return;
+
         foreach (var dotEffect in dotEffects)
         {
             float damageApplied = dotEffect.Value * Time.deltaTime;
             currentHealth -= damageApplied;
 
+            if (currentHealth <= 0)
+            {
+                Die();
+                return;
+            }
             // Log the damage applied by the DoT effect
             Debug.Log($"DoT effect dealt {damageApplied} damage");
-        }
-
-        if (currentHealth <= 0)
-        {
-            Die();
         }
     }
 
 
     private void Die()
     {
+        isDead = true; // Set the flag to true to indicate that the enemy has died
         EnemySpawner.onEnemyDestroy.Invoke();
         animator.Play("Ghost_Death");
         Destroy(gameObject, 1f);
