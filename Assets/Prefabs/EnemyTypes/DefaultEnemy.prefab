@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5546459295073055965}
   - component: {fileID: 6377493838693588582}
   - component: {fileID: 6786164646476171399}
+  - component: {fileID: 8158652580253090061}
   - component: {fileID: -785712962455458070}
   m_Layer: 6
   m_Name: DefaultEnemy
@@ -51,6 +52,7 @@ MonoBehaviour:
   rb: {fileID: 6786164646476171399}
   animator: {fileID: 5546459295073055965}
   enemyStats: {fileID: 11400000, guid: 8e849d0821b34fa4881ebe574f2fed47, type: 2}
+  fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
 --- !u!95 &5546459295073055965
 Animator:
   serializedVersion: 5
@@ -151,8 +153,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &-785712962455458070
-CircleCollider2D:
+--- !u!70 &8158652580253090061
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -183,6 +185,41 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.036369026}
+  m_Size: {x: 1.0233498, y: 1.2361859}
+  m_Direction: 0
+--- !u!58 &-785712962455458070
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054526396113401650}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.09420724}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.19420724
