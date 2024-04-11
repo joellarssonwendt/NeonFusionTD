@@ -14,6 +14,9 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private GameObject tilePrefab;
     BuildManager buildManager;
     private Tile tile;
+    private Tile tileScriptWhenTowerWasClicked;
+    private GameObject currentTurretOnPointer;
+    private GameObject tileWhenTowerWasClicked;
 
     [Header("Stats")] 
     [SerializeField] private TurretStats turretStats; 
@@ -21,8 +24,6 @@ public class NormalTurret : MonoBehaviour
 
     private Transform target;
     private float timeUntilFire;
-    private GameObject currentTurretOnPointer;
-    private GameObject tileWhenTowerWasClicked;
 
     private void Start()
     {
@@ -32,7 +33,6 @@ public class NormalTurret : MonoBehaviour
         tempIceTurret = GameObject.FindWithTag("TemporaryIceSprite");
         tempLightningTurret = GameObject.FindWithTag("TemporaryLightningSprite");
         tile = tilePrefab.GetComponent<Tile>();
-        
     }
     private void Update()
     {
@@ -107,7 +107,9 @@ public class NormalTurret : MonoBehaviour
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
         buildManager.selectBuiltTurret();
-        tileWhenTowerWasClicked = tile.currentTile;
+       // tileWhenTowerWasClicked = tile.currentTile;
+        // tileScriptWhenTowerWasClicked = tileWhenTowerWasClicked.GetComponent<Tile>();
+
     }
 
     private void OnMouseUp()
@@ -122,18 +124,11 @@ public class NormalTurret : MonoBehaviour
         {
             if (buildManager.checkIfMouseIsOverATile())
             {
-                Debug.Log("flytta turret");
-                if (buildManager.tileWithTurret != null)
-                {
-                    buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
-                }
-                else
-                {
-                    Debug.LogError("tileWithTurret is null!");
-                }
+                Debug.Log("flytta turret");  
+                buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
                 buildManager.tileWithTurret.SetTurretToNull();
                 buildManager.deselectBuiltTurret();
-                tile.SetTurretToNull();
+               // tileScriptWhenTowerWasClicked.SetTurretToNull();
             }
             else
             {

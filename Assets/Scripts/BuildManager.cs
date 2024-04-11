@@ -92,10 +92,6 @@ public class BuildManager : MonoBehaviour
     }
     public void deselectBuiltTurret()
     {
-        if (tileWithTurret != null)
-        {
-            tileWithTurret.SetTurretToNull();
-        }
         selectedTurret = null;
         deactivateTempTurretSprites();
     }
