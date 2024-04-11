@@ -252,7 +252,11 @@ MonoBehaviour:
     m_Bits: 64
   projectilePrefab: {fileID: 4404795518819960278, guid: 55a16761925acf444a7ce5b8cdd53f62, type: 3}
   firingPoint: {fileID: 4151991782168928605}
-  TemporaryTurretSprite: {fileID: 0}
+  tempNormalTurret: {fileID: 0}
+  tempFireTurret: {fileID: 0}
+  tempIceTurret: {fileID: 0}
+  tempLightningTurret: {fileID: 0}
+  tilePrefab: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
   turretStats: {fileID: 11400000, guid: 39fbe74ebd447ee438ca10364086f799, type: 2}
 --- !u!58 &4243902865188377055
 CircleCollider2D:

@@ -65,4 +65,8 @@ public class Tile : MonoBehaviour
     {
         return turret;
     }
+    public void SetTurretToNull()
+    {
+        turret = null;
+    }
 }

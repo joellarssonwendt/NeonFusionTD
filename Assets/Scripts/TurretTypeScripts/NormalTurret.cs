@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 
 public class NormalTurret : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret;
+    [SerializeField] private GameObject tilePrefab;
     BuildManager buildManager;
+    private Tile tile;
 
     [Header("Stats")] 
     [SerializeField] private TurretStats turretStats; 
@@ -19,14 +22,17 @@ public class NormalTurret : MonoBehaviour
     private Transform target;
     private float timeUntilFire;
     private GameObject currentTurretOnPointer;
+    private GameObject tileWhenTowerWasClicked;
 
     private void Start()
     {
         buildManager = BuildManager.instance;
         tempNormalTurret = GameObject.FindWithTag("TemporaryNormalSprite");
-        tempNormalTurret = GameObject.FindWithTag("TemporaryFireSprite");
-        tempNormalTurret = GameObject.FindWithTag("TemporaryIceSprite");
-        tempNormalTurret = GameObject.FindWithTag("TemporaryLightningSprite");
+        tempFireTurret = GameObject.FindWithTag("TemporaryFireSprite");
+        tempIceTurret = GameObject.FindWithTag("TemporaryIceSprite");
+        tempLightningTurret = GameObject.FindWithTag("TemporaryLightningSprite");
+        tile = tilePrefab.GetComponent<Tile>();
+        
     }
     private void Update()
     {
@@ -53,7 +59,6 @@ public class NormalTurret : MonoBehaviour
             }
         }
     }
-
     private void Shoot() // Instantiate a projectile and set its target
     {
         GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
@@ -101,23 +106,34 @@ public class NormalTurret : MonoBehaviour
     {
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret(); 
+        buildManager.selectBuiltTurret();
+        tileWhenTowerWasClicked = tile.currentTile;
     }
+
     private void OnMouseUp()
     {
-        if(buildManager.tileWithTurret.GetTurret() != null)
+        if (buildManager.tileWithTurret.GetTurret() != null)
         {
             //här kan merge koden vara sen
             buildManager.deselectBuiltTurret();
             Debug.Log("deselect, Men kan köra merge också sen");
         }
-        if(buildManager.tileWithTurret.GetTurret() == null)
+        if (buildManager.tileWithTurret.GetTurret() == null)
         {
-            if(buildManager.checkIfMouseIsOverATile())
+            if (buildManager.checkIfMouseIsOverATile())
             {
                 Debug.Log("flytta turret");
-                buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
+                if (buildManager.tileWithTurret != null)
+                {
+                    buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
+                }
+                else
+                {
+                    Debug.LogError("tileWithTurret is null!");
+                }
+                buildManager.tileWithTurret.SetTurretToNull();
                 buildManager.deselectBuiltTurret();
+                tile.SetTurretToNull();
             }
             else
             {

@@ -25,13 +25,16 @@ public class BuildManager : MonoBehaviour
     }
     private void Update()
     {
-        if(turretToBuild != null)
+        if (tileWithTurret != null)
         {
-            Debug.Log("Turret to build är inte null");
-        }
-        else
-        {
-            Debug.Log("TurretToBuild == null");
+            if (tileWithTurret.GetTurret() != null)
+            {
+                Debug.Log("get Turret är inte null");
+            }
+            else
+            {
+                Debug.Log("get Turret == null");
+            }  
         }
     }
 
@@ -89,6 +92,10 @@ public class BuildManager : MonoBehaviour
     }
     public void deselectBuiltTurret()
     {
+        if (tileWithTurret != null)
+        {
+            tileWithTurret.SetTurretToNull();
+        }
         selectedTurret = null;
         deactivateTempTurretSprites();
     }
