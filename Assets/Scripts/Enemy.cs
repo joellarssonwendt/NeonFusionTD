@@ -7,12 +7,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private EnemyStats enemyStats;
+    [SerializeField] private GameObject fireIconPrefab;
 
     private Transform target;
     private int pathIndex = 0;
     private float currentHealth;
     private bool isDead = false;
     private Dictionary<DotProjectile, float> dotEffects = new Dictionary<DotProjectile, float>(); // Dictionary to store DoT effects
+    private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
 
     private void Start()
     {
@@ -68,10 +70,17 @@ public class Enemy : MonoBehaviour
         else
         {
             dotEffects.Add(dotProjectile, dotDamage);
+            CreateFireIcon(dotProjectile);
         }
 
         // Log the total DoT effect for this dotProjectile
         Debug.Log($"DoT effect added to: {dotEffects[dotProjectile]}");
+    }
+
+    public void CreateFireIcon(DotProjectile dotProjectile)
+    {
+        GameObject fireIcon = Instantiate(fireIconPrefab, transform.position + Vector3.up * 1.0f, Quaternion.identity, transform);
+        fireIcons.Add(dotProjectile, fireIcon);
     }
 
 
@@ -100,6 +109,12 @@ public class Enemy : MonoBehaviour
         isDead = true; // Set the flag to true to indicate that the enemy has died
         EnemySpawner.onEnemyDestroy.Invoke();
         animator.Play("Ghost_Death");
+
+        foreach (var fireIcon in fireIcons.Values)
+        {
+            Destroy(fireIcon);
+        }
+
         Destroy(gameObject, 1f);
     }
 }
