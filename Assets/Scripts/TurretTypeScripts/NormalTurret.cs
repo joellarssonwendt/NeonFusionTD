@@ -116,7 +116,7 @@ public class NormalTurret : MonoBehaviour
             if(buildManager.checkIfMouseIsOverATile())
             {
                 Debug.Log("flytta turret");
-                //buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
+                buildManager.selectedTurret.transform.position = buildManager.tileWithTurret.transform.position;
                 buildManager.deselectBuiltTurret();
             }
             else
