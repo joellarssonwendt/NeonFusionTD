@@ -15,7 +15,6 @@ public class SuperFireTurret : MonoBehaviour
     [SerializeField] private TurretStats turretStats;
 
     private Transform target;
-    private float timeUntilFire;
 
     private void Update()
     {
