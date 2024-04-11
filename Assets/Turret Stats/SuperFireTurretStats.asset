@@ -15,6 +15,6 @@ MonoBehaviour:
   targetingRange: 3
   rotationSpeed: 400
   projectilesPerSecond: 3
-  projectileDamage: 0.1
-  dotAmount: 1
+  projectileDamage: 0.00001
+  dotAmount: 0.01
   dotDuration: 15

@@ -9,6 +9,7 @@ public class SuperFireTurret : MonoBehaviour
     [SerializeField] private GameObject dotProjectilePrefab;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject TemporaryTurretSprite;
+    [SerializeField] private ParticleSystem flamethrowerParticle;
 
     [Header("Stats")]
     [SerializeField] private TurretStats turretStats;
@@ -20,6 +21,7 @@ public class SuperFireTurret : MonoBehaviour
     {
         if (target == null)
         {
+            StopFlamethrower();
             FindTarget();
             return;
         }
@@ -28,10 +30,16 @@ public class SuperFireTurret : MonoBehaviour
 
         if (!CheckTargetIsInRange()) // If the target is out of range, reset target to null
         {
+            StopFlamethrower();
             target = null;
         }
         else
         {
+            if (!flamethrowerParticle.isPlaying)
+            {
+                flamethrowerParticle.Play();
+            }
+
             Shoot();
         }
     }
@@ -49,6 +57,12 @@ public class SuperFireTurret : MonoBehaviour
         dotProjectile.SetDotDuration(turretStats.dotDuration); // Set dot duration
         dotProjectile.SetTarget(target);
 
+    }
+
+    private void StopFlamethrower()
+    {
+        flamethrowerParticle.Stop();
+        flamethrowerParticle.Clear(); // Clear existing particles
     }
 
     private void FindTarget()
