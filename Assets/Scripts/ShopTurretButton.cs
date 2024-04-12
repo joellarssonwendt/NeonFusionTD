@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class ShopTurretButton : MonoBehaviour
 {
-    [Header("Skriv: normal | fire | ice | lightning \n detta väljer vilken turret en knapp ska spawna")]
+    [Header("Skriv: normal | fire | ice | lightning | lägg till \"super\" innan för supervariant\n detta väljer vilken turret en knapp ska spawna")]
     [SerializeField] private string turretName;
-    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret;
-    [SerializeField] private GameObject normalTurretSprite, fireTurretSprite, iceTurretSprite, lightningTurretSprite;
+    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempSuperNormalTurret, tempSuperFireTurret;
+    [SerializeField] private GameObject normalTurretSprite, fireTurretSprite, iceTurretSprite, lightningTurretSprite, superNormalSprite, superFireSprite;
     private GameObject shopPanel;
     private Shop shop;
     private TempTurretSprite tempTurretSprite;
@@ -41,6 +41,16 @@ public class ShopTurretButton : MonoBehaviour
         {
             Debug.Log("Händer inget för att lightning turret inte är tillagd");
             tempLightningTurret.SetActive(true);
+        }
+        else if (turretName.ToLower().Contains("supernormal"))
+        {
+            shop.SelectSuperStandardTurret();
+            tempSuperNormalTurret.SetActive(true);
+        }
+        else if (turretName.ToLower().Contains("superfire"))
+        {
+            shop.SelectSuperFireTurret();
+            tempFireTurret.SetActive(true);
         }
     }
 }

@@ -21,4 +21,14 @@ public class Shop : MonoBehaviour
         //Debug.Log("fire turret vald");
         buildManager.SetTurretToBuild(buildManager.fireTurretPrefab);
     }
+    public void SelectSuperStandardTurret()
+    {
+        //Debug.Log("superNormal turret vald");
+        buildManager.SetTurretToBuild(buildManager.superStandardTurretPrefab);
+    }
+    public void SelectSuperFireTurret()
+    {
+        //Debug.Log("superfire turret vald");
+        buildManager.SetTurretToBuild(buildManager.superFireTurretPrefab);
+    }
 }

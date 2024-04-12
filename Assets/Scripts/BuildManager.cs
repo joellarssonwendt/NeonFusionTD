@@ -6,10 +6,12 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     [SerializeField] List<Tile> listOfAllTiles;
-    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret;
+    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempSuperNormalTurret, tempSuperFireTurret;
     public static BuildManager instance;
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
+    public GameObject superStandardTurretPrefab;
+    public GameObject superFireTurretPrefab;
     private GameObject turretToBuild;
     public Tile tileObject;
     public GameObject selectedTurret;
@@ -29,11 +31,11 @@ public class BuildManager : MonoBehaviour
         {
             if (tileObject.GetTurret() != null)
             {
-                Debug.Log("get Turret är inte null");
+                //Debug.Log("get Turret är inte null");
             }
             else
             {
-                Debug.Log("get Turret == null");
+                //Debug.Log("get Turret == null");
             }  
         }
     }
@@ -71,6 +73,8 @@ public class BuildManager : MonoBehaviour
         tempFireTurret.SetActive(false);
        // tempIceTurret.SetActive(false);
        // tempLightningTurret.SetActive(false);
+       tempSuperNormalTurret.SetActive(false);
+       tempSuperFireTurret.SetActive(false);
     }
 
     public void selectBuiltTurret()
@@ -87,6 +91,16 @@ public class BuildManager : MonoBehaviour
            {
                 Debug.Log("FireTurretOnTileSelected");
                 tempFireTurret.SetActive(true);
+           }
+            else if (selectedTurret.GetComponent<SuperFireTurret>() != null)
+            {
+                Debug.Log("SuperFireTurretOnTileSelected");
+                tempSuperFireTurret.SetActive(true);
+            }
+            else if (selectedTurret.GetComponent<SuperNormalTurret>() != null)
+            {
+                Debug.Log("SuperNormalTurretOnTileSelected");
+                tempSuperNormalTurret.SetActive(true);
             }
         }
     }
