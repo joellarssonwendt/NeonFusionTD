@@ -7462,6 +7462,8 @@ MonoBehaviour:
   tempFireTurret: {fileID: 1931560907}
   tempIceTurret: {fileID: 0}
   tempLightningTurret: {fileID: 0}
+  tempSuperNormalTurret: {fileID: 808074743}
+  tempSuperFireTurret: {fileID: 1315825199}
   standardTurretPrefab: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
   fireTurretPrefab: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
   superStandardTurretPrefab: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
@@ -7902,9 +7904,21 @@ PrefabInstance:
       value: supernormal
       objectReference: {fileID: 0}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: superFireSprite
+      value: 
+      objectReference: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempNormalTurret
       value: 
       objectReference: {fileID: 1520910871}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: superNormalSprite
+      value: 
+      objectReference: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: normalTurretSprite
+      value: 
+      objectReference: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempSuperNormalTurret
       value: 
@@ -10478,6 +10492,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1931560907}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: superFireSprite
+      value: 
+      objectReference: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: fireTurretSprite
       value: 
       objectReference: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
@@ -10485,6 +10503,10 @@ PrefabInstance:
       propertyPath: tempNormalTurret
       value: 
       objectReference: {fileID: 1520910871}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: superNormalSprite
+      value: 
+      objectReference: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempSuperFireTurret
       value: 
