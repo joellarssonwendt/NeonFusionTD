@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BigEnemyStats
   m_EditorClassIdentifier: 
   maxHealth: 10
-  moveSpeed: 0.75
+  moveSpeed: 2
