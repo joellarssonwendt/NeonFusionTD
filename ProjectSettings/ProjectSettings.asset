@@ -44,7 +44,7 @@ PlayerSettings:
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: deaec1dc8f2d2984da60e263d51b050a, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
-  defaultScreenWidth: 1080
+  defaultScreenWidth: 800
   defaultScreenHeight: 1920
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
