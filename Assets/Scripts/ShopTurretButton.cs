@@ -50,7 +50,7 @@ public class ShopTurretButton : MonoBehaviour
         else if (turretName.ToLower() == "superfire")
         {
             shop.SelectSuperFireTurret();
-            tempFireTurret.SetActive(true);
+            tempSuperFireTurret.SetActive(true);
         }
     }
 }

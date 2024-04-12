@@ -209,6 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7385017187038225018}
   - component: {fileID: -4272902882442309306}
+  - component: {fileID: 483776820813242162}
   m_Layer: 0
   m_Name: FireTurret
   m_TagString: Untagged
@@ -253,6 +254,41 @@ MonoBehaviour:
   firingPoint: {fileID: 4151991782168928605}
   TemporaryTurretSprite: {fileID: 0}
   turretStats: {fileID: 11400000, guid: c70806780dd1f7d4fa5a70c83398877c, type: 2}
+--- !u!58 &483776820813242162
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056856402117988083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
 --- !u!1 &4484780674428449404
 GameObject:
   m_ObjectHideFlags: 0

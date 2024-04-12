@@ -9,6 +9,8 @@ public class FireTurret : MonoBehaviour
     [SerializeField] private GameObject dotProjectilePrefab; 
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject TemporaryTurretSprite;
+    BuildManager buildManager;
+    private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
     [SerializeField] private TurretStats turretStats;
@@ -16,6 +18,10 @@ public class FireTurret : MonoBehaviour
     private Transform target;
     private float timeUntilFire;
 
+    private void Start()
+    {
+        buildManager = BuildManager.instance;
+    }
     private void Update()
     {
         if (target == null)
@@ -85,22 +91,43 @@ public class FireTurret : MonoBehaviour
         Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
     }
 
-    private void SpawnTemporaryTowerSprite()
+    private void OnMouseDown()
     {
-        Instantiate(TemporaryTurretSprite, transform.position, Quaternion.identity);
+        currentTurretOnPointer = gameObject;
+        buildManager.selectedTurret = currentTurretOnPointer;
+        buildManager.selectBuiltTurret();
+        buildManager.tileObject.SetTurretToNull();
     }
 
-    private void MoveTemporaryTowerSprite()
+    private void OnMouseUp()
     {
-
-    }
-
-    private void TouchPosition()
-    {
-        if (Input.GetMouseButton(0))
+        if (buildManager.tileObject.GetTurret() != null)
         {
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //här kan merge koden vara sen
+            buildManager.deselectBuiltTurret();
+            Debug.Log("deselect, Men kan köra merge också sen");
         }
+        if (buildManager.tileObject.GetTurret() == null)
+        {
+            if (buildManager.checkIfMouseIsOverATile())
+            {
+                //här flyttas turreten till tilen som musen är över
+                Debug.Log("flytta turret");
+                buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
+                buildManager.tileObject.SetTurretToNull();
+                buildManager.deselectBuiltTurret();
+            }
+            else
+            {
+                //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
+                buildManager.deselectBuiltTurret();
+                Debug.Log("deselect");
+            }
+        }
+    }
+    public GameObject GetTurret()
+    {
+        return currentTurretOnPointer;
     }
 }
 
