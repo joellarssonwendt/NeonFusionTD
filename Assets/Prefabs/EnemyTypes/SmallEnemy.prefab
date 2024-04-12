@@ -51,6 +51,7 @@ MonoBehaviour:
   rb: {fileID: 5927327340141245586}
   animator: {fileID: 157038425207311015}
   enemyStats: {fileID: 11400000, guid: 8e7be46149f5d3c49b1b567f64c95cc1, type: 2}
+  fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
 --- !u!95 &157038425207311015
 Animator:
   serializedVersion: 5
