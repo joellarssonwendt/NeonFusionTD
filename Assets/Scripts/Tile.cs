@@ -7,8 +7,8 @@ using UnityEngine.EventSystems;
 public class Tile : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private Color gray = new Color(54f, 54f, 54f, 1f);
-    private Color lightGray = new Color(125f, 125f, 125f, 1f);
+    private Color newGray = new Color(20, 20, 20, 1);
+    private Color newLightGray = new Color(54, 54, 54, 1);
     public bool isOverATile = false;
     private GameObject turret;
     public GameObject currentTile;
@@ -48,17 +48,17 @@ public class Tile : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        isOverATile = true;
-        currentTile = gameObject;
         if (buildManager.GetTurretToBuild() != null)
         {
-            spriteRenderer.color = lightGray;
+          // spriteRenderer.color = newLightGray;
         }
+        isOverATile = true;
+        currentTile = gameObject;
     }
     private void OnMouseExit()
     {
+          // spriteRenderer.color = newGray;
         currentTile = null;
-        spriteRenderer.color = gray;
         isOverATile = false;
     }
     public GameObject GetTurret()
