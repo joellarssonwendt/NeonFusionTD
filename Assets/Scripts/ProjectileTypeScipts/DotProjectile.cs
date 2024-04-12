@@ -34,12 +34,27 @@ public class DotProjectile : MonoBehaviour
         dotDuration = duration; // Method to set the DoT duration value
     }
 
+    private void Start()
+    {
+        // Start the coroutine to destroy the projectile after 3 seconds
+        StartCoroutine(DestroyAfterTime(3f));
+    }
+
     private void FixedUpdate()
     {
         if (!target) return;
         Vector2 direction = (target.position - transform.position).normalized; // Calculate the direction towards the target and normalize it
 
         rb.velocity = direction * projectileSpeed; // Set the velocity of the Rigidbody to move the projectile towards the target
+    }
+
+    private IEnumerator DestroyAfterTime(float time)
+    {
+        // Wait for the specified time
+        yield return new WaitForSeconds(time);
+
+        // Destroy the projectile
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
