@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SuperFireTurretStats
   m_EditorClassIdentifier: 
   targetingRange: 6
-  rotationSpeed: 600
+  rotationSpeed: 700
   projectilesPerSecond: 3
   projectileDamage: 0.00001
-  dotAmount: 0.01
+  dotAmount: 0.5
   dotDuration: 15

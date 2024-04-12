@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SuperNormalTurretStats
   m_EditorClassIdentifier: 
   targetingRange: 8
-  rotationSpeed: 500
+  rotationSpeed: 650
   projectilesPerSecond: 2
   projectileDamage: 2
   dotAmount: 0

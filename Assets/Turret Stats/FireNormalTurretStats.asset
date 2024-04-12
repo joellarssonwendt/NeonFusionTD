@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireNormalTurretStats
   m_EditorClassIdentifier: 
   targetingRange: 8
-  rotationSpeed: 500
+  rotationSpeed: 600
   projectilesPerSecond: 2
   projectileDamage: 0.5
   dotAmount: 0.5

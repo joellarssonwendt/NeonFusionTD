@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FireTurretStats
   m_EditorClassIdentifier: 
   targetingRange: 6
-  rotationSpeed: 450
-  projectilesPerSecond: 1
+  rotationSpeed: 550
+  projectilesPerSecond: 2
   projectileDamage: 0.1
   dotAmount: 0.2
   dotDuration: 10

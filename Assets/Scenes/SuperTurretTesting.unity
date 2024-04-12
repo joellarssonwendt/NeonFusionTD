@@ -2960,11 +2960,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6784010093378896535, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.79
+      value: -6.08
       objectReference: {fileID: 0}
     - target: {fileID: 6784010093378896535, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.59
+      value: 8.56
       objectReference: {fileID: 0}
     - target: {fileID: 6784010093378896535, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3255,11 +3255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.47
+      value: -5.85
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 5.06
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3292,6 +3292,26 @@ PrefabInstance:
     - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093376771637863342, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093376771637863342, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093376771637863342, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093376771637863342, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 428.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093376771637863342, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
