@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEditor;
-using Unity.VisualScripting;
-using System.Runtime.CompilerServices;
 
 public class NormalTurret : MonoBehaviour
 {
@@ -90,8 +87,8 @@ public class NormalTurret : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         // Draws a circle in the scene view to visualize the turret's targeting range
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
+        //Handles.color = Color.green;
+        //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
     }
 
     private void OnMouseDown()
