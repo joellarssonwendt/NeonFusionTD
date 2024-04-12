@@ -6654,7 +6654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15528212, g: 0.1981132, b: 0.14671591, a: 0.98039216}
+  m_Color: {r: 0.3283019, g: 0.15795656, b: 0.29168558, a: 0.98039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7810,6 +7810,18 @@ PrefabInstance:
     - target: {fileID: 3729852847085432312, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Name
       value: SuperNormalTurretItem (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5649009
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.36566028
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5999999
       objectReference: {fileID: 0}
     - target: {fileID: 6341657719854004354, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Pivot.x
@@ -10395,6 +10407,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuperFireTurretItem
       objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5649009
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.36566028
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5999999
+      objectReference: {fileID: 0}
     - target: {fileID: 6341657719854004354, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11958,6 +11982,18 @@ PrefabInstance:
     - target: {fileID: 3729852847085432312, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Name
       value: FireTurretItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5649009
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.36566028
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5999999
       objectReference: {fileID: 0}
     - target: {fileID: 6341657719854004354, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Pivot.x
@@ -25492,6 +25528,18 @@ PrefabInstance:
     - target: {fileID: 3729852847085432312, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Name
       value: NormalTurretItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5649009
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.36566028
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645223920152476318, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5999999
       objectReference: {fileID: 0}
     - target: {fileID: 6341657719854004354, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: m_Pivot.x
