@@ -22,32 +22,32 @@ public class ShopTurretButton : MonoBehaviour
     }
     public void pointerDown()
     {
-        if (turretName.ToLower().Contains("normal"))
+        if (turretName.ToLower() == "normal")
         {
             shop.SelectStandardTurret();
             tempNormalTurret.SetActive(true);
         }
-        else if (turretName.ToLower().Contains("fire"))
+        else if (turretName.ToLower() == "fire")
         {
             shop.SelectFireTurret();
             tempFireTurret.SetActive(true);
         }
-        else if (turretName.ToLower().Contains("ice"))
+        else if (turretName.ToLower() == "ice")
         {
             Debug.Log("Händer inget för att ice turret inte är tillagd");
             tempIceTurret.SetActive(true);
         }
-        else if (turretName.ToLower().Contains("lightning"))
+        else if (turretName.ToLower() == "lightning")
         {
             Debug.Log("Händer inget för att lightning turret inte är tillagd");
             tempLightningTurret.SetActive(true);
         }
-        else if (turretName.ToLower().Contains("supernormal"))
+        else if (turretName.ToLower() == "supernormal")
         {
             shop.SelectSuperStandardTurret();
             tempSuperNormalTurret.SetActive(true);
         }
-        else if (turretName.ToLower().Contains("superfire"))
+        else if (turretName.ToLower() == "superfire")
         {
             shop.SelectSuperFireTurret();
             tempFireTurret.SetActive(true);
