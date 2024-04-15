@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 26760091}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.85, y: -2.46, z: -11.306198}
+  m_LocalPosition: {x: -8.27, y: 13.11, z: -11.306198}
   m_LocalScale: {x: 1.975, y: 2.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -221,7 +221,7 @@ MonoBehaviour:
   currentHealth: 0
   gameOver: {fileID: 1290770492}
   passAmount: 1
-  gameOverDelay: 1
+  gameOverDelay: 5
 --- !u!1001 &48603075
 PrefabInstance:
   m_ObjectHideFlags: 0
