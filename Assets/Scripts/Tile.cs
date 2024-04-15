@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -10,10 +11,12 @@ public class Tile : MonoBehaviour
     public GameObject currentTile;
 
     BuildManager buildManager;
+    MergeManager mergeManager;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         buildManager = BuildManager.instance;
+        mergeManager = MergeManager.instance;
     }
     void Update()
     {
@@ -64,5 +67,14 @@ public class Tile : MonoBehaviour
     public void SetTurretToNull()
     {
         turret = null;
+    }
+
+    private void TryMerge()
+    {
+        if (mergeManager.Merge(this.GetTurret(), buildManager.GetTurretToBuild()))
+        {
+            turret = (GameObject)Instantiate(mergeManager.mergeResult, currentTile.transform.position, Quaternion.identity);
+            mergeManager.mergeResult = null;
+        }
     }
 }
