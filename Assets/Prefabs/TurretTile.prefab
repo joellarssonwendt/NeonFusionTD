@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6384666995026128029}
   - component: {fileID: 672954908230471274}
   - component: {fileID: 869379578444172984}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurretTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
