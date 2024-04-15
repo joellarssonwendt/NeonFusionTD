@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 1179225750489668987}
   m_Layer: 0
   m_Name: SuperFireTurret
-  m_TagString: Untagged
+  m_TagString: superfire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,6 +12,11 @@ TagManager:
   - TemporaryFireSprite
   - TemporaryIceSprite
   - TemporaryLightningSprite
+  - normal
+  - fire
+  - supernormal
+  - superfire
+  - firenormal
   layers:
   - Default
   - TransparentFX

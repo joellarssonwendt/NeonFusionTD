@@ -6,12 +6,14 @@ public class MergeManager : MonoBehaviour
 {
     // Cache
     public static MergeManager instance;
-    private BuildManager buildManager;
+    BuildManager buildManager;
 
-    // Variables
+    [Header("Variables")]
     public GameObject mergeResult;
+    public string heldTurret;
 
-    [SerializeField] private GameObject superNormalTurret, superFireTurret, superNormalFireTurret;
+    [Header("Prefabs")]
+    public GameObject normalTurret, fireTurret, superNormalTurret, superFireTurret, superNormalFireTurret;
 
     void Start()
     {
@@ -27,40 +29,21 @@ public class MergeManager : MonoBehaviour
         }
         instance = this;
         mergeResult = null;
+        heldTurret = "";
     }
 
-    public bool Merge(GameObject tileTurret, GameObject heldTurret)
+    public bool Merge(string tileTurretTag)
     {
-        if (heldTurret.GetType() == typeof(NormalTurret) && tileTurret.GetType() == typeof(NormalTurret))
+        Debug.Log("Turret: " + heldTurret + " tileTurret: " + tileTurretTag);
+
+        if (heldTurret == "normal" && tileTurretTag == "normal")
         {
             mergeResult = superNormalTurret;
-            ClearTurrets(tileTurret, heldTurret);
             buildManager.SetTurretToBuildIsNull();
-            return true;
-        }
-
-        if (heldTurret.GetType() == typeof(FireTurret) && tileTurret.GetType() == typeof(FireTurret))
-        {
-            mergeResult = superFireTurret;
-            ClearTurrets(tileTurret, heldTurret);
-            buildManager.SetTurretToBuildIsNull();
-            return true;
-        }
-
-        if (heldTurret.GetType() == typeof(FireTurret) && tileTurret.GetType() == typeof(NormalTurret) || heldTurret.GetType() == typeof(NormalTurret) && tileTurret.GetType() == typeof(FireTurret))
-        {
-            mergeResult = superNormalFireTurret;
-            ClearTurrets(tileTurret, heldTurret);
-            buildManager.SetTurretToBuildIsNull();
+            Debug.Log("Merge Successful!");
             return true;
         }
 
         return false;
-    }
-
-    private void ClearTurrets(GameObject tileTurret, GameObject heldTurret)
-    {
-        Destroy(tileTurret);
-        Destroy(heldTurret);
     }
 }

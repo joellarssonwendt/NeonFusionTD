@@ -14,6 +14,12 @@ public class BuildManager : MonoBehaviour
     public Tile tileObject;
     public GameObject selectedTurret;
 
+    MergeManager mergeManager;
+    void Start()
+    {
+        mergeManager = MergeManager.instance;
+    }
+
     private void Awake()
     {
         if (instance != null)
@@ -83,21 +89,25 @@ public class BuildManager : MonoBehaviour
            if(selectedTurret.GetComponent<NormalTurret>() != null)
            {
                 Debug.Log("normalTurretOnTileSelected");
+                mergeManager.heldTurret = "normal";
                 tempNormalTurret.SetActive(true);
            }
            else if (selectedTurret.GetComponent<FireTurret>() != null)
            {
                 Debug.Log("FireTurretOnTileSelected");
+                mergeManager.heldTurret = "fire";
                 tempFireTurret.SetActive(true);
            }
             else if (selectedTurret.GetComponent<SuperFireTurret>() != null)
             {
                 Debug.Log("SuperFireTurretOnTileSelected");
+                mergeManager.heldTurret = "superfire";
                 tempSuperFireTurret.SetActive(true);
             }
             else if (selectedTurret.GetComponent<SuperNormalTurret>() != null)
             {
                 Debug.Log("SuperNormalTurretOnTileSelected");
+                mergeManager.heldTurret = "supernormal";
                 tempSuperNormalTurret.SetActive(true);
             }
         }

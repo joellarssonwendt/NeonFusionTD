@@ -64,17 +64,17 @@ public class Tile : MonoBehaviour
     {
         return turret;
     }
+    public void SetTurret(GameObject turret)
+    {
+        this.turret = turret;
+    }
+
+    public string GetTurretTag()
+    {
+        return turret.tag;
+    }
     public void SetTurretToNull()
     {
         turret = null;
-    }
-
-    private void TryMerge()
-    {
-        if (mergeManager.Merge(this.GetTurret(), buildManager.GetTurretToBuild()))
-        {
-            turret = (GameObject)Instantiate(mergeManager.mergeResult, currentTile.transform.position, Quaternion.identity);
-            mergeManager.mergeResult = null;
-        }
     }
 }
