@@ -5,13 +5,11 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public static int Chrystals;
-    [SerializeField] public int startingChrystals = 10;
-
-    [SerializeField] public static int towerCost = 1;
+    public int startingChrystals;
+    public static int towerCost = 100;
 
      void Start()
     {
-
         Chrystals = startingChrystals;
     }
 }
