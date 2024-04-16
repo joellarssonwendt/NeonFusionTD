@@ -115,6 +115,7 @@ public class BuildManager : MonoBehaviour
     public void deselectBuiltTurret()
     {
         selectedTurret = null;
+        mergeManager.heldTurret = null;
         deactivateTempTurretSprites();
     }
 }

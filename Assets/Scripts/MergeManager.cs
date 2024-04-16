@@ -29,10 +29,10 @@ public class MergeManager : MonoBehaviour
         }
         instance = this;
         mergeResult = null;
-        heldTurret = "";
+        heldTurret = null;
     }
 
-    public bool Merge(GameObject tileTurret)
+    public bool CanMerge(GameObject tileTurret)
     {
         Debug.Log("Turret: " + heldTurret + " tileTurret: " + tileTurret.tag);
 

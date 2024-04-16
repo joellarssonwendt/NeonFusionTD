@@ -106,7 +106,6 @@ public class NormalTurret : MonoBehaviour
     {
         if (buildManager.tileObject.GetTurret() != null)
         {
-            Debug.Log("TryMerge() borde köras");
             TryMerge();
             buildManager.deselectBuiltTurret();
             Debug.Log("deselect, Men kan köra merge också sen");
@@ -137,9 +136,10 @@ public class NormalTurret : MonoBehaviour
     private void TryMerge()
     {
         Debug.Log("TryMerge() körs");
-        if (mergeManager.Merge(buildManager.tileObject.GetTurret()))
+        if (mergeManager.CanMerge(buildManager.tileObject.GetTurret()))
         {
             buildManager.tileObject.SetTurret((GameObject)Instantiate(mergeManager.mergeResult, buildManager.tileObject.transform.position, Quaternion.identity));
+            buildManager.tileObject.SetTurret(mergeManager.mergeResult);
             mergeManager.mergeResult = null;
             Destroy(gameObject);
         }
