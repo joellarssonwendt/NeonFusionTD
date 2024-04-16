@@ -12,8 +12,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemyTypes;
     [SerializeField] private int baseAmount = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
+
+    [Header("referenser")]
+    [SerializeField] private GameObject nextRoundButton;
 
     private int currentWave = 1;
     private int chrystalGainPerRound = 100;
@@ -29,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartWave());
+        
     }
 
     void Update()
@@ -58,9 +60,8 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Enemies Alive: " + enemiesAlive);
     }
 
-    private IEnumerator StartWave()
+    public void StartWave()
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
         Debug.Log("Wave Started!");
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
@@ -73,7 +74,7 @@ public class EnemySpawner : MonoBehaviour
         timeSinceLastSpawn = 0f;
         currentWave++;
         PlayerStats.Chrystals += chrystalGainPerRound;
-        StartCoroutine(StartWave());
+        nextRoundButton.SetActive(true);
     }
 
     private int EnemiesPerWave()
