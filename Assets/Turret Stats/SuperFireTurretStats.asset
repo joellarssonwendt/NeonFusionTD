@@ -16,5 +16,5 @@ MonoBehaviour:
   rotationSpeed: 750
   projectilesPerSecond: 8
   projectileDamage: 0.00001
-  dotAmount: 0.005
+  dotAmount: 0.0025
   dotDuration: 10

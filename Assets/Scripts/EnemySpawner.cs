@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float difficultyScalingFactor = 0.75f;
 
     private int currentWave = 1;
+    private int chrystalGainPerRound = 100;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
@@ -71,6 +72,7 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
+        PlayerStats.Chrystals += chrystalGainPerRound;
         StartCoroutine(StartWave());
     }
 
