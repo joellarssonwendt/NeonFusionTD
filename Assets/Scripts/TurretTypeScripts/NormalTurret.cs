@@ -137,7 +137,7 @@ public class NormalTurret : MonoBehaviour
     private void TryMerge()
     {
         Debug.Log("TryMerge() körs");
-        if (mergeManager.Merge(buildManager.tileObject.GetTurretTag()))
+        if (mergeManager.Merge(buildManager.tileObject.GetTurret()))
         {
             buildManager.tileObject.SetTurret((GameObject)Instantiate(mergeManager.mergeResult, buildManager.tileObject.transform.position, Quaternion.identity));
             mergeManager.mergeResult = null;

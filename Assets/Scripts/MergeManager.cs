@@ -32,15 +32,16 @@ public class MergeManager : MonoBehaviour
         heldTurret = "";
     }
 
-    public bool Merge(string tileTurretTag)
+    public bool Merge(GameObject tileTurret)
     {
-        Debug.Log("Turret: " + heldTurret + " tileTurret: " + tileTurretTag);
+        Debug.Log("Turret: " + heldTurret + " tileTurret: " + tileTurret.tag);
 
-        if (heldTurret == "normal" && tileTurretTag == "normal")
+        if (heldTurret == "normal" && tileTurret.CompareTag("normal"))
         {
             mergeResult = superNormalTurret;
-            buildManager.SetTurretToBuildIsNull();
+            //buildManager.SetTurretToBuildIsNull();
             Debug.Log("Merge Successful!");
+            Destroy(tileTurret);
             return true;
         }
 
