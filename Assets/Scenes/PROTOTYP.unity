@@ -4212,6 +4212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d338d16eb2294418efd4b2d96d234f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textHolder: {fileID: 594687562}
   bitsAmount: 0
 --- !u!114 &605159294 stripped
 MonoBehaviour:
