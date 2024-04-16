@@ -11,6 +11,7 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private GameObject tilePrefab;
     BuildManager buildManager;
     MergeManager mergeManager;
+    EnemySpawner enemySpawner;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -23,6 +24,7 @@ public class NormalTurret : MonoBehaviour
 
     private void Start()
     {
+        enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
         mergeManager = MergeManager.instance;
     }
@@ -104,29 +106,29 @@ public class NormalTurret : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (buildManager.tileObject.GetTurret() != null)
-        {
-            TryMerge();
-            buildManager.deselectBuiltTurret();
-            Debug.Log("deselect, Men kan köra merge också sen");
-        }
-        if (buildManager.tileObject.GetTurret() == null)
-        {
-            if (buildManager.checkIfMouseIsOverATile())
+            if (buildManager.tileObject.GetTurret() != null)
             {
-                //här flyttas turreten till tilen som musen är över
-                Debug.Log("flytta turret");
-                buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
-                buildManager.tileObject.SetTurretToNull();
+                TryMerge();
                 buildManager.deselectBuiltTurret();
+                Debug.Log("deselect, Men kan köra merge också sen");
             }
-            else
+            if (buildManager.tileObject.GetTurret() == null)
             {
-                //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
-                buildManager.deselectBuiltTurret();
-                Debug.Log("deselect");
+                if (buildManager.checkIfMouseIsOverATile() && !enemySpawner.activeRoundPlaying)
+                {
+                    //här flyttas turreten till tilen som musen är över
+                    Debug.Log("flytta turret");
+                    buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
+                    buildManager.tileObject.SetTurretToNull();
+                    buildManager.deselectBuiltTurret();
+                }
+                else
+                {
+                    //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
+                    buildManager.deselectBuiltTurret();
+                    Debug.Log("deselect");
+                }
             }
-        }
     }
     public GameObject GetTurret()
     {

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner instance;
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
@@ -16,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
+    
 
     private int currentWave = 1;
     private int chrystalGainPerRound = 100;
@@ -23,10 +25,18 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
+    public bool activeRoundPlaying = false;
 
     void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
+     
+        if (instance != null)
+        {
+            Debug.Log("Det finns redan en EnemySpawner");
+            return;
+        }
+        instance = this;
     }
 
     void Start()
@@ -64,6 +74,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Wave Started!");
         isSpawning = true;
+        activeRoundPlaying = true;
         enemiesLeftToSpawn = EnemiesPerWave();
     }
 
@@ -71,6 +82,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Wave Ended!");
         isSpawning = false;
+        activeRoundPlaying = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
         PlayerStats.Chrystals += chrystalGainPerRound;
