@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 1744074430}
   fillColor: {fileID: 604968165}
-  greenHealth: {r: 0.23843002, g: 0.6392157, b: 0.8867924, a: 1}
+  greenHealth: {r: 0.32314622, g: 1, b: 0.28773582, a: 1}
   redHealth: {r: 0.7735849, g: 0, b: 0, a: 1}
   startingHealth: 10
   currentHealth: 0
@@ -3447,7 +3447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23843002, g: 0.6392157, b: 0.8867924, a: 1}
+  m_Color: {r: 0.32314622, g: 1, b: 0.28773582, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10849,7 +10849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -67.33, y: 0}
+  m_AnchoredPosition: {x: -350, y: -190}
   m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1744074430
