@@ -45,6 +45,24 @@ public class MergeManager : MonoBehaviour
             return true;
         }
 
+        if (heldTurret == "fire" && tileTurret.CompareTag("fire"))
+        {
+            mergeResult = superFireTurret;
+            //buildManager.SetTurretToBuildIsNull();
+            Debug.Log("Merge Successful!");
+            Destroy(tileTurret);
+            return true;
+        }
+
+        if (heldTurret == "fire" && tileTurret.CompareTag("normal") || (heldTurret == "normal" && tileTurret.CompareTag("fire")))
+        {
+            mergeResult = superNormalFireTurret;
+            //buildManager.SetTurretToBuildIsNull();
+            Debug.Log("Merge Successful!");
+            Destroy(tileTurret);
+            return true;
+        }
+
         return false;
     }
 }

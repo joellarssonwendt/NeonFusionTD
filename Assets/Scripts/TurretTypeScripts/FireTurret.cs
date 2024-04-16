@@ -9,6 +9,7 @@ public class FireTurret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
+    MergeManager mergeManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -20,6 +21,7 @@ public class FireTurret : MonoBehaviour
     private void Start()
     {
         buildManager = BuildManager.instance;
+        mergeManager = MergeManager.instance;
     }
     private void Update()
     {
@@ -102,7 +104,7 @@ public class FireTurret : MonoBehaviour
     {
         if (buildManager.tileObject.GetTurret() != null)
         {
-            //här kan merge koden vara sen
+            TryMerge();
             buildManager.deselectBuiltTurret();
             Debug.Log("deselect, Men kan köra merge också sen");
         }
@@ -127,6 +129,17 @@ public class FireTurret : MonoBehaviour
     public GameObject GetTurret()
     {
         return currentTurretOnPointer;
+    }
+    private void TryMerge()
+    {
+        Debug.Log("TryMerge() körs");
+        if (mergeManager.CanMerge(buildManager.tileObject.GetTurret()))
+        {
+            buildManager.tileObject.SetTurret((GameObject)Instantiate(mergeManager.mergeResult, buildManager.tileObject.transform.position, Quaternion.identity));
+            buildManager.tileObject.SetTurret(mergeManager.mergeResult);
+            mergeManager.mergeResult = null;
+            Destroy(gameObject);
+        }
     }
 }
 
