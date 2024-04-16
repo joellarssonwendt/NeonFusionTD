@@ -4492,6 +4492,7 @@ Transform:
   - {fileID: 906432739}
   - {fileID: 1160034903}
   - {fileID: 297445484}
+  - {fileID: 1838619945}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &870499783
@@ -4670,10 +4671,10 @@ MonoBehaviour:
   - {fileID: 8054526396113401650, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
   - {fileID: 5907289287979489079, guid: e6effcea98c149a498f2789759a2ea66, type: 3}
   - {fileID: 7079963385403916101, guid: b79ad26ed75426e4baa2b77bce234b30, type: 3}
-  baseAmount: 30
+  baseAmount: 8
   enemiesPerSecond: 1
-  timeBetweenWaves: 3
-  difficultyScalingFactor: 1.25
+  timeBetweenWaves: 5
+  difficultyScalingFactor: 0.75
 --- !u!114 &906432741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11121,6 +11122,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 869759597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1838619944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1838619945}
+  - component: {fileID: 1838619946}
+  m_Layer: 0
+  m_Name: MergeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1838619945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838619944}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 869759597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838619946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838619944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb8bcaac5dcd3d4da9e37920121b752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mergeResult: {fileID: 0}
+  heldTurret: 
+  normalTurret: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
+  fireTurret: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
+  superNormalTurret: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
+  superFireTurret: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+  superNormalFireTurret: {fileID: 3056856402117988083, guid: 481e3ff2f4d51d0438a895392d9a0a12, type: 3}
 --- !u!1001 &1858637192
 PrefabInstance:
   m_ObjectHideFlags: 0
