@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class diamondBits : MonoBehaviour
 {
-    private TextMeshPro bitsAmountText;
+    [SerializeField] GameObject textHolder;
+    private TextMeshProUGUI bitsAmountText;
     public int bitsAmount;
     private bool hasStarted = false;
     void Start()
     {
-        bitsAmountText = GetComponent<TextMeshPro>();
+        bitsAmountText = textHolder.GetComponent<TextMeshProUGUI>();
         bitsAmount = 100;
         hasStarted = true;
     }
