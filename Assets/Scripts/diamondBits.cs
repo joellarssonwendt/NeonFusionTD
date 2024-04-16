@@ -12,7 +12,7 @@ public class diamondBits : MonoBehaviour
     void Start()
     {
         bitsAmountText = GetComponent<TextMeshPro>();
-        bitsAmount = 100;
+        bitsAmount = PlayerStats.Chrystals;
         hasStarted = true;
     }
 

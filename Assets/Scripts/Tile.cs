@@ -31,11 +31,15 @@ public class Tile : MonoBehaviour
     }
     public void PlaceTurret()
     {
-        if(turret != null)
+        if (turret != null || PlayerStats.Chrystals < PlayerStats.towerCost)
         {
             buildManager.SetTurretToBuildIsNull();
             return;
         }
+
+        PlayerStats.Chrystals -= PlayerStats.towerCost;
+        Debug.Log("Turret Built! Chrystals left: " + PlayerStats.Chrystals);
+
         GameObject turretToBuild = buildManager.GetTurretToBuild();
         turret = (GameObject)Instantiate(turretToBuild, currentTile.transform.position, Quaternion.identity);
         buildManager.SetTurretToBuildIsNull();
