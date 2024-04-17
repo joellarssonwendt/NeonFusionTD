@@ -5483,7 +5483,7 @@ MonoBehaviour:
   - {fileID: 7079963385403916101, guid: b79ad26ed75426e4baa2b77bce234b30, type: 3}
   baseAmount: 1
   enemiesPerSecond: 1
-  difficultyScalingFactor: 2
+  difficultyScalingFactor: 1.8
   nextRoundButton: {fileID: 489971314}
   activeRoundPlaying: 0
 --- !u!114 &906432741
