@@ -13,7 +13,6 @@ public class BuildManager : MonoBehaviour
     private GameObject turretToBuild;
     public Tile tileObject;
     public GameObject selectedTurret;
-
     MergeManager mergeManager;
     void Start()
     {

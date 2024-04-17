@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner instance;
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
@@ -12,8 +13,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemyTypes;
     [SerializeField] private int baseAmount = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
+
+    [Header("referenser")]
+    [SerializeField] private GameObject nextRoundButton;
+    
 
     private int currentWave = 1;
     private int chrystalGainPerRound = 100;
@@ -21,15 +25,23 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
+    public bool activeRoundPlaying = false;
 
     void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
+     
+        if (instance != null)
+        {
+            Debug.Log("Det finns redan en EnemySpawner");
+            return;
+        }
+        instance = this;
     }
 
     void Start()
     {
-        StartCoroutine(StartWave());
+        
     }
 
     void Update()
@@ -58,11 +70,11 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Enemies Alive: " + enemiesAlive);
     }
 
-    private IEnumerator StartWave()
+    public void StartWave()
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
         Debug.Log("Wave Started!");
         isSpawning = true;
+        activeRoundPlaying = true;
         enemiesLeftToSpawn = EnemiesPerWave();
     }
 
@@ -70,10 +82,11 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Wave Ended!");
         isSpawning = false;
+        activeRoundPlaying = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
         PlayerStats.Chrystals += chrystalGainPerRound;
-        StartCoroutine(StartWave());
+        nextRoundButton.SetActive(true);
     }
 
     private int EnemiesPerWave()

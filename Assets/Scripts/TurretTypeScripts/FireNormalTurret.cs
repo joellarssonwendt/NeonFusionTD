@@ -9,7 +9,10 @@ public class FireNormalTurret : MonoBehaviour
     [SerializeField] private Transform firingPoint1;
     [SerializeField] private Transform firingPoint2;
     [SerializeField] private GameObject TemporaryTurretSprite;
-
+    EnemySpawner enemySpawner;
+    BuildManager buildManager;
+    MergeManager mergeManager;
+    private GameObject currentTurretOnPointer;
     [Header("Stats")]
     [SerializeField] private TurretStats turretStats;
 
@@ -17,6 +20,12 @@ public class FireNormalTurret : MonoBehaviour
     private float timeUntilFire;
     private bool useFiringPoint1 = true;
 
+    private void Start()
+    {
+        enemySpawner = EnemySpawner.instance;
+        buildManager = BuildManager.instance;
+        mergeManager = MergeManager.instance;
+    }
     private void Update()
     {
         if (target == null)
@@ -90,22 +99,53 @@ public class FireNormalTurret : MonoBehaviour
         //Handles.color = Color.green;
         //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
     }
-
-    private void SpawnTemporaryTowerSprite()
+    private void OnMouseDown()
     {
-        Instantiate(TemporaryTurretSprite, transform.position, Quaternion.identity);
+        currentTurretOnPointer = gameObject;
+        buildManager.selectedTurret = currentTurretOnPointer;
+        buildManager.selectBuiltTurret();
+        buildManager.tileObject.SetTurretToNull();
     }
 
-    private void MoveTemporaryTowerSprite()
+    private void OnMouseUp()
     {
-
-    }
-
-    private void TouchPosition()
-    {
-        if (Input.GetMouseButton(0))
+        if (buildManager.tileObject.GetTurret() != null)
         {
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            TryMerge();
+            buildManager.deselectBuiltTurret();
+            Debug.Log("deselect, Men kan köra merge också sen");
+        }
+        if (buildManager.tileObject.GetTurret() == null)
+        {
+            if (buildManager.checkIfMouseIsOverATile() && !enemySpawner.activeRoundPlaying)
+            {
+                //här flyttas turreten till tilen som musen är över
+                Debug.Log("flytta turret");
+                buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
+                buildManager.tileObject.SetTurretToNull();
+                buildManager.deselectBuiltTurret();
+            }
+            else
+            {
+                //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
+                buildManager.deselectBuiltTurret();
+                Debug.Log("deselect");
+            }
+        }
+    }
+    public GameObject GetTurret()
+    {
+        return currentTurretOnPointer;
+    }
+    private void TryMerge()
+    {
+        Debug.Log("TryMerge() körs");
+        if (mergeManager.CanMerge(buildManager.tileObject.GetTurret()))
+        {
+            buildManager.tileObject.SetTurret((GameObject)Instantiate(mergeManager.mergeResult, buildManager.tileObject.transform.position, Quaternion.identity));
+            buildManager.tileObject.SetTurret(mergeManager.mergeResult);
+            mergeManager.mergeResult = null;
+            Destroy(gameObject);
         }
     }
 }

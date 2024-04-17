@@ -9,7 +9,6 @@ public class ChrystalsText : MonoBehaviour
     void Start()
     {
         chrystalAmountText = GetComponent<TextMeshProUGUI>();
-
     }
 
     // Update is called once per frame

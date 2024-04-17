@@ -10,6 +10,7 @@ public class SuperNormalTurret : MonoBehaviour
     [SerializeField] private Transform firingPoint2;
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
+    EnemySpawner enemySpawner;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")] 
@@ -22,6 +23,7 @@ public class SuperNormalTurret : MonoBehaviour
 
     private void Start()
     {
+        enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
     }
     private void Update()
@@ -112,7 +114,7 @@ public class SuperNormalTurret : MonoBehaviour
             buildManager.deselectBuiltTurret();
             Debug.Log("deselect, Men kan köra merge också sen");
         }
-        if (buildManager.tileObject.GetTurret() == null)
+        if (buildManager.tileObject.GetTurret() == null && !enemySpawner.activeRoundPlaying)
         {
             if (buildManager.checkIfMouseIsOverATile())
             {

@@ -10,6 +10,7 @@ public class FireTurret : MonoBehaviour
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
     MergeManager mergeManager;
+    EnemySpawner enemySpawner;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -20,6 +21,7 @@ public class FireTurret : MonoBehaviour
 
     private void Start()
     {
+        enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
         mergeManager = MergeManager.instance;
     }
@@ -110,7 +112,7 @@ public class FireTurret : MonoBehaviour
         }
         if (buildManager.tileObject.GetTurret() == null)
         {
-            if (buildManager.checkIfMouseIsOverATile())
+            if (buildManager.checkIfMouseIsOverATile() && !enemySpawner.activeRoundPlaying)
             {
                 //här flyttas turreten till tilen som musen är över
                 Debug.Log("flytta turret");
