@@ -7,12 +7,11 @@ public class MergeManager : MonoBehaviour
     // Cache
     public static MergeManager instance;
 
-    [Header("Variables")]
-    public GameObject mergeResult;
-    public string heldTurret;
+    // Variables
+    private GameObject mergeResult = null;
 
-    [Header("Prefabs")]
-    public GameObject normalTurret, fireTurret, superNormalTurret, superFireTurret, superNormalFireTurret;
+    // Upgrade Prefabs
+    [SerializeField] private GameObject superKinetic, superFire, kineticFire;
 
     private void Awake()
     {
@@ -22,38 +21,50 @@ public class MergeManager : MonoBehaviour
             return;
         }
         instance = this;
-        mergeResult = null;
-        heldTurret = null;
     }
 
-    public bool TryMerge(GameObject tileTurret)
+    public bool TryMerge(GameObject heldTurret, GameObject tileTurret)
     {
-        Debug.Log("Turret: " + heldTurret + " tileTurret: " + tileTurret.tag);
+        Debug.Log("TryMerge() " + heldTurret.tag + " + " + tileTurret.tag);
 
-        if (heldTurret == "normal" && tileTurret.CompareTag("normal"))
+        if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
         {
-            mergeResult = superNormalTurret;
-            Debug.Log("Merge Successful!");
+            mergeResult = superKinetic;
+
+            Destroy(heldTurret);
             Destroy(tileTurret);
+
+            Debug.Log("Merge Successful!");
             return true;
         }
 
-        if (heldTurret == "fire" && tileTurret.CompareTag("fire"))
+        if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("fire"))
         {
-            mergeResult = superFireTurret;
-            Debug.Log("Merge Successful!");
+            mergeResult = superFire;
+
+            Destroy(heldTurret);
             Destroy(tileTurret);
+
+            Debug.Log("Merge Successful!");
             return true;
         }
 
-        if (heldTurret == "fire" && tileTurret.CompareTag("normal") || (heldTurret == "normal" && tileTurret.CompareTag("fire")))
+        if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("fire")))
         {
-            mergeResult = superNormalFireTurret;
-            Debug.Log("Merge Successful!");
+            mergeResult = kineticFire;
+
+            Destroy(heldTurret);
             Destroy(tileTurret);
+
+            Debug.Log("Merge Successful!");
             return true;
         }
 
         return false;
+    }
+
+    public GameObject GetMergeResult()
+    {
+        return mergeResult;
     }
 }
