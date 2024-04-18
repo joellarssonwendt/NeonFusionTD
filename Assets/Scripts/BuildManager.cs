@@ -1,10 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BuildManager : MonoBehaviour
 {
     [SerializeField] List<Tile> listOfAllTiles;
     [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempSuperNormalTurret, tempSuperFireTurret;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameObject testDiamond;
+    //[SerializeField] private LayerMask turret, tile;
+    private int rayCastDistance = 10;
     public static BuildManager instance;
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
@@ -13,6 +18,7 @@ public class BuildManager : MonoBehaviour
     private GameObject turretToBuild;
     public Tile tileObject;
     public GameObject selectedTurret;
+    public RaycastHit2D mousePointer;
 
     private void Awake()
     {
@@ -25,6 +31,12 @@ public class BuildManager : MonoBehaviour
     }
     private void Update()
     {
+        if(Input.GetMouseButton(0))
+        {
+            OnMouseRayCast();
+        }
+
+
         if (tileObject != null)
         {
             if (tileObject.GetTurret() != null)
@@ -38,6 +50,26 @@ public class BuildManager : MonoBehaviour
         }
     }
 
+    public void OnMouseRayCast()
+    {
+        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = -3;
+        Debug.DrawRay(mouseWorldPosition, mainCamera.transform.forward * rayCastDistance, Color.red);
+        mousePointer = Physics2D.Raycast(mouseWorldPosition, mainCamera.transform.forward, rayCastDistance, LayerMask.GetMask("turret", "tile"));
+
+        if(mousePointer.collider != null)
+        {
+            if(mousePointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
+            {
+               //gör skit
+            }
+            else if(mousePointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
+            {
+                //gör annat skit
+            }
+        }
+    }
+    
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;

@@ -26,8 +26,8 @@ TagManager:
   - UI
   - Enemy
   - Projectile
-  - TurretTiles
-  - 
+  - turret
+  - tile
   - 
   - 
   - 

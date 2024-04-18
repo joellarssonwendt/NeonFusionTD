@@ -7362,6 +7362,8 @@ MonoBehaviour:
   tempLightningTurret: {fileID: 0}
   tempSuperNormalTurret: {fileID: 808074743}
   tempSuperFireTurret: {fileID: 1315825199}
+  mainCamera: {fileID: 1824152345}
+  testDiamond: {fileID: 0}
   standardTurretPrefab: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
   fireTurretPrefab: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
   superStandardTurretPrefab: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
@@ -24336,7 +24338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2019505872
 RectTransform:
   m_ObjectHideFlags: 0
