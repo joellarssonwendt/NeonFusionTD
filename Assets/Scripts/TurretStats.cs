@@ -9,4 +9,6 @@ public class TurretStats : ScriptableObject
     public float projectileDamage;
     public float dotAmount; //Total damage from the damage over time debuff 
     public float dotDuration; //Duration of the damage over time debuff 
+    public float maxMana;
+    public float manaPerAttack;
 }
