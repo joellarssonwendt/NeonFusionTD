@@ -27,6 +27,7 @@ public class nextRoundButton : MonoBehaviour
 
     public void startNextRound()
     {
+        Time.timeScale = 1.0f;
         enemySpawner.StartWave();
         gameObject.SetActive(false);
     }
