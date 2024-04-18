@@ -6,7 +6,6 @@ public class MergeManager : MonoBehaviour
 {
     // Cache
     public static MergeManager instance;
-    BuildManager buildManager;
 
     [Header("Variables")]
     public GameObject mergeResult;
@@ -14,11 +13,6 @@ public class MergeManager : MonoBehaviour
 
     [Header("Prefabs")]
     public GameObject normalTurret, fireTurret, superNormalTurret, superFireTurret, superNormalFireTurret;
-
-    void Start()
-    {
-        buildManager = BuildManager.instance;
-    }
 
     private void Awake()
     {
@@ -32,14 +26,13 @@ public class MergeManager : MonoBehaviour
         heldTurret = null;
     }
 
-    public bool CanMerge(GameObject tileTurret)
+    public bool TryMerge(GameObject tileTurret)
     {
         Debug.Log("Turret: " + heldTurret + " tileTurret: " + tileTurret.tag);
 
         if (heldTurret == "normal" && tileTurret.CompareTag("normal"))
         {
             mergeResult = superNormalTurret;
-            //buildManager.SetTurretToBuildIsNull();
             Debug.Log("Merge Successful!");
             Destroy(tileTurret);
             return true;
@@ -48,7 +41,6 @@ public class MergeManager : MonoBehaviour
         if (heldTurret == "fire" && tileTurret.CompareTag("fire"))
         {
             mergeResult = superFireTurret;
-            //buildManager.SetTurretToBuildIsNull();
             Debug.Log("Merge Successful!");
             Destroy(tileTurret);
             return true;
@@ -57,7 +49,6 @@ public class MergeManager : MonoBehaviour
         if (heldTurret == "fire" && tileTurret.CompareTag("normal") || (heldTurret == "normal" && tileTurret.CompareTag("fire")))
         {
             mergeResult = superNormalFireTurret;
-            //buildManager.SetTurretToBuildIsNull();
             Debug.Log("Merge Successful!");
             Destroy(tileTurret);
             return true;

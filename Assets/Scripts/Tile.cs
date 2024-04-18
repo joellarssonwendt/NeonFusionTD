@@ -11,12 +11,10 @@ public class Tile : MonoBehaviour
     public GameObject currentTile;
 
     BuildManager buildManager;
-    MergeManager mergeManager;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         buildManager = BuildManager.instance;
-        mergeManager = MergeManager.instance;
     }
     void Update()
     {

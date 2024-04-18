@@ -10,7 +10,6 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject tilePrefab;
     BuildManager buildManager;
-    MergeManager mergeManager;
     EnemySpawner enemySpawner;
     private GameObject currentTurretOnPointer;
 
@@ -26,7 +25,6 @@ public class NormalTurret : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
-        mergeManager = MergeManager.instance;
     }
     private void Update()
     {
@@ -108,7 +106,6 @@ public class NormalTurret : MonoBehaviour
     {
             if (buildManager.tileObject.GetTurret() != null)
             {
-                TryMerge();
                 buildManager.deselectBuiltTurret();
                 Debug.Log("deselect, Men kan köra merge också sen");
             }
@@ -133,17 +130,5 @@ public class NormalTurret : MonoBehaviour
     public GameObject GetTurret()
     {
         return currentTurretOnPointer;
-    }
-
-    private void TryMerge()
-    {
-        Debug.Log("TryMerge() körs");
-        if (mergeManager.CanMerge(buildManager.tileObject.GetTurret()))
-        {
-            buildManager.tileObject.SetTurret((GameObject)Instantiate(mergeManager.mergeResult, buildManager.tileObject.transform.position, Quaternion.identity));
-            buildManager.tileObject.SetTurret(mergeManager.mergeResult);
-            mergeManager.mergeResult = null;
-            Destroy(gameObject);
-        }
     }
 }
