@@ -23,7 +23,7 @@ public class MergeManager : MonoBehaviour
         instance = this;
     }
 
-    public bool TryMerge(GameObject heldTurret, GameObject tileTurret)
+    public bool CanMerge(GameObject heldTurret, GameObject tileTurret)
     {
         Debug.Log("TryMerge() " + heldTurret.tag + " + " + tileTurret.tag);
 
