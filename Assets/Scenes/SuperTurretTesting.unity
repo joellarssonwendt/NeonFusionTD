@@ -3182,8 +3182,9 @@ MonoBehaviour:
   enemyTypes: []
   baseAmount: 8
   enemiesPerSecond: 0.5
-  timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
+  nextRoundButton: {fileID: 0}
+  activeRoundPlaying: 0
 --- !u!1 &1747167835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3712,11 +3713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.22
+      value: -5.34
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.87
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
       propertyPath: m_LocalPosition.z
