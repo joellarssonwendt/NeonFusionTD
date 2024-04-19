@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
             accumulatedDotDamage += dotEffect.Value * Time.deltaTime;
         }
 
-        if (dotDamageTimer >= 0.5f) // Check if 0.5 seconds have passed
+        if (dotDamageTimer >= 0.5f) 
         {
             // Apply the accumulated DoT damage
             currentHealth -= accumulatedDotDamage;

@@ -368,6 +368,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5995222955780666773}
     m_Modifications:
+    - target: {fileID: 198854374494625410, guid: 4d797142dab7ced4796d4f1fffa1a629, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 198854374494625410, guid: 4d797142dab7ced4796d4f1fffa1a629, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 198854374494625410, guid: 4d797142dab7ced4796d4f1fffa1a629, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 428.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 198854374494625410, guid: 4d797142dab7ced4796d4f1fffa1a629, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2161552886485091245, guid: 4d797142dab7ced4796d4f1fffa1a629, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.04

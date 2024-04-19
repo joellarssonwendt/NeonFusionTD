@@ -50,19 +50,36 @@ public class SuperFireTurret : MonoBehaviour
         }
     }
 
-    private void Shoot() // Instantiate a projectile and set its target
+    private void Shoot()
     {
+        float coneAngle = 90;
 
-        // Instantiate a dot projectile and set its target
-        GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
-        DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
+        float flamethrowerRadius = CalculateFlamethrowerRadius();
 
-        // Set the damage value of the dot projectile from the Scriptable Object
-        dotProjectile.SetDamage(turretStats.projectileDamage);
-        dotProjectile.SetDotDamage(turretStats.dotAmount); // Set dot damage
-        dotProjectile.SetDotDuration(turretStats.dotDuration); // Set dot duration
-        dotProjectile.SetTarget(target);
+        // Detect all enemies within the flamethrower's area of effect
+        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(firingPoint.position, flamethrowerRadius, enemyMask);
+        Vector2 flamethrowerDirection = (firingPoint.position - transform.position).normalized;
 
+        foreach (var enemy in enemiesInRange)
+        {
+            // Calculate the vector from the flamethrower to the enemy
+            Vector2 toEnemy = (enemy.transform.position - firingPoint.position).normalized;
+
+            // Calculate the angle between the flamethrower's direction and the vector to the enemy
+            float angle = Vector2.Angle(flamethrowerDirection, toEnemy);
+
+            // Check if the angle is within the cone's angle
+            if (angle <= coneAngle / 2) 
+            {
+                GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
+                DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
+
+                dotProjectile.SetDamage(turretStats.projectileDamage);
+                dotProjectile.SetDotDamage(turretStats.dotAmount); 
+                dotProjectile.SetDotDuration(turretStats.dotDuration); 
+                dotProjectile.SetTarget(enemy.transform);
+            }
+        }
     }
 
     private void StopFlamethrower()
@@ -101,48 +118,54 @@ public class SuperFireTurret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
-   /* private void OnDrawGizmosSelected()
-    {   // Draws a circle in the scene view to visualize the turret's targeting range
-        //Handles.color = Color.green;
-        //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
+    private float CalculateFlamethrowerRadius()
+    {
+        var main = flamethrowerParticle.main;
+        return main.startSize.constant * 3.3f; 
     }
 
-    private void OnMouseDown()
-    {
-        currentTurretOnPointer = gameObject;
-        buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
-        buildManager.tileObject.SetTurretToNull();
-    }
+    /* private void OnDrawGizmosSelected()
+     {   // Draws a circle in the scene view to visualize the turret's targeting range
+         //Handles.color = Color.green;
+         //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
+     }
 
-    private void OnMouseUp()
-    {
-        if (buildManager.tileObject.GetTurret() != null)
-        {
-            //här kan merge koden vara sen
-            buildManager.deselectBuiltTurret();
-            Debug.Log("deselect, Men kan köra merge också sen");
-        }
-        if (buildManager.tileObject.GetTurret() == null)
-        {
-            if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
-            {
-                //här flyttas turreten till tilen som musen är över
-                Debug.Log("flytta turret");
-                buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
-                buildManager.tileObject.SetTurretToNull();
-                buildManager.deselectBuiltTurret();
-            }
-            else
-            {
-                //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
-                buildManager.deselectBuiltTurret();
-                Debug.Log("deselect");
-            }
-        }
-    }
-    public GameObject GetTurret()
-    {
-        return currentTurretOnPointer;
-    }*/
+     private void OnMouseDown()
+     {
+         currentTurretOnPointer = gameObject;
+         buildManager.selectedTurret = currentTurretOnPointer;
+         buildManager.selectBuiltTurret();
+         buildManager.tileObject.SetTurretToNull();
+     }
+
+     private void OnMouseUp()
+     {
+         if (buildManager.tileObject.GetTurret() != null)
+         {
+             //här kan merge koden vara sen
+             buildManager.deselectBuiltTurret();
+             Debug.Log("deselect, Men kan köra merge också sen");
+         }
+         if (buildManager.tileObject.GetTurret() == null)
+         {
+             if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
+             {
+                 //här flyttas turreten till tilen som musen är över
+                 Debug.Log("flytta turret");
+                 buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
+                 buildManager.tileObject.SetTurretToNull();
+                 buildManager.deselectBuiltTurret();
+             }
+             else
+             {
+                 //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
+                 buildManager.deselectBuiltTurret();
+                 Debug.Log("deselect");
+             }
+         }
+     }
+     public GameObject GetTurret()
+     {
+         return currentTurretOnPointer;
+     }*/
 }

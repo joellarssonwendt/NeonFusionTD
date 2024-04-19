@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13, y: 3.47, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,6 +52,7 @@ MonoBehaviour:
   animator: {fileID: 157038425207311015}
   enemyStats: {fileID: 11400000, guid: 8e7be46149f5d3c49b1b567f64c95cc1, type: 2}
   fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
+  isDead: 0
 --- !u!95 &157038425207311015
 Animator:
   serializedVersion: 5
@@ -184,6 +185,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.023716927}
+  m_Offset: {x: -0.019069672, y: 0.030310154}
   serializedVersion: 2
-  m_Radius: 0.5822439
+  m_Radius: 1.1719246
