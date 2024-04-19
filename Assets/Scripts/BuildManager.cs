@@ -9,16 +9,21 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject testDiamond;
     //[SerializeField] private LayerMask turret, tile;
-    private int rayCastDistance = 10;
+    private int rayCastDistance = 100;
     public static BuildManager instance;
+    EnemySpawner enemySpawner;
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
     public GameObject superStandardTurretPrefab;
     public GameObject superFireTurretPrefab;
     private GameObject turretToBuild;
-    public Tile tileObject;
+    public Tile tileObjectScript;
+    public GameObject tileObjectPrefab;
+    private GameObject pressedTileObject;
+    private GameObject tileUnderPointer;
     public GameObject selectedTurret;
-    public RaycastHit2D mousePointer;
+    public RaycastHit2D mouseTowerPointer;
+    RaycastHit2D[] mouseTilePointer = new RaycastHit2D[1];
 
     private void Awake()
     {
@@ -29,53 +34,101 @@ public class BuildManager : MonoBehaviour
         }
         instance = this;
     }
+    private void Start()
+    {
+        enemySpawner = EnemySpawner.instance;
+        tileObjectScript = tileObjectPrefab.GetComponent<Tile>();
+    }
     private void Update()
     {
-        if(Input.GetMouseButton(0))
-        {
-            OnMouseRayCast();
-        }
+        OnMouseRaycast();
+        OnPressTower();
+        OnReleasePressedTower();
+        isRaycastHittingTile();
 
-
-        if (tileObject != null)
+        if (tileObjectScript != null)
         {
-            if (tileObject.GetTurret() != null)
+            if (tileObjectScript.GetTurret() != null)
             {
                 //Debug.Log("get Turret är inte null");
             }
             else
             {
                 //Debug.Log("get Turret == null");
-            }  
+            }
         }
     }
 
-    public void OnMouseRayCast()
+    private void OnMouseRaycast()
     {
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = -3;
         Debug.DrawRay(mouseWorldPosition, mainCamera.transform.forward * rayCastDistance, Color.red);
-        mousePointer = Physics2D.Raycast(mouseWorldPosition, mainCamera.transform.forward, rayCastDistance, LayerMask.GetMask("turret", "tile"));
+        mouseTowerPointer = Physics2D.Raycast(mouseWorldPosition, mainCamera.transform.forward, rayCastDistance, LayerMask.GetMask("turret"));
+        mouseTilePointer[0] = new RaycastHit2D();
+        Physics2D.RaycastNonAlloc(mouseWorldPosition, mainCamera.transform.forward, mouseTilePointer, rayCastDistance, LayerMask.GetMask("tile"));
+    }
 
-        if(mousePointer.collider != null)
+    private void OnPressTower()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            if(mousePointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
+            if (mouseTowerPointer.collider != null && mouseTowerPointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
             {
-               //gör skit
-            }
-            else if(mousePointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
-            {
-                //gör annat skit
+                Debug.Log("trycker på turret");
+                selectedTurret = mouseTowerPointer.collider.gameObject;
+                selectBuiltTurret();
+                pressedTileObject = tileUnderPointer;
             }
         }
     }
-    
+    private void OnReleasePressedTower()
+    {
+        if (Input.GetMouseButtonUp(0) && selectedTurret != null)
+        {
+            if (tileObjectScript.GetTurret() != null)
+            {
+                deselectBuiltTurret();
+
+                Debug.Log("deselect, Men kan köra merge också sen");
+            }
+            if (tileObjectScript.GetTurret() == null)
+            {
+                if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
+                {
+                    //här flyttas turreten till tilen som musen är över
+                    MoveTurret();
+                }
+                else
+                {
+                    //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
+                    deselectBuiltTurret();
+                    Debug.Log("deselect");
+                }
+            }
+        }
+    }
+    public bool isRaycastHittingTile()
+    {
+        if (mouseTilePointer[0].collider != null && mouseTilePointer[0].collider.gameObject.layer == LayerMask.NameToLayer("tile"))
+        {
+            Debug.Log("Raycast träffar: " + mouseTilePointer[0].collider.gameObject.name);
+            tileObjectScript = mouseTilePointer[0].collider.gameObject.GetComponent<Tile>();
+            tileUnderPointer = mouseTilePointer[0].collider.gameObject;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Raycast träffar inte tile");
+            return false;
+        }
+    }
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
     }
 
-    public void SetTurretToBuild (GameObject turret)
+    public void SetTurretToBuild(GameObject turret)
     {
         turretToBuild = turret;
     }
@@ -84,27 +137,15 @@ public class BuildManager : MonoBehaviour
         deactivateTempTurretSprites();
         turretToBuild = null;
     }
-    public bool checkIfMouseIsOverATile()
-    {
-        foreach (Tile tile in listOfAllTiles)
-        {
-            if(tile.isOverATile == true)
-            {
-                tileObject = tile;
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void deactivateTempTurretSprites()
     {
         tempNormalTurret.SetActive(false);
         tempFireTurret.SetActive(false);
-       // tempIceTurret.SetActive(false);
-       // tempLightningTurret.SetActive(false);
-       tempSuperNormalTurret.SetActive(false);
-       tempSuperFireTurret.SetActive(false);
+        // tempIceTurret.SetActive(false);
+        // tempLightningTurret.SetActive(false);
+        tempSuperNormalTurret.SetActive(false);
+        tempSuperFireTurret.SetActive(false);
     }
 
     public void selectBuiltTurret()
@@ -112,16 +153,16 @@ public class BuildManager : MonoBehaviour
         if (turretToBuild == null)
         {
             Debug.Log("turretSelcted");
-           if(selectedTurret.GetComponent<NormalTurret>() != null)
-           {
+            if (selectedTurret.GetComponent<NormalTurret>() != null)
+            {
                 Debug.Log("normalTurretOnTileSelected");
                 tempNormalTurret.SetActive(true);
-           }
-           else if (selectedTurret.GetComponent<FireTurret>() != null)
-           {
+            }
+            else if (selectedTurret.GetComponent<FireTurret>() != null)
+            {
                 Debug.Log("FireTurretOnTileSelected");
                 tempFireTurret.SetActive(true);
-           }
+            }
             else if (selectedTurret.GetComponent<SuperFireTurret>() != null)
             {
                 Debug.Log("SuperFireTurretOnTileSelected");
@@ -138,5 +179,21 @@ public class BuildManager : MonoBehaviour
     {
         selectedTurret = null;
         deactivateTempTurretSprites();
+    }
+    private void MoveTurret()
+    {
+        Debug.Log("flytta turret");
+        Vector3 newCalculatedTowerPosition = new Vector3(tileObjectScript.transform.position.x, tileObjectScript.transform.position.y, 0);
+
+        // Ta bort turrens referens från den tidigare tilen
+        if (tileUnderPointer.GetComponent<Tile>().GetTurret() != null)
+        {
+            tileUnderPointer.GetComponent<Tile>().SetTurretToNull();
+        }
+
+        selectedTurret.transform.position = newCalculatedTowerPosition;
+        tileUnderPointer.GetComponent<Tile>().SetTurret(selectedTurret);
+        pressedTileObject.GetComponent<Tile>().SetTurretToNull();
+        deselectBuiltTurret();
     }
 }

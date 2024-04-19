@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 700870417667956789}
   - component: {fileID: 975280428361213255}
   - component: {fileID: 1179225750489668987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SuperFireTurret
   m_TagString: superfire
   m_Icon: {fileID: 0}

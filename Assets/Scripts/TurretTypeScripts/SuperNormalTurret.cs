@@ -92,7 +92,7 @@ public class SuperNormalTurret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
-    private void OnDrawGizmosSelected()
+   /* private void OnDrawGizmosSelected()
     {
         // Draws a circle in the scene view to visualize the turret's targeting range
         //Handles.color = Color.green;
@@ -116,7 +116,7 @@ public class SuperNormalTurret : MonoBehaviour
         }
         if (buildManager.tileObject.GetTurret() == null && !enemySpawner.activeRoundPlaying)
         {
-            if (buildManager.checkIfMouseIsOverATile())
+            if (buildManager.isRaycastHittingTile())
             {
                 //här flyttas turreten till tilen som musen är över
                 Debug.Log("flytta turret");
@@ -135,5 +135,5 @@ public class SuperNormalTurret : MonoBehaviour
     public GameObject GetTurret()
     {
         return currentTurretOnPointer;
-    }
+    }*/
 }

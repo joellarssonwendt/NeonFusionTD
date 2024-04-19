@@ -94,7 +94,7 @@ public class SuperFireTurret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
-    private void OnDrawGizmosSelected()
+   /* private void OnDrawGizmosSelected()
     {   // Draws a circle in the scene view to visualize the turret's targeting range
         //Handles.color = Color.green;
         //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
@@ -118,7 +118,7 @@ public class SuperFireTurret : MonoBehaviour
         }
         if (buildManager.tileObject.GetTurret() == null)
         {
-            if (buildManager.checkIfMouseIsOverATile() && !enemySpawner.activeRoundPlaying)
+            if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
             {
                 //här flyttas turreten till tilen som musen är över
                 Debug.Log("flytta turret");
@@ -137,5 +137,5 @@ public class SuperFireTurret : MonoBehaviour
     public GameObject GetTurret()
     {
         return currentTurretOnPointer;
-    }
+    }*/
 }

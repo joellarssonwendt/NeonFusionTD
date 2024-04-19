@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 7385017187038225018}
   - component: {fileID: 7154472007707752465}
   - component: {fileID: -6459516361577626486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireNormalTurret
   m_TagString: firenormal
   m_Icon: {fileID: 0}

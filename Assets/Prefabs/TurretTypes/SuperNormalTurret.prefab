@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 7385017187038225018}
   - component: {fileID: 6900048620949950162}
   - component: {fileID: 2853716991912503806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SuperNormalTurret
   m_TagString: supernormal
   m_Icon: {fileID: 0}
