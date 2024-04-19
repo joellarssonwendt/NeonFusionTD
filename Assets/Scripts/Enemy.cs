@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private int pathIndex = 0;
     private float currentHealth;
-    private bool isDead = false;
+    public bool isDead = false;
     private float dotDamageTimer = 0f; // Timer to track the time since the last DoT damage application
     private float accumulatedDotDamage = 0f;
     private Dictionary<DotProjectile, float> dotEffects = new Dictionary<DotProjectile, float>(); // Dictionary to store DoT effects

@@ -28,7 +28,7 @@ public class SuperNormalTurret : MonoBehaviour
     }
     private void Update()
     {
-        if(target == null)
+        if (target == null || target.GetComponent<Enemy>().isDead)
         {
             FindTarget();
             return;
@@ -36,7 +36,7 @@ public class SuperNormalTurret : MonoBehaviour
 
         RotateTowardsTarget();
 
-        if(!CheckTargetIsInRange()) // If the target is out of range, reset target to null
+        if (!CheckTargetIsInRange()) // If the target is out of range, reset target to null
         {
             target = null;
         }
@@ -72,9 +72,15 @@ public class SuperNormalTurret : MonoBehaviour
         // Raycast in a circle around the turret's position to find enemies within targeting range
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if (hits.Length > 0) // If enemies are found within range, set the first one as target
+        foreach (var hit in hits)
         {
-            target = hits[0].transform;
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            // Check if the enemy is not dead
+            if (enemy != null && !enemy.isDead)
+            {
+                target = hit.transform;
+                break;
+            }
         }
     }
 
