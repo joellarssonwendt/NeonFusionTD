@@ -80,11 +80,14 @@ public class DotProjectile : MonoBehaviour
         Debug.Log("DoT effect started on enemy: " + enemy.name);
 
         float timer = 0f;
+        float damageInterval = 0.5f; 
 
         while (timer < dotDuration)
         {
-            yield return null;
-            timer += Time.deltaTime;
+            yield return new WaitForSeconds(damageInterval);
+            timer += damageInterval;
+
+            enemy.TakeDotDamage(dotDamage, this);
         }
 
         // Remove the dotDamage from the total DoT effect when DoT effect ends

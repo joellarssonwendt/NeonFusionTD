@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     private int pathIndex = 0;
     private float currentHealth;
     private bool isDead = false;
+    private float dotDamageTimer = 0f; // Timer to track the time since the last DoT damage application
+    private float accumulatedDotDamage = 0f;
     private Dictionary<DotProjectile, float> dotEffects = new Dictionary<DotProjectile, float>(); // Dictionary to store DoT effects
     private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
 
@@ -88,18 +90,29 @@ public class Enemy : MonoBehaviour
     {
         if (isDead) return;
 
+        dotDamageTimer += Time.deltaTime; // Increment the timer by the time passed since the last frame
+
+        // Accumulate the total DoT damage
         foreach (var dotEffect in dotEffects)
         {
-            float damageApplied = dotEffect.Value * Time.deltaTime;
-            currentHealth -= damageApplied;
+            accumulatedDotDamage += dotEffect.Value * Time.deltaTime;
+        }
+
+        if (dotDamageTimer >= 0.5f)
+        {
+            // Apply the accumulated DoT damage
+            currentHealth -= accumulatedDotDamage;
 
             if (currentHealth <= 0)
             {
                 Die();
                 return;
             }
-            // Log the damage applied by the DoT effect
-            Debug.Log($"DoT effect dealt {damageApplied} damage");
+            Debug.Log($"DoT effect dealt {accumulatedDotDamage} damage");
+
+            // Reset the accumulated DoT damage and the timer
+            accumulatedDotDamage = 0f;
+            dotDamageTimer = 0f;
         }
     }
 
