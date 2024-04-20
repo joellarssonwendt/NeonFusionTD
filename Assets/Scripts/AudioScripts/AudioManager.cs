@@ -26,6 +26,10 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f); 
+        SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
+        UISoundEffectsVolume = PlayerPrefs.GetFloat("UISoundEffectsVolume", 0.5f);
+
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>(); 

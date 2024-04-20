@@ -23,18 +23,36 @@ public class OptionsMenu : MonoBehaviour
     public void OnMusicVolumeChanged(float value)
     {
         audioManager.MusicVolume = value;
+
+        PlayerPrefs.SetFloat("MusicVolume", value);
+        PlayerPrefs.Save();
+
         audioManager.UpdateMusicVolume();
     }
 
-    public void OnSoundVolumeChanged(float value)
+    public void OnSoundEffectsVolumeChanged(float value)
     {
         audioManager.SoundEffectsVolume = value;
+
+        PlayerPrefs.SetFloat("SoundEffectsVolume", value);
+        PlayerPrefs.Save();
+
         audioManager.UpdateSoundEffectsVolume();
     }
 
     public void OnUISoundVolumeChanged(float value)
     {
         audioManager.UISoundEffectsVolume = value;
+
+        PlayerPrefs.SetFloat("UISoundEffectsVolume", value);
+        PlayerPrefs.Save();
+
         audioManager.UpdateUISoundEffectsVolume();
+    }
+    public void UpdateSliders()
+    {
+        musicVolumeSlider.value = audioManager.MusicVolume;
+        soundEffectsVolumeSlider.value = audioManager.SoundEffectsVolume;
+        UISoundEffectsVolumeSlider.value = audioManager.UISoundEffectsVolume;
     }
 }
