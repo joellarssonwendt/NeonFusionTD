@@ -17,6 +17,7 @@ public class SuperFireTurret : MonoBehaviour
     [SerializeField] private TurretStats turretStats;
 
     private Transform target;
+    private float timeUntilFire = 0f;
 
     private void Start()
     {
@@ -46,7 +47,12 @@ public class SuperFireTurret : MonoBehaviour
                 flamethrowerParticle.Play();
             }
 
-            Shoot();
+            float projectileShootInterval = 1f / turretStats.projectilesPerSecond;
+            if (Time.time >= timeUntilFire)
+            {
+                Shoot();
+                timeUntilFire = Time.time + projectileShootInterval;
+            }
         }
     }
 
