@@ -52,7 +52,7 @@ public class SuperFireTurret : MonoBehaviour
 
     private void Shoot()
     {
-        float coneAngle = 90;
+        float coneAngle = 70;
 
         float flamethrowerRadius = CalculateFlamethrowerRadius();
 
