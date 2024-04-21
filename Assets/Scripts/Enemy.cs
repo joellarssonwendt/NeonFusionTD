@@ -148,7 +148,7 @@ public class Enemy : MonoBehaviour
 
             //Debug.Log($"Dot effect dealt {accumulatedDotDamage} damage");
             
-            Debug.Log("Total active burn effects: " + dotEffects.Count + ", Total accumulated Dot effect damage: " + accumulatedDotDamage);
+            //Debug.Log("Total active burn effects: " + dotEffects.Count + ", Total accumulated Dot effect damage: " + accumulatedDotDamage);
             
             // Reset the accumulated Dot damage
             accumulatedDotDamage = 0f;
@@ -161,12 +161,9 @@ public class Enemy : MonoBehaviour
 
     public void ApplyChillEffect(float chillAmount, float duration)
     {
-        Debug.Log("Applying chill effect to enemy: " + gameObject.name);
-
         // Add a new chill effect to the list
         chillEffects.Add(new ChillEffect(chillAmount, duration));
 
-        Debug.Log("New chill effect added. Total active chill effects: " + chillEffects.Count);
     }
 
     private void CheckChillDuration()
@@ -198,7 +195,7 @@ public class Enemy : MonoBehaviour
         // Apply the chill effect based on the total chill amount
         chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - totalChillAmount), originalMoveSpeed * 0.6f);
 
-        //Debug.Log("Total active chill effects: " + chillEffects.Count + ", Total chill amount: " + totalChillAmount * 100 + "%");
+        Debug.Log("Total active chill effects: " + chillEffects.Count + ", Total chill amount: " + totalChillAmount * 100 + "%");
     }
 
     private void Die()

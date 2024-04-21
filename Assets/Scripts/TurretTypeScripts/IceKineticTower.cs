@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class SuperNormalTurret : MonoBehaviour
+public class IceKineticTower : MonoBehaviour
 {
     [Header("References")] // Header to group serialized fields in the inspector
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject iceProjectilePrefab;
     [SerializeField] private Transform firingPoint1;
     [SerializeField] private Transform firingPoint2;
     [SerializeField] private GameObject TemporaryTurretSprite;
@@ -13,9 +13,8 @@ public class SuperNormalTurret : MonoBehaviour
     EnemySpawner enemySpawner;
     private GameObject currentTurretOnPointer;
 
-    [Header("Stats")] 
+    [Header("Stats")]
     [SerializeField] private TurretStats turretStats;
-
 
     private Transform target;
     private float timeUntilFire;
@@ -56,13 +55,14 @@ public class SuperNormalTurret : MonoBehaviour
     {
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
 
-        // Instantiate a projectile at the current firing point
-        GameObject projectileObject = Instantiate(projectilePrefab, currentFiringPoint.position, Quaternion.identity);
-        Projectile projectileScript = projectileObject.GetComponent<Projectile>();
-        projectileScript.SetDamage(turretStats.projectileDamage);
-        projectileScript.SetTarget(target);
+        GameObject projectileObject = Instantiate(iceProjectilePrefab, currentFiringPoint.position, Quaternion.identity);
+        IceProjectile iceProjectile = projectileObject.GetComponent<IceProjectile>();
 
-        // Toggle the flag for the next shot
+        iceProjectile.SetDamage(turretStats.projectileDamage);
+        iceProjectile.SetChillAmount(turretStats.chillAmount); // Set chill amount
+        iceProjectile.SetChillDuration(turretStats.chillDuration); // Set chill duration
+
+        iceProjectile.SetTarget(target);
         useFiringPoint1 = !useFiringPoint1;
     }
 
@@ -89,20 +89,19 @@ public class SuperNormalTurret : MonoBehaviour
     }
 
     private void RotateTowardsTarget()
-    {
-        // Calculate angle between turret and target, and rotate turret towards target
+    {   // Calculate angle between turret and target, and rotate turret towards target
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
-   /* private void OnDrawGizmosSelected()
-    {
-        // Draws a circle in the scene view to visualize the turret's targeting range
+  /*  private void OnDrawGizmosSelected()
+    {   // Draws a circle in the scene view to visualize the turret's targeting range
         //Handles.color = Color.green;
         //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
     }
+
     private void OnMouseDown()
     {
         currentTurretOnPointer = gameObject;
@@ -115,13 +114,12 @@ public class SuperNormalTurret : MonoBehaviour
     {
         if (buildManager.tileObject.GetTurret() != null)
         {
-            //här kan merge koden vara sen
             buildManager.deselectBuiltTurret();
             Debug.Log("deselect, Men kan köra merge också sen");
         }
-        if (buildManager.tileObject.GetTurret() == null && !enemySpawner.activeRoundPlaying)
+        if (buildManager.tileObject.GetTurret() == null)
         {
-            if (buildManager.isRaycastHittingTile())
+            if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
             {
                 //här flyttas turreten till tilen som musen är över
                 Debug.Log("flytta turret");
@@ -142,3 +140,5 @@ public class SuperNormalTurret : MonoBehaviour
         return currentTurretOnPointer;
     }*/
 }
+
+
