@@ -9,7 +9,7 @@ public class IceProjectile : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private float projectileSpeed = 7f;
     [SerializeField] private float chillDuration;
-    [SerializeField] private float chillAmount; 
+    [SerializeField] private float chillAmount;
     private float projectileDamage = 0;
 
     private Transform target;
@@ -21,7 +21,7 @@ public class IceProjectile : MonoBehaviour
 
     public void SetDamage(float damage)
     {
-        projectileDamage = damage; 
+        projectileDamage = damage;
     }
 
     public void SetChillAmount(float amount)
@@ -51,7 +51,7 @@ public class IceProjectile : MonoBehaviour
     {
         // Wait for the specified time
         yield return new WaitForSeconds(time);
-        
+
         Destroy(gameObject);
     }
 
@@ -61,7 +61,7 @@ public class IceProjectile : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(projectileDamage);
-            enemy.ApplyChillEffect(chillAmount, chillDuration);
+            enemy.ApplyChillEffect(chillAmount, chillDuration, "NotArcticTower");
         }
 
         Destroy(gameObject);

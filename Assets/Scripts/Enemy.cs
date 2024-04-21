@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using static Unity.VisualScripting.Member;
 
 public class Enemy : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour
     private List<DotEffect> dotEffects = new List<DotEffect>();
     private float accumulatedDotDamage = 0f;
     private float lastDamageApplicationTime = 0f;
-    private float damageApplicationInterval = 0.5f; 
+    private float damageApplicationInterval = 0.5f;
     private List<ChillEffect> chillEffects = new List<ChillEffect>();
     private float originalMoveSpeed;
     private float chilledMoveSpeed;
@@ -94,7 +95,7 @@ public class Enemy : MonoBehaviour
         for (int i = dotEffects.Count - 1; i >= 0; i--)
         {
             DotEffect dotEffect = dotEffects[i];
-            dotEffect.duration -= Time.deltaTime; 
+            dotEffect.duration -= Time.deltaTime;
 
             if (dotEffect.duration <= 0)
             {
@@ -147,28 +148,30 @@ public class Enemy : MonoBehaviour
             }
 
             //Debug.Log($"Dot effect dealt {accumulatedDotDamage} damage");
-            
+
             //Debug.Log("Total active burn effects: " + dotEffects.Count + ", Total accumulated Dot effect damage: " + accumulatedDotDamage);
-            
+
             // Reset the accumulated Dot damage
             accumulatedDotDamage = 0f;
 
             // Update the last damage application time
             lastDamageApplicationTime = currentTime;
         }
-        
+
     }
 
-    public void ApplyChillEffect(float chillAmount, float duration)
+    public void ApplyChillEffect(float chillAmount, float duration, string sourceOfChill)
     {
         // Add a new chill effect to the list
-        chillEffects.Add(new ChillEffect(chillAmount, duration));
+        chillEffects.Add(new ChillEffect(chillAmount, duration, sourceOfChill));
 
     }
 
     private void CheckChillDuration()
     {
-        float totalChillAmount = 0f;
+        float totalChillEffect = 0f;
+        float maxChillEffectAmount = 0f;
+
         for (int i = chillEffects.Count - 1; i >= 0; i--)
         {
             ChillEffect effect = chillEffects[i];
@@ -180,22 +183,20 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                // Accumulate the chill amount
-                totalChillAmount += effect.amount;
+                // Accumulate the chill amount based on the source
+                float appliedChillReduction = effect.sourceOfChill == "ArcticTower" ? 0.5f : 0.7f;
+                float appliedChillAmount = Mathf.Min(effect.amount, appliedChillReduction);
+                totalChillEffect += appliedChillAmount;
+
+                // Update maxChillAmount if the current effect's max chill amount is greater
+                maxChillEffectAmount = Mathf.Max(maxChillEffectAmount, appliedChillReduction);
             }
         }
 
-        // Ensure the total chill amount does not exceed the cap
-        float maxChillAmount = 0.4f;
-        if (totalChillAmount > maxChillAmount)
-        {
-            totalChillAmount = maxChillAmount;
-        }
+        // Apply the chill effect based on the total chill amount, capping at maxChillAmount
+        chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - totalChillEffect), originalMoveSpeed * maxChillEffectAmount);
 
-        // Apply the chill effect based on the total chill amount
-        chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - totalChillAmount), originalMoveSpeed * 0.6f);
-
-        Debug.Log("Total active chill effects: " + chillEffects.Count + ", Total chill amount: " + totalChillAmount * 100 + "%");
+        Debug.Log("Total active chill effects: " + chillEffects.Count + ", Current movement speed reduction: " + ((1 - (chilledMoveSpeed / originalMoveSpeed)) * 100) + "%");
     }
 
     private void Die()
@@ -228,11 +229,13 @@ public class Enemy : MonoBehaviour
     {
         public float amount;
         public float duration;
+        public string sourceOfChill;
 
-        public ChillEffect(float amount, float duration)
+        public ChillEffect(float amount, float duration, string sourceOfChill)
         {
             this.amount = amount;
             this.duration = duration;
+            this.sourceOfChill = sourceOfChill;
         }
     }
 }
