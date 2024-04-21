@@ -1,15 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
-public class DotProjectile : MonoBehaviour
+public class IceProjectile : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Stats")]
     [SerializeField] private float projectileSpeed = 7f;
-    [SerializeField] private float dotDuration; 
-    [SerializeField] private float dotDamage; 
+    [SerializeField] private float chillDuration;
+    [SerializeField] private float chillAmount; 
     private float projectileDamage = 0;
 
     private Transform target;
@@ -24,14 +24,14 @@ public class DotProjectile : MonoBehaviour
         projectileDamage = damage; 
     }
 
-    public void SetDotDamage(float damage)
+    public void SetChillAmount(float amount)
     {
-        dotDamage = damage; 
+        chillAmount = amount;
     }
 
-    public void SetDotDuration(float duration)
+    public void SetChillDuration(float duration)
     {
-        dotDuration = duration; 
+        chillDuration = duration;
     }
 
     private void Start()
@@ -60,42 +60,12 @@ public class DotProjectile : MonoBehaviour
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            // Apply initial damage
             enemy.TakeDamage(projectileDamage);
-
-            // Apply DoT effect
-            StartCoroutine(ApplyDotEffect(enemy));
+            enemy.ApplyChillEffect(chillAmount, chillDuration);
         }
 
         Destroy(gameObject);
     }
-
-    private IEnumerator ApplyDotEffect(Enemy enemy)
-    {
-        // Add the dotDamage to the total DoT effect for this dotProjectile
-        enemy.TakeDotDamage(dotDamage, this);
-
-        //Debug.Log("DoT effect started on enemy: " + enemy.name);
-
-        float timer = 0f;
-        float damageInterval = 0.5f;
-
-        while (timer < dotDuration)
-        {
-            yield return null;
-            timer += Time.deltaTime;
-            yield return new WaitForSeconds(damageInterval);
-            timer += damageInterval;
-
-            enemy.TakeDotDamage(dotDamage, this);
-        }
-
-        // Remove the dotDamage from the total DoT effect when DoT effect ends
-        dotDamage = 0;
-
-        //Debug.Log("DoT effect ended on enemy: " + enemy.name);
-    }
-
 }
 
 

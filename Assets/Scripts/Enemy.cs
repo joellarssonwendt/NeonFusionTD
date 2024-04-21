@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private EnemyStats enemyStats;
     [SerializeField] private GameObject fireIconPrefab;
+    [SerializeField] private GameObject iceIconPrefab;
 
     private Transform target;
     private int pathIndex = 0;
@@ -15,6 +16,9 @@ public class Enemy : MonoBehaviour
     public bool isDead = false;
     private float dotDamageTimer = 0f; // Timer to track the time since the last DoT damage application
     private float accumulatedDotDamage = 0f;
+    private float originalMoveSpeed;
+    private float chilledMoveSpeed;
+    private float chillTimer;
     private Dictionary<DotProjectile, float> dotEffects = new Dictionary<DotProjectile, float>(); // Dictionary to store DoT effects
     private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
 
@@ -22,12 +26,17 @@ public class Enemy : MonoBehaviour
     {
         target = LevelManager.main.pathingNodes[pathIndex];
         currentHealth = enemyStats.maxHealth;
+
+        originalMoveSpeed = enemyStats.moveSpeed;
+        chilledMoveSpeed = originalMoveSpeed;
+        chillTimer = 0f;
     }
 
     private void Update()
     {
         Move();
         ApplyDotEffects();
+        CheckChillDuration();
     }
 
     private void Move()
@@ -49,7 +58,7 @@ public class Enemy : MonoBehaviour
         }
 
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.velocity = direction * enemyStats.moveSpeed;
+        rb.velocity = direction * chilledMoveSpeed;
     }
 
     public void TakeDamage(float damage)
@@ -76,7 +85,7 @@ public class Enemy : MonoBehaviour
         }
 
         // Log the total DoT effect for this dotProjectile
-        Debug.Log($"DoT effect added to: {dotEffects[dotProjectile]}");
+        //Debug.Log($"DoT effect added to: {dotEffects[dotProjectile]}");
     }
 
     public void CreateFireIcon(DotProjectile dotProjectile)
@@ -109,11 +118,31 @@ public class Enemy : MonoBehaviour
                 return;
             }
             // Log the damage applied by the DoT effect
-            Debug.Log($"DoT effect dealt {accumulatedDotDamage} damage");
+            //Debug.Log($"DoT effect dealt {accumulatedDotDamage} damage");
 
             // Reset the accumulated DoT damage and the timer
             accumulatedDotDamage = 0f;
             dotDamageTimer = 0f;
+        }
+    }
+
+    public void ApplyChillEffect(float chillAmount, float chillDuration)
+    {
+        Debug.Log("Applying chill effect to enemy: " + gameObject.name);
+        chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - chillAmount), originalMoveSpeed * 0.3f); // Apply chill effect with 30% cap
+        chillTimer = chillDuration;
+        Debug.Log("Current chill amount: " + chillAmount + ", Current chill duration: " + chillDuration);
+    }
+
+    private void CheckChillDuration()
+    {
+        if (chillTimer > 0)
+        {
+            chillTimer -= Time.deltaTime;
+            if (chillTimer <= 0)
+            {
+                chilledMoveSpeed = originalMoveSpeed;
+            }
         }
     }
 

@@ -17,6 +17,7 @@ TagManager:
   - supernormal
   - superfire
   - firenormal
+  - ice
   layers:
   - Default
   - TransparentFX
