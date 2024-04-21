@@ -8,7 +8,7 @@ public class DotProjectile : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private float projectileSpeed = 7f;
-    [SerializeField] private float dotDuration; 
+    [SerializeField] public float dotDuration; 
     [SerializeField] private float dotDamage; 
     private float projectileDamage = 0;
 

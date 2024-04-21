@@ -14,12 +14,13 @@ public class Enemy : MonoBehaviour
     private int pathIndex = 0;
     private float currentHealth;
     public bool isDead = false;
-    private float dotDamageTimer = 0f; // Timer to track the time since the last DoT damage application
+    private List<DotEffect> dotEffects = new List<DotEffect>();
     private float accumulatedDotDamage = 0f;
+    private float lastDamageApplicationTime = 0f;
+    private float damageApplicationInterval = 0.5f; 
+    private List<ChillEffect> chillEffects = new List<ChillEffect>();
     private float originalMoveSpeed;
     private float chilledMoveSpeed;
-    private float chillTimer;
-    private Dictionary<DotProjectile, float> dotEffects = new Dictionary<DotProjectile, float>(); // Dictionary to store DoT effects
     private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
 
     private void Start()
@@ -29,13 +30,13 @@ public class Enemy : MonoBehaviour
 
         originalMoveSpeed = enemyStats.moveSpeed;
         chilledMoveSpeed = originalMoveSpeed;
-        chillTimer = 0f;
     }
 
     private void Update()
     {
         Move();
         ApplyDotEffects();
+        CheckDoTDuration();
         CheckChillDuration();
     }
 
@@ -73,19 +74,45 @@ public class Enemy : MonoBehaviour
 
     public void TakeDotDamage(float dotDamage, DotProjectile dotProjectile)
     {
-        // Add the dotDamage to the total DoT effect for this dotProjectile
-        if (dotEffects.ContainsKey(dotProjectile))
+        if (isDead)
         {
-            dotEffects[dotProjectile] += dotDamage;
+            return;
         }
-        else
+
+        dotEffects.Add(new DotEffect(dotDamage, dotProjectile.dotDuration));
+
+        if (!fireIcons.ContainsKey(dotProjectile))
         {
-            dotEffects.Add(dotProjectile, dotDamage);
             CreateFireIcon(dotProjectile);
         }
 
-        // Log the total DoT effect for this dotProjectile
-        //Debug.Log($"DoT effect added to: {dotEffects[dotProjectile]}");
+        //Debug.Log($"Dot effect added to: {dotEffects[dotEffects.Count - 1].damage}");
+    }
+
+    private void CheckDoTDuration()
+    {
+        for (int i = dotEffects.Count - 1; i >= 0; i--)
+        {
+            DotEffect dotEffect = dotEffects[i];
+            dotEffect.duration -= Time.deltaTime; 
+
+            if (dotEffect.duration <= 0)
+            {
+                dotEffects.RemoveAt(i);  // Remove the DoT effect when its duration expires
+
+            }
+        }
+
+        if (dotEffects.Count == 0)
+        {
+            // If there are no more dot effects, remove the fire icon associated with the enemy
+            foreach (var fireIcon in fireIcons.Values)
+            {
+                Destroy(fireIcon);
+            }
+            fireIcons.Clear();  // Clear the dictionary to reflect that there are no active dot effects
+
+        }
     }
 
     public void CreateFireIcon(DotProjectile dotProjectile)
@@ -94,22 +121,23 @@ public class Enemy : MonoBehaviour
         fireIcons.Add(dotProjectile, fireIcon);
     }
 
-
     private void ApplyDotEffects()
     {
         if (isDead) return;
 
-        dotDamageTimer += Time.deltaTime; // Increment the timer by the time passed since the last frame
-
-        // Accumulate the total DoT damage
-        foreach (var dotEffect in dotEffects)
+        float currentTime = Time.time;
+        if (currentTime - lastDamageApplicationTime >= damageApplicationInterval)
         {
-            accumulatedDotDamage += dotEffect.Value * Time.deltaTime;
-        }
+            // Calculate the actual elapsed time since the last application
+            float elapsedTime = currentTime - lastDamageApplicationTime;
 
-        if (dotDamageTimer >= 0.5f) 
-        {
-            // Apply the accumulated DoT damage
+            // Accumulate the total Dot damage based on the actual elapsed time
+            foreach (var dotEffect in dotEffects)
+            {
+                accumulatedDotDamage += dotEffect.damage * elapsedTime;
+            }
+
+            // Apply the accumulated Dot damage
             currentHealth -= accumulatedDotDamage;
 
             if (currentHealth <= 0)
@@ -117,35 +145,61 @@ public class Enemy : MonoBehaviour
                 Die();
                 return;
             }
-            // Log the damage applied by the DoT effect
-            //Debug.Log($"DoT effect dealt {accumulatedDotDamage} damage");
 
-            // Reset the accumulated DoT damage and the timer
+            //Debug.Log($"Dot effect dealt {accumulatedDotDamage} damage");
+            
+            Debug.Log("Total active burn effects: " + dotEffects.Count + ", Total accumulated Dot effect damage: " + accumulatedDotDamage);
+            
+            // Reset the accumulated Dot damage
             accumulatedDotDamage = 0f;
-            dotDamageTimer = 0f;
+
+            // Update the last damage application time
+            lastDamageApplicationTime = currentTime;
         }
+        
     }
 
-    public void ApplyChillEffect(float chillAmount, float chillDuration)
+    public void ApplyChillEffect(float chillAmount, float duration)
     {
         Debug.Log("Applying chill effect to enemy: " + gameObject.name);
-        chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - chillAmount), originalMoveSpeed * 0.3f); // Apply chill effect with 30% cap
-        chillTimer = chillDuration;
-        Debug.Log("Current chill amount: " + chillAmount + ", Current chill duration: " + chillDuration);
+
+        // Add a new chill effect to the list
+        chillEffects.Add(new ChillEffect(chillAmount, duration));
+
+        Debug.Log("New chill effect added. Total active chill effects: " + chillEffects.Count);
     }
 
     private void CheckChillDuration()
     {
-        if (chillTimer > 0)
+        float totalChillAmount = 0f;
+        for (int i = chillEffects.Count - 1; i >= 0; i--)
         {
-            chillTimer -= Time.deltaTime;
-            if (chillTimer <= 0)
+            ChillEffect effect = chillEffects[i];
+            effect.duration -= Time.deltaTime;
+            if (effect.duration <= 0)
             {
-                chilledMoveSpeed = originalMoveSpeed;
+                // Remove the chill effect when its duration expires
+                chillEffects.RemoveAt(i);
+            }
+            else
+            {
+                // Accumulate the chill amount
+                totalChillAmount += effect.amount;
             }
         }
-    }
 
+        // Ensure the total chill amount does not exceed the cap
+        float maxChillAmount = 0.4f;
+        if (totalChillAmount > maxChillAmount)
+        {
+            totalChillAmount = maxChillAmount;
+        }
+
+        // Apply the chill effect based on the total chill amount
+        chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - totalChillAmount), originalMoveSpeed * 0.6f);
+
+        //Debug.Log("Total active chill effects: " + chillEffects.Count + ", Total chill amount: " + totalChillAmount * 100 + "%");
+    }
 
     private void Die()
     {
@@ -159,5 +213,29 @@ public class Enemy : MonoBehaviour
         }
 
         Destroy(gameObject, 1f);
+    }
+
+    private class DotEffect
+    {
+        public float damage;
+        public float duration;
+
+        public DotEffect(float damage, float duration)
+        {
+            this.damage = damage;
+            this.duration = duration;
+        }
+    }
+
+    private class ChillEffect
+    {
+        public float amount;
+        public float duration;
+
+        public ChillEffect(float amount, float duration)
+        {
+            this.amount = amount;
+            this.duration = duration;
+        }
     }
 }

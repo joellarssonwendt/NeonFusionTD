@@ -18,5 +18,5 @@ MonoBehaviour:
   projectileDamage: 0.01
   dotAmount: 0
   dotDuration: 0
-  chillAmount: 0.2
-  chillDuration: 10
+  chillAmount: 0.05
+  chillDuration: 5
