@@ -24,6 +24,7 @@ public class BuildManager : MonoBehaviour
     public GameObject selectedTurret;
     public RaycastHit2D mouseTowerPointer;
     RaycastHit2D[] mouseTilePointer = new RaycastHit2D[1];
+    MergeManager mergeManager;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class BuildManager : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         tileObjectScript = tileObjectPrefab.GetComponent<Tile>();
+        mergeManager = MergeManager.instance;
     }
     private void Update()
     {
@@ -88,10 +90,40 @@ public class BuildManager : MonoBehaviour
         {
             if (tileObjectScript.GetTurret() != null)
             {
-                deselectBuiltTurret();
+                if (mergeManager.CanMerge(selectedTurret, tileObjectScript.GetTurret()))
+                {
+                    if (pressedTileObject == tileUnderPointer)
+                    {
+                        Debug.Log("Can't merge with itself!");
+                        return;
+                    }
 
-                Debug.Log("deselect, Men kan köra merge också sen");
+                    Debug.Log("Merge Successful!");
+
+                    // Spara målplatsen för merge resultatet.
+                    Vector3 mergeLocation = tileObjectScript.GetTurret().transform.position;
+
+                    // Nolställ selectedTurrets tile tillstånd
+                    pressedTileObject.GetComponent<Tile>().SetTurretToNull();
+
+                    // Ta bort mergande turrets
+                    Destroy(selectedTurret);
+                    Destroy(tileObjectScript.GetTurret());
+
+                    // Skapa en kopia av merge resultatet, ställ in mottagande tilens tillstånd och flytta kopian till rätt plats
+                    GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
+                    tileUnderPointer.GetComponent<Tile>().SetTurret(mergeResult);
+                    mergeResult.transform.position = mergeLocation;
+                }
+                else
+                {
+                    Debug.Log("Merge Failed!");
+                }
+
+                deselectBuiltTurret();
+                Debug.Log("deselect");
             }
+
             if (tileObjectScript.GetTurret() == null)
             {
                 if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
