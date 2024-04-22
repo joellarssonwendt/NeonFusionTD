@@ -3078,11 +3078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: 32d2a75be92486349b423f00b83dfa78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.71
+      value: -5.24
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: 32d2a75be92486349b423f00b83dfa78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 7385017187038225018, guid: 32d2a75be92486349b423f00b83dfa78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3121,6 +3121,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d2a75be92486349b423f00b83dfa78, type: 3}
+--- !u!1001 &1580837708
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3056856402117988083, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_Name
+      value: LightningKineticTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385017187038225018, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
 --- !u!1001 &1600176263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4286,3 +4343,4 @@ SceneRoots:
   - {fileID: 1098688308}
   - {fileID: 1600176263}
   - {fileID: 1564590417}
+  - {fileID: 1580837708}
