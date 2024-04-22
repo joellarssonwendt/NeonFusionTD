@@ -57,7 +57,6 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator DestroyAfterTime(float time)
     {
-        // Wait for the specified time
         yield return new WaitForSeconds(time);
 
         Destroy(gameObject);
