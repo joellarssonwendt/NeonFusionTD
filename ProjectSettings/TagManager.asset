@@ -20,9 +20,12 @@ TagManager:
   - ice
   - icekinetic
   - arctic
-  - fireice
   - lightning
   - lightningkinetic
+  - firelightning
+  - lightningice
+  - icefire
+  - tesla
   layers:
   - Default
   - TransparentFX

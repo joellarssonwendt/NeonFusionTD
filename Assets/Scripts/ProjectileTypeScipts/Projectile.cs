@@ -60,7 +60,6 @@ public class Projectile : MonoBehaviour
         // Wait for the specified time
         yield return new WaitForSeconds(time);
 
-        // Destroy the projectile
         Destroy(gameObject);
     }
 
@@ -97,7 +96,7 @@ public class Projectile : MonoBehaviour
             }
         }
         // Debug log the number of chains made
-        Debug.Log("Chained to " + chainsMade + " additional enemies.");
+        // Debug.Log("Chained to " + chainsMade + " additional enemies.");
     }
 
     private void DrawLightningEffect()

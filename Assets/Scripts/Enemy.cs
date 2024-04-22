@@ -149,7 +149,7 @@ public class Enemy : MonoBehaviour
 
             //Debug.Log($"Dot effect dealt {accumulatedDotDamage} damage");
 
-            //Debug.Log("Total active burn effects: " + dotEffects.Count + ", Total accumulated Dot effect damage: " + accumulatedDotDamage);
+            Debug.Log("Total active burn effects: " + dotEffects.Count + ", Total accumulated Dot effect damage: " + accumulatedDotDamage);
 
             // Reset the accumulated Dot damage
             accumulatedDotDamage = 0f;
