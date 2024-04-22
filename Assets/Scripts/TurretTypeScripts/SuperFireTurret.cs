@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SuperFireTurret : MonoBehaviour
@@ -58,34 +59,57 @@ public class SuperFireTurret : MonoBehaviour
 
     private void Shoot()
     {
-        float coneAngle = 85;
+        PolygonCollider2D polygonCollider = turretRotationPoint.GetComponent<PolygonCollider2D>();
 
-        float flamethrowerRadius = CalculateFlamethrowerRadius();
-
-        // Detect all enemies within the flamethrower's area of effect
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(firingPoint.position, flamethrowerRadius, enemyMask);
-        Vector2 flamethrowerDirection = (firingPoint.position - transform.position).normalized;
-
-        foreach (var enemy in enemiesInRange)
+        // Convert the polygon collider's points to world space
+        Vector2[] worldPoints = new Vector2[polygonCollider.points.Length];
+        for (int i = 0; i < polygonCollider.points.Length; i++)
         {
-            // Calculate the vector from the flamethrower to the enemy
-            Vector2 toEnemy = (enemy.transform.position - firingPoint.position).normalized;
+            worldPoints[i] = turretRotationPoint.TransformPoint(polygonCollider.points[i]);
+        }
 
-            // Calculate the angle between the flamethrower's direction and the vector to the enemy
-            float angle = Vector2.Angle(flamethrowerDirection, toEnemy);
+        // Find all enemies in range
+        Collider2D[] allEnemies = Physics2D.OverlapCircleAll(transform.position, turretStats.targetingRange, enemyMask);
 
-            // Check if the angle is within the cone's angle
-            if (angle <= coneAngle / 2) 
+        // Filter enemies that are within the polygon collider's area
+        List<Collider2D> enemiesInArea= new List<Collider2D>();
+        foreach (var enemy in allEnemies)
+        {
+            if (IsPointInPolygon(enemy.transform.position, worldPoints))
             {
-                GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
-                DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
-
-                dotProjectile.SetDamage(turretStats.projectileDamage);
-                dotProjectile.SetDotDamage(turretStats.dotAmount); 
-                dotProjectile.SetDotDuration(turretStats.dotDuration); 
-                dotProjectile.SetTarget(enemy.transform);
+                enemiesInArea.Add(enemy);
             }
         }
+
+        //Debug.Log("Enemies in collider area: " + enemiesInArea.Count);
+
+        foreach (var enemy in enemiesInArea)
+        {
+            GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
+            DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
+
+            dotProjectile.SetDamage(turretStats.projectileDamage);
+            dotProjectile.SetDotDamage(turretStats.dotAmount);
+            dotProjectile.SetDotDuration(turretStats.dotDuration);
+            dotProjectile.SetTarget(enemy.transform);
+        }
+    }
+    
+    //Checks if given point is inside the polygon 
+    private bool IsPointInPolygon(Vector2 point, Vector2[] polygonPoints)
+    {
+        bool isInside = false;
+        int j = polygonPoints.Length - 1;
+        for (int i = 0; i < polygonPoints.Length; i++)
+        {
+            if ((polygonPoints[i].y < point.y && polygonPoints[j].y >= point.y || polygonPoints[j].y < point.y && polygonPoints[i].y >= point.y) &&
+                (polygonPoints[i].x + (point.y - polygonPoints[i].y) / (polygonPoints[j].y - polygonPoints[i].y) * (polygonPoints[j].x - polygonPoints[i].x) < point.x))
+            {
+                isInside = !isInside;
+            }
+            j = i;
+        }
+        return isInside;
     }
 
     private void StopFlamethrower()
@@ -122,12 +146,6 @@ public class SuperFireTurret : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
-    }
-
-    private float CalculateFlamethrowerRadius()
-    {
-        var main = flamethrowerParticle.main;
-        return main.startSize.constant * 3.3f; 
     }
 
     /* private void OnDrawGizmosSelected()

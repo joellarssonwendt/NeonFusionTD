@@ -46,10 +46,4 @@ public class ArcticTower : MonoBehaviour
             enemy.ApplyChillEffect(chillAmount, chillDuration, "ArcticTower");
         }
     }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, turretStats.targetingRange);
-    }
 }
