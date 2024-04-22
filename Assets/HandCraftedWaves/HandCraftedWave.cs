@@ -5,6 +5,7 @@ public class HandCraftedWave : ScriptableObject
 {
     // enemyTypes avgör vilken ordning och vilken typ av fiende som skall spawnas
     // enemyAmounts avgör hur många av varje fiende som ska spawnas ur varje steg i enemyTypes
+    // enemiesPerSecond avgör hur många fiender som kommer spawna per sekund
     // Ställ in dessa värden i inspectorn i Unity, lägg sedan in ScriptableObjectet i LevelManagerns lista över HandCraftedWaves.
 
     // Exempel nedan:
@@ -14,4 +15,5 @@ public class HandCraftedWave : ScriptableObject
 
     public GameObject[] enemyTypes;
     public int[] enemyAmounts;
+    public float enemiesPerSecond;
 }

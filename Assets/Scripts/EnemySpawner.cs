@@ -43,11 +43,6 @@ public class EnemySpawner : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (!isSpawning) return;
@@ -77,6 +72,9 @@ public class EnemySpawner : MonoBehaviour
     public void StartWave()
     {
         Debug.Log("Wave Started!");
+
+        if (currentWave <= handCraftedWaves.Count) enemiesPerSecond = handCraftedWaves[currentWave-1].enemiesPerSecond;
+
         isSpawning = true;
         activeRoundPlaying = true;
         enemiesLeftToSpawn = EnemiesPerWave();
