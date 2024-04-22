@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class HealthSystem : MonoBehaviour
 
     public int startingHealth = 5;
     public int currentHealth = 0;
-
+    public GameObject gameOver;
     public int passAmount = 1;
+
+
+    [SerializeField] private float gameOverDelay = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -31,23 +35,19 @@ public class HealthSystem : MonoBehaviour
     }
 
 
+    
 
-
-    /*     if (currentHealth <= 0)
-         {
-             Restart scene?
-         }
-
- */
-
-
-   /* public void EnemyPass(int passAmount)
+    private IEnumerator gameOverscreen()
     {
-        currentHealth -= passAmount;
-        healthSlider.value = currentHealth;
 
-        UpdateHealthBar();
-    }*/
+
+        gameOver.SetActive(true);
+        yield return new WaitForSeconds(gameOverDelay);
+        SceneManager.LoadScene(sceneBuildIndex: 0);
+    }
+
+    
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -65,7 +65,7 @@ public class HealthSystem : MonoBehaviour
     private void UpdateHealthBar()
     {
         healthSlider.value = currentHealth;
-        if (currentHealth >= 2)
+        if (currentHealth >= 3)
         {
             fillColor.color = greenHealth;
         }
@@ -73,8 +73,15 @@ public class HealthSystem : MonoBehaviour
         {
             fillColor.color = redHealth;
         }
+
+        if (currentHealth == 0)
+        {
+            StartCoroutine(gameOverscreen());
+
+            
+        }
     }
 
-
+    
     
 }

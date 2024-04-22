@@ -51,6 +51,9 @@ MonoBehaviour:
   rb: {fileID: 2297878006528734798}
   animator: {fileID: 9213958403180328280}
   enemyStats: {fileID: 11400000, guid: fe9e5df04ccd0654c8e1055c8418b79c, type: 2}
+  fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
+  iceIconPrefab: {fileID: 0}
+  isDead: 0
 --- !u!95 &9213958403180328280
 Animator:
   serializedVersion: 5
@@ -110,9 +113,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingLayerID: 1305239729
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: -987325758, guid: 67773d5f1f6899247904facdfb6782f4, type: 3}
   m_Color: {r: 1, g: 0, b: 0.07135868, a: 1}
   m_FlipX: 0
@@ -183,6 +186,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.003503527}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.58700836

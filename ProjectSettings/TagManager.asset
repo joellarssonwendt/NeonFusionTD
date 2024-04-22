@@ -8,6 +8,19 @@ TagManager:
   - Enemy
   - Shop
   - TemporaryTurretSprites
+  - TemporaryNormalSprite
+  - TemporaryFireSprite
+  - TemporaryIceSprite
+  - TemporaryLightningSprite
+  - normal
+  - fire
+  - supernormal
+  - superfire
+  - firenormal
+  - ice
+  - icekinetic
+  - arctic
+  - fireice
   layers:
   - Default
   - TransparentFX
@@ -17,8 +30,8 @@ TagManager:
   - UI
   - Enemy
   - Projectile
-  - 
-  - 
+  - turret
+  - tile
   - 
   - 
   - 
@@ -45,6 +58,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy
+    uniqueID: 1305239729
+    locked: 0
+  - name: TurretParticles
+    uniqueID: 4162117123
+    locked: 0
   - name: Turret
     uniqueID: 3357261321
+    locked: 0
+  - name: Debuff
+    uniqueID: 1828744649
     locked: 0

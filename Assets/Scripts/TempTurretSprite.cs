@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,11 +26,11 @@ public class TempTurretSprite : MonoBehaviour
     {
         tempTurretHolder.transform.position = Input.mousePosition;
 
-        if (buildManager.checkIfMouseIsOverATile())
+        if (buildManager.isRaycastHittingTile())
         {
             changeColorToGreen();
         }
-        if(!buildManager.checkIfMouseIsOverATile()) 
+        if(!buildManager.isRaycastHittingTile()) 
         { 
             changeColorToRed();
         }

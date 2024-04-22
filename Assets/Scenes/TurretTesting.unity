@@ -8390,6 +8390,7 @@ MonoBehaviour:
   tempLightningTurret: {fileID: 0}
   standardTurretPrefab: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
   fireTurretPrefab: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
+  selectedTurret: {fileID: 0}
 --- !u!4 &1160034903
 Transform:
   m_ObjectHideFlags: 0
@@ -11270,7 +11271,7 @@ GameObject:
   - component: {fileID: 1520910872}
   m_Layer: 5
   m_Name: TemporaryNormalTurret
-  m_TagString: Untagged
+  m_TagString: TemporaryNormalSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15446,7 +15447,7 @@ GameObject:
   - component: {fileID: 1931560908}
   m_Layer: 5
   m_Name: TemporaryFireTurret (1)
-  m_TagString: Untagged
+  m_TagString: TemporaryFireSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16872,6 +16873,10 @@ PrefabInstance:
       propertyPath: turretName
       value: normal
       objectReference: {fileID: 0}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: tempFireTurret
+      value: 
+      objectReference: {fileID: 1931560907}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempNormalTurret
       value: 

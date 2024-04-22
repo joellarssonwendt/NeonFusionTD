@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Compilation;
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private Color grayColor = Color.gray;
-    private Color whiteColor = Color.white;
+    private Color newGray = new Color(20, 20, 20, 1);
+    private Color newLightGray = new Color(54, 54, 54, 1);
     public bool isOverATile = false;
-    private GameObject turret;
+    [SerializeField] private GameObject turret;
     public GameObject currentTile;
 
     BuildManager buildManager;
@@ -21,57 +18,65 @@ public class Tile : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonUp(0) && buildManager.checkIfMouseIsOverATile() && currentTile != null && buildManager.GetTurretToBuild() != null) 
+        if (Input.GetMouseButtonUp(0) && buildManager.isRaycastHittingTile() && currentTile != null && buildManager.GetTurretToBuild() != null)
         {
             PlaceTurret();
         }
-        else if (Input.GetMouseButtonUp(0) && !buildManager.checkIfMouseIsOverATile() && buildManager.GetTurretToBuild() != null)
+        else if (Input.GetMouseButtonUp(0) && !buildManager.isRaycastHittingTile() && buildManager.GetTurretToBuild() != null)
         {
             RemoveMisplacedTurret();
-        }
-
-        if (buildManager.checkIfMouseIsOverATile())
-        {
-            Debug.Log("checkIfMouseIsOverATile");
         }
     }
     public void PlaceTurret()
     {
-        if(turret != null)
+        if (turret != null || PlayerStats.Chrystals < PlayerStats.towerCost)
         {
-            Debug.Log("Already a turret here");
             buildManager.SetTurretToBuildIsNull();
             return;
         }
+
+        PlayerStats.Chrystals -= PlayerStats.towerCost;
+        Debug.Log("Turret Built! Chrystals left: " + PlayerStats.Chrystals);
+        Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
         GameObject turretToBuild = buildManager.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, currentTile.transform.position, Quaternion.identity);
+        turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
         buildManager.SetTurretToBuildIsNull();
     }
     public void RemoveMisplacedTurret()
     {
-            Debug.Log("Can't place turret here.");
-            buildManager.SetTurretToBuildIsNull();
-            return;
+        buildManager.SetTurretToBuildIsNull();
+        return;
     }
     private void OnMouseEnter()
     {
-        isOverATile = true;
-        currentTile = gameObject;
-        Debug.Log("currentTile is this Tile");
         if (buildManager.GetTurretToBuild() != null)
         {
-            spriteRenderer.color = grayColor;
+            // spriteRenderer.color = newLightGray;
         }
+        isOverATile = true;
+        currentTile = gameObject;
     }
     private void OnMouseExit()
     {
-        Debug.Log("currentTile is NULL");
+        // spriteRenderer.color = newGray;
         currentTile = null;
-        spriteRenderer.color = whiteColor;
         isOverATile = false;
     }
     public GameObject GetTurret()
     {
         return turret;
+    }
+    public void SetTurret(GameObject turret)
+    {
+        this.turret = turret;
+    }
+
+    public string GetTurretTag()
+    {
+        return turret.tag;
+    }
+    public void SetTurretToNull()
+    {
+        turret = null;
     }
 }
