@@ -6723,6 +6723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d645e074240c5f04e885fecb81690f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handCraftedWaves:
+  - {fileID: 11400000, guid: cedd529291827ce42a19eb2aeafe6ec4, type: 2}
   enemyTypes:
   - {fileID: 8054526396113401650, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
   - {fileID: 5907289287979489079, guid: e6effcea98c149a498f2789759a2ea66, type: 3}

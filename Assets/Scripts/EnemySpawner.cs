@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
     // Variables
+    [SerializeField] private List<HandCraftedWave> handCraftedWaves;
     [SerializeField] private GameObject[] enemyTypes;
     [SerializeField] private int baseAmount = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
@@ -26,6 +28,8 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
     public bool activeRoundPlaying = false;
+    int enemyAmountCounter = 0;
+    int enemyTypeCounter = 0;
 
     void Awake()
     {
@@ -91,12 +95,46 @@ public class EnemySpawner : MonoBehaviour
 
     private int EnemiesPerWave()
     {
-        return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
+        if (currentWave > handCraftedWaves.Count) return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
+
+        int enemiesPerWave = 0;
+        for (int i = 0; i < handCraftedWaves[currentWave-1].enemyTypes.Length; i++)
+        {
+            enemiesPerWave += handCraftedWaves[currentWave-1].enemyAmounts[i];
+        }
+        return enemiesPerWave;
     }
 
     private void SpawnEnemy()
     {
-        GameObject enemyToSpawn = enemyTypes[Random.Range(0, enemyTypes.Length)];
+        GameObject enemyToSpawn = null;
+
+        if (currentWave <= handCraftedWaves.Count)
+        {
+            // Håll ordning på vilken enemyAmount vi är på
+            enemyAmountCounter++;
+
+            if (enemyAmountCounter >= handCraftedWaves[currentWave-1].enemyAmounts.Length)
+            {
+                // Håll ordning på vilken enemyType vi är på
+                enemyTypeCounter++;
+                enemyAmountCounter = 0;
+
+                if (enemyTypeCounter > handCraftedWaves[currentWave-1].enemyTypes.Length)
+                {
+                    // Återställ när waven är slut
+                    enemyTypeCounter = 0;
+                    enemyAmountCounter = 0;
+                }
+            }
+
+            enemyToSpawn = handCraftedWaves[currentWave-1].enemyTypes[enemyTypeCounter];
+        }
+        else
+        {
+            enemyToSpawn = enemyTypes[Random.Range(0, enemyTypes.Length)];
+        }
+
         Instantiate(enemyToSpawn, LevelManager.main.spawnPoint.position, Quaternion.identity);
     }
 }
