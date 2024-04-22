@@ -7,7 +7,7 @@ public class DotProjectile : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Stats")]
-    [SerializeField] private float projectileSpeed = 7f;
+    [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] public float dotDuration; 
     [SerializeField] private float dotDamage; 
     private float projectileDamage = 0;

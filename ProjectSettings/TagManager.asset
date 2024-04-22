@@ -21,6 +21,8 @@ TagManager:
   - icekinetic
   - arctic
   - fireice
+  - lightning
+  - lightningkinetic
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class IceProjectile : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Stats")]
-    [SerializeField] private float projectileSpeed = 7f;
+    [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float chillDuration;
     [SerializeField] private float chillAmount;
     private float projectileDamage = 0;

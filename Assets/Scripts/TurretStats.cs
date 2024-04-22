@@ -11,4 +11,6 @@ public class TurretStats : ScriptableObject
     public float dotDuration; //Duration of the damage over time debuff 
     public float chillAmount;
     public float chillDuration;
+    public int maxChains;
+    public float chainRange;
 }

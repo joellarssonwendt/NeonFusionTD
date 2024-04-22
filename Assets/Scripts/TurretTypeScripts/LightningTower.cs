@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NormalTurret : MonoBehaviour
+public class LightningTower : MonoBehaviour
 {
     [Header("References")] // Header to group serialized fields in the inspector
     [SerializeField] private Transform turretRotationPoint;
@@ -59,6 +59,10 @@ public class NormalTurret : MonoBehaviour
         projectileScript.SetDamage(turretStats.projectileDamage);
 
         projectileScript.SetTarget(target);
+
+        projectileScript.SetMaxChains(turretStats.maxChains);
+        projectileScript.SetChainRange(turretStats.chainRange);
+        projectileScript.SetEnemyMask(enemyMask);
     }
 
 private void FindTarget()
