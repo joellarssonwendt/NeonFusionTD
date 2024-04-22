@@ -30,10 +30,6 @@ public class MergeManager : MonoBehaviour
         if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
         {
             mergeResult = superKinetic;
-
-            Destroy(heldTurret);
-            Destroy(tileTurret);
-
             Debug.Log("Merge Successful!");
             return true;
         }
@@ -41,10 +37,6 @@ public class MergeManager : MonoBehaviour
         if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("fire"))
         {
             mergeResult = superFire;
-
-            Destroy(heldTurret);
-            Destroy(tileTurret);
-
             Debug.Log("Merge Successful!");
             return true;
         }
@@ -52,10 +44,6 @@ public class MergeManager : MonoBehaviour
         if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("fire")))
         {
             mergeResult = kineticFire;
-
-            Destroy(heldTurret);
-            Destroy(tileTurret);
-
             Debug.Log("Merge Successful!");
             return true;
         }
