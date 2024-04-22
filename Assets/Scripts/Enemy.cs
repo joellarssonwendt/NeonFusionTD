@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour
         // Apply the chill effect based on the total chill amount, capping at maxChillAmount
         chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - totalChillEffect), originalMoveSpeed * maxChillEffectAmount);
 
-        Debug.Log("Total active chill effects: " + chillEffects.Count + ", Current movement speed reduction: " + ((1 - (chilledMoveSpeed / originalMoveSpeed)) * 100) + "%");
+        //Debug.Log("Total active chill effects: " + chillEffects.Count + ", Current movement speed reduction: " + ((1 - (chilledMoveSpeed / originalMoveSpeed)) * 100) + "%");
     }
 
     private void Die()
