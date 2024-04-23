@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using static Unity.VisualScripting.Member;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyStats enemyStats;
     [SerializeField] private GameObject fireIconPrefab;
     [SerializeField] private GameObject iceIconPrefab;
+
 
     private Transform target;
     private int pathIndex = 0;
@@ -23,6 +24,9 @@ public class Enemy : MonoBehaviour
     private float originalMoveSpeed;
     private float chilledMoveSpeed;
     private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
+    private bool isMovingBackwards = false;
+    private float obsidianEffectDuration = 3f;
+    private bool isAffectedByObsidian = false;
 
     private void Start()
     {
@@ -43,24 +47,88 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        if (Vector2.Distance(target.position, transform.position) <= 0.1f)
+        if (isMovingBackwards)
         {
-            pathIndex++;
-
-            if (pathIndex == LevelManager.main.pathingNodes.Length)
+            // If moving backwards, check if the enemy has reached the previous pathing node
+            if (Vector2.Distance(target.position, transform.position) <= 0.1f)
             {
-                EnemySpawner.onEnemyDestroy.Invoke();
-                Destroy(gameObject);
-                return;
+                // If the enemy has reached the previous pathing node, look back another index in the array of pathing nodes
+                if (pathIndex > 0)
+                {
+                    pathIndex--;
+                    target = LevelManager.main.pathingNodes[pathIndex];
+                }
+                else
+                {
+                    // If the enemy has reached the spawn point, stop moving backwards
+                    if (Vector2.Distance(transform.position, LevelManager.main.spawnPoint.position) <= 0.1f)
+                    {
+                        isMovingBackwards = false;
+                        // Since the enemy is already at the spawn point, reset pathIndex to 0 and set the target to the first node
+                        pathIndex = 0;
+                        target = LevelManager.main.pathingNodes[pathIndex];
+                    }
+                    else
+                    {
+                        // If the enemy has not reached the spawn point, set the target to the spawn point
+                        target = LevelManager.main.spawnPoint;
+                    }
+                }
             }
-            else
+        }
+        else
+        {
+            // Existing logic for moving forwards...
+            if (Vector2.Distance(target.position, transform.position) <= 0.1f)
             {
-                target = LevelManager.main.pathingNodes[pathIndex];
+                pathIndex++;
+
+                if (pathIndex == LevelManager.main.pathingNodes.Length)
+                {
+                    EnemySpawner.onEnemyDestroy.Invoke();
+                    Destroy(gameObject);
+                    return;
+                }
+                else
+                {
+                    target = LevelManager.main.pathingNodes[pathIndex];
+                }
             }
         }
 
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * chilledMoveSpeed;
+    }
+
+
+    public void HitByObsidian()
+    {
+        if(!isAffectedByObsidian) 
+        {
+            isAffectedByObsidian = true;
+
+            // Set the enemy to move backwards
+            isMovingBackwards = true;
+            StartCoroutine(ObsidianEffectCoroutine());
+
+            // Adjust the target to the previous pathing node
+            if (pathIndex > 0)
+            {
+                pathIndex--;
+                target = LevelManager.main.pathingNodes[pathIndex];
+            }
+        }
+    }
+
+    private IEnumerator ObsidianEffectCoroutine()
+    {
+        yield return new WaitForSeconds(obsidianEffectDuration);
+
+        // Reset the enemy's movement logic
+        isMovingBackwards = false;
+        target = LevelManager.main.pathingNodes[pathIndex];
+        isAffectedByObsidian = false;
+        //Debug.Log("New target after backward movement duration expired: " + target.name);
     }
 
     public void TakeDamage(float damage)
