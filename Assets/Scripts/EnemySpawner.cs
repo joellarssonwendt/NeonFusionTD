@@ -112,13 +112,13 @@ public class EnemySpawner : MonoBehaviour
             // Håll ordning på vilken enemyAmount vi är på
             enemyAmountCounter++;
 
-            if (enemyAmountCounter >= handCraftedWaves[currentWave-1].enemyAmounts.Length)
+            if (enemyAmountCounter >= handCraftedWaves[currentWave-1].enemyAmounts.Length-1)
             {
                 // Håll ordning på vilken enemyType vi är på
                 enemyTypeCounter++;
                 enemyAmountCounter = 0;
 
-                if (enemyTypeCounter > handCraftedWaves[currentWave-1].enemyTypes.Length)
+                if (enemyTypeCounter > handCraftedWaves[currentWave-1].enemyTypes.Length-1)
                 {
                     // Återställ när waven är slut
                     enemyTypeCounter = 0;
