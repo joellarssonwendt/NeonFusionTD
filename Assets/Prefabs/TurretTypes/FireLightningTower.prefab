@@ -250,7 +250,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  dotProjectilePrefab: {fileID: 4404795518819960278, guid: f4b9f0af88dee704ba62cb49dfad0c36, type: 3}
+  dotProjectilePrefab: {fileID: 4404795518819960278, guid: f99b3738b917db1469e9fbc8d5e68e78, type: 3}
   firingPoint1: {fileID: 4151991782168928605}
   firingPoint2: {fileID: 3371979763288286575}
   TemporaryTurretSprite: {fileID: 0}
