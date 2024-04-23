@@ -43,7 +43,18 @@ public class BuildManager : MonoBehaviour
     }
     private void Update()
     {
-        OnMouseRaycast();
+        if (Input.GetMouseButton(0)) 
+        {
+            OnPointerRaycast(Input.mousePosition);
+        }
+        else if (Input.touchCount > 0) 
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                OnPointerRaycast(touch.position);
+            }
+        }
         OnPressTower();
         OnReleasePressedTower();
         isRaycastHittingTile();
@@ -61,7 +72,7 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    private void OnMouseRaycast()
+    private void OnPointerRaycast(Vector3 screenPosition)
     {
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = -3;
