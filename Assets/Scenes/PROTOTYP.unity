@@ -12974,7 +12974,7 @@ GameObject:
   - component: {fileID: 1178001642}
   - component: {fileID: 1178001641}
   m_Layer: 5
-  m_Name: KineticIceT2Siluette
+  m_Name: ObsidianT2Siluette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13019,7 +13019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df11114b699fd7f44b7a8121d3cf15ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f0e201d2e5e46d45a88a4a3e2ad0978, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13527,7 +13527,7 @@ GameObject:
   - component: {fileID: 1215438999}
   - component: {fileID: 1215438998}
   m_Layer: 5
-  m_Name: KineticT1
+  m_Name: FireT1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13572,7 +13572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae0d803f89cd67e43a7e55b53d5fe76e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2bc5e4542c5ed640b2c12559babac22, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16608,7 +16608,7 @@ GameObject:
   - component: {fileID: 1473584325}
   - component: {fileID: 1473584324}
   m_Layer: 5
-  m_Name: KineticIceT2
+  m_Name: ObsidianT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16653,7 +16653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df11114b699fd7f44b7a8121d3cf15ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f0e201d2e5e46d45a88a4a3e2ad0978, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18814,7 +18814,7 @@ GameObject:
   - component: {fileID: 1699044071}
   - component: {fileID: 1699044070}
   m_Layer: 5
-  m_Name: KineticT1
+  m_Name: FireT1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18859,7 +18859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae0d803f89cd67e43a7e55b53d5fe76e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2bc5e4542c5ed640b2c12559babac22, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
