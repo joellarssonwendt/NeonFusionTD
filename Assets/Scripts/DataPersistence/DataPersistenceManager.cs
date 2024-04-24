@@ -36,7 +36,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         // ladda all sparad data från fil med data handler
-        this.gameData = dataHandler.Load();
+        //this.gameData = dataHandler.Load();
 
         //om det inte finns nån data, starta new game
         if(this.gameData == null)
