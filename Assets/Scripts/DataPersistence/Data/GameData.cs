@@ -7,13 +7,12 @@ using UnityEngine;
 public class GameData
 {
     public int levelNumber;
-    public int diamondAmount;
+    public int Chrystals;
     public List<Tile> listOfTiles;
 
     public GameData()
     {
-        this.levelNumber = 0;
-        this.diamondAmount = 100;
+        this.Chrystals = 100;
     }
 
 }
