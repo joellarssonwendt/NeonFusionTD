@@ -75,4 +75,9 @@ public class MergeManager : MonoBehaviour
         var readOnlyBools = new ReadOnlyCollection<bool>(bools);
         return readOnlyBools;
     }
+
+    public void UpdateUnlockedList()
+    {
+        GetUnlockedList();
+    }
 }
