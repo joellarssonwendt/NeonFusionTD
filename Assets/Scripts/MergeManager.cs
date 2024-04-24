@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 public class MergeManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class MergeManager : MonoBehaviour
 
     // Variables
     private GameObject mergeResult = null;
+    private bool superKineticUnlocked, superFireUnlocked, kineticFireUnlocked;
 
     // Upgrade Prefabs
     [SerializeField] private GameObject superKinetic, superFire, kineticFire;
@@ -30,6 +32,7 @@ public class MergeManager : MonoBehaviour
         if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
         {
             mergeResult = superKinetic;
+            superKineticUnlocked = true;
             Debug.Log("Merge Successful!");
             return true;
         }
@@ -37,6 +40,7 @@ public class MergeManager : MonoBehaviour
         if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("fire"))
         {
             mergeResult = superFire;
+            superFireUnlocked = true;
             Debug.Log("Merge Successful!");
             return true;
         }
@@ -44,6 +48,7 @@ public class MergeManager : MonoBehaviour
         if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("fire")))
         {
             mergeResult = kineticFire;
+            kineticFireUnlocked = true;
             Debug.Log("Merge Successful!");
             return true;
         }
@@ -54,5 +59,15 @@ public class MergeManager : MonoBehaviour
     public GameObject GetMergeResult()
     {
         return mergeResult;
+    }
+
+    public ReadOnlyCollection<bool> GetUnlockedList()
+    {
+        var bools = new List<bool>();
+        bools.Add(superKineticUnlocked);
+        bools.Add(superFireUnlocked);
+        bools.Add(kineticFireUnlocked);
+        var readOnlyBools = new ReadOnlyCollection<bool>(bools);
+        return readOnlyBools;
     }
 }
