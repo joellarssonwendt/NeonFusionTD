@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     private float originalMoveSpeed;
     private float chilledMoveSpeed;
     private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
+    private Dictionary<ChillEffect, GameObject> iceIcons = new Dictionary<ChillEffect, GameObject>();
     private bool isMovingBackwards = false;
     private float obsidianEffectDuration = 3f;
     private bool isAffectedByObsidian = false;
@@ -100,37 +101,6 @@ public class Enemy : MonoBehaviour
         rb.velocity = direction * chilledMoveSpeed;
     }
 
-
-    public void HitByObsidian()
-    {
-        if(!isAffectedByObsidian) 
-        {
-            isAffectedByObsidian = true;
-
-            // Set the enemy to move backwards
-            isMovingBackwards = true;
-            StartCoroutine(ObsidianEffectCoroutine());
-
-            // Adjust the target to the previous pathing node
-            if (pathIndex > 0)
-            {
-                pathIndex--;
-                target = LevelManager.main.pathingNodes[pathIndex];
-            }
-        }
-    }
-
-    private IEnumerator ObsidianEffectCoroutine()
-    {
-        yield return new WaitForSeconds(obsidianEffectDuration);
-
-        // Reset the enemy's movement logic
-        isMovingBackwards = false;
-        target = LevelManager.main.pathingNodes[pathIndex];
-        isAffectedByObsidian = false;
-        //Debug.Log("New target after backward movement duration expired: " + target.name);
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -186,8 +156,10 @@ public class Enemy : MonoBehaviour
 
     public void CreateFireIcon(DotProjectile dotProjectile)
     {
-        GameObject fireIcon = Instantiate(fireIconPrefab, transform.position + Vector3.up * 1.0f, Quaternion.identity, transform);
+        float iconOffset = 0.2f;
+        GameObject fireIcon = Instantiate(fireIconPrefab, transform.position + Vector3.up * 1.0f + Vector3.right * iconOffset, Quaternion.identity, transform);
         fireIcons.Add(dotProjectile, fireIcon);
+
     }
 
     private void ApplyDotEffects()
@@ -219,7 +191,6 @@ public class Enemy : MonoBehaviour
 
             //Debug.Log("Total active burn effects: " + dotEffects.Count + ", Total accumulated Dot effect damage: " + accumulatedDotDamage);
 
-            // Reset the accumulated Dot damage
             accumulatedDotDamage = 0f;
 
             // Update the last damage application time
@@ -230,9 +201,13 @@ public class Enemy : MonoBehaviour
 
     public void ApplyChillEffect(float chillAmount, float duration, string sourceOfChill)
     {
-        // Add a new chill effect to the list
-        chillEffects.Add(new ChillEffect(chillAmount, duration, sourceOfChill));
+        ChillEffect newChillEffect = new ChillEffect(chillAmount, duration, sourceOfChill);
+        chillEffects.Add(newChillEffect);
 
+        if (iceIcons.Count == 0)
+        {
+            CreateIceIcon(newChillEffect);
+        }
     }
 
     private void CheckChillDuration()
@@ -261,10 +236,56 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        if (chillEffects.Count == 0)
+        {
+            foreach (var iceIcon in iceIcons.Values)
+            {
+                Destroy(iceIcon);
+                
+            }
+            iceIcons.Clear();  // Clear the dictionary to reflect that there are no active chill effects
+
+        }
+
         // Apply the chill effect based on the total chill amount, capping at maxChillAmount
         chilledMoveSpeed = Mathf.Max(originalMoveSpeed * (1 - totalChillEffect), originalMoveSpeed * maxChillEffectAmount);
 
         //Debug.Log("Total active chill effects: " + chillEffects.Count + ", Current movement speed reduction: " + ((1 - (chilledMoveSpeed / originalMoveSpeed)) * 100) + "%");
+    }
+    public void CreateIceIcon(ChillEffect chillEffect)
+    {
+        float iconOffset = 0.2f;
+        GameObject iceIcon = Instantiate(iceIconPrefab, transform.position + Vector3.up * 1.0f + Vector3.left * iconOffset, Quaternion.identity, transform);
+        iceIcons.Add(chillEffect, iceIcon); 
+    }
+
+    public void HitByObsidian()
+    {
+        if (!isAffectedByObsidian)
+        {
+            isAffectedByObsidian = true;
+
+            isMovingBackwards = true;
+            StartCoroutine(ObsidianEffectCoroutine());
+
+            // Adjust the target to the previous pathing node
+            if (pathIndex > 0)
+            {
+                pathIndex--;
+                target = LevelManager.main.pathingNodes[pathIndex];
+            }
+        }
+    }
+
+    private IEnumerator ObsidianEffectCoroutine()
+    {
+        yield return new WaitForSeconds(obsidianEffectDuration);
+
+        // Reset the enemy's movement logic
+        isMovingBackwards = false;
+        target = LevelManager.main.pathingNodes[pathIndex];
+        isAffectedByObsidian = false;
+        //Debug.Log("New target after backward movement duration expired: " + target.name);
     }
 
     private void Die()
@@ -276,6 +297,10 @@ public class Enemy : MonoBehaviour
         foreach (var fireIcon in fireIcons.Values)
         {
             Destroy(fireIcon);
+        }
+        foreach (var iceIcon in iceIcons.Values)
+        {
+            Destroy(iceIcon);
         }
 
         Destroy(gameObject, 1f);
@@ -293,7 +318,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private class ChillEffect
+    public class ChillEffect
     {
         public float amount;
         public float duration;

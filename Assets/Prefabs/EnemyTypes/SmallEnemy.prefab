@@ -52,7 +52,7 @@ MonoBehaviour:
   animator: {fileID: 157038425207311015}
   enemyStats: {fileID: 11400000, guid: 8e7be46149f5d3c49b1b567f64c95cc1, type: 2}
   fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
-  iceIconPrefab: {fileID: 0}
+  iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
   isDead: 0
 --- !u!95 &157038425207311015
 Animator:
