@@ -88,6 +88,7 @@ public class EnemySpawner : MonoBehaviour
         timeSinceLastSpawn = 0f;
         currentWave++;
         PlayerStats.Chrystals += chrystalGainPerRound;
+        chrystalGainPerRound += 10;
         nextRoundButton.SetActive(true);
     }
 
