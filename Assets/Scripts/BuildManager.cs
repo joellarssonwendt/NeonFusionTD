@@ -101,11 +101,13 @@ public class BuildManager : MonoBehaviour
         {
             if (tileObjectScript.GetTurret() != null)
             {
+
                 if (mergeManager.CanMerge(selectedTurret, tileObjectScript.GetTurret()))
                 {
-                    if (pressedTileObject == tileUnderPointer)
+                    if (selectedTurret == tileObjectScript.GetTurret())
                     {
                         Debug.Log("Can't merge with itself!");
+                        deselectBuiltTurret();
                         return;
                     }
 
@@ -155,14 +157,14 @@ public class BuildManager : MonoBehaviour
     {
         if (mouseTilePointer[0].collider != null && mouseTilePointer[0].collider.gameObject.layer == LayerMask.NameToLayer("tile"))
         {
-            Debug.Log("Raycast träffar: " + mouseTilePointer[0].collider.gameObject.name);
+            // Debug.Log("Raycast träffar: " + mouseTilePointer[0].collider.gameObject.name);
             tileObjectScript = mouseTilePointer[0].collider.gameObject.GetComponent<Tile>();
             tileUnderPointer = mouseTilePointer[0].collider.gameObject;
             return true;
         }
         else
         {
-            Debug.Log("Raycast träffar inte tile");
+            //Debug.Log("Raycast träffar inte tile");
             return false;
         }
     }

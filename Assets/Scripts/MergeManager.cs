@@ -7,6 +7,7 @@ public class MergeManager : MonoBehaviour
 {
     // Cache
     public static MergeManager instance;
+    BuildManager buildManager;
 
     // Variables
     private GameObject mergeResult = null;
@@ -25,15 +26,18 @@ public class MergeManager : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        buildManager = BuildManager.instance;
+    }
+
     public bool CanMerge(GameObject heldTurret, GameObject tileTurret)
     {
-        Debug.Log("TryMerge() " + heldTurret.tag + " + " + tileTurret.tag);
-
         if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
         {
             mergeResult = superKinetic;
             superKineticUnlocked = true;
-            Debug.Log("Merge Successful!");
+            Debug.Log("Combination found!");
             return true;
         }
 
@@ -41,7 +45,7 @@ public class MergeManager : MonoBehaviour
         {
             mergeResult = superFire;
             superFireUnlocked = true;
-            Debug.Log("Merge Successful!");
+            Debug.Log("Combination found!");
             return true;
         }
 
@@ -49,10 +53,11 @@ public class MergeManager : MonoBehaviour
         {
             mergeResult = kineticFire;
             kineticFireUnlocked = true;
-            Debug.Log("Merge Successful!");
+            Debug.Log("Combination found!");
             return true;
         }
 
+        buildManager.deselectBuiltTurret();
         return false;
     }
 
