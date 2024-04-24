@@ -20,6 +20,7 @@ public class Tile : MonoBehaviour, IDataPersistence
     BuildManager buildManager;
 
     [SerializeField] private string turretPrefabName;
+    private Vector3 turretPosition;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -49,27 +50,33 @@ public class Tile : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if (data.turret.TryGetValue(id, out string prefabName))
+        if (data.turretPrefabNames.TryGetValue(id, out string prefabName) &&
+            data.turretPositions.TryGetValue(id, out Vector3 position))
         {
             turretPrefabName = prefabName;
-            GameObject turretPrefab = Resources.Load<GameObject>(turretPrefabName);
+            turretPosition = position;
+
+            string path = "TurretTypes/" + turretPrefabName;
+            GameObject turretPrefab = Resources.Load<GameObject>(path);
             if (turretPrefab != null)
             {
-                turret = Instantiate(turretPrefab, transform.position, Quaternion.identity);
+                turret = Instantiate(turretPrefab, turretPosition, Quaternion.identity);
             }
         }
     }
     public void SaveData(ref GameData data)
     {
-        if (!string.IsNullOrEmpty(turretPrefabName))
+        if (turret != null && !string.IsNullOrEmpty(turretPrefabName))
         {
-            // Spara turretets namn (typ av prefab) till dictionaryn
-            data.turret[id] = turretPrefabName;
+            // Spara namnet på turreten prefab och positionen där den är placerad
+            data.turretPrefabNames[id] = turretPrefabName;
+            data.turretPositions[id] = turret.transform.position;
         }
         else
         {
-            // Om det inte finns något turret på platsen, ta bort det från dictionaryn
-            data.turret.Remove(id);
+            // Om turreten är null, ta bort den från dictionaryn
+            data.turretPrefabNames.Remove(id);
+            data.turretPositions.Remove(id);
         }
     }
 
