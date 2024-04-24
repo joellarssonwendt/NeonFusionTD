@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemySpawner : MonoBehaviour, IDataPersistence
+public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner instance;
     // Events
@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject nextRoundButton;
     
 
-    public int currentWave = 1;
+    private int currentWave = 1;
     private int chrystalGainPerRound = 100;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
@@ -30,7 +30,6 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     public bool activeRoundPlaying = false;
     int enemyAmountCounter = 0;
     int enemyTypeCounter = 0;
-
 
     void Awake()
     {
@@ -62,14 +61,6 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         {
             EndWave();
         }
-    }
-    public void LoadData(GameData data)
-    {
-        this.currentWave = data.currentWave;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.currentWave = this.currentWave;
     }
 
     private void EnemyDestroyed()

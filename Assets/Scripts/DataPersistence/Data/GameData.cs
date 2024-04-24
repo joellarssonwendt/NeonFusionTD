@@ -6,17 +6,13 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public int currentWave;
+    public int levelNumber;
     public int Chrystals;
-    public int currentHealth;
-    public SerializableDictionary<string, string> turret;
+    public List<Tile> listOfTiles;
 
     public GameData()
     {
         this.Chrystals = 100;
-        this.currentWave = 1;
-        this.currentHealth = 10;
-        turret = new SerializableDictionary<string, string>();
     }
 
 }

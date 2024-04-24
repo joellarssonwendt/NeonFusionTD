@@ -415,10 +415,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ced23822-1cd7-47db-aaee-3b2a8ff906bb
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (205)
@@ -631,10 +627,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: b26fa619-a6f9-4c7a-8dea-c9b37aee97ac
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (208)
@@ -940,10 +932,10 @@ RectTransform:
   - {fileID: 317514599}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -1600}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92571679
 MonoBehaviour:
@@ -1022,10 +1014,10 @@ RectTransform:
   - {fileID: 1244360394}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -1100}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &103086293
 MonoBehaviour:
@@ -1148,10 +1140,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 3a41bbe0-06cf-4860-b210-e81ad74f2067
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (149)
@@ -1214,10 +1202,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 0b758070-3996-4c18-b9f1-a155690beaf9
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (143)
@@ -1355,10 +1339,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 43772ab3-dfcb-443b-a970-e91fb1a59fff
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (13)
@@ -1496,10 +1476,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 19fdfec4-cd7d-4f36-9901-9f3d4b7b8013
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (204)
@@ -1710,10 +1686,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: d48fe573-bc4d-4b7b-9545-521b7d0afafb
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (48)
@@ -1776,10 +1748,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: efa6026c-3890-4231-8c0c-2325893020ba
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (86)
@@ -1846,7 +1814,7 @@ GameObject:
   - component: {fileID: 198588091}
   - component: {fileID: 198588090}
   m_Layer: 5
-  m_Name: Diamonds&WaveCount
+  m_Name: DiamondsBits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1865,7 +1833,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 594687563}
-  - {fileID: 968816474}
   m_Father: {fileID: 2082496822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -2205,10 +2172,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ba30a8c8-bce4-4f9a-a102-f01eb3ff4f08
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (36)
@@ -2271,10 +2234,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 63418cac-a863-4c6c-923d-bc17f1d69e1c
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (103)
@@ -2368,10 +2327,10 @@ RectTransform:
   - {fileID: 1822233319}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -100}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &226145469
 MonoBehaviour:
@@ -2569,10 +2528,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 953cfc26-72e9-4905-a2aa-7bd986fbe61d
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (87)
@@ -3046,10 +3001,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: cb653add-87b6-43d1-a3fa-4037edbf471f
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (80)
@@ -3270,10 +3221,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 07c8817c-538b-45cf-bdd0-7cb5717877c4
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (10)
@@ -3430,7 +3377,7 @@ Transform:
   m_GameObject: {fileID: 297445483}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.2, y: -9.8, z: -11.306198}
+  m_LocalPosition: {x: 12.5, y: -11, z: -11.306198}
   m_LocalScale: {x: 1.9749999, y: 2.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3453,7 +3400,7 @@ MonoBehaviour:
   greenHealth: {r: 0.2901961, g: 1, b: 0.5372549, a: 1}
   redHealth: {r: 0.7735849, g: 0, b: 0, a: 1}
   startingHealth: 10
-  currentHealth: 10
+  currentHealth: 0
   gameOver: {fileID: 1389632440}
   passAmount: 1
   gameOverDelay: 5
@@ -3585,10 +3532,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ac241c17-453a-41a9-b3ab-c24dadf9b230
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (203)
@@ -4107,10 +4050,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 1934016a-b2ae-417d-9ce8-fcb4d94519db
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (180)
@@ -4468,10 +4407,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ff4fa85a-75bf-4674-8ebd-4e5765ee5156
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (212)
@@ -4828,10 +4763,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 591fcfca-d691-4d5f-bb1b-4896cbbd5846
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (176)
@@ -4984,10 +4915,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 955463ea-800e-4bc4-b195-109bb0153419
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (206)
@@ -5050,10 +4977,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: e8491d87-9bb9-4452-ae0a-3197df029507
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (116)
@@ -5127,10 +5050,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 94f64e02-19af-4b73-b1de-f8e4895ed9e9
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (123)
@@ -5204,10 +5123,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ce21b592-4af7-4c15-8d77-88f9bb4e54ad
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (105)
@@ -5270,10 +5185,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: cca4d223-c04d-4422-a250-53bc8f47ad67
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (8)
@@ -5497,10 +5408,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 4098a1b4-8ee5-4944-8fca-bd80c594ddf3
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (82)
@@ -5849,10 +5756,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 8cf509d9-05c2-4321-a1e4-74d4c7e925f5
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (146)
@@ -6171,10 +6074,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 0b8e22f9-c740-4f80-b8d2-f56d69c52d3a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (45)
@@ -6248,10 +6147,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: bb1a6a6c-1186-426d-8ffc-8f68b15b722a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (2)
@@ -6314,10 +6209,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 59f52d86-46d0-48ba-84f2-ce22d42a3d9f
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (160)
@@ -6675,10 +6566,10 @@ RectTransform:
   - {fileID: 270916695}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -2350}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &494787704
 MonoBehaviour:
@@ -6726,10 +6617,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: d6f9737c-a65a-40fb-a956-f780bc05014e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (47)
@@ -6792,10 +6679,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: af43879d-dbd2-4c1f-a19d-af2d09ec89dd
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (85)
@@ -6869,10 +6752,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: b0a909a1-e67a-4dd7-b664-8fb39c24971f
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (7)
@@ -7207,10 +7086,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: e292c180-26a6-43e0-9d11-75b6e17a0813
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (41)
@@ -7273,10 +7148,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 70b4d448-6581-472d-80d4-14ea9ae3548a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (110)
@@ -7339,10 +7210,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 67d299b3-105f-420b-94a5-e3bde52ae682
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (152)
@@ -7480,10 +7347,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 8467c3cc-70e6-4c39-ada3-7e03bff071a2
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (92)
@@ -7557,10 +7420,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: f6e963e7-7304-452a-9b2e-f07cd1b35817
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (129)
@@ -7634,10 +7493,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: b747f62b-56c2-47e2-9efa-9ee0e12b3050
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (108)
@@ -7786,10 +7641,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 6637abc9-4cfc-43b0-a1b5-c8324f5cae3e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (83)
@@ -8002,7 +7853,7 @@ GameObject:
   - component: {fileID: 594687564}
   - component: {fileID: 594687566}
   m_Layer: 5
-  m_Name: DiamondAmountText
+  m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8330,10 +8181,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 77a39dab-d863-46ec-bcb9-dd878aa3df7a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (163)
@@ -8396,10 +8243,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 7e2ea59b-1857-4239-8199-96fac01d2d5e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (46)
@@ -8724,10 +8567,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: fb9aa354-24b7-4c50-9648-d3579a3a863c
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (104)
@@ -8935,10 +8774,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ca1b8ef6-414f-45c6-b686-afd2ee80437f
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (209)
@@ -9001,10 +8836,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: a45bc44e-01a3-4308-833b-908a20a0516a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (150)
@@ -9067,10 +8898,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 9e98da5f-c824-4010-8452-985d26c6d028
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (106)
@@ -9208,10 +9035,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: fc262b38-3e23-4e01-aa4d-4ef12eee4027
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (109)
@@ -9703,10 +9526,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: e84cd1e5-0186-48b8-b3a9-efb0e3b065ca
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (25)
@@ -9769,10 +9588,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: da449f13-1598-40e0-8e7d-45972d5e880d
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (56)
@@ -9873,10 +9688,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 584a8ea8-f0c4-44eb-87ac-7341a4eab75b
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (89)
@@ -10277,7 +10088,6 @@ MonoBehaviour:
   enemiesPerSecond: 1
   difficultyScalingFactor: 1.8
   nextRoundButton: {fileID: 489971314}
-  currentWave: 1
   activeRoundPlaying: 0
 --- !u!114 &906432741
 MonoBehaviour:
@@ -10389,10 +10199,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: f506b15a-cf80-48af-ac38-6236aed22b04
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (201)
@@ -10455,10 +10261,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 378f06d1-5cde-4e36-8256-34c04777864a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (101)
@@ -10607,10 +10409,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 952cbaf3-76ae-4162-958d-ef8134bd4fc0
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (11)
@@ -10750,141 +10548,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968016037}
-  m_CullTransparentMesh: 1
---- !u!1 &968816473
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 968816474}
-  - component: {fileID: 968816477}
-  - component: {fileID: 968816476}
-  m_Layer: 5
-  m_Name: WaveText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &968816474
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968816473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1696631199}
-  m_Father: {fileID: 198588089}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 380, y: -4}
-  m_SizeDelta: {x: 300, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &968816476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968816473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Wave: '
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 96e8c8b6ddfcc714ab2a3f0f0e8c4cf5, type: 2}
-  m_sharedMaterial: {fileID: 8923642484162593404, guid: 96e8c8b6ddfcc714ab2a3f0f0e8c4cf5, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4288095614
-  m_fontColor: {r: 0.49411768, g: 0.14509805, b: 0.5921569, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 2
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &968816477
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968816473}
   m_CullTransparentMesh: 1
 --- !u!1 &971039632
 GameObject:
@@ -11103,10 +10766,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ec409458-0458-4e22-88cb-0efa1c2dbf25
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (5)
@@ -11169,10 +10828,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 26c3fa6e-c6a9-4f78-ad5e-eb5f0705de86
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (6)
@@ -11302,70 +10957,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017861204}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
---- !u!1001 &1018787335
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_Name
-      value: SuperFireTurret
-      objectReference: {fileID: 0}
-    - target: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.475
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
->>>>>>> Stashed changes
 --- !u!1001 &1019193699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11374,10 +10965,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: db608880-d950-4c89-a067-b547470b04c8
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (112)
@@ -11451,10 +11038,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 04aa936f-fcb0-4db0-892a-4938e629c3f7
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (16)
@@ -11650,10 +11233,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 116c7e3e-9bc3-45bc-9332-03df1f8546b2
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (43)
@@ -11921,10 +11500,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 24b39878-0b9e-49db-81f0-adabce533f4b
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (90)
@@ -12003,10 +11578,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 464f5418-4afa-4004-a166-579f522a34fd
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (210)
@@ -12100,10 +11671,10 @@ RectTransform:
   - {fileID: 1068826236}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -1850}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1088479191
 MonoBehaviour:
@@ -12376,10 +11947,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 9054b23b-d823-433a-b77d-e190d01e2e44
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (88)
@@ -12442,10 +12009,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 6e79acf8-4e81-4354-9c6d-b24e261e91a4
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (21)
@@ -12544,7 +12107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2256676e5ac9bc342b69c4e1ed7c3cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: data.game
 --- !u!1 &1123792462
 GameObject:
   m_ObjectHideFlags: 0
@@ -12587,10 +12149,10 @@ RectTransform:
   - {fileID: 1171558193}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -350}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123792464
 MonoBehaviour:
@@ -13244,10 +12806,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 7d8a061b-c3c7-476f-8d2e-f5ae4b35d1f6
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (76)
@@ -13471,10 +13029,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 8be84f48-abb5-4ae6-8e86-05275a283737
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (140)
@@ -13548,10 +13102,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 0950f28f-dc3d-402c-ac8a-cd7b0eba9395
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (81)
@@ -14555,10 +14105,10 @@ RectTransform:
   - {fileID: 1467160428}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -2100}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265160938
 MonoBehaviour:
@@ -14617,10 +14167,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 188190f3-b6e6-4da0-80fd-b19a417dd8c6
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (67)
@@ -14694,10 +14240,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 0e7aa74e-b701-41a2-8ecc-24a721b25ac2
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (84)
@@ -15009,10 +14551,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 9e71ed65-4b33-4c0d-9d36-faa9987bccac
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (69)
@@ -15097,10 +14635,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: cac2455c-fa4d-4a4c-b3e1-bb6941170e2d
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (121)
@@ -15401,10 +14935,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 436c8e2d-58c0-4767-8f50-a611fc33676e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (167)
@@ -15478,10 +15008,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: b4935960-11c1-4192-921c-263d41e1b36c
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (63)
@@ -15718,7 +15244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1358532077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15796,10 +15322,10 @@ RectTransform:
   - {fileID: 1178001640}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -1350}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1358593706
 MonoBehaviour:
@@ -15847,10 +15373,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 48211a85-cfb0-4280-b9c5-b4bc3ac25885
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (20)
@@ -16074,10 +15596,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: c26cd912-954f-4137-b940-65d72a9dab0e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (120)
@@ -16151,10 +15669,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: f60977f8-4d79-46eb-b7b7-ef415a78fc59
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (145)
@@ -16315,10 +15829,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: d4d097d8-1348-4132-9bf1-af8eee24a6ab
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (14)
@@ -16469,10 +15979,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 4145537b-8716-42b5-902b-007264353038
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (137)
@@ -16546,10 +16052,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 4ed27305-48b1-49cd-aacf-96e82363a92e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (100)
@@ -16956,10 +16458,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 8c48c4ba-ab7c-4205-88c7-853dfb3fbaa4
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (12)
@@ -17033,10 +16531,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 89aa6b8e-17b3-4066-ac39-7ef7788df11a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (127)
@@ -17185,10 +16679,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: bbc3dc7d-d80f-4954-93bc-0f08d87c5628
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (214)
@@ -17533,10 +17023,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 0fbced95-0495-4c91-b921-9665e4906e5e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (65)
@@ -18306,10 +17792,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 03679e9c-f400-4d4a-8785-36800550208a
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (102)
@@ -18500,10 +17982,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 02a0d93e-f723-412a-8fd9-07c541431e6e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (60)
@@ -18600,10 +18078,10 @@ RectTransform:
   - {fileID: 816841274}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -850}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608186377
 MonoBehaviour:
@@ -18651,10 +18129,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 1484b412-4938-413b-bc23-3c4fc2f8b5e1
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (196)
@@ -18795,10 +18269,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 1b702c58-4c45-48ac-b74b-3c0f28231447
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (40)
@@ -18872,10 +18342,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 5c1cbc81-39b5-4948-9fbb-e80d01efca8b
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (136)
@@ -19121,10 +18587,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 32d8cf14-a549-401f-a6b8-4a95caeea351
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (70)
@@ -19264,154 +18726,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696171932}
-  m_CullTransparentMesh: 1
---- !u!1 &1696631198
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1696631199}
-  - component: {fileID: 1696631202}
-  - component: {fileID: 1696631201}
-  - component: {fileID: 1696631200}
-  m_Layer: 5
-  m_Name: WaveNumber (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1696631199
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696631198}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 968816474}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 141.20001, y: 0.000014305115}
-  m_SizeDelta: {x: 300, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1696631200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696631198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd095aa49c0882a4db73f1b0e3df2d1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelManager: {fileID: 906432738}
---- !u!114 &1696631201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696631198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 1
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 96e8c8b6ddfcc714ab2a3f0f0e8c4cf5, type: 2}
-  m_sharedMaterial: {fileID: 8923642484162593404, guid: 96e8c8b6ddfcc714ab2a3f0f0e8c4cf5, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4288095614
-  m_fontColor: {r: 0.49411768, g: 0.14509805, b: 0.5921569, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 2
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1696631202
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696631198}
   m_CullTransparentMesh: 1
 --- !u!1 &1698741350
 GameObject:
@@ -19826,10 +19140,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: ca1ff689-38d3-481d-94df-008a7dd452d0
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (202)
@@ -19914,10 +19224,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 56b2b4d5-9251-4da9-9916-2e896715ed6e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (154)
@@ -19991,10 +19297,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: a26ed0f5-84c9-4960-8850-6c7d3cab3ea3
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (62)
@@ -20281,10 +19583,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: cde556ed-47b5-44a7-80de-a04c4e6820b7
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (4)
@@ -20658,10 +19956,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 3edfcfbc-1f2e-4588-8229-89602317b26e
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (0)
@@ -20719,10 +20013,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: a663d116-237d-4bd6-96b6-5a6c4afd069d
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (107)
@@ -21007,10 +20297,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 530a1972-7989-4e5d-801c-3a932f3008c7
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (142)
@@ -21448,10 +20734,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 7dfa9ee1-9c72-4297-b0dd-6a98839cf268
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (213)
@@ -21752,10 +21034,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 279cb1fe-c52f-4b0e-99df-d2dacccf6422
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (147)
@@ -21829,10 +21107,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 3f8f5d0c-580e-48fb-b105-1a7911adae78
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (9)
@@ -22133,10 +21407,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: e84ae0f4-4d09-4c46-b381-146aee9c0167
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (164)
@@ -22287,10 +21557,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 2eb50682-b202-4133-b4e1-0ce46b6d67a0
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (50)
@@ -22364,10 +21630,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 0746e5ea-f772-4463-b7ad-1bde4735db97
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (66)
@@ -22441,10 +21703,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 033844a1-28e8-499a-984e-93533fa41f36
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (29)
@@ -22720,10 +21978,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 4c65da54-b56f-4011-9637-67d860220943
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (61)
@@ -22789,70 +22043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51a9288975b3dd4f979c006efb58298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-=======
---- !u!1001 &1958453369
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3056856402117988083, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_Name
-      value: ArcticTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 3056856402117988083, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.475
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 11.636
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385017187038225018, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
->>>>>>> Stashed changes
 --- !u!114 &1971977926 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
@@ -33194,10 +32384,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 4552be4a-38a8-47ec-a481-b1ea14c7f2b4
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (96)
@@ -33501,10 +32687,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 4eb7dd5f-a24e-4115-9c08-860f1cc57f75
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (207)
@@ -33794,10 +32976,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 49e4e9ff-de54-4c52-88f6-d5756d1ab1b6
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (1)
@@ -34201,10 +33379,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 446cd925-9803-41f7-90d6-bad5260987d1
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (42)
@@ -34312,10 +33486,10 @@ RectTransform:
   - {fileID: 1696171933}
   m_Father: {fileID: 293156196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -600}
-  m_SizeDelta: {x: 650, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2063686213
 MonoBehaviour:
@@ -34519,10 +33693,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 86effaa6-02f7-40c6-9fc6-1283d05a1a49
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (125)
@@ -34596,10 +33766,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: 6357dc9b-342e-4856-9a0a-ae53b02a220f
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (141)
@@ -34684,10 +33850,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1136845070}
     m_Modifications:
-    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
-      propertyPath: id
-      value: c86c52d3-d4a4-48dc-8091-5dacda98959f
-      objectReference: {fileID: 0}
     - target: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: m_Name
       value: TurretTile (49)
