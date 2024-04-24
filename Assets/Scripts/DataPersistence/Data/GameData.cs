@@ -9,16 +9,14 @@ public class GameData
     public int currentWave;
     public int Chrystals;
     public int currentHealth;
-    public SerializableDictionary<string, string> turretPrefabNames;
-    public SerializableDictionary<string, Vector3> turretPositions;
+    public SerializableDictionary<string, string> turret;
 
     public GameData()
     {
         this.Chrystals = 100;
         this.currentWave = 1;
         this.currentHealth = 10;
-        turretPrefabNames = new SerializableDictionary<string, string>();
-        turretPositions = new SerializableDictionary<string, Vector3>();
+        turret = new SerializableDictionary<string, string>();
     }
 
 }
