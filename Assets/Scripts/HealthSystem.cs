@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IDataPersistence
 {
 
     [SerializeField] private Slider healthSlider;
@@ -13,25 +13,34 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private Color greenHealth, redHealth;
 
 
-    public int startingHealth = 5;
-    public int currentHealth = 0;
+    public int startingHealth = 10;
+    public int currentHealth;
     public GameObject gameOver;
     public int passAmount = 1;
 
 
     [SerializeField] private float gameOverDelay = 5;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = startingHealth;
-
+        //currentHealth = startingHealth;
+        healthSlider.value = this.currentHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(currentHealth.ToString());
+    }
+    public void LoadData(GameData data)
+    {
+        this.currentHealth = data.currentHealth;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.currentHealth = this.currentHealth;
     }
 
 
@@ -39,8 +48,6 @@ public class HealthSystem : MonoBehaviour
 
     private IEnumerator gameOverscreen()
     {
-
-
         gameOver.SetActive(true);
         yield return new WaitForSeconds(gameOverDelay);
         SceneManager.LoadScene(sceneBuildIndex: 0);

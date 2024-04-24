@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
 
      void Start()
     {
-        Chrystals = startingChrystals;
+       
     }
 
     public void LoadData(GameData data)

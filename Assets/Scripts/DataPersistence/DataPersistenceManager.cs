@@ -5,10 +5,14 @@ using System.Linq;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    [Header("File Storage Config")]
+    [SerializeField] private string fileName;
+
  public static DataPersistenceManager instance {  get; private set; }
 
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
+    private FileDataHandler dataHandler;
     private void Awake()
     {
         if (instance != null)
@@ -21,6 +25,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Start()
     {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
@@ -30,30 +35,35 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void LoadGame()
     {
-        // Todod ladda sparad data från file med data handler
+        // ladda all sparad data från fil med data handler
+        //this.gameData = dataHandler.Load();
+
         //om det inte finns nån data, starta new game
         if(this.gameData == null)
         {
             Debug.Log("Ingen data hittades, börja med default data");
             NewGame();
         }
-        // TODO, pusha alla loaded data till alla scripts som behöver de.
+        // pusha alla loaded data till alla scripts som behöver de.
         foreach(IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.LoadData(gameData);
         }
-        Debug.Log("Loaded crystal count = " + gameData.Chrystals);
+
     }
     public void SaveGame()
     {
-        // Todo, lägg in alla data i andra scripts så de kan uppdatera det
+        // Lägg in alla data i andra scripts så de kan uppdatera det
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-        //TODO , spara den datan i en fil med hjälp av data handler
-        Debug.Log("Saved crystal count = " + gameData.Chrystals);
+
+        // spara den datan i en fil med hjälp av data handler
+        dataHandler.Save(gameData);
+
     }
+    
     private void OnApplicationQuit()
     {
         SaveGame();
