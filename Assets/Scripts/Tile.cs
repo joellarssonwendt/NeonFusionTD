@@ -1,8 +1,14 @@
 using System;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private string id;
+    [ContextMenu("Generera guid för referens till enskilt gameobject")]
+    private void GenerateGuide()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
     private SpriteRenderer spriteRenderer;
     private Color newGray = new Color(20, 20, 20, 1);
     private Color newLightGray = new Color(54, 54, 54, 1);
@@ -11,6 +17,8 @@ public class Tile : MonoBehaviour
     public GameObject currentTile;
 
     BuildManager buildManager;
+    private string turretPrefabName;
+    private Vector3 turretPosition;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,6 +35,38 @@ public class Tile : MonoBehaviour
             RemoveMisplacedTurret();
         }
     }
+
+    public void LoadData(GameData data)
+    {
+        if (data.turretPrefabNames.TryGetValue(id, out string prefabName) &&
+            data.turretPositions.TryGetValue(id, out Vector3 position))
+        {
+            turretPrefabName = prefabName;
+            turretPosition = position;
+
+            string path = "TurretTypes/" + turretPrefabName;
+            GameObject turretPrefab = Resources.Load<GameObject>(path);
+            if (turretPrefab != null)
+            {
+                turret = Instantiate(turretPrefab, turretPosition, Quaternion.identity);
+            }
+        }
+    }
+    public void SaveData(ref GameData data)
+    {
+        if (turret != null && !string.IsNullOrEmpty(turretPrefabName))
+        {
+            // Spara namnet p  turreten prefab och positionen där den  är placerad
+            data.turretPrefabNames[id] = turretPrefabName;
+            data.turretPositions[id] = turret.transform.position;
+        }
+        else
+        {
+            // Om turreten  är null, ta bort den från dictionaryn
+            data.turretPrefabNames.Remove(id);
+            data.turretPositions.Remove(id);
+        }
+    }
     public void PlaceTurret()
     {
         if (turret != null || PlayerStats.Chrystals < PlayerStats.towerCost)
@@ -40,6 +80,7 @@ public class Tile : MonoBehaviour
         Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
         GameObject turretToBuild = buildManager.GetTurretToBuild();
         turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
+        turretPrefabName = turret.name;
         buildManager.SetTurretToBuildIsNull();
     }
     public void RemoveMisplacedTurret()
@@ -78,5 +119,6 @@ public class Tile : MonoBehaviour
     public void SetTurretToNull()
     {
         turret = null;
+        turretPrefabName = null;
     }
 }
