@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         ApplyDotEffects();
         CheckDoTDuration();
         CheckChillDuration();
-        CheckBossActive();
+        if (bossNumber != 0 && !bossActive) RunBossBehaviour();
     }
 
     private void Move()
@@ -310,16 +310,9 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
-    private void CheckBossActive()
+    private void RunBossBehaviour()
     {
-        if (bossNumber == 0)
-        {
-            return;
-        }
-        else
-        {
-            bossActive = true;
-        }
+        bossActive = true;
 
         if (bossNumber == 1)
         {

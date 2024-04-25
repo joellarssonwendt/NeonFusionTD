@@ -97,6 +97,8 @@ public class BuildManager : MonoBehaviour
     }
     private void OnReleasePressedTower()
     {
+        bool mergeHappened = false;
+
         if (Input.GetMouseButtonUp(0) && selectedTurret != null)
         {
             if (tileObjectScript.GetTurret() != null)
@@ -112,6 +114,7 @@ public class BuildManager : MonoBehaviour
                     }
 
                     Debug.Log("Merge Successful!");
+                    mergeHappened = true;
 
                     // Spara målplatsen för merge resultatet.
                     Vector3 mergeLocation = tileObjectScript.GetTurret().transform.position;
@@ -139,7 +142,7 @@ public class BuildManager : MonoBehaviour
 
             if (tileObjectScript.GetTurret() == null)
             {
-                if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
+                if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying && !mergeHappened)
                 {
                     //här flyttas turreten till tilen som musen är över
                     MoveTurret();
@@ -152,6 +155,9 @@ public class BuildManager : MonoBehaviour
                 }
             }
         }
+
+        if (mergeHappened) SetTurretToBuildIsNull();
+        mergeHappened = false;
     }
     public bool isRaycastHittingTile()
     {
