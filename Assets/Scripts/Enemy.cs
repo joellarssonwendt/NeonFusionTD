@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int bossNumber = 0;
     [SerializeField] private bool obsidianResistant = false;
 
-
+    private SpriteRenderer spriteRenderer;
     private Transform target;
     private int pathIndex = 0;
     private float currentHealth;
@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         target = LevelManager.main.pathingNodes[pathIndex];
         currentHealth = enemyStats.maxHealth;
 
@@ -320,6 +321,7 @@ public class Enemy : MonoBehaviour
         if (bossNumber == 1)
         {
             Debug.Log("kör Boss 1 beteende");
+            //StartCoroutine(Boss1());
         }
 
         if (bossNumber == 2)
@@ -327,6 +329,20 @@ public class Enemy : MonoBehaviour
             Debug.Log("kör Boss 2 beteende");
         }
     }
+
+    //private IEnumerator Boss1()
+    //{
+    //    Color originalColor = spriteRenderer.color;
+
+    //    for (int i = 0; i < 10; i++)
+    //    {
+    //        yield return new WaitForSeconds(1f);
+    //        spriteRenderer.color = Color.white;
+    //        currentHealth++;
+    //        yield return new WaitForSeconds(0.2f);
+    //        spriteRenderer.color = originalColor;
+    //    }
+    //}
 
     private class DotEffect
     {

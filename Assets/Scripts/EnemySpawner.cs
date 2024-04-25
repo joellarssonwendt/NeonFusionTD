@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
 
     // Variables
     [SerializeField] private List<HandCraftedWave> handCraftedWaves;
-    [SerializeField] private GameObject[] enemyTypes;
+    [SerializeField] private GameObject[] randomEnemyArray;
     [SerializeField] private int baseAmount = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
@@ -142,7 +142,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         }
         else
         {
-            enemyToSpawn = enemyTypes[Random.Range(0, enemyTypes.Length)];
+            enemyToSpawn = randomEnemyArray[Random.Range(0, randomEnemyArray.Length)];
         }
 
         Instantiate(enemyToSpawn, LevelManager.main.spawnPoint.position, Quaternion.identity);
