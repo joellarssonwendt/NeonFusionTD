@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     public static EnemySpawner instance;
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
+    public static UnityEvent onRoundEnd = new UnityEvent();
 
     // Variables
     [SerializeField] private List<HandCraftedWave> handCraftedWaves;
@@ -99,6 +100,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         PlayerStats.Chrystals += chrystalGainPerRound;
         chrystalGainPerRound += 10;
         nextRoundButton.SetActive(true);
+        onRoundEnd.Invoke();
     }
 
     private int EnemiesPerWave()
