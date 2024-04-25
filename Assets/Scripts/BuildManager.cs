@@ -126,6 +126,10 @@ public class BuildManager : MonoBehaviour
                     Destroy(selectedTurret);
                     Destroy(tileObjectScript.GetTurret());
 
+                    // Ta bort referenser till mergande turrets
+                    SetTurretToBuildIsNull();
+                    deselectBuiltTurret();
+
                     // Skapa en kopia av merge resultatet, ställ in mottagande tilens tillstånd och flytta kopian till rätt plats
                     GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
                     tileUnderPointer.GetComponent<Tile>().SetTurret(mergeResult);

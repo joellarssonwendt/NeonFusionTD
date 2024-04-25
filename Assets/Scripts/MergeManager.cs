@@ -57,7 +57,6 @@ public class MergeManager : MonoBehaviour
             return true;
         }
 
-        buildManager.deselectBuiltTurret();
         return false;
     }
 
