@@ -161,7 +161,7 @@ public class Enemy : MonoBehaviour
 
     public void CreateFireIcon(DotProjectile dotProjectile)
     {
-        float iconOffset = 0.2f;
+        float iconOffset = 0.25f;
         GameObject fireIcon = Instantiate(fireIconPrefab, transform.position + Vector3.up * 1.0f + Vector3.right * iconOffset, Quaternion.identity, transform);
         fireIcons.Add(dotProjectile, fireIcon);
 
@@ -259,7 +259,7 @@ public class Enemy : MonoBehaviour
     }
     public void CreateIceIcon(ChillEffect chillEffect)
     {
-        float iconOffset = 0.2f;
+        float iconOffset = 0.25f;
         GameObject iceIcon = Instantiate(iceIconPrefab, transform.position + Vector3.up * 1.0f + Vector3.left * iconOffset, Quaternion.identity, transform);
         iceIcons.Add(chillEffect, iceIcon); 
     }
