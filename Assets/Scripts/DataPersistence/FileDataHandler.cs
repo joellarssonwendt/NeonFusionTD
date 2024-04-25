@@ -1,15 +1,18 @@
+/*using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class FileDataHandler
 {
     private string dataDirPath = "";
-    private string dataFileName;
+    private string dataFileName = "";
 
-    public FileDataHandler(string dataDirPath, string dataFileName)
+    public FileDataHandler(string dataDirPath = "", string dataFileName = "")
     {
-        this.dataDirPath = dataDirPath;
+        this.dataDirPath = string.IsNullOrEmpty(dataDirPath) ? Application.persistentDataPath : dataDirPath;
         this.dataFileName = dataFileName;
     }
     public GameData Load()
@@ -65,4 +68,4 @@ public class FileDataHandler
         }
     }
 }
-
+*/

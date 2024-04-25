@@ -5,10 +5,11 @@ using System.Linq;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    [Header("File Storage Config")]
+   /* [Header("File Storage Config")]
     [SerializeField] private string fileName;
 
  public static DataPersistenceManager instance {  get; private set; }
+    //get private set gör så att man kommer åt innehållet men inte kan göra ändringar
 
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
@@ -72,5 +73,5 @@ public class DataPersistenceManager : MonoBehaviour
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
-    }
+    }*/
 }

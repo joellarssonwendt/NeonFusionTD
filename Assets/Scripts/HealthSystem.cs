@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HealthSystem : MonoBehaviour, IDataPersistence
+public class HealthSystem : MonoBehaviour//, IDataPersistence
 {
 
     [SerializeField] private Slider healthSlider;
@@ -28,14 +28,14 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
 
     }
 
-    public void LoadData(GameData data)
+    /*public void LoadData(GameData data)
     {
         this.currentHealth = data.currentHealth;
     }
     public void SaveData(ref GameData data)
     {
         data.currentHealth = this.currentHealth;
-    }
+    }*/
 
     private IEnumerator gameOverscreen()
     {
