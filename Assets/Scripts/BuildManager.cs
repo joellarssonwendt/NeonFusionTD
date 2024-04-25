@@ -114,15 +114,32 @@ public class BuildManager : MonoBehaviour
     private void OnReleasePressedTower()
     {
         bool mergeHappened = false;
+        GameObject heldTurret = selectedTurret;
+        GameObject targetTurret = tileObjectScript.GetTurret();
 
         if (Input.GetMouseButtonUp(0) && selectedTurret != null)
         {
+            if (tileObjectScript.GetTurret() == null)
+            {
+                if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying && !mergeHappened)
+                {
+                    //här flyttas turreten till tilen som musen är över
+                    MoveTurret();
+                }
+                else
+                {
+                    //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
+                    deselectBuiltTurret();
+                    Debug.Log("deselect");
+                }
+            }
+
             if (tileObjectScript.GetTurret() != null)
             {
 
-                if (mergeManager.CanMerge(selectedTurret, tileObjectScript.GetTurret()))
+                if (mergeManager.CanMerge(heldTurret, targetTurret))
                 {
-                    if (selectedTurret == tileObjectScript.GetTurret())
+                    if (heldTurret == targetTurret)
                     {
                         Debug.Log("Can't merge with itself!");
                         deselectBuiltTurret();
@@ -139,8 +156,8 @@ public class BuildManager : MonoBehaviour
                     pressedTileObject.GetComponent<Tile>().SetTurretToNull();
 
                     // Ta bort mergande turrets
-                    Destroy(selectedTurret);
-                    Destroy(tileObjectScript.GetTurret());
+                    Destroy(heldTurret);
+                    Destroy(targetTurret);
 
                     // Ta bort referenser till mergande turrets
                     SetTurretToBuildIsNull();
@@ -160,20 +177,7 @@ public class BuildManager : MonoBehaviour
                 Debug.Log("deselect");
             }
 
-            if (tileObjectScript.GetTurret() == null)
-            {
-                if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying && !mergeHappened)
-                {
-                    //här flyttas turreten till tilen som musen är över
-                    MoveTurret();
-                }
-                else
-                {
-                    //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
-                    deselectBuiltTurret();
-                    Debug.Log("deselect");
-                }
-            }
+            
         }
 
         if (mergeHappened) SetTurretToBuildIsNull();
