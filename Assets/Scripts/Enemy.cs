@@ -241,14 +241,15 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // Check if there are no more active chill effects
         if (chillEffects.Count == 0)
         {
+            // Destroy all ice icons associated with the enemy
             foreach (var iceIcon in iceIcons.Values)
             {
                 Destroy(iceIcon);
-                
             }
-            iceIcons.Clear();  // Clear the dictionary to reflect that there are no active chill effects
+            iceIcons.Clear();   // Clear the dictionary to reflect that there are no active chill effects
 
         }
 
