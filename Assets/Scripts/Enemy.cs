@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyStats enemyStats;
     [SerializeField] private GameObject fireIconPrefab;
     [SerializeField] private GameObject iceIconPrefab;
+    [SerializeField] private int bossNumber = 0;
 
 
     private Transform target;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     private bool isMovingBackwards = false;
     private float obsidianEffectDuration = 3f;
     private bool isAffectedByObsidian = false;
+    private bool bossActive = false;
 
     private void Start()
     {
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour
         ApplyDotEffects();
         CheckDoTDuration();
         CheckChillDuration();
+        CheckBossActive();
     }
 
     private void Move()
@@ -303,7 +306,30 @@ public class Enemy : MonoBehaviour
             Destroy(iceIcon);
         }
 
+        if (bossNumber != 0) bossActive = false;
         Destroy(gameObject, 1f);
+    }
+
+    private void CheckBossActive()
+    {
+        if (bossNumber == 0)
+        {
+            return;
+        }
+        else
+        {
+            bossActive = true;
+        }
+
+        if (bossNumber == 1)
+        {
+            // Boss 1 beteende
+        }
+
+        if (bossNumber == 2)
+        {
+            // Boss 2 beteende
+        }
     }
 
     private class DotEffect
