@@ -23,7 +23,8 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     
 
     private int currentWave = 1;
-    private int chrystalGainPerRound = 100;
+    private int bitsGainPerRound = 100;
+    private int crystalGainPerRound = 2;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
@@ -97,8 +98,12 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         activeRoundPlaying = false;
         timeSinceLastSpawn = 0f;
         currentWave++;
-        PlayerStats.Chrystals += chrystalGainPerRound;
-        chrystalGainPerRound += 10;
+
+        PlayerStats.AddBits(bitsGainPerRound);
+        PlayerStats.AddCrystals(crystalGainPerRound);
+        bitsGainPerRound += 10;
+        crystalGainPerRound += 1;
+
         nextRoundButton.SetActive(true);
         onRoundEnd.Invoke();
     }

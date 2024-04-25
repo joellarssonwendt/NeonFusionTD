@@ -68,14 +68,14 @@ public class Tile : MonoBehaviour//, IDataPersistence
     }*/
     public void PlaceTurret()
     {
-        if (turret != null || PlayerStats.Chrystals < PlayerStats.towerCost)
+        if (turret != null || PlayerStats.Bits < PlayerStats.towerCost)
         {
             buildManager.SetTurretToBuildIsNull();
             return;
         }
 
-        PlayerStats.Chrystals -= PlayerStats.towerCost;
-        Debug.Log("Turret Built! Chrystals left: " + PlayerStats.Chrystals);
+        PlayerStats.AddBits(-PlayerStats.towerCost);
+        Debug.Log("Turret Built! Bits left: " + PlayerStats.Bits);
         Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
         GameObject turretToBuild = buildManager.GetTurretToBuild();
         turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
