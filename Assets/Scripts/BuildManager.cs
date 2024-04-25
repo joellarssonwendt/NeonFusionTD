@@ -12,19 +12,31 @@ public class BuildManager : MonoBehaviour
     private int rayCastDistance = 100;
     public static BuildManager instance;
     EnemySpawner enemySpawner;
+    MergeManager mergeManager;
+
+    // Turret prefabs
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
     public GameObject superStandardTurretPrefab;
     public GameObject superFireTurretPrefab;
+
+    // Referens till shopen för vilken turret som ska byggas
     private GameObject turretToBuild;
+
+    // Referens till tile script och objekt
     public Tile tileObjectScript;
     public GameObject tileObjectPrefab;
+
+    // Refererar till tilen och tornet som blir klickad på
     private GameObject pressedTileObject;
-    private GameObject tileUnderPointer;
     public GameObject selectedTurret;
-    public RaycastHit2D mouseTowerPointer;
+
+    // Uppdaterar och sätter ny referens till tilen under muspekaren
+    private GameObject tileUnderPointer;
+
+    // Raycast specifikt för torn som inte går igenom objekt och raycast för tile som går igenom alla objekt
+    public RaycastHit2D mouseTowerPointer; 
     RaycastHit2D[] mouseTilePointer = new RaycastHit2D[1];
-    MergeManager mergeManager;
 
     private void Awake()
     {
@@ -89,8 +101,12 @@ public class BuildManager : MonoBehaviour
             if (mouseTowerPointer.collider != null && mouseTowerPointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
             {
                 Debug.Log("trycker på turret");
+                //Tornet som ska flyttas sparas i en referens
                 selectedTurret = mouseTowerPointer.collider.gameObject;
-                selectBuiltTurret();
+                //Här kollas vad det är för torn och gör så att en sprite kopia av objektet syns som man kan dra runt innan man placerar tornet
+                ActivateTemporaryTurretSprite();
+                //Här sparas en referens till den tilen som muspekaren är över när man klickar på tornet.
+                //Det gör man för att kunna rensa tilen vid lyckad flytt.
                 pressedTileObject = tileUnderPointer;
             }
         }
@@ -189,6 +205,7 @@ public class BuildManager : MonoBehaviour
     }
     public void SetTurretToBuildIsNull()
     {
+        // Rensar referensen till det tornet som ska byggas från shoppen och deaktiverar den temporära spriten
         deactivateTempTurretSprites();
         turretToBuild = null;
     }
@@ -203,8 +220,9 @@ public class BuildManager : MonoBehaviour
         tempSuperFireTurret.SetActive(false);
     }
 
-    public void selectBuiltTurret()
+    public void ActivateTemporaryTurretSprite()
     {
+        //Baserat på vad det är för torn det är som blir klickat så activeras olika sprites
         if (turretToBuild == null)
         {
             Debug.Log("turretSelcted");
@@ -232,23 +250,31 @@ public class BuildManager : MonoBehaviour
     }
     public void deselectBuiltTurret()
     {
+        //rensar referensen till det klickade tornet samt det temporära flyttspritsen blir inaktiva
         selectedTurret = null;
         deactivateTempTurretSprites();
     }
     private void MoveTurret()
     {
         Debug.Log("flytta turret");
+
+        // Här hämtar vi positionen av den tile som är under muspekaren
         Vector3 newCalculatedTowerPosition = new Vector3(tileObjectScript.transform.position.x, tileObjectScript.transform.position.y, 0);
 
-        // Ta bort turrens referens från den tidigare tilen
+        // Ta bort turrens referens från platsen den ska flyttas till
         if (tileUnderPointer.GetComponent<Tile>().GetTurret() != null)
         {
             tileUnderPointer.GetComponent<Tile>().SetTurretToNull();
         }
 
+        // Flyttar tornet till den nya tilens plats och sätter in den nya turret referensen
         selectedTurret.transform.position = newCalculatedTowerPosition;
         tileUnderPointer.GetComponent<Tile>().SetTurret(selectedTurret);
+
+        // Här rensas referensen från den gamla tilen (som sparades när man klickade på tornet som ska flytts) 
         pressedTileObject.GetComponent<Tile>().SetTurretToNull();
+
+        // Rensar referensen för tornet som blev klickad på och deaktiverar den temporära turret spriten. 
         deselectBuiltTurret();
     }
 }

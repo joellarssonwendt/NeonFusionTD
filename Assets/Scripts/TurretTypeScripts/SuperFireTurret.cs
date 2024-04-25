@@ -158,7 +158,7 @@ public class SuperFireTurret : MonoBehaviour
      {
          currentTurretOnPointer = gameObject;
          buildManager.selectedTurret = currentTurretOnPointer;
-         buildManager.selectBuiltTurret();
+         buildManager.ActivateTemporaryTurretSprite();
          buildManager.tileObject.SetTurretToNull();
      }
 
