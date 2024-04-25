@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject fireIconPrefab;
     [SerializeField] private GameObject iceIconPrefab;
     [SerializeField] private int bossNumber = 0;
+    [SerializeField] private bool obsidianResistant = false;
 
 
     private Transform target;
@@ -264,6 +265,8 @@ public class Enemy : MonoBehaviour
 
     public void HitByObsidian()
     {
+        if (obsidianResistant) return;
+
         if (!isAffectedByObsidian)
         {
             isAffectedByObsidian = true;
@@ -316,12 +319,12 @@ public class Enemy : MonoBehaviour
 
         if (bossNumber == 1)
         {
-            // Boss 1 beteende
+            Debug.Log("kör Boss 1 beteende");
         }
 
         if (bossNumber == 2)
         {
-            // Boss 2 beteende
+            Debug.Log("kör Boss 2 beteende");
         }
     }
 
