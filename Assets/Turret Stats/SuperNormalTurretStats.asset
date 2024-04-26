@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b9d5076e8e6a84398a7c555fd47ef2, type: 3}
   m_Name: SuperNormalTurretStats
   m_EditorClassIdentifier: 
-  targetingRange: 5
+  targetingRange: 5.2
   rotationSpeed: 700
   projectilesPerSecond: 5
   projectileDamage: 0.5
   dotAmount: 0
   dotDuration: 0
+  chillAmount: 0
+  chillDuration: 0
+  maxChains: 0
+  chainRange: 0
