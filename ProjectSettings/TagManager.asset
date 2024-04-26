@@ -17,6 +17,15 @@ TagManager:
   - supernormal
   - superfire
   - firenormal
+  - ice
+  - icekinetic
+  - arctic
+  - lightning
+  - lightningkinetic
+  - firelightning
+  - lightningice
+  - icefire
+  - tesla
   layers:
   - Default
   - TransparentFX
@@ -26,8 +35,8 @@ TagManager:
   - UI
   - Enemy
   - Projectile
-  - TurretTiles
-  - 
+  - turret
+  - tile
   - 
   - 
   - 
@@ -54,14 +63,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Turret
-    uniqueID: 3357261321
-    locked: 0
-  - name: Flamethrower
-    uniqueID: 4162117123
-    locked: 0
   - name: Enemy
     uniqueID: 1305239729
+    locked: 0
+  - name: TurretParticles
+    uniqueID: 4162117123
+    locked: 0
+  - name: Turret
+    uniqueID: 3357261321
     locked: 0
   - name: Debuff
     uniqueID: 1828744649

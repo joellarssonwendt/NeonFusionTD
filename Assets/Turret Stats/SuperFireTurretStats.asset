@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b9d5076e8e6a84398a7c555fd47ef2, type: 3}
   m_Name: SuperFireTurretStats
   m_EditorClassIdentifier: 
-  targetingRange: 5.5
+  targetingRange: 5.8
   rotationSpeed: 750
-  projectilesPerSecond: 8
-  projectileDamage: 0.00001
-  dotAmount: 0.003
-  dotDuration: 10
+  projectilesPerSecond: 30
+  projectileDamage: 0.001
+  dotAmount: 0.005
+  dotDuration: 7
+  chillAmount: 0
+  chillDuration: 0

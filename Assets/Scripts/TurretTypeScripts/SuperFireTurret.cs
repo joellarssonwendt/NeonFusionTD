@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SuperFireTurret : MonoBehaviour
@@ -17,6 +18,7 @@ public class SuperFireTurret : MonoBehaviour
     [SerializeField] private TurretStats turretStats;
 
     private Transform target;
+    private float timeUntilFire = 0f;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class SuperFireTurret : MonoBehaviour
     }
     private void Update()
     {
-        if (target == null)
+        if (target == null || target.GetComponent<Enemy>().isDead)
         {
             StopFlamethrower();
             FindTarget();
@@ -46,23 +48,68 @@ public class SuperFireTurret : MonoBehaviour
                 flamethrowerParticle.Play();
             }
 
-            Shoot();
+            float projectileShootInterval = 1f / turretStats.projectilesPerSecond;
+            if (Time.time >= timeUntilFire)
+            {
+                Shoot();
+                timeUntilFire = Time.time + projectileShootInterval;
+            }
         }
     }
 
-    private void Shoot() // Instantiate a projectile and set its target
+    private void Shoot()
     {
+        PolygonCollider2D polygonCollider = turretRotationPoint.GetComponent<PolygonCollider2D>();
 
-        // Instantiate a dot projectile and set its target
-        GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
-        DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
+        // Convert the polygon collider's points to world space
+        Vector2[] worldPoints = new Vector2[polygonCollider.points.Length];
+        for (int i = 0; i < polygonCollider.points.Length; i++)
+        {
+            worldPoints[i] = turretRotationPoint.TransformPoint(polygonCollider.points[i]);
+        }
 
-        // Set the damage value of the dot projectile from the Scriptable Object
-        dotProjectile.SetDamage(turretStats.projectileDamage);
-        dotProjectile.SetDotDamage(turretStats.dotAmount); // Set dot damage
-        dotProjectile.SetDotDuration(turretStats.dotDuration); // Set dot duration
-        dotProjectile.SetTarget(target);
+        // Find all enemies in range
+        Collider2D[] allEnemies = Physics2D.OverlapCircleAll(transform.position, turretStats.targetingRange, enemyMask);
 
+        // Filter enemies that are within the polygon collider's area
+        List<Collider2D> enemiesInArea= new List<Collider2D>();
+        foreach (var enemy in allEnemies)
+        {
+            if (IsPointInPolygon(enemy.transform.position, worldPoints))
+            {
+                enemiesInArea.Add(enemy);
+            }
+        }
+
+        //Debug.Log("Enemies in collider area: " + enemiesInArea.Count);
+
+        foreach (var enemy in enemiesInArea)
+        {
+            GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
+            DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
+
+            dotProjectile.SetDamage(turretStats.projectileDamage);
+            dotProjectile.SetDotDamage(turretStats.dotAmount);
+            dotProjectile.SetDotDuration(turretStats.dotDuration);
+            dotProjectile.SetTarget(enemy.transform);
+        }
+    }
+    
+    //Checks if given point is inside the polygon 
+    private bool IsPointInPolygon(Vector2 point, Vector2[] polygonPoints)
+    {
+        bool isInside = false;
+        int j = polygonPoints.Length - 1;
+        for (int i = 0; i < polygonPoints.Length; i++)
+        {
+            if ((polygonPoints[i].y < point.y && polygonPoints[j].y >= point.y || polygonPoints[j].y < point.y && polygonPoints[i].y >= point.y) &&
+                (polygonPoints[i].x + (point.y - polygonPoints[i].y) / (polygonPoints[j].y - polygonPoints[i].y) * (polygonPoints[j].x - polygonPoints[i].x) < point.x))
+            {
+                isInside = !isInside;
+            }
+            j = i;
+        }
+        return isInside;
     }
 
     private void StopFlamethrower()
@@ -72,12 +119,19 @@ public class SuperFireTurret : MonoBehaviour
     }
 
     private void FindTarget()
-    {   // Raycast in a circle around the turret's position to find enemies within targeting range
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, Vector2.zero, 0f, enemyMask);
+    {
+        // Raycast in a circle around the turret's position to find enemies within targeting range
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if (hits.Length > 0) // If enemies are found within range, set the first one as target
+        foreach (var hit in hits)
         {
-            target = hits[0].transform;
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            // Check if the enemy is not dead
+            if (enemy != null && !enemy.isDead)
+            {
+                target = hit.transform;
+                break;
+            }
         }
     }
 
@@ -94,48 +148,48 @@ public class SuperFireTurret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
-    private void OnDrawGizmosSelected()
-    {   // Draws a circle in the scene view to visualize the turret's targeting range
-        //Handles.color = Color.green;
-        //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
-    }
+    /* private void OnDrawGizmosSelected()
+     {   // Draws a circle in the scene view to visualize the turret's targeting range
+         //Handles.color = Color.green;
+         //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
+     }
 
-    private void OnMouseDown()
-    {
-        currentTurretOnPointer = gameObject;
-        buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
-        buildManager.tileObject.SetTurretToNull();
-    }
+     private void OnMouseDown()
+     {
+         currentTurretOnPointer = gameObject;
+         buildManager.selectedTurret = currentTurretOnPointer;
+         buildManager.ActivateTemporaryTurretSprite();
+         buildManager.tileObject.SetTurretToNull();
+     }
 
-    private void OnMouseUp()
-    {
-        if (buildManager.tileObject.GetTurret() != null)
-        {
-            //här kan merge koden vara sen
-            buildManager.deselectBuiltTurret();
-            Debug.Log("deselect, Men kan köra merge också sen");
-        }
-        if (buildManager.tileObject.GetTurret() == null)
-        {
-            if (buildManager.checkIfMouseIsOverATile() && !enemySpawner.activeRoundPlaying)
-            {
-                //här flyttas turreten till tilen som musen är över
-                Debug.Log("flytta turret");
-                buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
-                buildManager.tileObject.SetTurretToNull();
-                buildManager.deselectBuiltTurret();
-            }
-            else
-            {
-                //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
-                buildManager.deselectBuiltTurret();
-                Debug.Log("deselect");
-            }
-        }
-    }
-    public GameObject GetTurret()
-    {
-        return currentTurretOnPointer;
-    }
+     private void OnMouseUp()
+     {
+         if (buildManager.tileObject.GetTurret() != null)
+         {
+             //här kan merge koden vara sen
+             buildManager.deselectBuiltTurret();
+             Debug.Log("deselect, Men kan köra merge också sen");
+         }
+         if (buildManager.tileObject.GetTurret() == null)
+         {
+             if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
+             {
+                 //här flyttas turreten till tilen som musen är över
+                 Debug.Log("flytta turret");
+                 buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
+                 buildManager.tileObject.SetTurretToNull();
+                 buildManager.deselectBuiltTurret();
+             }
+             else
+             {
+                 //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
+                 buildManager.deselectBuiltTurret();
+                 Debug.Log("deselect");
+             }
+         }
+     }
+     public GameObject GetTurret()
+     {
+         return currentTurretOnPointer;
+     }*/
 }

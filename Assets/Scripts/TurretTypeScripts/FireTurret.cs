@@ -9,7 +9,6 @@ public class FireTurret : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
-    MergeManager mergeManager;
     EnemySpawner enemySpawner;
     private GameObject currentTurretOnPointer;
 
@@ -23,11 +22,10 @@ public class FireTurret : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
-        mergeManager = MergeManager.instance;
     }
     private void Update()
     {
-        if (target == null)
+        if (target == null || target.GetComponent<Enemy>().isDead)
         {
             FindTarget();
             return;
@@ -66,12 +64,19 @@ public class FireTurret : MonoBehaviour
     }
 
     private void FindTarget()
-    {   // Raycast in a circle around the turret's position to find enemies within targeting range
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, Vector2.zero, 0f, enemyMask);
+    {
+        // Raycast in a circle around the turret's position to find enemies within targeting range
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if (hits.Length > 0) // If enemies are found within range, set the first one as target
+        foreach (var hit in hits)
         {
-            target = hits[0].transform;
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            // Check if the enemy is not dead
+            if (enemy != null && !enemy.isDead)
+            {
+                target = hit.transform;
+                break;
+            }
         }
     }
 
@@ -88,7 +93,7 @@ public class FireTurret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
-    private void OnDrawGizmosSelected()
+  /*  private void OnDrawGizmosSelected()
     {   // Draws a circle in the scene view to visualize the turret's targeting range
         //Handles.color = Color.green;
         //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
@@ -98,7 +103,7 @@ public class FireTurret : MonoBehaviour
     {
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
+        buildManager.ActivateTemporaryTurretSprite();
         buildManager.tileObject.SetTurretToNull();
     }
 
@@ -106,13 +111,12 @@ public class FireTurret : MonoBehaviour
     {
         if (buildManager.tileObject.GetTurret() != null)
         {
-            TryMerge();
             buildManager.deselectBuiltTurret();
             Debug.Log("deselect, Men kan köra merge också sen");
         }
         if (buildManager.tileObject.GetTurret() == null)
         {
-            if (buildManager.checkIfMouseIsOverATile() && !enemySpawner.activeRoundPlaying)
+            if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
             {
                 //här flyttas turreten till tilen som musen är över
                 Debug.Log("flytta turret");
@@ -131,18 +135,7 @@ public class FireTurret : MonoBehaviour
     public GameObject GetTurret()
     {
         return currentTurretOnPointer;
-    }
-    private void TryMerge()
-    {
-        Debug.Log("TryMerge() körs");
-        if (mergeManager.CanMerge(buildManager.tileObject.GetTurret()))
-        {
-            buildManager.tileObject.SetTurret((GameObject)Instantiate(mergeManager.mergeResult, buildManager.tileObject.transform.position, Quaternion.identity));
-            buildManager.tileObject.SetTurret(mergeManager.mergeResult);
-            mergeManager.mergeResult = null;
-            Destroy(gameObject);
-        }
-    }
+    }*/
 }
 
 

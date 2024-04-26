@@ -28,7 +28,7 @@ public class SuperNormalTurret : MonoBehaviour
     }
     private void Update()
     {
-        if(target == null)
+        if (target == null || target.GetComponent<Enemy>().isDead)
         {
             FindTarget();
             return;
@@ -36,7 +36,7 @@ public class SuperNormalTurret : MonoBehaviour
 
         RotateTowardsTarget();
 
-        if(!CheckTargetIsInRange()) // If the target is out of range, reset target to null
+        if (!CheckTargetIsInRange()) // If the target is out of range, reset target to null
         {
             target = null;
         }
@@ -54,7 +54,6 @@ public class SuperNormalTurret : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
-        // Determine which firing point to use based on the flag
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
 
         // Instantiate a projectile at the current firing point
@@ -72,9 +71,15 @@ public class SuperNormalTurret : MonoBehaviour
         // Raycast in a circle around the turret's position to find enemies within targeting range
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, turretStats.targetingRange, (Vector2)transform.position, 0f, enemyMask);
 
-        if (hits.Length > 0) // If enemies are found within range, set the first one as target
+        foreach (var hit in hits)
         {
-            target = hits[0].transform;
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            // Check if the enemy is not dead
+            if (enemy != null && !enemy.isDead)
+            {
+                target = hit.transform;
+                break;
+            }
         }
     }
 
@@ -92,7 +97,7 @@ public class SuperNormalTurret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 
-    private void OnDrawGizmosSelected()
+   /* private void OnDrawGizmosSelected()
     {
         // Draws a circle in the scene view to visualize the turret's targeting range
         //Handles.color = Color.green;
@@ -102,7 +107,7 @@ public class SuperNormalTurret : MonoBehaviour
     {
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
+        buildManager.ActivateTemporaryTurretSprite();
         buildManager.tileObject.SetTurretToNull();
     }
 
@@ -116,7 +121,7 @@ public class SuperNormalTurret : MonoBehaviour
         }
         if (buildManager.tileObject.GetTurret() == null && !enemySpawner.activeRoundPlaying)
         {
-            if (buildManager.checkIfMouseIsOverATile())
+            if (buildManager.isRaycastHittingTile())
             {
                 //här flyttas turreten till tilen som musen är över
                 Debug.Log("flytta turret");
@@ -135,5 +140,5 @@ public class SuperNormalTurret : MonoBehaviour
     public GameObject GetTurret()
     {
         return currentTurretOnPointer;
-    }
+    }*/
 }

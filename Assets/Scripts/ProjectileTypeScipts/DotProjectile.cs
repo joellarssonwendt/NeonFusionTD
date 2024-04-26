@@ -5,13 +5,16 @@ public class DotProjectile : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private LineRenderer lineRenderer;
 
     [Header("Stats")]
-    [SerializeField] private float projectileSpeed = 7f;
-    [SerializeField] private float dotDuration; // Duration of the DoT effect
-    [SerializeField] private float dotDamage; // Damage per second for the DoT effect
+    [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] public float dotDuration; 
+    [SerializeField] private float dotDamage;
     private float projectileDamage = 0;
-
+    private int maxChains;
+    private float chainRange;
+    private LayerMask enemyMask;
     private Transform target;
 
     public void SetTarget(Transform _target)
@@ -21,23 +24,38 @@ public class DotProjectile : MonoBehaviour
 
     public void SetDamage(float damage)
     {
-        projectileDamage = damage; // Method to set the damage value
+        projectileDamage = damage; 
     }
 
     public void SetDotDamage(float damage)
     {
-        dotDamage = damage; // Method to set the DoT damage value
+        dotDamage = damage; 
     }
 
     public void SetDotDuration(float duration)
     {
-        dotDuration = duration; // Method to set the DoT duration value
+        dotDuration = duration; 
+    }
+
+    public void SetMaxChains(int maxChains)
+    {
+        this.maxChains = maxChains;
+    }
+
+    public void SetChainRange(float chainRange)
+    {
+        this.chainRange = chainRange;
+    }
+
+    public void SetEnemyMask(LayerMask mask)
+    {
+        enemyMask = mask;
     }
 
     private void Start()
     {
-        // Start the coroutine to destroy the projectile after 3 seconds
         StartCoroutine(DestroyAfterTime(3f));
+        DrawLightningFireEffect();
     }
 
     private void FixedUpdate()
@@ -52,8 +70,7 @@ public class DotProjectile : MonoBehaviour
     {
         // Wait for the specified time
         yield return new WaitForSeconds(time);
-
-        // Destroy the projectile
+        
         Destroy(gameObject);
     }
 
@@ -70,6 +87,7 @@ public class DotProjectile : MonoBehaviour
         }
 
         Destroy(gameObject);
+        ChainDamage();
     }
 
     private IEnumerator ApplyDotEffect(Enemy enemy)
@@ -77,22 +95,84 @@ public class DotProjectile : MonoBehaviour
         // Add the dotDamage to the total DoT effect for this dotProjectile
         enemy.TakeDotDamage(dotDamage, this);
 
-        Debug.Log("DoT effect started on enemy: " + enemy.name);
+        //Debug.Log("DoT effect started on enemy: " + enemy.name);
 
         float timer = 0f;
+        float damageInterval = 0.5f;
 
         while (timer < dotDuration)
         {
             yield return null;
             timer += Time.deltaTime;
+            yield return new WaitForSeconds(damageInterval);
+            timer += damageInterval;
+
+            enemy.TakeDotDamage(dotDamage, this);
         }
 
         // Remove the dotDamage from the total DoT effect when DoT effect ends
         dotDamage = 0;
 
-        Debug.Log("DoT effect ended on enemy: " + enemy.name);
+        //Debug.Log("DoT effect ended on enemy: " + enemy.name);
     }
 
+    private void ChainDamage()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, chainRange, enemyMask);
+
+        int chainsMade = 0;
+
+        foreach (var enemy in enemies)
+        {
+            // Skip the main target
+            if (enemy.transform == target) continue;
+
+            if (chainsMade >= maxChains) break; // Stop chaining after reaching the maximum number of chains
+
+            Enemy enemyHealth = enemy.GetComponent<Enemy>();
+            if (enemyHealth != null && !enemyHealth.isDead)
+            {
+                enemyHealth.TakeDamage(projectileDamage);
+                enemyHealth.TakeDotDamage(dotDamage, this);
+                chainsMade++;
+            }
+        }
+        // Debug log the number of chains made
+        // Debug.Log("Chained to " + chainsMade + " additional enemies.");
+    }
+
+    private void DrawLightningFireEffect()
+    {
+        if (maxChains <= 0) return;
+
+        // Reset the LineRenderer
+        lineRenderer.positionCount = 0;
+
+        // Add the projectile's position as the first point
+        lineRenderer.positionCount++;
+        lineRenderer.SetPosition(0, transform.position);
+
+        lineRenderer.positionCount++;
+        lineRenderer.SetPosition(1, target.position);
+
+        int chainedTargetsCount = 0;
+
+        // Add each chained enemy's position as subsequent points
+        foreach (var enemy in Physics2D.OverlapCircleAll(transform.position, chainRange, enemyMask))
+        {
+            if (enemy.transform == target) continue;
+
+            Enemy enemyHealth = enemy.GetComponent<Enemy>();
+            if (enemyHealth != null && enemyHealth.isDead) continue;
+
+            if (chainedTargetsCount >= maxChains) break;
+
+            lineRenderer.positionCount++;
+            lineRenderer.SetPosition(lineRenderer.positionCount - 1, enemy.transform.position);
+
+            chainedTargetsCount++;
+        }
+    }
 }
 
 
