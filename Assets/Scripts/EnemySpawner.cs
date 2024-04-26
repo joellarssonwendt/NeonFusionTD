@@ -20,6 +20,8 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
 
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
+    [SerializeField] private GameObject shopNormalTurretButton, shopIceTurretButton, shopLightningTurretButton, shopFireTurretButton;
+    
     
 
     private int currentWave = 1;
@@ -44,11 +46,10 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         }
         instance = this;
     }
-
     void Update()
     {
         if (!isSpawning) return;
-
+        Debug.Log(currentWave.ToString());
         timeSinceLastSpawn += Time.deltaTime;
 
         if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
@@ -106,6 +107,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
 
         nextRoundButton.SetActive(true);
         onRoundEnd.Invoke();
+        CheckAndUpdateShopButtons();
     }
 
     private int EnemiesPerWave()
@@ -151,5 +153,20 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         }
 
         Instantiate(enemyToSpawn, LevelManager.main.spawnPoint.position, Quaternion.identity);
+    }
+    private void CheckAndUpdateShopButtons()
+    {
+        if(currentWave >= 4)
+        {
+            shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableIceTowerButton();
+        }
+        if(currentWave >= 8)
+        {
+            shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableLightningTowerButton();
+        }
+        if (currentWave >= 12)
+        {
+            shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableFireTowerButton();
+        }
     }
 }
