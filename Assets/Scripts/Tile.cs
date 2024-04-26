@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Tile : MonoBehaviour//, IDataPersistence
@@ -68,19 +69,39 @@ public class Tile : MonoBehaviour//, IDataPersistence
     }*/
     public void PlaceTurret()
     {
-        if (turret != null || PlayerStats.Bits < PlayerStats.towerCost)
+        if (turret != null || PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
         {
             buildManager.SetTurretToBuildIsNull();
             return;
         }
-
-        PlayerStats.AddBits(-PlayerStats.towerCost);
+        
+        PlayerStats.AddBits(-GetTowerCost(buildManager.GetTurretToBuild()));
         Debug.Log("Turret Built! Bits left: " + PlayerStats.Bits);
         Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
         GameObject turretToBuild = buildManager.GetTurretToBuild();
         turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
         turretPrefabName = turret.name;
         buildManager.SetTurretToBuildIsNull();
+    }
+
+    private int GetTowerCost(GameObject turret)
+    {
+        if(turret.GetComponent<IceTower>() != null)
+        {
+            return PlayerStats.iceTowerCost;
+        }
+        else if(turret.GetComponent<FireTurret>() != null)
+        {
+            return PlayerStats.fireTowerCost;
+        }
+        else if(turret.GetComponent<LightningTower>() != null)
+        {
+            return PlayerStats.lightningTowerCost;
+        }
+        else
+        {
+            return PlayerStats.normalTowerCost;
+        }
     }
     public void RemoveMisplacedTurret()
     {
