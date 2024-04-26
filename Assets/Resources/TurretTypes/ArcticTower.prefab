@@ -252,9 +252,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.04401003, y: 0.014670577}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 1.996349
 --- !u!1 &4484780674428449404
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +297,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 5995222955780666773}
     m_Modifications:
     - target: {fileID: 291426763811245916, guid: 0372ed2b50794924dbded77baf20a96a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 291426763811245916, guid: 0372ed2b50794924dbded77baf20a96a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 291426763811245916, guid: 0372ed2b50794924dbded77baf20a96a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 291426763811245916, guid: 0372ed2b50794924dbded77baf20a96a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -338,7 +350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1726446898611253238, guid: 0372ed2b50794924dbded77baf20a96a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.039215688
+      value: 0.20392157
       objectReference: {fileID: 0}
     - target: {fileID: 8733084062964011700, guid: 0372ed2b50794924dbded77baf20a96a, type: 3}
       propertyPath: m_Name
