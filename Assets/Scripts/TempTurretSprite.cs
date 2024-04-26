@@ -42,7 +42,7 @@ public class TempTurretSprite : MonoBehaviour
     }
     private void changeColorToGreen()
     {
-        image.color = green;
+        image.color = transparentGreen;
         attackRangeImage.color = transparentGreen;
     }
 }

@@ -8,13 +8,11 @@ public class ShopTurretButton : MonoBehaviour
     [SerializeField] private GameObject normalTurretSprite, fireTurretSprite, iceTurretSprite, lightningTurretSprite, superNormalSprite, superFireSprite;
     private GameObject shopPanel;
     private Shop shop;
-    private TempTurretSprite tempTurretSprite;
 
     private void Start()
     {
         shopPanel = GameObject.FindWithTag("Shop");
         shop = shopPanel.GetComponent<Shop>();
-        tempTurretSprite = normalTurretSprite.GetComponent<TempTurretSprite>();
     }
     public void pointerDown()
     {
@@ -30,23 +28,13 @@ public class ShopTurretButton : MonoBehaviour
         }
         else if (turretName.ToLower() == "ice")
         {
-            Debug.Log("Händer inget för att ice turret inte är tillagd");
+            shop.SelectIceTurret();
             tempIceTurret.SetActive(true);
         }
         else if (turretName.ToLower() == "lightning")
         {
-            Debug.Log("Händer inget för att lightning turret inte är tillagd");
+            shop.SelectLightningTurret();
             tempLightningTurret.SetActive(true);
-        }
-        else if (turretName.ToLower() == "supernormal")
-        {
-            shop.SelectSuperStandardTurret();
-            tempSuperNormalTurret.SetActive(true);
-        }
-        else if (turretName.ToLower() == "superfire")
-        {
-            shop.SelectSuperFireTurret();
-            tempSuperFireTurret.SetActive(true);
         }
     }
 }

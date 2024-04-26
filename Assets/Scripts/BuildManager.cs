@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 public class BuildManager : MonoBehaviour
 {
     [SerializeField] List<Tile> listOfAllTiles;
-    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempSuperNormalTurret, tempSuperFireTurret;
+    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempNormalNormalTurret, tempFireFireTurret, tempIceIceTurret;
+    [SerializeField] private GameObject tempIceFireTurret, tempIceLightningTurret, tempLightningFireTurret, tempNormalIceTurret, tempNormalLightningTurret, tempLightningLightningTurret, tempNormalFireTurret;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject testDiamond;
     //[SerializeField] private LayerMask turret, tile;
@@ -14,16 +15,17 @@ public class BuildManager : MonoBehaviour
     EnemySpawner enemySpawner;
     MergeManager mergeManager;
 
-    // Turret prefabs
+    [Header("Turret prefabs")]
     public GameObject standardTurretPrefab;
     public GameObject fireTurretPrefab;
-    public GameObject superStandardTurretPrefab;
-    public GameObject superFireTurretPrefab;
-
+    public GameObject iceTurretPrefab;
+    public GameObject lightningTurretPrefab;
+   
     // Referens till shopen för vilken turret som ska byggas
     private GameObject turretToBuild;
 
     // Referens till tile script och objekt
+    [Header("\n")]
     public Tile tileObjectScript;
     public GameObject tileObjectPrefab;
 
@@ -218,10 +220,10 @@ public class BuildManager : MonoBehaviour
     {
         tempNormalTurret.SetActive(false);
         tempFireTurret.SetActive(false);
-        // tempIceTurret.SetActive(false);
-        // tempLightningTurret.SetActive(false);
-        tempSuperNormalTurret.SetActive(false);
-        tempSuperFireTurret.SetActive(false);
+        tempIceTurret.SetActive(false);
+        tempLightningTurret.SetActive(false);
+        tempNormalNormalTurret.SetActive(false);
+        tempFireFireTurret.SetActive(false);
     }
 
     public void ActivateTemporaryTurretSprite()
@@ -242,13 +244,63 @@ public class BuildManager : MonoBehaviour
             }
             else if (selectedTurret.GetComponent<SuperFireTurret>() != null)
             {
-                Debug.Log("SuperFireTurretOnTileSelected");
-                tempSuperFireTurret.SetActive(true);
+                Debug.Log("FireFireTurretOnTileSelected");
+                tempFireFireTurret.SetActive(true);
             }
             else if (selectedTurret.GetComponent<SuperNormalTurret>() != null)
             {
-                Debug.Log("SuperNormalTurretOnTileSelected");
-                tempSuperNormalTurret.SetActive(true);
+                Debug.Log("NormalNormalTurretOnTileSelected");
+                tempNormalNormalTurret.SetActive(true);
+            }
+            else if (selectedTurret.GetComponent<FireNormalTurret>() != null)
+            {
+                Debug.Log("FireNormalTurretOnTileSelected");
+                tempNormalFireTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<IceTower>() != null)
+            {
+                Debug.Log("IceTurretOnTileSelected");
+                tempIceTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<LightningTower>() != null)
+            {
+                Debug.Log("LightningTurretOnTileSelected");
+                tempLightningTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<TeslaTower>() != null)
+            {
+                Debug.Log("TeslaTurretOnTileSelected");
+                tempLightningLightningTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<ArcticTower>() != null)
+            {
+                Debug.Log("ArcticTurretOnTileSelected");
+                tempIceIceTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<LightningIceTower>() != null)
+            {
+                Debug.Log("IceLightningTurretOnTileSelected");
+                tempIceLightningTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<ObsidianTower>() != null) 
+            {
+                Debug.Log("ObsidianTurretOnTileSelected");
+                tempIceFireTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<IceKineticTower>() != null)
+            {
+                Debug.Log("IceKineticTurretOnTileSelected");
+                tempNormalIceTurret.SetActive(true);
+            }
+            else if(selectedTurret.GetComponent<LightningKineticTower>() != null)
+            {
+                Debug.Log("LightningKineticTurretOnTileSelected");
+                tempNormalLightningTurret.SetActive(true);
+            }
+            else if (selectedTurret.GetComponent<FireLightningTower>() != null)
+            {
+                Debug.Log("FireLightningTurretOnTileSelected");
+                tempLightningFireTurret.SetActive(true);
             }
         }
     }
