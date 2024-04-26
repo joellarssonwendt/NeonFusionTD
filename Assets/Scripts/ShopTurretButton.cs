@@ -21,17 +21,17 @@ public class ShopTurretButton : MonoBehaviour
             shop.SelectStandardTurret();
             tempNormalTurret.SetActive(true);
         }
-        else if (turretName.ToLower() == "fire")
+        if (turretName.ToLower() == "fire")
         {
             shop.SelectFireTurret();
             tempFireTurret.SetActive(true);
         }
-        else if (turretName.ToLower() == "ice")
+        if (turretName.ToLower() == "ice")
         {
             shop.SelectIceTurret();
             tempIceTurret.SetActive(true);
         }
-        else if (turretName.ToLower() == "lightning")
+        if (turretName.ToLower() == "lightning")
         {
             shop.SelectLightningTurret();
             tempLightningTurret.SetActive(true);

@@ -23750,9 +23750,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb8bcaac5dcd3d4da9e37920121b752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  superKinetic: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
-  superFire: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-  kineticFire: {fileID: 3056856402117988083, guid: 481e3ff2f4d51d0438a895392d9a0a12, type: 3}
+  normalNormal: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
+  fireFire: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+  normalFire: {fileID: 3056856402117988083, guid: 481e3ff2f4d51d0438a895392d9a0a12, type: 3}
+  normalIce: {fileID: 3056856402117988083, guid: 998e8491a5a47be48a66b21f71e9e2d9, type: 3}
+  normalLightning: {fileID: 3056856402117988083, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+  iceIce: {fileID: 3056856402117988083, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
+  iceLightning: {fileID: 3056856402117988083, guid: 4280deeaa3bbe2e4e9af44f7fdce9888, type: 3}
+  iceFire: {fileID: 3056856402117988083, guid: 30389174004845649bbc46a6f0682ca6, type: 3}
+  lightningFire: {fileID: 3056856402117988083, guid: d84ef6d2e8d8c64418af2db631b9e9ca, type: 3}
+  lightningLightning: {fileID: 3056856402117988083, guid: 2d8ad55155fc19b49a0b1cb861873894, type: 3}
 --- !u!1001 &1858637192
 PrefabInstance:
   m_ObjectHideFlags: 0

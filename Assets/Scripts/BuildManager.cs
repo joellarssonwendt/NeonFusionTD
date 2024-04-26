@@ -224,6 +224,15 @@ public class BuildManager : MonoBehaviour
         tempLightningTurret.SetActive(false);
         tempNormalNormalTurret.SetActive(false);
         tempFireFireTurret.SetActive(false);
+
+        tempIceIceTurret.SetActive(false);
+        tempLightningLightningTurret.SetActive(false);
+        tempNormalIceTurret.SetActive(false);
+        tempNormalLightningTurret.SetActive(false);
+        tempNormalFireTurret.SetActive(false);
+        tempIceFireTurret.SetActive(false);
+        tempIceLightningTurret.SetActive(false);
+        tempLightningFireTurret.SetActive(false);
     }
 
     public void ActivateTemporaryTurretSprite()
