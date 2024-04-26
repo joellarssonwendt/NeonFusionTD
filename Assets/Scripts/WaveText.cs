@@ -16,6 +16,6 @@ public class WaveText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentWaveText.text = enemySpawner.currentWave.ToString();
+        currentWaveText.SetText(enemySpawner.currentWave.ToString());
     }
 }
