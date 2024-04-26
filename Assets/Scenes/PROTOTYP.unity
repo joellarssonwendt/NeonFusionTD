@@ -1618,7 +1618,7 @@ GameObject:
   - component: {fileID: 92571680}
   - component: {fileID: 92571679}
   m_Layer: 5
-  m_Name: FireLightningRecipe(T2)
+  m_Name: EmbersurgeRecipe(T2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3235,7 +3235,7 @@ GameObject:
   - component: {fileID: 226145470}
   - component: {fileID: 226145469}
   m_Layer: 5
-  m_Name: KineticDualRecipe(T2)
+  m_Name: PulverizerRecipe(T2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3533,7 +3533,7 @@ GameObject:
   - component: {fileID: 246825500}
   - component: {fileID: 246825499}
   m_Layer: 5
-  m_Name: KineticT2
+  m_Name: PulverizerT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4483,7 +4483,7 @@ GameObject:
   - component: {fileID: 298688211}
   - component: {fileID: 298688210}
   m_Layer: 5
-  m_Name: FireKineticT2
+  m_Name: FireburstT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4646,7 +4646,7 @@ GameObject:
   - component: {fileID: 317514601}
   - component: {fileID: 317514600}
   m_Layer: 5
-  m_Name: FireLightningT2Siluette
+  m_Name: EmbersurgeT2Siluette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5823,7 +5823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.60947347, g: 0.36503384, b: 0.6301887, a: 0.84705883}
+  m_Color: {r: 0.8867924, g: 0.85500175, b: 0.8867924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11230,7 +11230,7 @@ GameObject:
   - component: {fileID: 788983587}
   - component: {fileID: 788983586}
   m_Layer: 5
-  m_Name: IceLightningT2
+  m_Name: FrostshockT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11493,7 +11493,7 @@ GameObject:
   - component: {fileID: 816841276}
   - component: {fileID: 816841275}
   m_Layer: 5
-  m_Name: KineticLightningT2Siluette
+  m_Name: ShockwaveT2Siluette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14235,7 +14235,7 @@ GameObject:
   - component: {fileID: 1088479192}
   - component: {fileID: 1088479191}
   m_Layer: 5
-  m_Name: ArcticTowerRecipe(T2)
+  m_Name: ArcticRecipe(T2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14317,7 +14317,7 @@ GameObject:
   - component: {fileID: 1093684677}
   - component: {fileID: 1093684676}
   m_Layer: 5
-  m_Name: KineticLightningT2
+  m_Name: ShockwaveT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14415,8 +14415,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 0.000018119812}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 0.00063276, y: 0.000018119812}
+  m_SizeDelta: {x: 154.28, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097975323
 MonoBehaviour:
@@ -14513,7 +14513,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 56.5545, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -14971,7 +14971,7 @@ GameObject:
   - component: {fileID: 1123792465}
   - component: {fileID: 1123792464}
   m_Layer: 5
-  m_Name: KineticFireRecipe(T2)
+  m_Name: FireburstRecipe(T2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15737,7 +15737,7 @@ GameObject:
   - component: {fileID: 1171558195}
   - component: {fileID: 1171558194}
   m_Layer: 5
-  m_Name: FireKineticT2Siluette
+  m_Name: FireburstT2Siluette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16994,7 +16994,7 @@ GameObject:
   - component: {fileID: 1265160939}
   - component: {fileID: 1265160938}
   m_Layer: 5
-  m_Name: IceLightningRecipe(T2)
+  m_Name: FrostshockRecipe(T2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18312,9 +18312,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b9287e30c7d69438b46e5923adb651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kineticT2Siluette: {fileID: 1822233320}
-  flameThrowerT2Siluette: {fileID: 1244360395}
-  kineticFireT2Siluette: {fileID: 1171558194}
+  pulverizerT2Siluette: {fileID: 1822233320}
+  flamethrowerT2Siluette: {fileID: 1244360395}
+  fireburstT2Siluette: {fileID: 1171558194}
+  frostbiteT2Siluette: {fileID: 1696171934}
+  shockwaveT2Siluette: {fileID: 816841275}
+  arcticT2Siluette: {fileID: 1068826237}
+  frostshockT2Siluette: {fileID: 1467160429}
+  obsidianT2Siluette: {fileID: 1178001641}
+  embersurgeT2Siluette: {fileID: 317514600}
+  teslaT2Siluette: {fileID: 270916696}
 --- !u!1 &1358593704
 GameObject:
   m_ObjectHideFlags: 0
@@ -19492,7 +19499,7 @@ GameObject:
   - component: {fileID: 1467160430}
   - component: {fileID: 1467160429}
   m_Layer: 5
-  m_Name: IceLightningT2Siluette
+  m_Name: FrostshockT2Siluette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20776,7 +20783,7 @@ GameObject:
   - component: {fileID: 1537262170}
   - component: {fileID: 1537262169}
   m_Layer: 5
-  m_Name: KineticIceT2
+  m_Name: FrostbiteT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21324,7 +21331,7 @@ GameObject:
   - component: {fileID: 1608186378}
   - component: {fileID: 1608186377}
   m_Layer: 5
-  m_Name: KineticLightningRecipe(T2)
+  m_Name: ShockwaveRecipe(T2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22044,8 +22051,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 535, y: -4}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 462.1374, y: -4}
+  m_SizeDelta: {x: 154.2748, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657423170
 MonoBehaviour:
@@ -22495,7 +22502,7 @@ GameObject:
   - component: {fileID: 1696171935}
   - component: {fileID: 1696171934}
   m_Layer: 5
-  m_Name: KineticIceT2Siluette
+  m_Name: FrostbiteT2Siluette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24666,7 +24673,7 @@ GameObject:
   - component: {fileID: 1822233321}
   - component: {fileID: 1822233320}
   m_Layer: 5
-  m_Name: KineticT2Siluette
+  m_Name: PulverizerT2Siluette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37115,7 +37122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83014154, g: 0.24417053, b: 0.8773585, a: 1}
+  m_Color: {r: 0.9570928, g: 0.42075467, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -37370,7 +37377,7 @@ GameObject:
   - component: {fileID: 2023568719}
   - component: {fileID: 2023568718}
   m_Layer: 5
-  m_Name: FireLightningT2
+  m_Name: EmbersurgeT2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37940,7 +37947,7 @@ GameObject:
   - component: {fileID: 2063686214}
   - component: {fileID: 2063686213}
   m_Layer: 5
-  m_Name: KineticIceRecipe(T2)
+  m_Name: FrostbiteRecipe(T2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
