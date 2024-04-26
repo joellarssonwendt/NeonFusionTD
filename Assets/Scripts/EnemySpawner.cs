@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     
     
 
-    private int currentWave = 1;
+    public int currentWave = 1;
     private int bitsGainPerRound = 100;
     private int crystalGainPerRound = 2;
     private float timeSinceLastSpawn;
