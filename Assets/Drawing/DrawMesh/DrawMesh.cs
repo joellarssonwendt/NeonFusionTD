@@ -10,14 +10,15 @@ public class DrawMesh : MonoBehaviour {
     //[SerializeField] private Transform debugVisual1;
     //[SerializeField] private Transform debugVisual2;
 
+
     private Mesh mesh;
     private Vector3 lastMousePosition;
-    //public float updateSpeed = 0.1f;
-    //private float timeSinceLastUpdate = 0f;
+    private List<Vector3> verticesList = new List<Vector3>();
+    private bool isSquare = false;
 
     private void Update() {
 
-       // timeSinceLastUpdate += Time.deltaTime;
+
 
         if (Input.GetMouseButtonDown(0)) {
             // Mouse Pressed
@@ -30,19 +31,16 @@ public class DrawMesh : MonoBehaviour {
             Vector3[] vertices = new Vector3[4];
             Vector2[] uv = new Vector2[4];
             int[] triangles = new int[6];
-            /*
-            vertices[0] = Vector3.zero;
-            vertices[1] = Vector3.zero;
-            vertices[2] = Vector3.zero;
-            vertices[3] = Vector3.zero;
-            */
 
-            
+            verticesList.Clear();
+            verticesList.Add(mouseWorldPosition);
+            lastMousePosition = mouseWorldPosition;
+
             vertices[0] = UtilsClass.GetMouseWorldPosition();
             vertices[1] = UtilsClass.GetMouseWorldPosition();
             vertices[2] = UtilsClass.GetMouseWorldPosition();
             vertices[3] = UtilsClass.GetMouseWorldPosition();
-            
+
 
             uv[0] = Vector2.zero;
             uv[1] = Vector2.zero;
@@ -66,14 +64,14 @@ public class DrawMesh : MonoBehaviour {
 
             lastMousePosition = UtilsClass.GetMouseWorldPosition();
 
-            
+
         }
 
         if (Input.GetMouseButton(0)) {
             // Mouse held down
             float minDistance = .001f;
             if (Vector3.Distance(UtilsClass.GetMouseWorldPosition(), lastMousePosition) > minDistance)
-             { 
+            {
                 Vector3[] vertices = new Vector3[mesh.vertices.Length + 2];
                 Vector2[] uv = new Vector2[mesh.uv.Length + 2];
                 int[] triangles = new int[mesh.triangles.Length + 6];
@@ -90,7 +88,7 @@ public class DrawMesh : MonoBehaviour {
 
                 Vector3 mouseForwardVector = (UtilsClass.GetMouseWorldPosition() - lastMousePosition).normalized;
                 Vector3 normal2D = new Vector3(0, 0, -1f);
-                float lineThickness = 10f;
+                float lineThickness = 1f;
                 float zOffset = -8.3f;
                 Vector3 newVertexUp = UtilsClass.GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D) * lineThickness + new Vector3(0, 0, zOffset);
                 Vector3 newVertexDown = UtilsClass.GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D * -1f) * lineThickness + new Vector3(0, 0, zOffset);
@@ -115,16 +113,48 @@ public class DrawMesh : MonoBehaviour {
                 mesh.uv = uv;
                 mesh.triangles = triangles;
 
-                   for (int i = 0; i < mesh.vertices.Length; i++) {
-            mesh.vertices[i] = UtilsClass.GetMouseWorldPosition();
-        }
-                mesh.vertices = mesh.vertices;
-                mesh.RecalculateBounds();
+                    for (int i = 0; i < mesh.vertices.Length; i++) {
+                        mesh.vertices[i] = UtilsClass.GetMouseWorldPosition();
 
-                lastMousePosition = UtilsClass.GetMouseWorldPosition();
-                //timeSinceLastUpdate = 0f;
+                        if (Vector3.Distance(UtilsClass.GetMouseWorldPosition(), lastMousePosition) > minDistance)
+                        {
+                            Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPosition();
+                            verticesList.Add(mouseWorldPosition);
+                            lastMousePosition = mouseWorldPosition;
+
+                            if (verticesList.Count == 4)
+                            {
+                                // Check if the vertices form a square
+                                isSquare = CheckIfSquare(verticesList);
+                                if (isSquare)
+                                {
+                                    // Trigger the spell
+                                    TriggerSpell();
+                                }
+                                mesh.vertices = mesh.vertices;
+                                mesh.RecalculateBounds();
+
+                                lastMousePosition = UtilsClass.GetMouseWorldPosition();
+
+                            }
+                        }
+                    }
+                } 
             }
         }
-    }
+    private bool CheckIfSquare(List<Vector3> vertices)
+    {
+        
+        float side1 = Vector3.Distance(vertices[0], vertices[1]);
+        float side2 = Vector3.Distance(vertices[1], vertices[2]);
+        float side3 = Vector3.Distance(vertices[2], vertices[3]);
+        float side4 = Vector3.Distance(vertices[3], vertices[0]);
 
+        return Mathf.Approximately(side1, side2) && Mathf.Approximately(side2, side3) && Mathf.Approximately(side3, side4);
+    }
+    private void TriggerSpell()
+    {
+      
+        Debug.Log("Spell triggered!");
+    }
 }
