@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TeslaTowerStats
   m_EditorClassIdentifier: 
   targetingRange: 3
-  rotationSpeed: 800
-  projectilesPerSecond: 20
-  projectileDamage: 0.02
-  dotAmount: 0
+  rotationSpeed: 0
+  projectilesPerSecond: 18
+  projectileDamage: 0.01
+  dotDamagePerSecond: 0
   dotDuration: 0
   chillAmount: 0
   chillDuration: 0
   maxChains: 5
-  chainRange: 30
+  chainRange: 20

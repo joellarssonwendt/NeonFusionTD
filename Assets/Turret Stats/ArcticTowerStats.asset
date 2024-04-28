@@ -16,9 +16,9 @@ MonoBehaviour:
   rotationSpeed: 0
   projectilesPerSecond: 0
   projectileDamage: 0
-  dotAmount: 0
+  dotDamagePerSecond: 0
   dotDuration: 0
-  chillAmount: 0.3
-  chillDuration: 5
+  chillAmount: 0.4
+  chillDuration: 2
   maxChains: 0
   chainRange: 0

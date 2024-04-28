@@ -15657,7 +15657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f5eb76640c3c548be6d31a02cdaf4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingBits: 100
+  startingBits: 120
   startingCrystals: 1
 --- !u!1001 &1168545791
 PrefabInstance:

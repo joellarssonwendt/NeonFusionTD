@@ -15,10 +15,10 @@ MonoBehaviour:
   targetingRange: 5.2
   rotationSpeed: 700
   projectilesPerSecond: 7
-  projectileDamage: 0.1
-  dotAmount: 0
+  projectileDamage: 0.2
+  dotDamagePerSecond: 0
   dotDuration: 0
   chillAmount: 0.02
   chillDuration: 3
-  maxChains: 4
+  maxChains: 3
   chainRange: 20

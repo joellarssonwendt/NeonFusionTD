@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: FireNormalTurretStats
   m_EditorClassIdentifier: 
   targetingRange: 5.2
-  rotationSpeed: 600
-  projectilesPerSecond: 2
-  projectileDamage: 0.5
-  dotAmount: 0.3
-  dotDuration: 10
+  rotationSpeed: 700
+  projectilesPerSecond: 7
+  projectileDamage: 0.25
+  dotDamagePerSecond: 0.75
+  dotDuration: 3
   chillAmount: 0
   chillDuration: 0
   maxChains: 0

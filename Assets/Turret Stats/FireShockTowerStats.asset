@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: FireShockTowerStats
   m_EditorClassIdentifier: 
   targetingRange: 5.2
-  rotationSpeed: 600
-  projectilesPerSecond: 5
-  projectileDamage: 0.01
-  dotAmount: 0.1
-  dotDuration: 10
+  rotationSpeed: 700
+  projectilesPerSecond: 6
+  projectileDamage: 0.2
+  dotDamagePerSecond: 0.25
+  dotDuration: 3
   chillAmount: 0
   chillDuration: 0
   maxChains: 3
-  chainRange: 20
+  chainRange: 15

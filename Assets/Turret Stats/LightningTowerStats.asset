@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b9d5076e8e6a84398a7c555fd47ef2, type: 3}
   m_Name: LightningTowerStats
   m_EditorClassIdentifier: 
-  targetingRange: 5.2
+  targetingRange: 4.5
   rotationSpeed: 600
-  projectilesPerSecond: 3
+  projectilesPerSecond: 5
   projectileDamage: 0.25
-  dotAmount: 0
+  dotDamagePerSecond: 0
   dotDuration: 0
   chillAmount: 0
   chillDuration: 0
