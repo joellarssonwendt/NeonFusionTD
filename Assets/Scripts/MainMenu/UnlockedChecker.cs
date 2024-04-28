@@ -9,9 +9,16 @@ public class UnlockedChecker : MonoBehaviour
     MergeManager mergeManager;
     ReadOnlyCollection<bool> unlockedList;
 
-    public Image kineticT2Siluette;
-    public Image flameThrowerT2Siluette;
-    public Image kineticFireT2Siluette;
+    public Image pulverizerT2Siluette; //Kinetic + Kinetic
+    public Image flamethrowerT2Siluette; //Fire + Fire
+    public Image fireburstT2Siluette; //Kinetic + Fire
+    public Image frostbiteT2Siluette; // Kinetic + Ice
+    public Image shockwaveT2Siluette; // Kinetic + Lightning
+    public Image arcticT2Siluette; //Ice + Ice
+    public Image frostshockT2Siluette; //Ice + Lightning
+    public Image obsidianT2Siluette; //Ice + Fire
+    public Image embersurgeT2Siluette; //Fire + Lightning
+    public Image teslaT2Siluette; // Lightning + Lightning
 
     private void Start()
     {
@@ -26,17 +33,52 @@ public class UnlockedChecker : MonoBehaviour
 
         if (unlockedList[0] == true)
         {
-            kineticT2Siluette.gameObject.SetActive(false);
+            pulverizerT2Siluette.gameObject.SetActive(false);
         }
 
         if (unlockedList[1] == true)
         {
-            flameThrowerT2Siluette.gameObject.SetActive(false);
+            flamethrowerT2Siluette.gameObject.SetActive(false);
         }
 
         if (unlockedList[2] == true)
         {
-            kineticFireT2Siluette.gameObject.SetActive(false);
+            fireburstT2Siluette.gameObject.SetActive(false);
+        }
+
+        if (unlockedList[3] == true)
+        {
+            frostbiteT2Siluette.gameObject.SetActive(false);
+        }
+
+        if (unlockedList[4] == true)
+        {
+            shockwaveT2Siluette.gameObject.SetActive(false);
+        }
+
+        if (unlockedList[5] == true)
+        {
+            arcticT2Siluette.gameObject.SetActive(false);
+        }
+
+        if (unlockedList[6] == true)
+        {
+            frostshockT2Siluette.gameObject.SetActive(false);
+        }
+
+        if (unlockedList[7] == true)
+        {
+            obsidianT2Siluette.gameObject.SetActive(false);
+        }
+
+        if (unlockedList[8] == true)
+        {
+            embersurgeT2Siluette.gameObject.SetActive(false);
+        }
+
+        if (unlockedList[9] == true)
+        {
+            teslaT2Siluette.gameObject.SetActive(false);
         }
     }
 

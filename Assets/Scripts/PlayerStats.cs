@@ -8,7 +8,13 @@ public class PlayerStats : MonoBehaviour
     public int startingBits;
     public static int Crystals { get; private set; }
     public int startingCrystals;
-    public static int towerCost = 100;
+
+    [Header("TowerCosts")]
+    public static int normalTowerCost = 100;
+    public static int iceTowerCost = 150;
+    public static int lightningTowerCost = 200;
+    public static int fireTowerCost = 250;
+
     public static int mergeCost = 10;
 
     private const int maxBits = 9999;

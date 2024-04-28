@@ -11,10 +11,10 @@ public class MergeManager : MonoBehaviour
 
     // Variables
     private GameObject mergeResult = null;
-    private bool superKineticUnlocked, superFireUnlocked, kineticFireUnlocked;
+    private bool normalNormalUnlocked, fireFireUnlocked, normalFireUnlocked, normalIceUnlocked, normalLightningUnlocked, iceIceUnlocked, iceLightningUnlocked, iceFireUnlocked, lightningFireUnlocked, lightningLightningUnlocked;
 
     // Upgrade Prefabs
-    [SerializeField] private GameObject superKinetic, superFire, kineticFire;
+    [SerializeField] private GameObject normalNormal, fireFire, normalFire, normalIce, normalLightning, iceIce, iceLightning, iceFire, lightningFire, lightningLightning;
 
     private void Awake()
     {
@@ -33,30 +33,101 @@ public class MergeManager : MonoBehaviour
 
     public bool CanMerge(GameObject heldTurret, GameObject tileTurret)
     {
-        if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
+        if (PlayerStats.Crystals >= 10)
         {
-            mergeResult = superKinetic;
-            superKineticUnlocked = true;
-            Debug.Log("Combination found!");
-            return true;
+            //combo 1
+            if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
+            {
+                mergeResult = normalNormal;
+                normalNormalUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 2
+            if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("fire"))
+            {
+                mergeResult = fireFire;
+                fireFireUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 3
+            if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("fire")))
+            {
+                mergeResult = normalFire;
+                normalFireUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 4
+            if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("ice")))
+            {
+                mergeResult = normalIce;
+                normalIceUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 5
+            if (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("lightning")))
+            {
+                mergeResult = normalLightning;
+                normalLightningUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 6
+            if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("ice"))
+            {
+                mergeResult = iceIce;
+                iceIceUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 7
+            if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("lightning") || (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("ice")))
+            {
+                mergeResult = iceLightning;
+                iceLightningUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 8
+            if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("ice") || (heldTurret.CompareTag("ice") && tileTurret.CompareTag("fire")))
+            {
+                mergeResult = iceFire;
+                iceFireUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 9
+            if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("lightning") || (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("fire")))
+            {
+                mergeResult = lightningFire;
+                lightningFireUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            //combo 10
+            if (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("lightning"))
+            {
+                mergeResult = lightningLightning;
+                lightningLightningUnlocked = true;
+                PlayerStats.AddCrystals(-PlayerStats.mergeCost);
+                Debug.Log("Combination found!");
+                return true;
+            }
+            return false;
         }
-
-        if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("fire"))
-        {
-            mergeResult = superFire;
-            superFireUnlocked = true;
-            Debug.Log("Combination found!");
-            return true;
-        }
-
-        if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("fire")))
-        {
-            mergeResult = kineticFire;
-            kineticFireUnlocked = true;
-            Debug.Log("Combination found!");
-            return true;
-        }
-
+        Debug.Log("Not enough bits to merge");
         return false;
     }
 
@@ -68,9 +139,19 @@ public class MergeManager : MonoBehaviour
     public ReadOnlyCollection<bool> GetUnlockedList()
     {
         var bools = new List<bool>();
-        bools.Add(superKineticUnlocked);
-        bools.Add(superFireUnlocked);
-        bools.Add(kineticFireUnlocked);
+        bools.Add(normalNormalUnlocked);
+        bools.Add(fireFireUnlocked);
+        bools.Add(normalFireUnlocked);
+        bools.Add(normalIceUnlocked);
+
+        bools.Add(normalLightningUnlocked);
+        bools.Add(iceIceUnlocked);
+        bools.Add(iceLightningUnlocked);
+
+        bools.Add(iceFireUnlocked);
+        bools.Add(lightningFireUnlocked);
+        bools.Add(lightningLightningUnlocked);
+
         var readOnlyBools = new ReadOnlyCollection<bool>(bools);
         return readOnlyBools;
     }

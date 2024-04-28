@@ -62,6 +62,7 @@ public class AudioManager : MonoBehaviour
         Sound music = Array.Find(sounds, sound => sound.isMusic);
         if (music != null)
         {
+            music.source.loop = true;
             music.source.Play();
         }
         else
