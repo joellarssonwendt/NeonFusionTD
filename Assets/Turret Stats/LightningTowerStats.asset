@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b9d5076e8e6a84398a7c555fd47ef2, type: 3}
   m_Name: LightningTowerStats
   m_EditorClassIdentifier: 
-  targetingRange: 4.5
+  targetingRange: 4.7
   rotationSpeed: 600
   projectilesPerSecond: 5
   projectileDamage: 0.25
