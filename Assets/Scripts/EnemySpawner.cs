@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     [SerializeField] private GameObject[] randomEnemyArray;
     [SerializeField] private int baseAmount = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float difficultyScalingFactor = 3f;
+    [SerializeField] private float difficultyScalingFactor = 0.9f;
 
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
@@ -84,8 +84,8 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     public void StartWave()
     {
         Debug.Log("Wave Started!");
-
         if (currentWave <= handCraftedWaves.Count) enemiesPerSecond = handCraftedWaves[currentWave-1].enemiesPerSecond;
+        enemiesPerSecond += (currentWave * 0.05f);
 
         isSpawning = true;
         activeRoundPlaying = true;
