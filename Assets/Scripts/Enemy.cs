@@ -322,7 +322,7 @@ public class Enemy : MonoBehaviour
         if (bossNumber == 1)
         {
             Debug.Log("kör Boss 1 beteende");
-            //StartCoroutine(Boss1());
+            StartCoroutine(Boss1());
         }
 
         if (bossNumber == 2)
@@ -331,19 +331,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //private IEnumerator Boss1()
-    //{
-    //    Color originalColor = spriteRenderer.color;
+    private IEnumerator Boss1()
+    {
+        Color originalColor = spriteRenderer.color;
 
-    //    for (int i = 0; i < 10; i++)
-    //    {
-    //        yield return new WaitForSeconds(1f);
-    //        spriteRenderer.color = Color.white;
-    //        currentHealth++;
-    //        yield return new WaitForSeconds(0.2f);
-    //        spriteRenderer.color = originalColor;
-    //    }
-    //}
+        while (currentHealth > 0)
+        {
+            yield return new WaitForSeconds(3f);
+            spriteRenderer.color = Color.white;
+            currentHealth += 10;
+            Debug.Log(currentHealth);
+            rb.bodyType = RigidbodyType2D.Static;
+            yield return new WaitForSeconds(3f);
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            spriteRenderer.color = originalColor;
+        }
+    }
 
     private class DotEffect
     {
