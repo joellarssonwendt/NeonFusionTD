@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetingRange: 5.2
   rotationSpeed: 700
-  projectilesPerSecond: 10
-  projectileDamage: 0.25
+  projectilesPerSecond: 8
+  projectileDamage: 0.4
   dotDamagePerSecond: 0
   dotDuration: 0
   chillAmount: 0.025
