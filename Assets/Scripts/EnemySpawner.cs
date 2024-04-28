@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     [SerializeField] private GameObject[] randomEnemyArray;
     [SerializeField] private int baseAmount = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float difficultyScalingFactor = 1f;
+    [SerializeField] private float difficultyScalingFactor = 3f;
 
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
