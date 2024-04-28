@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new Wave", menuName = "HandCraftedWave")]
@@ -13,7 +14,7 @@ public class HandCraftedWave : ScriptableObject
     // enemyAmounts = 1, 2, 2, 1, 1
     // Detta kommer resultera i en Wave som består av: basic, small, small, basic, basic, large, basic
 
-    public GameObject[] enemyTypes;
+    public List<GameObject> enemyTypes;
     public int[] enemyAmounts;
     public float enemiesPerSecond;
 }

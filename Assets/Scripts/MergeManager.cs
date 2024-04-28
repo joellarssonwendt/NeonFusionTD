@@ -33,6 +33,8 @@ public class MergeManager : MonoBehaviour
 
     public bool CanMerge(GameObject heldTurret, GameObject tileTurret)
     {
+        if (heldTurret == tileTurret) return false;
+
         if (PlayerStats.Crystals >= 10)
         {
             //combo 1

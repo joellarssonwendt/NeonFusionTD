@@ -49,7 +49,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     void Update()
     {
         if (!isSpawning) return;
-        Debug.Log(currentWave.ToString());
+        //Debug.Log(currentWave.ToString());
         timeSinceLastSpawn += Time.deltaTime;
 
         if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
@@ -115,7 +115,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         if (currentWave > handCraftedWaves.Count) return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
 
         int enemiesPerWave = 0;
-        for (int i = 0; i < handCraftedWaves[currentWave-1].enemyTypes.Length; i++)
+        for (int i = 0; i < handCraftedWaves[currentWave-1].enemyTypes.Count; i++)
         {
             enemiesPerWave += handCraftedWaves[currentWave-1].enemyAmounts[i];
         }
@@ -128,16 +128,13 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
 
         if (currentWave <= handCraftedWaves.Count)
         {
-            // Håll ordning på vilken enemyAmount vi är på
-            enemyAmountCounter++;
-
-            if (enemyAmountCounter >= handCraftedWaves[currentWave-1].enemyAmounts.Length-1)
+            if (enemyAmountCounter >= handCraftedWaves[currentWave - 1].enemyAmounts[enemyTypeCounter])
             {
                 // Håll ordning på vilken enemyType vi är på
-                enemyTypeCounter++;
                 enemyAmountCounter = 0;
+                enemyTypeCounter++;
 
-                if (enemyTypeCounter > handCraftedWaves[currentWave-1].enemyTypes.Length-1)
+                if (enemyTypeCounter > handCraftedWaves[currentWave - 1].enemyTypes.Count - 1)
                 {
                     // Återställ när waven är slut
                     enemyTypeCounter = 0;
@@ -145,10 +142,16 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
                 }
             }
 
+            // Håll ordning på vilken enemyAmount vi är på
+            enemyAmountCounter++;
+
+            
+
             enemyToSpawn = handCraftedWaves[currentWave-1].enemyTypes[enemyTypeCounter];
         }
         else
         {
+            // Spawnar random fiende-typ om det inte finns några fler HandCraftedWaves
             enemyToSpawn = randomEnemyArray[Random.Range(0, randomEnemyArray.Length)];
         }
 
