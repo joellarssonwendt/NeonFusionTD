@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b9d5076e8e6a84398a7c555fd47ef2, type: 3}
   m_Name: FireTurretStats
   m_EditorClassIdentifier: 
-  targetingRange: 5.2
-  rotationSpeed: 550
-  projectilesPerSecond: 3
-  projectileDamage: 0.2
-  dotAmount: 0.1
-  dotDuration: 5
+  targetingRange: 4.7
+  rotationSpeed: 600
+  projectilesPerSecond: 5
+  projectileDamage: 0.1
+  dotDamagePerSecond: 0.75
+  dotDuration: 3
   chillAmount: 0
   chillDuration: 0
   maxChains: 0

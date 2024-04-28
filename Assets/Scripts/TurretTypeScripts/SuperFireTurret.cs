@@ -89,7 +89,7 @@ public class SuperFireTurret : MonoBehaviour
             DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
 
             dotProjectile.SetDamage(turretStats.projectileDamage);
-            dotProjectile.SetDotDamage(turretStats.dotAmount);
+            dotProjectile.SetDotDamage(turretStats.dotDamagePerSecond);
             dotProjectile.SetDotDuration(turretStats.dotDuration);
             dotProjectile.SetTarget(enemy.transform);
         }

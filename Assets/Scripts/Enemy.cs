@@ -232,7 +232,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 // Accumulate the chill amount based on the source
-                float appliedChillReduction = effect.sourceOfChill == "ArcticTower" ? 0.7f : 0.8f;
+                float appliedChillReduction = effect.sourceOfChill == "ArcticTower" ? 0.6f : 0.75f;
                 float appliedChillAmount = Mathf.Min(effect.amount, appliedChillReduction);
                 totalChillEffect += appliedChillAmount;
 

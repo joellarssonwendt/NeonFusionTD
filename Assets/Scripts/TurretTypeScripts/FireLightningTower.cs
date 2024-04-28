@@ -61,7 +61,7 @@ public class FireLightningTower : MonoBehaviour
         DotProjectile dotProjectileScript = projectileObject.GetComponent<DotProjectile>();
 
         dotProjectileScript.SetDamage(turretStats.projectileDamage);
-        dotProjectileScript.SetDotDamage(turretStats.dotAmount); 
+        dotProjectileScript.SetDotDamage(turretStats.dotDamagePerSecond); 
         dotProjectileScript.SetDotDuration(turretStats.dotDuration);
         dotProjectileScript.SetMaxChains(turretStats.maxChains);
         dotProjectileScript.SetChainRange(turretStats.chainRange);
