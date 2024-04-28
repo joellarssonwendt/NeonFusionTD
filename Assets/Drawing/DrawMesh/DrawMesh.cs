@@ -12,23 +12,37 @@ public class DrawMesh : MonoBehaviour {
 
     private Mesh mesh;
     private Vector3 lastMousePosition;
-
-    private void Awake() {
-    }
+    //public float updateSpeed = 0.1f;
+    //private float timeSinceLastUpdate = 0f;
 
     private void Update() {
+
+       // timeSinceLastUpdate += Time.deltaTime;
+
         if (Input.GetMouseButtonDown(0)) {
             // Mouse Pressed
             mesh = new Mesh();
 
+            Vector3 mouseWorldPosition = UtilsClass.GetMouseWorldPosition();
+
+            transform.position = mouseWorldPosition;
+
             Vector3[] vertices = new Vector3[4];
             Vector2[] uv = new Vector2[4];
             int[] triangles = new int[6];
+            /*
+            vertices[0] = Vector3.zero;
+            vertices[1] = Vector3.zero;
+            vertices[2] = Vector3.zero;
+            vertices[3] = Vector3.zero;
+            */
 
+            
             vertices[0] = UtilsClass.GetMouseWorldPosition();
             vertices[1] = UtilsClass.GetMouseWorldPosition();
             vertices[2] = UtilsClass.GetMouseWorldPosition();
             vertices[3] = UtilsClass.GetMouseWorldPosition();
+            
 
             uv[0] = Vector2.zero;
             uv[1] = Vector2.zero;
@@ -51,12 +65,15 @@ public class DrawMesh : MonoBehaviour {
             GetComponent<MeshFilter>().mesh = mesh;
 
             lastMousePosition = UtilsClass.GetMouseWorldPosition();
+
+            
         }
 
         if (Input.GetMouseButton(0)) {
             // Mouse held down
-            float minDistance = .1f;
-            if (Vector3.Distance(UtilsClass.GetMouseWorldPosition(), lastMousePosition) > minDistance) {
+            float minDistance = .001f;
+            if (Vector3.Distance(UtilsClass.GetMouseWorldPosition(), lastMousePosition) > minDistance)
+             { 
                 Vector3[] vertices = new Vector3[mesh.vertices.Length + 2];
                 Vector2[] uv = new Vector2[mesh.uv.Length + 2];
                 int[] triangles = new int[mesh.triangles.Length + 6];
@@ -74,8 +91,9 @@ public class DrawMesh : MonoBehaviour {
                 Vector3 mouseForwardVector = (UtilsClass.GetMouseWorldPosition() - lastMousePosition).normalized;
                 Vector3 normal2D = new Vector3(0, 0, -1f);
                 float lineThickness = 10f;
-                Vector3 newVertexUp = UtilsClass.GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D) * lineThickness;
-                Vector3 newVertexDown = UtilsClass.GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D * -1f) * lineThickness;
+                float zOffset = -8.3f;
+                Vector3 newVertexUp = UtilsClass.GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D) * lineThickness + new Vector3(0, 0, zOffset);
+                Vector3 newVertexDown = UtilsClass.GetMouseWorldPosition() + Vector3.Cross(mouseForwardVector, normal2D * -1f) * lineThickness + new Vector3(0, 0, zOffset);
 
                 vertices[vIndex2] = newVertexUp;
                 vertices[vIndex3] = newVertexDown;
@@ -97,7 +115,14 @@ public class DrawMesh : MonoBehaviour {
                 mesh.uv = uv;
                 mesh.triangles = triangles;
 
+                   for (int i = 0; i < mesh.vertices.Length; i++) {
+            mesh.vertices[i] = UtilsClass.GetMouseWorldPosition();
+        }
+                mesh.vertices = mesh.vertices;
+                mesh.RecalculateBounds();
+
                 lastMousePosition = UtilsClass.GetMouseWorldPosition();
+                //timeSinceLastUpdate = 0f;
             }
         }
     }

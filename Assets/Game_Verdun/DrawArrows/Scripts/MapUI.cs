@@ -9,8 +9,8 @@ public class MapUI : MonoBehaviour {
 
     public static MapUI Instance { get; private set; }
 
-    public event EventHandler OnShow;
-    public event EventHandler OnHide;
+    //public event EventHandler OnShow;
+    //public event EventHandler OnHide;
 
 
     [SerializeField] private Material lineMaterial;
@@ -26,15 +26,15 @@ public class MapUI : MonoBehaviour {
 
 
     private void Awake() {
-        Instance = this;
+      //  Instance = this;
 
         rectTransform = GetComponent<RectTransform>();
-        arrowRectTransform = transform.Find("Arrow").GetComponent<RectTransform>();
-        lineCanvasRenderer = transform.Find("Line").GetComponent<CanvasRenderer>();
+        //arrowRectTransform = transform.Find("Arrow").GetComponent<RectTransform>();
+       lineCanvasRenderer = transform.Find("LineUI").GetComponent<CanvasRenderer>();
 
-        lineCanvasRenderer.SetMaterial(lineMaterial, null);
+       // lineCanvasRenderer.SetMaterial(lineMaterial, null);
 
-        Hide();
+      //  Hide();
     }
 
     private void Update() {
@@ -68,7 +68,7 @@ public class MapUI : MonoBehaviour {
         }
     }
 
-    public void Show() {
+   /* public void Show() {
         gameObject.SetActive(true);
         OnShow?.Invoke(this, EventArgs.Empty);
     }
@@ -84,6 +84,6 @@ public class MapUI : MonoBehaviour {
         } else {
             Show();
         }
-    }
+    }*/
 
 }

@@ -75,7 +75,7 @@ public class MeshDrawer : MonoBehaviour
             float minDistance = 0.1f;
             if (Vector3.Distance(UtilsClass.GetMouseWorldPosition(), lastMousePosition) < minDistance)
             {
-                GetComponent<MeshFilter>().mesh = mesh;
+               
                 Vector3[] vertices = new Vector3[mesh.vertices.Length + 2];
                 Vector2[] uv = new Vector2[mesh.uv.Length + 2];
                 int[] triangles = new int[mesh.triangles.Length + 6];
