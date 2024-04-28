@@ -18,7 +18,7 @@ MonoBehaviour:
   projectileDamage: 0
   dotDamagePerSecond: 0
   dotDuration: 0
-  chillAmount: 0.4
-  chillDuration: 2
+  chillAmount: 0.5
+  chillDuration: 5
   maxChains: 0
   chainRange: 0

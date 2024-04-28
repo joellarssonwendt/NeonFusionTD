@@ -21,4 +21,4 @@ MonoBehaviour:
   chillAmount: 0
   chillDuration: 0
   maxChains: 5
-  chainRange: 20
+  chainRange: 7
