@@ -10,6 +10,8 @@ public class DrawingMenu : MonoBehaviour
     //public GameObject iceButton;
     //public GameObject lightningButton;
 
+    public PlayerMana playerMana;
+
 
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class DrawingMenu : MonoBehaviour
     public void toggleMenu()
     {
         drawingMenu.SetActive(!drawingMenu.activeSelf);
+        playerMana.LoseMana(20);
         
     }
 
