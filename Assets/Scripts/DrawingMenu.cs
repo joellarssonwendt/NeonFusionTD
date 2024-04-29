@@ -7,8 +7,8 @@ public class DrawingMenu : MonoBehaviour
     public GameObject drawingMenu;
     public GameObject drawingUi;
     public GameObject fireButton;
-    public GameObject iceButton;
-    public GameObject lightningButton;
+    //public GameObject iceButton;
+    //public GameObject lightningButton;
 
 
 
@@ -16,6 +16,8 @@ public class DrawingMenu : MonoBehaviour
     void Start()
     {
         drawingMenu.SetActive(false);
+       // fireButton.SetActive(false);
+        //drawingUi.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,18 +28,23 @@ public class DrawingMenu : MonoBehaviour
     public void toggleMenu()
     {
         drawingMenu.SetActive(!drawingMenu.activeSelf);
+        
     }
 
     public void closeDrawing()
     {
-        drawingMenu.SetActive (false);
-        drawingUi.SetActive(false);
+        drawingMenu.SetActive (!drawingMenu.activeSelf);
+        drawingUi.SetActive(!drawingUi.activeSelf);
     }
 
 
     public void togglefire()
     {
-        fireButton.SetActive(false);
+ 
+        fireButton.SetActive(!fireButton.activeSelf);
     }
-
+    public void toggledrawingui()
+    {
+        drawingUi.SetActive (!drawingUi.activeSelf);
+    }
 }

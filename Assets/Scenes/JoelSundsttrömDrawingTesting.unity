@@ -6424,6 +6424,7 @@ MonoBehaviour:
   startRoundSprite: {fileID: 21300000, guid: ea0ea7e84ec053a4eaeb27c64d6a6da2, type: 3}
   speed1xSprite: {fileID: 21300000, guid: 2f135d79bd703f942b46d4a9943ecec9, type: 3}
   speed2xSprite: {fileID: 21300000, guid: 97b8375c581f9cc44a28bfb71181b4a5, type: 3}
+  playerMana: {fileID: 0}
 --- !u!114 &489971317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10501,8 +10502,8 @@ RectTransform:
   m_LocalScale: {x: 0.5555556, y: 0.5555556, z: 0.5555556}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1428922810}
   - {fileID: 606798206}
+  - {fileID: 1428922810}
   - {fileID: 1597474562}
   m_Father: {fileID: 2082496822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16697,7 +16698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1428922808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16752,8 +16753,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -8.464, y: 154.048}
+  m_SizeDelta: {x: 520.221, y: 297.497}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &1428922811
 Rigidbody2D:
@@ -17234,7 +17235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1492946864
 Transform:
   m_ObjectHideFlags: 0
@@ -34083,18 +34084,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2058493393}
-        m_TargetAssemblyTypeName: DrawingMenu, Assembly-CSharp
-        m_MethodName: toggleMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2058493393}
         m_TargetAssemblyTypeName: DrawingMenu, Assembly-CSharp
         m_MethodName: toggleMenu
