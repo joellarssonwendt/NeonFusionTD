@@ -15,6 +15,8 @@ public class RoundAndTimeToggle : MonoBehaviour
     [SerializeField] private Sprite speed1xSprite;
     [SerializeField] private Sprite speed2xSprite;
 
+    public PlayerMana playerMana;
+
     void Start()
     {
         enemySpawner = levelManagerObject.GetComponent<EnemySpawner>();
@@ -45,6 +47,7 @@ public class RoundAndTimeToggle : MonoBehaviour
             enemySpawner.StartWave();
             isTimeScaleToggle = true;
             Time.timeScale = 1.0f;
+            playerMana.RestoreMana();
         }
         else
         {
