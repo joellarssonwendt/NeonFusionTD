@@ -44,6 +44,11 @@ public class OptionsMenu : MonoBehaviour
         musicVolumeToggle.onValueChanged.AddListener(OnMusicVolumeToggleChanged);
         soundEffectsVolumeToggle.onValueChanged.AddListener(OnSoundEffectsVolumeToggleChanged);
         UISoundEffectsVolumeToggle.onValueChanged.AddListener(OnUISoundEffectsVolumeToggleChanged);
+
+        SetSliderColor(masterVolumeSlider, masterVolumeToggle.isOn);
+        SetSliderColor(musicVolumeSlider, musicVolumeToggle.isOn);
+        SetSliderColor(soundEffectsVolumeSlider, soundEffectsVolumeToggle.isOn);
+        SetSliderColor(UISoundEffectsVolumeSlider, UISoundEffectsVolumeToggle.isOn);
     }
 
     public void OnMasterVolumeChanged(float value)
@@ -118,16 +123,10 @@ public class OptionsMenu : MonoBehaviour
         PlayerPrefs.SetInt("MasterVolumeMute", isOn ? 1 : 0);
         PlayerPrefs.Save();
 
-        if (isOn)
-        {
-            audioManager.MasterVolume = 0;
-            audioManager.UpdateMasterVolume();
-        }
-        else
-        {
-            audioManager.MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
-            audioManager.UpdateMasterVolume();
-        }
+        audioManager.isMasterVolumeMuted = isOn;
+        audioManager.UpdateMasterVolume();
+
+        SetSliderColor(masterVolumeSlider, isOn);
     }
 
     public void OnMusicVolumeToggleChanged(bool isOn)
@@ -135,16 +134,10 @@ public class OptionsMenu : MonoBehaviour
         PlayerPrefs.SetInt("MusicVolumeMute", isOn ? 1 : 0);
         PlayerPrefs.Save();
 
-        if (isOn)
-        {
-            audioManager.MusicVolume = 0;
-            audioManager.UpdateMusicVolume();
-        }
-        else
-        {
-            audioManager.MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
-            audioManager.UpdateMusicVolume();
-        }
+        audioManager.isMusicVolumeMuted = isOn;
+        audioManager.UpdateMusicVolume();
+
+        SetSliderColor(musicVolumeSlider, isOn);
     }
 
     public void OnSoundEffectsVolumeToggleChanged(bool isOn)
@@ -152,34 +145,30 @@ public class OptionsMenu : MonoBehaviour
         PlayerPrefs.SetInt("SoundEffectsVolumeMute", isOn ? 1 : 0);
         PlayerPrefs.Save();
 
-        if (isOn)
-        {
-            audioManager.SoundEffectsVolume = 0;
-            audioManager.UpdateSoundEffectsVolume();
-        }
-        else
-        {
-            audioManager.SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
-            audioManager.UpdateSoundEffectsVolume();
-        }
+        audioManager.isSoundEffectsVolumeMuted = isOn;
+        audioManager.UpdateSoundEffectsVolume();
+
+        SetSliderColor(soundEffectsVolumeSlider, isOn);
     }
-
-
 
     public void OnUISoundEffectsVolumeToggleChanged(bool isOn)
     {
         PlayerPrefs.SetInt("UISoundEffectsVolumeMute", isOn ? 1 : 0);
         PlayerPrefs.Save();
 
-        if (isOn)
+        audioManager.isUISoundEffectsVolumeMuted = isOn;
+        audioManager.UpdateUISoundEffectsVolume();
+
+        SetSliderColor(UISoundEffectsVolumeSlider, isOn);
+    }
+
+
+    private void SetSliderColor(Slider slider, bool isMuted)
+    {
+        Image handleImage = slider.GetComponentInChildren<Image>();
+        if (handleImage != null)
         {
-            audioManager.UISoundEffectsVolume = 0;
-            audioManager.UpdateUISoundEffectsVolume();
-        }
-        else
-        {
-            audioManager.UISoundEffectsVolume = PlayerPrefs.GetFloat("UISoundEffectsVolume", 0.5f);
-            audioManager.UpdateUISoundEffectsVolume();
+            handleImage.color = isMuted ? Color.gray : Color.white;
         }
     }
 }

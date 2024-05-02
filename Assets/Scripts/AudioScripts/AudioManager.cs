@@ -10,6 +10,11 @@ public class AudioManager : MonoBehaviour
     public float SoundEffectsVolume = 0.5f;
     public float UISoundEffectsVolume = 0.5f;
 
+    public bool isMasterVolumeMuted = false;
+    public bool isMusicVolumeMuted = false;
+    public bool isSoundEffectsVolumeMuted = false;
+    public bool isUISoundEffectsVolumeMuted = false;
+
     [System.Serializable]
     public class Sound
     {
@@ -107,7 +112,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sounds)
         {
-            s.source.volume = s.volume * MasterVolume;
+            s.source.volume = isMasterVolumeMuted ? 0 : s.volume * MasterVolume;
         }
     }
 
@@ -116,7 +121,7 @@ public class AudioManager : MonoBehaviour
         Sound music = Array.Find(sounds, sound => sound.isMusic);
         if (music != null)
         {
-            music.source.volume = MusicVolume;
+            music.source.volume = isMusicVolumeMuted ? 0 : MusicVolume;
         }
     }
 
@@ -126,7 +131,7 @@ public class AudioManager : MonoBehaviour
         {
             if (s.isUISound)
             {
-                s.source.volume = UISoundEffectsVolume;
+                s.source.volume = isUISoundEffectsVolumeMuted ? 0 : UISoundEffectsVolume;
             }
         }
     }
@@ -135,10 +140,11 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sounds)
         {
-            if (!s.isMusic && !s.isUISound) 
+            if (!s.isMusic && !s.isUISound)
             {
-                s.source.volume = SoundEffectsVolume;
+                s.source.volume = isSoundEffectsVolumeMuted ? 0 : SoundEffectsVolume;
             }
         }
     }
 }
+
