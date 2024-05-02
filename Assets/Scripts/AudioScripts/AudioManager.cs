@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    public float MasterVolume = 0.5f;
     public float MusicVolume = 0.5f;
     public float SoundEffectsVolume = 0.5f;
     public float UISoundEffectsVolume = 0.5f;
@@ -19,13 +20,16 @@ public class AudioManager : MonoBehaviour
         public float volume;
         public bool isMusic;
         public bool isUISound;
+        public bool isSoundFX;
 
         [HideInInspector]
         public AudioSource source;
+        public float originalVolume;
     }
 
     void Awake()
     {
+        MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
         MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f); 
         SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
         UISoundEffectsVolume = PlayerPrefs.GetFloat("UISoundEffectsVolume", 0.5f);
@@ -34,6 +38,8 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>(); 
             s.source.clip = s.clip;
+            s.originalVolume = s.volume;
+            s.source.volume = s.volume * MasterVolume;
 
             if (s.isMusic)
             {
@@ -43,7 +49,7 @@ public class AudioManager : MonoBehaviour
             {
                 s.source.volume = s.volume * UISoundEffectsVolume;
             }
-            else
+            else if (s.isSoundFX)
             {
                 s.source.volume = s.volume * SoundEffectsVolume;
             }
@@ -94,6 +100,14 @@ public class AudioManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Sound effect not found: " + soundName);
+        }
+    }
+
+    public void UpdateMasterVolume()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = s.volume * MasterVolume;
         }
     }
 
