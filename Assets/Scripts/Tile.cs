@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class Tile : MonoBehaviour//, IDataPersistence
     private Color newLightGray = new Color(54, 54, 54, 1);
     public bool isOverATile = false;
     [SerializeField] private GameObject turret;
+    [SerializeField] private LayerMask turretLayer;
     public GameObject currentTile;
 
     BuildManager buildManager;
@@ -41,7 +43,15 @@ public class Tile : MonoBehaviour//, IDataPersistence
 
     private void CheckTurret()
     {
-        
+        Collider2D[] checkArea = Physics2D.OverlapCircleAll(transform.position, 0.3f, turretLayer);
+
+        if (checkArea.Length > 0)
+        {
+            for (int i = 0; i < checkArea.Length; i++)
+            {
+                turret = checkArea[i].gameObject;
+            }
+        }
     }
 
     /*public void LoadData(GameData data)
