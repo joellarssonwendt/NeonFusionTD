@@ -47,19 +47,24 @@ public class Tile : MonoBehaviour//, IDataPersistence
 
         if (checkArea.Length > 0)
         {
-            Debug.Log("Turret found.");
+            //Debug.Log("Turret found.");
             for (int i = 0; i < checkArea.Length; i++)
             {
                 turret = checkArea[i].gameObject;
-                Debug.Log("Turret registered.");
+                //Debug.Log("Turret registered.");
             }
         }
         else
         {
             turret = null;
-            Debug.Log("Turret reference nullified.");
+            //Debug.Log("Turret reference nullified.");
         }
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawSphere(transform.position, 0.5f);
+    //}
 
     /*public void LoadData(GameData data)
     {
