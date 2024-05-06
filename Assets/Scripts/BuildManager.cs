@@ -118,6 +118,7 @@ public class BuildManager : MonoBehaviour
         bool mergeHappened = false;
         GameObject heldTurret = selectedTurret;
         GameObject targetTurret = tileObjectScript.GetTurret();
+        GameObject oldTile = tileUnderPointer;
 
         if (Input.GetMouseButtonUp(0) && selectedTurret != null)
         {
@@ -155,7 +156,7 @@ public class BuildManager : MonoBehaviour
                     Vector3 mergeLocation = tileObjectScript.GetTurret().transform.position;
 
                     // Nolställ selectedTurrets tile tillstånd
-                    pressedTileObject.GetComponent<Tile>().SetTurretToNull();
+                    oldTile.GetComponent<Tile>().SetTurretToNull();
 
                     // Ta bort mergande turrets
                     Destroy(heldTurret);

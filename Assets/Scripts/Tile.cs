@@ -35,6 +35,13 @@ public class Tile : MonoBehaviour//, IDataPersistence
         {
             RemoveMisplacedTurret();
         }
+
+        CheckTurret();
+    }
+
+    private void CheckTurret()
+    {
+        
     }
 
     /*public void LoadData(GameData data)
