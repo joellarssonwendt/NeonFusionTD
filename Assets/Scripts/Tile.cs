@@ -43,14 +43,21 @@ public class Tile : MonoBehaviour//, IDataPersistence
 
     private void CheckTurret()
     {
-        Collider2D[] checkArea = Physics2D.OverlapCircleAll(transform.position, 0.3f, turretLayer);
+        Collider2D[] checkArea = Physics2D.OverlapCircleAll(transform.position, 0.5f, turretLayer);
 
         if (checkArea.Length > 0)
         {
+            Debug.Log("Turret found.");
             for (int i = 0; i < checkArea.Length; i++)
             {
                 turret = checkArea[i].gameObject;
+                Debug.Log("Turret registered.");
             }
+        }
+        else
+        {
+            turret = null;
+            Debug.Log("Turret reference nullified.");
         }
     }
 
