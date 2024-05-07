@@ -25,7 +25,7 @@ public class InGameMenu : MonoBehaviour
     {
         inGameSettingsUI.SetActive(!inGameSettingsUI.activeSelf);
 
-        Time.timeScale = inGameSettingsUI.activeSelf ? 0.0f : 1.0f;
+        Time.timeScale = 0.0f;
     }
 
     public void ContinueGame()
@@ -38,7 +38,7 @@ public class InGameMenu : MonoBehaviour
     {
         settingsMenu.UpdateSliders();
         inGameSettingsUI.SetActive (true);
-        Time.timeScale = 1.0f;
+        Time.timeScale = 0.0f;
     }
 
     public void closeSettings ()

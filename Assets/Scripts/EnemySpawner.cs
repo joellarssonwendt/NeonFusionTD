@@ -7,6 +7,9 @@ using UnityEngine.Events;
 public class EnemySpawner : MonoBehaviour//, IDataPersistence
 {
     public static EnemySpawner instance;
+    public OptionsMenu optionsMenu;
+    public RoundAndTimeToggle roundAndTimeToggle;
+
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
     public static UnityEvent onRoundEnd = new UnityEvent();
@@ -108,6 +111,17 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         nextRoundButton.SetActive(true);
         onRoundEnd.Invoke();
         CheckAndUpdateShopButtons();
+
+        if (optionsMenu.autoPlayNextWaveToggle.isOn)
+        {
+            roundAndTimeToggle.UpdateButtonSprite();
+        }
+
+
+        if (optionsMenu.autoPlayNextWaveToggle.isOn)
+        {
+            StartCoroutine(StartNextWaveAfterDelay(5f));
+        }
     }
 
     private int EnemiesPerWave()
@@ -171,5 +185,16 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableFireTowerButton();
         }
+    }
+    private IEnumerator StartNextWaveAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StartWave();
+        NotifyTimeScaleChange(Time.timeScale);
+    }
+
+    public void NotifyTimeScaleChange(float timeScale)
+    {
+        roundAndTimeToggle.UpdateButtonSpriteBasedOnTimeScale(timeScale);
     }
 }

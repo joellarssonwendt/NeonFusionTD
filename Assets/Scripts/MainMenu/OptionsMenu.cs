@@ -14,6 +14,7 @@ public class OptionsMenu : MonoBehaviour
     public Toggle musicVolumeToggle;
     public Toggle soundEffectsVolumeToggle;
     public Toggle UISoundEffectsVolumeToggle;
+    public Toggle autoPlayNextWaveToggle;
     public AudioManager audioManager;
 
     private void OnEnable()
@@ -49,6 +50,10 @@ public class OptionsMenu : MonoBehaviour
         SetSliderColor(musicVolumeSlider, musicVolumeToggle.isOn);
         SetSliderColor(soundEffectsVolumeSlider, soundEffectsVolumeToggle.isOn);
         SetSliderColor(UISoundEffectsVolumeSlider, UISoundEffectsVolumeToggle.isOn);
+
+        autoPlayNextWaveToggle.isOn = PlayerPrefs.GetInt("AutoPlayNextWave", 0) == 1;
+        autoPlayNextWaveToggle.onValueChanged.AddListener(OnAutoPlayNextWaveToggleChanged);
+        OnAutoPlayNextWaveToggleChanged(autoPlayNextWaveToggle.isOn);
     }
 
     public void OnMasterVolumeChanged(float value)
@@ -170,5 +175,11 @@ public class OptionsMenu : MonoBehaviour
         {
             handleImage.color = isMuted ? Color.gray : Color.white;
         }
+    }
+
+    public void OnAutoPlayNextWaveToggleChanged(bool isOn)
+    {
+        PlayerPrefs.SetInt("AutoPlayNextWave", isOn ? 1 : 0);
+        PlayerPrefs.Save();
     }
 }

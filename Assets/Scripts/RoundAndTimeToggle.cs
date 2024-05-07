@@ -4,18 +4,24 @@ using UnityEngine.UI;
 public class RoundAndTimeToggle : MonoBehaviour
 {
     [SerializeField] private GameObject levelManagerObject;
-    private EnemySpawner enemySpawner;
-    private Image imgComp;
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
-    [Range(0, 10)]
-    private bool isTimeScaleToggle = false;
-
     [SerializeField] private Sprite startRoundSprite;
     [SerializeField] private Sprite speed1xSprite;
     [SerializeField] private Sprite speed2xSprite;
 
+    
+    private EnemySpawner enemySpawner;
+    private Image imgComp;
     public PlayerMana playerMana;
+    public OptionsMenu optionsMenu;
+
+    [Range(0, 10)]
+    private bool isTimeScaleToggle = false;
+
+
+
+    
 
     void Start()
     {
@@ -63,7 +69,12 @@ public class RoundAndTimeToggle : MonoBehaviour
         UpdateButtonSprite();
     }
 
-    void UpdateButtonSprite()
+    public void OnNextWaveStarted()
+    {
+        isTimeScaleToggle = true;
+    }
+
+    public void UpdateButtonSprite()
     {
         if (!isTimeScaleToggle)
         {
@@ -79,6 +90,18 @@ public class RoundAndTimeToggle : MonoBehaviour
             {
                 imgComp.sprite = speed2xSprite;
             }
+        }
+    }
+
+    public void UpdateButtonSpriteBasedOnTimeScale(float timeScale)
+    {
+        if (timeScale == 1f)
+        {
+            imgComp.sprite = speed1xSprite;
+        }
+        else
+        {
+            imgComp.sprite = speed2xSprite;
         }
     }
 }
