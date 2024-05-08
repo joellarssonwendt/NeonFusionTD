@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     public static EnemySpawner instance;
     public OptionsMenu optionsMenu;
     public RoundAndTimeToggle roundAndTimeToggle;
+    public GameObject autoWaveCountdown;
 
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
@@ -24,8 +25,8 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
     [SerializeField] private GameObject shopNormalTurretButton, shopIceTurretButton, shopLightningTurretButton, shopFireTurretButton;
-    
-    
+
+
 
     public int currentWave = 1;
     private int bitsGainPerRound = 100;
@@ -41,7 +42,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
-     
+
         if (instance != null)
         {
             Debug.Log("Det finns redan en EnemySpawner");
@@ -69,14 +70,14 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         }
     }
 
-   /* public void LoadData(GameData data)
-    {
-        this.currentWave = data.currentWave;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.currentWave = this.currentWave;
-    }*/
+    /* public void LoadData(GameData data)
+     {
+         this.currentWave = data.currentWave;
+     }
+     public void SaveData(ref GameData data)
+     {
+         data.currentWave = this.currentWave;
+     }*/
 
     private void EnemyDestroyed()
     {
@@ -87,11 +88,12 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     public void StartWave()
     {
         Debug.Log("Wave Started!");
-        if (currentWave <= handCraftedWaves.Count) enemiesPerSecond = handCraftedWaves[currentWave-1].enemiesPerSecond;
+        if (currentWave <= handCraftedWaves.Count) enemiesPerSecond = handCraftedWaves[currentWave - 1].enemiesPerSecond;
         enemiesPerSecond += (currentWave * 0.05f);
 
         isSpawning = true;
         activeRoundPlaying = true;
+        autoWaveCountdown.SetActive(false);
         enemiesLeftToSpawn = EnemiesPerWave();
     }
 
@@ -100,6 +102,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         Debug.Log("Wave Ended!");
         isSpawning = false;
         activeRoundPlaying = false;
+        autoWaveCountdown.SetActive(true);
         timeSinceLastSpawn = 0f;
         currentWave++;
 
@@ -129,9 +132,9 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         if (currentWave > handCraftedWaves.Count) return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
 
         int enemiesPerWave = 0;
-        for (int i = 0; i < handCraftedWaves[currentWave-1].enemyTypes.Count; i++)
+        for (int i = 0; i < handCraftedWaves[currentWave - 1].enemyTypes.Count; i++)
         {
-            enemiesPerWave += handCraftedWaves[currentWave-1].enemyAmounts[i];
+            enemiesPerWave += handCraftedWaves[currentWave - 1].enemyAmounts[i];
         }
         return enemiesPerWave;
     }
@@ -159,9 +162,9 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
             // Håll ordning på vilken enemyAmount vi är på
             enemyAmountCounter++;
 
-            
 
-            enemyToSpawn = handCraftedWaves[currentWave-1].enemyTypes[enemyTypeCounter];
+
+            enemyToSpawn = handCraftedWaves[currentWave - 1].enemyTypes[enemyTypeCounter];
         }
         else
         {
@@ -173,11 +176,11 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     }
     private void CheckAndUpdateShopButtons()
     {
-        if(currentWave >= 4)
+        if (currentWave >= 4)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableIceTowerButton();
         }
-        if(currentWave >= 8)
+        if (currentWave >= 8)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableLightningTowerButton();
         }

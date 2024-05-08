@@ -4513,6 +4513,101 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259064216}
   m_CullTransparentMesh: 1
+--- !u!1 &268708258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 268708259}
+  - component: {fileID: 268708263}
+  - component: {fileID: 268708262}
+  - component: {fileID: 268708264}
+  m_Layer: 5
+  m_Name: AutoWaveCountdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &268708259
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268708258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2082496822}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -5.999939, y: 246}
+  m_SizeDelta: {x: 120, y: 120}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &268708262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268708258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.76862746, g: 0.3764706, b: 0.8784314, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 50b1a75a6de58244c8fc5a87c956ed34, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &268708263
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268708258}
+  m_CullTransparentMesh: 1
+--- !u!114 &268708264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268708258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cba1e55b91a804c9bc0325618aab24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 906432740}
+  countdownRing: {fileID: 268708262}
+  countdownSprites:
+  - {fileID: 21300000, guid: 0f2d25a23d3a21c4b9136aeca5f4c53a, type: 3}
+  - {fileID: 21300000, guid: 5738a68fc7006654b96f8369437bbca8, type: 3}
+  - {fileID: 21300000, guid: 26d2909483f8761488656f635418529b, type: 3}
+  - {fileID: 21300000, guid: 2c6f819b6aca2bd4f921172117c75a70, type: 3}
 --- !u!1 &270916694
 GameObject:
   m_ObjectHideFlags: 0
@@ -9101,14 +9196,14 @@ RectTransform:
   m_GameObject: {fileID: 489971314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2082496822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -10, y: 240}
+  m_AnchoredPosition: {x: -4, y: 252.3}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &489971316
@@ -9126,7 +9221,7 @@ MonoBehaviour:
   levelManagerObject: {fileID: 906432738}
   startColor: {r: 0.76862746, g: 0.3764706, b: 0.8784314, a: 1}
   endColor: {r: 0.9251195, g: 0.84104663, b: 0.9433962, a: 1}
-  startRoundSprite: {fileID: 21300000, guid: ea0ea7e84ec053a4eaeb27c64d6a6da2, type: 3}
+  startRoundSprite: {fileID: 21300000, guid: 2f135d79bd703f942b46d4a9943ecec9, type: 3}
   speed1xSprite: {fileID: 21300000, guid: 2f135d79bd703f942b46d4a9943ecec9, type: 3}
   speed2xSprite: {fileID: 21300000, guid: 97b8375c581f9cc44a28bfb71181b4a5, type: 3}
   playerMana: {fileID: 2128506252}
@@ -9219,7 +9314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ea0ea7e84ec053a4eaeb27c64d6a6da2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f135d79bd703f942b46d4a9943ecec9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13839,6 +13934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 1155754435}
   roundAndTimeToggle: {fileID: 489971316}
+  autoWaveCountdown: {fileID: 268708258}
   handCraftedWaves:
   - {fileID: 11400000, guid: cedd529291827ce42a19eb2aeafe6ec4, type: 2}
   - {fileID: 11400000, guid: e5da7b8dcb6b4a64c90e2ad2c04e98b7, type: 2}
@@ -41898,6 +41994,7 @@ RectTransform:
   - {fileID: 1389632443}
   - {fileID: 2003152535}
   - {fileID: 360908075}
+  - {fileID: 268708259}
   - {fileID: 489971315}
   - {fileID: 198588089}
   - {fileID: 2019505872}
