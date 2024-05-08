@@ -38,7 +38,7 @@ public class Tile : MonoBehaviour//, IDataPersistence
         }
         else if (Input.GetMouseButtonUp(0) && !buildManager.isRaycastHittingTile() && buildManager.GetTurretToBuild() != null)
         {
-            RemoveMisplacedTurret();
+            ClearSelection();
         }
 
         CheckTurret();
@@ -103,19 +103,47 @@ public class Tile : MonoBehaviour//, IDataPersistence
     }*/
     public void PlaceTurret()
     {
-        if (turret != null || PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
+        if (PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
         {
-            buildManager.SetTurretToBuildIsNull();
+            ClearSelection();
             return;
         }
-        
-        PlayerStats.AddBits(-GetTowerCost(buildManager.GetTurretToBuild()));
-        Debug.Log("Turret Built! Bits left: " + PlayerStats.Bits);
-        Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
-        GameObject turretToBuild = buildManager.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
-        turretPrefabName = turret.name;
-        buildManager.SetTurretToBuildIsNull();
+
+        if (turret != null)
+        {
+            Debug.Log("Trying to merge...");
+
+            GameObject heldTurret = buildManager.GetTurretToBuild();
+            GameObject targetTurret = turret;
+            Vector3 mergeLocation = transform.position;
+            ClearSelection();
+
+            if (mergeManager.CanMerge(heldTurret, targetTurret))
+            {
+                PlayerStats.AddBits(-GetTowerCost(heldTurret));
+                Debug.Log("Merge from shop success! Bits left: " + PlayerStats.Bits);
+                Destroy(heldTurret);
+                Destroy(targetTurret);
+                GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
+                mergeResult.transform.position = mergeLocation;
+            }
+            else
+            {
+                Debug.Log("Merge Failed!");
+            }
+
+            return;
+        }
+        else
+        {
+            PlayerStats.AddBits(-GetTowerCost(buildManager.GetTurretToBuild()));
+            Debug.Log("Turret Built! Bits left: " + PlayerStats.Bits);
+            Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
+            GameObject turretToBuild = buildManager.GetTurretToBuild();
+            turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
+            //turretPrefabName = turret.name;
+            ClearSelection();
+        }
     }
 
     private int GetTowerCost(GameObject turret)
@@ -137,11 +165,12 @@ public class Tile : MonoBehaviour//, IDataPersistence
             return PlayerStats.normalTowerCost;
         }
     }
-    public void RemoveMisplacedTurret()
+    public void ClearSelection()
     {
         buildManager.SetTurretToBuildIsNull();
         return;
     }
+
     private void OnMouseEnter()
     {
         if (buildManager.GetTurretToBuild() != null)

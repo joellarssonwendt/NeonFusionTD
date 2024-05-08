@@ -41,6 +41,9 @@ public class BuildManager : MonoBehaviour
     public RaycastHit2D mouseTowerPointer; 
     RaycastHit2D[] mouseTilePointer = new RaycastHit2D[1];
 
+    // Misc
+    GameObject mouseUpTurret;
+
     private void Awake()
     {
         if (instance != null)
@@ -101,6 +104,8 @@ public class BuildManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            mouseUpTurret = null;
+
             if (mouseTowerPointer.collider != null && mouseTowerPointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
             {
                 Debug.Log("trycker på turret");
@@ -114,12 +119,36 @@ public class BuildManager : MonoBehaviour
             }
         }
     }
+
+    public bool IsMouseUpOverTurret()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (mouseTowerPointer.collider != null && mouseTowerPointer.collider.gameObject.layer == LayerMask.NameToLayer("turret"))
+            {
+                Debug.Log("släpper mus/touch på turret");
+                mouseUpTurret = mouseTowerPointer.collider.gameObject;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public GameObject GetMouseUpTurret()
+    {
+        return mouseUpTurret;
+    }
+
     private void OnReleasePressedTower()
     {
         bool mergeHappened = false;
         GameObject heldTurret = selectedTurret;
         GameObject targetTurret = tileObjectScript.GetTurret();
-        GameObject oldTile = tileUnderPointer;
+        //GameObject oldTile = tileUnderPointer;
 
         if (Input.GetMouseButtonUp(0) && selectedTurret != null)
         {
@@ -143,22 +172,11 @@ public class BuildManager : MonoBehaviour
 
                 if (mergeManager.CanMerge(heldTurret, targetTurret))
                 {
-                    //if (heldTurret == targetTurret)
-                    //{
-                    //    Debug.Log("Can't merge with itself!");
-                    //    deselectBuiltTurret();
-                    //    return;
-                    //}
-
                     Debug.Log("Merge Successful!");
                     mergeHappened = true;
 
                     // Spara målplatsen för merge resultatet.
                     Vector3 mergeLocation = tileObjectScript.GetTurret().transform.position;
-
-                    // Nolställ selectedTurrets tile tillstånd
-                    oldTile.GetComponent<Tile>().SetTurretToNull();
-                    oldTile.GetComponent<Tile>().turretPrefabName = null;
 
                     // Ta bort mergande turrets
                     Destroy(heldTurret);
@@ -170,8 +188,6 @@ public class BuildManager : MonoBehaviour
 
                     // Skapa en kopia av merge resultatet, ställ in mottagande tilens tillstånd och flytta kopian till rätt plats
                     GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
-                    tileUnderPointer.GetComponent<Tile>().SetTurret(mergeResult);
-                    tileUnderPointer.GetComponent<Tile>().turretPrefabName = mergeResult.name;
                     mergeResult.transform.position = mergeLocation;
                 }
                 else
