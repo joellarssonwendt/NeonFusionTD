@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -20,12 +21,14 @@ public class Tile : MonoBehaviour//, IDataPersistence
     public GameObject currentTile;
 
     BuildManager buildManager;
+    MergeManager mergeManager;
     public string turretPrefabName;
     private Vector3 turretPosition;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         buildManager = BuildManager.instance;
+        mergeManager = MergeManager.instance;
     }
     void Update()
     {
@@ -51,12 +54,14 @@ public class Tile : MonoBehaviour//, IDataPersistence
             for (int i = 0; i < checkArea.Length; i++)
             {
                 turret = checkArea[i].gameObject;
+                turretPrefabName = turret.name;
                 //Debug.Log("Turret registered.");
             }
         }
         else
         {
             turret = null;
+            turretPrefabName = null;
             //Debug.Log("Turret reference nullified.");
         }
     }

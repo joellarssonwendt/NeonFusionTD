@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class BuildManager : MonoBehaviour
 {
@@ -124,7 +125,7 @@ public class BuildManager : MonoBehaviour
         {
             if (tileObjectScript.GetTurret() == null)
             {
-                if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying && !mergeHappened)
+                if (isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
                 {
                     //här flyttas turreten till tilen som musen är över
                     MoveTurret();
@@ -138,16 +139,16 @@ public class BuildManager : MonoBehaviour
             }
 
             if (tileObjectScript.GetTurret() != null)
-            {
+            { 
 
                 if (mergeManager.CanMerge(heldTurret, targetTurret))
                 {
-                    if (heldTurret == targetTurret)
-                    {
-                        Debug.Log("Can't merge with itself!");
-                        deselectBuiltTurret();
-                        return;
-                    }
+                    //if (heldTurret == targetTurret)
+                    //{
+                    //    Debug.Log("Can't merge with itself!");
+                    //    deselectBuiltTurret();
+                    //    return;
+                    //}
 
                     Debug.Log("Merge Successful!");
                     mergeHappened = true;
@@ -157,6 +158,7 @@ public class BuildManager : MonoBehaviour
 
                     // Nolställ selectedTurrets tile tillstånd
                     oldTile.GetComponent<Tile>().SetTurretToNull();
+                    oldTile.GetComponent<Tile>().turretPrefabName = null;
 
                     // Ta bort mergande turrets
                     Destroy(heldTurret);
@@ -169,6 +171,7 @@ public class BuildManager : MonoBehaviour
                     // Skapa en kopia av merge resultatet, ställ in mottagande tilens tillstånd och flytta kopian till rätt plats
                     GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
                     tileUnderPointer.GetComponent<Tile>().SetTurret(mergeResult);
+                    tileUnderPointer.GetComponent<Tile>().turretPrefabName = mergeResult.name;
                     mergeResult.transform.position = mergeLocation;
                 }
                 else
@@ -342,5 +345,20 @@ public class BuildManager : MonoBehaviour
 
         // Rensar referensen för tornet som blev klickad på och deaktiverar den temporära turret spriten. 
         deselectBuiltTurret();
+    }
+
+    public GameObject GetTileUnderPointer()
+    {
+        return tileUnderPointer;
+    }
+
+    public GameObject GetPressedTileObject()
+    {
+        return pressedTileObject;
+    }
+
+    public RaycastHit2D GetMouseTowerPointer()
+    {
+        return mouseTowerPointer;
     }
 }

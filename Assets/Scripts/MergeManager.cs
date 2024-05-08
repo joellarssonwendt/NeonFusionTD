@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
 using UnityEngine;
 
 public class MergeManager : MonoBehaviour
@@ -33,7 +34,12 @@ public class MergeManager : MonoBehaviour
 
     public bool CanMerge(GameObject heldTurret, GameObject tileTurret)
     {
-        if (heldTurret == tileTurret) return false;
+        if (heldTurret == tileTurret)
+        {
+            buildManager.deselectBuiltTurret();
+            Debug.Log("Can't merge with itself!");
+            return false;
+        }
 
         if (PlayerStats.Crystals >= 10)
         {
@@ -44,6 +50,7 @@ public class MergeManager : MonoBehaviour
                 normalNormalUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 2
@@ -53,6 +60,7 @@ public class MergeManager : MonoBehaviour
                 fireFireUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 3
@@ -62,6 +70,7 @@ public class MergeManager : MonoBehaviour
                 normalFireUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 4
@@ -71,6 +80,7 @@ public class MergeManager : MonoBehaviour
                 normalIceUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 5
@@ -80,6 +90,7 @@ public class MergeManager : MonoBehaviour
                 normalLightningUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 6
@@ -89,6 +100,7 @@ public class MergeManager : MonoBehaviour
                 iceIceUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 7
@@ -98,6 +110,7 @@ public class MergeManager : MonoBehaviour
                 iceLightningUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 8
@@ -107,6 +120,7 @@ public class MergeManager : MonoBehaviour
                 iceFireUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 9
@@ -116,6 +130,7 @@ public class MergeManager : MonoBehaviour
                 lightningFireUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             //combo 10
@@ -125,6 +140,7 @@ public class MergeManager : MonoBehaviour
                 lightningLightningUnlocked = true;
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
+                //Merge();
                 return true;
             }
             return false;
@@ -132,6 +148,34 @@ public class MergeManager : MonoBehaviour
         Debug.Log("Not enough bits to merge");
         return false;
     }
+
+    //private void Merge()
+    //{
+    //    GameObject heldTurret = buildManager.selectedTurret;
+    //    GameObject targetTurret = buildManager.tileObjectScript.GetTurret();
+    //    GameObject oldTile = buildManager.GetTileUnderPointer();
+
+    //    Debug.Log("Merge Successful!");
+
+    //    // Spara målplatsen för merge resultatet.
+    //    Vector3 mergeLocation = buildManager.GetMouseTowerPointer().transform.position;
+
+    //    // Nolställ selectedTurrets tile tillstånd
+    //    oldTile.GetComponent<Tile>().SetTurretToNull();
+
+    //    // Ta bort mergande turrets
+    //    Destroy(heldTurret);
+    //    Destroy(targetTurret);
+
+    //    // Ta bort referenser till mergande turrets
+    //    buildManager.SetTurretToBuildIsNull();
+    //    buildManager.deselectBuiltTurret();
+
+    //    // Skapa en kopia av merge resultatet, ställ in mottagande tilens tillstånd och flytta kopian till rätt plats
+    //    Instantiate(mergeResult);
+    //    buildManager.GetTileUnderPointer().GetComponent<Tile>().SetTurret(mergeResult);
+    //    mergeResult.transform.position = mergeLocation;
+    //}
 
     public GameObject GetMergeResult()
     {
