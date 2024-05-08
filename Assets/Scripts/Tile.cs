@@ -122,7 +122,6 @@ public class Tile : MonoBehaviour//, IDataPersistence
             {
                 PlayerStats.AddBits(-GetTowerCost(heldTurret));
                 Debug.Log("Merge from shop success! Bits left: " + PlayerStats.Bits);
-                Destroy(heldTurret);
                 Destroy(targetTurret);
                 GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
                 mergeResult.transform.position = mergeLocation;
