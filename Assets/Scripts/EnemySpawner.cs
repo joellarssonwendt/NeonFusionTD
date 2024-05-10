@@ -125,6 +125,11 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         {
             StartCoroutine(StartNextWaveAfterDelay(5f));
         }
+
+        else
+        {
+            Debug.Log("Auto-start next wave is disabled");
+        }
     }
 
     private int EnemiesPerWave()
@@ -191,7 +196,7 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
     }
     private IEnumerator StartNextWaveAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
         StartWave();
         NotifyTimeScaleChange(Time.timeScale);
     }

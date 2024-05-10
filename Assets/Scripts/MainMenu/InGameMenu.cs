@@ -9,6 +9,8 @@ public class InGameMenu : MonoBehaviour
     public GameObject inGameSettingsUI;
     public OptionsMenu settingsMenu;
 
+    private float originalTimeScale;
+
     private void Start()
     {
         inGameMenuUI.SetActive(false);
@@ -18,8 +20,11 @@ public class InGameMenu : MonoBehaviour
     {
         inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
 
-        Time.timeScale = inGameMenuUI.activeSelf ? 0.0f : 1.0f;
+        originalTimeScale = Time.timeScale;
+
+        Time.timeScale = inGameMenuUI.activeSelf ? 0.0f : originalTimeScale;
     }
+
 
     public void toggleSettings()
     {
@@ -31,7 +36,7 @@ public class InGameMenu : MonoBehaviour
     public void ContinueGame()
     {
         inGameMenuUI.SetActive (false);
-        Time.timeScale = 1.0f;
+        Time.timeScale = originalTimeScale;
     }
 
     public void openSettings()
@@ -44,7 +49,6 @@ public class InGameMenu : MonoBehaviour
     public void closeSettings ()
     {
         inGameSettingsUI.SetActive(false);
-        Time.timeScale = 1.0f;
     }
 
     public void ExitToMainMenu()

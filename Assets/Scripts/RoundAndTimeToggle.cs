@@ -18,6 +18,7 @@ public class RoundAndTimeToggle : MonoBehaviour
 
     [Range(0, 10)]
     private bool isTimeScaleToggle = false;
+    private float lastTimeScale = 1f;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class RoundAndTimeToggle : MonoBehaviour
     void OnRoundEnd()
     {
         isTimeScaleToggle = false;
+        lastTimeScale = Time.timeScale;
         UpdateButtonSprite();
     }
 
@@ -44,7 +46,7 @@ public class RoundAndTimeToggle : MonoBehaviour
 
     public void ToggleRoundAndTime()
     {
-        if (!isTimeScaleToggle && Time.timeScale != 1f)
+        if (!isTimeScaleToggle)
         {
             enemySpawner.StartWave();
             isTimeScaleToggle = true;
@@ -68,11 +70,12 @@ public class RoundAndTimeToggle : MonoBehaviour
     public void OnNextWaveStarted()
     {
         isTimeScaleToggle = true;
+        lastTimeScale = Time.timeScale;
     }
 
     public void UpdateButtonSprite()
     {
-        if (!isTimeScaleToggle && Time.timeScale != 1f)
+        if (!isTimeScaleToggle)
         {
             imgComp.sprite = startRoundSprite;
         }

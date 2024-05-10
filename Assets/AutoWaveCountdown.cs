@@ -7,8 +7,10 @@ public class AutoWaveCountdown : MonoBehaviour
     public static AutoWaveCountdown Instance { get; private set; }
 
     public EnemySpawner enemySpawner;
+    public OptionsMenu optionsMenu;
     public Image countdownRing; 
-    public Sprite[] countdownSprites; 
+    public Sprite[] countdownSprites;
+    private Sprite initialCountdownSprite;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class AutoWaveCountdown : MonoBehaviour
 
     private void OnEnable()
     {
+        initialCountdownSprite = countdownRing.sprite;
         StartCountdown(0f); 
     }
 
@@ -37,15 +40,18 @@ public class AutoWaveCountdown : MonoBehaviour
 
     private IEnumerator CountdownToNextWave(float delay)
     {
-        yield return new WaitForSeconds(delay);
-
-        for (int i = 4; i > 0; i--)
+        if(optionsMenu.autoPlayNextWaveToggle.isOn) 
         {
-            Debug.Log("Changing sprite to: " + countdownSprites[i - 1].name);
-            countdownRing.sprite = countdownSprites[i - 1];
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsRealtime(delay);
+
+            for (int i = 4; i > 0; i--)
+            {
+                countdownRing.sprite = countdownSprites[i - 1];
+                yield return new WaitForSecondsRealtime(1f);
+            }
+            enemySpawner.StartWave();
+            countdownRing.sprite = initialCountdownSprite;
         }
-        enemySpawner.StartWave();
     }
 }
 

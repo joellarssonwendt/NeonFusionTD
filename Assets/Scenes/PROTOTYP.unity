@@ -4602,6 +4602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 906432740}
+  optionsMenu: {fileID: 1155754435}
   countdownRing: {fileID: 268708262}
   countdownSprites:
   - {fileID: 21300000, guid: 0f2d25a23d3a21c4b9136aeca5f4c53a, type: 3}
@@ -17219,6 +17220,7 @@ MonoBehaviour:
   UISoundEffectsVolumeToggle: {fileID: 474671845}
   autoPlayNextWaveToggle: {fileID: 1768482089}
   audioManager: {fileID: 1492946865}
+  autoWaveCountdown: {fileID: 268708264}
 --- !u!1 &1160034901
 GameObject:
   m_ObjectHideFlags: 0

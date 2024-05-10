@@ -54,6 +54,7 @@ public class OptionsMenu : MonoBehaviour
         autoPlayNextWaveToggle.isOn = PlayerPrefs.GetInt("AutoPlayNextWave", 0) == 1;
         autoPlayNextWaveToggle.onValueChanged.AddListener(OnAutoPlayNextWaveToggleChanged);
         OnAutoPlayNextWaveToggleChanged(autoPlayNextWaveToggle.isOn);
+
     }
 
     public void OnMasterVolumeChanged(float value)
