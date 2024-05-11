@@ -20,10 +20,16 @@ public class UnlockedChecker : MonoBehaviour
     public Image embersurgeT2Siluette; //Fire + Lightning
     public Image teslaT2Siluette; // Lightning + Lightning
 
+    public GameObject notificationBubble;
+    private bool isNotificationActive = false;
+    private bool newTurretDiscovered = false;
+
     private void Start()
     {
         mergeManager = MergeManager.instance;
         unlockedList = mergeManager.GetUnlockedList();
+        notificationBubble.SetActive(false);
+        UpdateSilhouettes();
     }
 
     public void Update()
@@ -31,56 +37,51 @@ public class UnlockedChecker : MonoBehaviour
         mergeManager.UpdateUnlockedList();
         unlockedList = mergeManager.GetUnlockedList();
 
-        if (unlockedList[0] == true)
+        if(IsAnyTurretUnlocked() && newTurretDiscovered)
         {
-            pulverizerT2Siluette.gameObject.SetActive(false);
+            notificationBubble.SetActive(true);
+            isNotificationActive = true;
+            newTurretDiscovered = false;        //resetta allt efter notifikationen ges.
+        } else if (!IsAnyTurretUnlocked()) {
+            newTurretDiscovered = false;
         }
-
-        if (unlockedList[1] == true)
-        {
-            flamethrowerT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[2] == true)
-        {
-            fireburstT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[3] == true)
-        {
-            frostbiteT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[4] == true)
-        {
-            shockwaveT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[5] == true)
-        {
-            arcticT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[6] == true)
-        {
-            frostshockT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[7] == true)
-        {
-            obsidianT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[8] == true)
-        {
-            embersurgeT2Siluette.gameObject.SetActive(false);
-        }
-
-        if (unlockedList[9] == true)
-        {
-            teslaT2Siluette.gameObject.SetActive(false);
-        }
+        UpdateSilhouettes();
     }
 
+    private bool IsAnyTurretUnlocked()
+    {
+        foreach (bool unlocked in unlockedList)
+        {
+            if (unlocked)
+            {
+                newTurretDiscovered = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void UpdateSilhouettes()
+    {
+        pulverizerT2Siluette.gameObject.SetActive(!unlockedList[0]);
+        flamethrowerT2Siluette.gameObject.SetActive(!unlockedList[1]);
+        fireburstT2Siluette.gameObject.SetActive(!unlockedList[2]);
+        frostbiteT2Siluette.gameObject.SetActive(!unlockedList[3]);
+        shockwaveT2Siluette.gameObject.SetActive(!unlockedList[4]);
+        arcticT2Siluette.gameObject.SetActive(!unlockedList[5]);
+        frostshockT2Siluette.gameObject.SetActive(!unlockedList[6]);
+        obsidianT2Siluette.gameObject.SetActive(!unlockedList[7]);
+        embersurgeT2Siluette.gameObject.SetActive(!unlockedList[8]);
+        teslaT2Siluette.gameObject.SetActive(!unlockedList[9]);
+    }
+
+    public void RemoveNotificationBubble()
+    {
+        if(isNotificationActive)
+        {
+            notificationBubble.SetActive(false);
+            isNotificationActive = false;
+        }
+    }
 
 }
