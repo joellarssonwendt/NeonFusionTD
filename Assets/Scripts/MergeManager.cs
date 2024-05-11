@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,9 +11,10 @@ public class MergeManager : MonoBehaviour
     public static MergeManager instance;
     BuildManager buildManager;
 
-    // Variables
+    public static Action<bool> OnMergeAction;
+    public Dictionary<string, bool> MergeDictionary = new Dictionary<string, bool>(); //TDname
+
     private GameObject mergeResult = null;
-    private bool normalNormalUnlocked, fireFireUnlocked, normalFireUnlocked, normalIceUnlocked, normalLightningUnlocked, iceIceUnlocked, iceLightningUnlocked, iceFireUnlocked, lightningFireUnlocked, lightningLightningUnlocked;
 
     // Upgrade Prefabs
     [SerializeField] private GameObject normalNormal, fireFire, normalFire, normalIce, normalLightning, iceIce, iceLightning, iceFire, lightningFire, lightningLightning;
@@ -47,7 +49,15 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
             {
                 mergeResult = normalNormal;
-                normalNormalUnlocked = true;
+                if (!MergeDictionary.ContainsKey("pulverizer"))
+                {
+                    MergeDictionary["pulverizer"] = true;
+                    OnMergeAction?.Invoke(true);
+                } else {
+                    MergeDictionary["pulverizer"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
+                
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -57,7 +67,16 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("fire"))
             {
                 mergeResult = fireFire;
-                fireFireUnlocked = true;
+                if (!MergeDictionary.ContainsKey("flamethrower"))
+                {
+                    MergeDictionary["flamethrower"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["flamethrower"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -67,7 +86,16 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("fire")))
             {
                 mergeResult = normalFire;
-                normalFireUnlocked = true;
+                if (!MergeDictionary.ContainsKey("fireburst"))
+                {
+                    MergeDictionary["fireburst"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["fireburst"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -77,7 +105,16 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("ice")))
             {
                 mergeResult = normalIce;
-                normalIceUnlocked = true;
+                if (!MergeDictionary.ContainsKey("frostbite"))
+                {
+                    MergeDictionary["frostbite"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["frostbite"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -87,7 +124,16 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("lightning")))
             {
                 mergeResult = normalLightning;
-                normalLightningUnlocked = true;
+                if (!MergeDictionary.ContainsKey("shockwave"))
+                {
+                    MergeDictionary["shockwave"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["shockwave"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -97,7 +143,17 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("ice"))
             {
                 mergeResult = iceIce;
-                iceIceUnlocked = true;
+                if (!MergeDictionary.ContainsKey("arctic"))
+                {
+                    MergeDictionary["arctic"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["arctic"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
+
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -107,7 +163,17 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("lightning") || (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("ice")))
             {
                 mergeResult = iceLightning;
-                iceLightningUnlocked = true;
+                if (!MergeDictionary.ContainsKey("frostshock"))
+                {
+                    MergeDictionary["frostshock"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["frostshock"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
+
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -117,7 +183,17 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("ice") || (heldTurret.CompareTag("ice") && tileTurret.CompareTag("fire")))
             {
                 mergeResult = iceFire;
-                iceFireUnlocked = true;
+                if (!MergeDictionary.ContainsKey("obsidian"))
+                {
+                    MergeDictionary["obsidian"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["obsidian"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
+
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -127,7 +203,16 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("lightning") || (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("fire")))
             {
                 mergeResult = lightningFire;
-                lightningFireUnlocked = true;
+                if (!MergeDictionary.ContainsKey("embersurge"))
+                {
+                    MergeDictionary["embersurge"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["embersurge"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -137,7 +222,17 @@ public class MergeManager : MonoBehaviour
             if (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("lightning"))
             {
                 mergeResult = lightningLightning;
-                lightningLightningUnlocked = true;
+                if (!MergeDictionary.ContainsKey("tesla"))
+                {
+                    MergeDictionary["tesla"] = true;
+                    OnMergeAction?.Invoke(true);
+                }
+                else
+                {
+                    MergeDictionary["tesla"] = true;
+                    OnMergeAction?.Invoke(false);
+                }
+
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
@@ -182,28 +277,5 @@ public class MergeManager : MonoBehaviour
         return mergeResult;
     }
 
-    public ReadOnlyCollection<bool> GetUnlockedList()
-    {
-        var bools = new List<bool>();
-        bools.Add(normalNormalUnlocked);
-        bools.Add(fireFireUnlocked);
-        bools.Add(normalFireUnlocked);
-        bools.Add(normalIceUnlocked);
 
-        bools.Add(normalLightningUnlocked);
-        bools.Add(iceIceUnlocked);
-        bools.Add(iceLightningUnlocked);
-
-        bools.Add(iceFireUnlocked);
-        bools.Add(lightningFireUnlocked);
-        bools.Add(lightningLightningUnlocked);
-
-        var readOnlyBools = new ReadOnlyCollection<bool>(bools);
-        return readOnlyBools;
-    }
-
-    public void UpdateUnlockedList()
-    {
-        GetUnlockedList();
-    }
 }

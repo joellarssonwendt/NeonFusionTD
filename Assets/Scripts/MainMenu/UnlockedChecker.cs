@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,9 +7,6 @@ using UnityEngine.UI;
 
 public class UnlockedChecker : MonoBehaviour
 {
-    MergeManager mergeManager;
-    ReadOnlyCollection<bool> unlockedList;
-
     public Image pulverizerT2Siluette; //Kinetic + Kinetic
     public Image flamethrowerT2Siluette; //Fire + Fire
     public Image fireburstT2Siluette; //Kinetic + Fire
@@ -21,67 +19,41 @@ public class UnlockedChecker : MonoBehaviour
     public Image teslaT2Siluette; // Lightning + Lightning
 
     public GameObject notificationBubble;
-    private bool isNotificationActive = false;
-    private bool newTurretDiscovered = false;
 
-    private void Start()
+    private void OnEnable()
     {
-        mergeManager = MergeManager.instance;
-        unlockedList = mergeManager.GetUnlockedList();
-        notificationBubble.SetActive(false);
-        UpdateSilhouettes();
+        MergeManager.OnMergeAction += OnMergeAction;
     }
 
-    public void Update()
+    
+    private void OnDisable()
     {
-        mergeManager.UpdateUnlockedList();
-        unlockedList = mergeManager.GetUnlockedList();
-
-        if(IsAnyTurretUnlocked() && newTurretDiscovered)
-        {
-            notificationBubble.SetActive(true);
-            isNotificationActive = true;
-            newTurretDiscovered = false;        //resetta allt efter notifikationen ges.
-        } else if (!IsAnyTurretUnlocked()) {
-            newTurretDiscovered = false;
-        }
-        UpdateSilhouettes();
-    }
-
-    private bool IsAnyTurretUnlocked()
-    {
-        foreach (bool unlocked in unlockedList)
-        {
-            if (unlocked)
-            {
-                newTurretDiscovered = true;
-                return true;
-            }
-        }
-        return false;
+        MergeManager.OnMergeAction += OnMergeAction;
     }
 
     private void UpdateSilhouettes()
     {
-        pulverizerT2Siluette.gameObject.SetActive(!unlockedList[0]);
-        flamethrowerT2Siluette.gameObject.SetActive(!unlockedList[1]);
-        fireburstT2Siluette.gameObject.SetActive(!unlockedList[2]);
-        frostbiteT2Siluette.gameObject.SetActive(!unlockedList[3]);
-        shockwaveT2Siluette.gameObject.SetActive(!unlockedList[4]);
-        arcticT2Siluette.gameObject.SetActive(!unlockedList[5]);
-        frostshockT2Siluette.gameObject.SetActive(!unlockedList[6]);
-        obsidianT2Siluette.gameObject.SetActive(!unlockedList[7]);
-        embersurgeT2Siluette.gameObject.SetActive(!unlockedList[8]);
-        teslaT2Siluette.gameObject.SetActive(!unlockedList[9]);
+        pulverizerT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("pulverizer", out bool pulverizer) || !pulverizer);
+        flamethrowerT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("flamethrower", out bool flamethrower) || !flamethrower);
+        fireburstT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("fireburst", out bool fireburst) || !fireburst);
+        frostbiteT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("frostbite", out bool frostbite) || !frostbite);
+        shockwaveT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("shockwave", out bool shockwave) || !shockwave);
+        arcticT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("arctic", out bool arctic) || !arctic);
+        frostshockT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("frostshock", out bool frostshock) || !frostshock);
+        obsidianT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("obsidian", out bool obsidian) || !obsidian);
+        embersurgeT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("embersurge", out bool embersurge) || !embersurge);
+        teslaT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("tesla", out bool tesla) || !tesla);
+    }
+
+    private void OnMergeAction(bool state)
+    {        
+        Debug.Log("Method is used");
+        notificationBubble.SetActive(state);
+        UpdateSilhouettes();
     }
 
     public void RemoveNotificationBubble()
     {
-        if(isNotificationActive)
-        {
-            notificationBubble.SetActive(false);
-            isNotificationActive = false;
-        }
+        notificationBubble.SetActive(false);
     }
-
 }
