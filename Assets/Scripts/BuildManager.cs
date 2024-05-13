@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
@@ -120,7 +121,7 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    public bool IsMouseUpOverTurret()
+    public bool IsMouseUpOverTurret(GameObject turret)
     {
         if (Input.GetMouseButtonUp(0))
         {
@@ -128,7 +129,14 @@ public class BuildManager : MonoBehaviour
             {
                 Debug.Log("släpper mus/touch på turret");
                 mouseUpTurret = mouseTowerPointer.collider.gameObject;
-                return true;
+                if (mouseUpTurret == turret)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {

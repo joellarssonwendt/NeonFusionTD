@@ -32,8 +32,15 @@ public class Tile : MonoBehaviour, IDataPersistence
     }
     void Update()
     {
-        if (Input.GetMouseButtonUp(0) && buildManager.isRaycastHittingTile() && currentTile != null && buildManager.GetTurretToBuild() != null)
+        if (Input.GetMouseButtonUp(0) && buildManager.isRaycastHittingTile() && currentTile != null && buildManager.GetTurretToBuild() != null
+            || buildManager.IsMouseUpOverTurret(turret) && buildManager.GetTurretToBuild() != null)
         {
+            if (PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
+            {
+                ClearSelection();
+                return;
+            }
+
             PlaceTurret();
         }
         else if (Input.GetMouseButtonUp(0) && !buildManager.isRaycastHittingTile() && buildManager.GetTurretToBuild() != null)
