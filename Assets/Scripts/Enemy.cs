@@ -331,23 +331,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private IEnumerator Boss1()
-    {
-        Color originalColor = spriteRenderer.color;
-
-        while (currentHealth > 0)
-        {
-            yield return new WaitForSeconds(3f);
-            spriteRenderer.color = Color.white;
-            currentHealth += 10;
-            Debug.Log(currentHealth);
-            rb.bodyType = RigidbodyType2D.Static;
-            yield return new WaitForSeconds(3f);
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            spriteRenderer.color = originalColor;
-        }
-    }
-
     private class DotEffect
     {
         public float damage;
@@ -371,6 +354,27 @@ public class Enemy : MonoBehaviour
             this.amount = amount;
             this.duration = duration;
             this.sourceOfChill = sourceOfChill;
+        }
+    }
+
+    // Boss beteenden
+    private IEnumerator Boss1()
+    {
+        Color originalColor = spriteRenderer.color;
+        float maxHealth = currentHealth;
+
+        while (currentHealth > 0 && currentHealth < maxHealth)
+        {
+            yield return new WaitForSeconds(3f);
+            spriteRenderer.color = Color.white;
+            currentHealth += 6;
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+            Debug.Log(currentHealth);
+            rb.bodyType = RigidbodyType2D.Static;
+            // Heal effekt (audiovisuell)
+            yield return new WaitForSeconds(1f);
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            spriteRenderer.color = originalColor;
         }
     }
 }

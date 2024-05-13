@@ -14152,6 +14152,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5da7b8dcb6b4a64c90e2ad2c04e98b7, type: 2}
   - {fileID: 11400000, guid: a62e99c87b192334685887be107e50f2, type: 2}
   - {fileID: 11400000, guid: 8c6cb988795c57149a0cb3b161d1da01, type: 2}
+  - {fileID: 11400000, guid: ee8782e0f36a463459a8412b265b0588, type: 2}
   randomEnemyArray:
   - {fileID: 8054526396113401650, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
   - {fileID: 7079963385403916101, guid: b79ad26ed75426e4baa2b77bce234b30, type: 3}
