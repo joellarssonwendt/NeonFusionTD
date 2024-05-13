@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEditor.SearchService;
+using Unity.VisualScripting;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
     public bool playerDied = false;
+    public bool noData = false;
     public static DataPersistenceManager instance { get; private set; }
 
     public void Awake()
@@ -44,6 +46,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (this.gameData == null)
         {
             Debug.Log("Ingen data hittades, starta default values");
+            noData = true;
             NewGame();
         }
 
@@ -78,6 +81,7 @@ public class DataPersistenceManager : MonoBehaviour
         NewGame();
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
+
             dataPersistenceObj.LoadData(gameData);
         }
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)

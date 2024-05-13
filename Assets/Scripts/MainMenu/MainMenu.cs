@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     {
         dataPersistenceManager = DataPersistenceManager.instance;
         continueButton = continueButtonHolder.GetComponent<Button>();
-        if (dataPersistenceManager.gameData == null)
+        if (dataPersistenceManager.noData)
         {
             continueButton.interactable = false;
         }

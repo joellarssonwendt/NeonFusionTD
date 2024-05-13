@@ -16931,9 +16931,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2256676e5ac9bc342b69c4e1ed7c3cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: game.save.data
+  fileName: game.data
   healthSystem: {fileID: 297445483}
+  gameData:
+    Bits: 120
+    Crystals: 1
+    currentWave: 1
+    currentHealth: 10
+    normalNormalUnlocked: 0
+    fireFireUnlocked: 0
+    normalFireUnlocked: 0
+    normalIceUnlocked: 0
+    normalLightningUnlocked: 0
+    iceIceUnlocked: 0
+    iceLightningUnlocked: 0
+    iceFireUnlocked: 0
+    lightningFireUnlocked: 0
+    lightningLightningUnlocked: 0
+    turretPrefabNames:
+      keys: []
+      values: []
+    turretPositions:
+      keys: []
+      values: []
+    MergeDictionary:
+      keys: []
+      values: 
   playerDied: 0
+  noData: 0
 --- !u!1 &1123792462
 GameObject:
   m_ObjectHideFlags: 0
