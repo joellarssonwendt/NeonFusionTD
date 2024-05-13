@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
         }
 
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.velocity = direction * chilledMoveSpeed;
+        if (rb.bodyType == RigidbodyType2D.Kinematic) rb.velocity = direction * chilledMoveSpeed;
     }
 
     public void TakeDamage(float damage)
