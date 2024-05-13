@@ -39,7 +39,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         // laddar data från fil med dataHandler
-        this.gameData = dataHandler.Load();
+        //this.gameData = dataHandler.Load();
 
         if (this.gameData == null)
         {
