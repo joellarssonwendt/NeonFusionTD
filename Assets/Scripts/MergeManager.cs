@@ -33,13 +33,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
     {
         buildManager = BuildManager.instance;
     }
-    private void Update()
-    {
-        if (MergeDictionary["pulverizer"] == true)
-        {
-            Debug.Log("Den första merge finns med");
-        }
-    }
+   
     public void LoadData(GameData data)
     {
         // Ladda alla bool-värden från MergeDictionary

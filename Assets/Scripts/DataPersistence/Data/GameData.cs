@@ -18,10 +18,10 @@ public class GameData
     public GameData()
     {
         //dessa utgör startvärden för sparade variabler när de inte finns någon annan sparad data
-        this.Bits = 1000;
-        this.Crystals = 20;
+        this.Bits = 120;
+        this.Crystals = 1;
         this.currentWave = 1;
-        this.currentHealth = 1;
+        this.currentHealth = 10;
         turretPrefabNames = new SerializableDictionary<string, string>();
         turretPositions = new SerializableDictionary<string, Vector3>();
         MergeDictionary = new SerializableDictionary<string, bool>();
