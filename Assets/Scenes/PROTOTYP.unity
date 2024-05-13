@@ -14156,9 +14156,9 @@ MonoBehaviour:
   - {fileID: 8054526396113401650, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
   - {fileID: 7079963385403916101, guid: b79ad26ed75426e4baa2b77bce234b30, type: 3}
   - {fileID: 5907289287979489079, guid: e6effcea98c149a498f2789759a2ea66, type: 3}
-  baseAmount: 1
-  enemiesPerSecond: 1
-  difficultyScalingFactor: 1.8
+  baseAmount: 8
+  enemiesPerSecond: 0.75
+  difficultyScalingFactor: 0.75
   nextRoundButton: {fileID: 489971314}
   shopNormalTurretButton: {fileID: 1745063078}
   shopIceTurretButton: {fileID: 143825232}
@@ -17642,8 +17642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f5eb76640c3c548be6d31a02cdaf4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingBits: 120
-  startingCrystals: 1
+  startingBits: 9999
+  startingCrystals: 9999
 --- !u!1001 &1168545791
 PrefabInstance:
   m_ObjectHideFlags: 0
