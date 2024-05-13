@@ -366,16 +366,16 @@ public class Enemy : MonoBehaviour
 
         while (currentHealth > 0)
         {
-                yield return new WaitForSeconds(3f);
-                spriteRenderer.color = Color.white;
-                currentHealth += 6;
-                if (currentHealth > maxHealth) currentHealth = maxHealth;
-                Debug.Log(currentHealth);
-                rb.bodyType = RigidbodyType2D.Static;
-                // Heal effekt (audiovisuell)
-                yield return new WaitForSeconds(1f);
-                rb.bodyType = RigidbodyType2D.Kinematic;
-                spriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(3f);
+            spriteRenderer.color = Color.white;
+            currentHealth += 5;
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+            Debug.Log(currentHealth);
+            rb.bodyType = RigidbodyType2D.Static;
+            yield return new WaitForSeconds(1f);
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            spriteRenderer.color = originalColor;
+            yield return null;
         }
     }
 }
