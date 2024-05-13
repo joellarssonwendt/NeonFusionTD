@@ -318,6 +318,7 @@ public class Enemy : MonoBehaviour
     private void RunBossBehaviour()
     {
         bossActive = true;
+        // Spela "Boss Fight Startar" ljudeffekt
 
         if (bossNumber == 1)
         {
@@ -363,18 +364,18 @@ public class Enemy : MonoBehaviour
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
 
-        while (currentHealth > 0 && currentHealth < maxHealth)
+        while (currentHealth > 0)
         {
-            yield return new WaitForSeconds(3f);
-            spriteRenderer.color = Color.white;
-            currentHealth += 6;
-            if (currentHealth > maxHealth) currentHealth = maxHealth;
-            Debug.Log(currentHealth);
-            rb.bodyType = RigidbodyType2D.Static;
-            // Heal effekt (audiovisuell)
-            yield return new WaitForSeconds(1f);
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            spriteRenderer.color = originalColor;
+                yield return new WaitForSeconds(3f);
+                spriteRenderer.color = Color.white;
+                currentHealth += 6;
+                if (currentHealth > maxHealth) currentHealth = maxHealth;
+                Debug.Log(currentHealth);
+                rb.bodyType = RigidbodyType2D.Static;
+                // Heal effekt (audiovisuell)
+                yield return new WaitForSeconds(1f);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                spriteRenderer.color = originalColor;
         }
     }
 }

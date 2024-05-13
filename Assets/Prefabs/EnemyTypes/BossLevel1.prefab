@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6786164646476171399}
   - component: {fileID: 8158652580253090061}
   m_Layer: 6
-  m_Name: DefaultEnemy
+  m_Name: BossLevel1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,9 +50,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6786164646476171399}
   animator: {fileID: 5546459295073055965}
-  enemyStats: {fileID: 11400000, guid: 8e849d0821b34fa4881ebe574f2fed47, type: 2}
+  enemyStats: {fileID: 11400000, guid: 3ae0227fe632d48438c25acf6a36040d, type: 2}
   fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
   iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
+  bossNumber: 1
+  obsidianResistant: 1
   isDead: 0
 --- !u!95 &5546459295073055965
 Animator:
@@ -117,7 +119,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -987325758, guid: 67773d5f1f6899247904facdfb6782f4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.32126835, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
