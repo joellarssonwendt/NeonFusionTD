@@ -11,7 +11,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Image fillColor;
     [SerializeField] private Color greenHealth, redHealth;
-
+    DataPersistenceManager dataPersistenceManager;
 
     public int startingHealth = 5;
     public int currentHealth = 0;
@@ -24,6 +24,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
+        dataPersistenceManager = DataPersistenceManager.instance;
         //currentHealth = startingHealth;
         Invoke("UpdateHealthBar", 0.1f);
     }
@@ -39,10 +40,9 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
 
     private IEnumerator gameOverscreen()
     {
-
-
         gameOver.SetActive(true);
         yield return new WaitForSeconds(gameOverDelay);
+        dataPersistenceManager.SaveGame();
         SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 
@@ -76,6 +76,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
 
         if (currentHealth == 0)
         {
+            dataPersistenceManager.playerDied = true;
             StartCoroutine(gameOverscreen());
         }
     }

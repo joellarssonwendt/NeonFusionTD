@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor.SearchService;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
+    public bool playerDied = false;
     public static DataPersistenceManager instance { get; private set; }
 
     public void Awake()
@@ -53,18 +55,31 @@ public class DataPersistenceManager : MonoBehaviour
         // Debug.Log("wave när man laddar upp: " + gameData.currentWave.ToString());
     }
     public void SaveGame()
-    {
-        // sparar data till fil med dataHandler, om inte health är 0
-        if (healthSystem.GetComponent<HealthSystem>().currentHealth <= 0)
-        {
-            NewGame();
-        }
+    {   
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
+            if (playerDied)
+            {
+                NewGame();
+                Debug.Log("Eftersom HP är 0 så rensas data");
+            }
             dataPersistenceObj.SaveData(ref gameData);
         }
-
+        if (playerDied)
+        {
+            NewGame();
+            Debug.Log("Eftersom HP är 0 så rensas data");
+        }
         dataHandler.Save(gameData);
+        
+    }
+    public void LoadNewGame()
+    {
+        NewGame();
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        {
+            dataPersistenceObj.LoadData(gameData);
+        }
     }
 
     private void OnApplicationQuit()
