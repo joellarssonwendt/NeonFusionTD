@@ -1,18 +1,17 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System;
 using UnityEngine;
-using Unity.VisualScripting;
+using System;
+using System.IO;
 
 public class FileDataHandler
 {
     private string dataDirPath = "";
     private string dataFileName = "";
 
-    public FileDataHandler(string dataDirPath = "", string dataFileName = "")
+    public FileDataHandler(string dataDirPath, string dataFileName)
     {
-        this.dataDirPath = string.IsNullOrEmpty(dataDirPath) ? Application.persistentDataPath : dataDirPath;
+        this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
     }
     public GameData Load()
@@ -23,6 +22,7 @@ public class FileDataHandler
         {
             try
             {
+                // ladda serialized data från filen
                 string dataToLoad = "";
                 using (FileStream stream = new FileStream(fullPath, FileMode.Open))
                 {
@@ -32,26 +32,26 @@ public class FileDataHandler
                     }
                 }
 
-                //deserialize datan från Json tillbaks till C# objektet
+                // deserialize datan från Json tillbaka till C# objekt.
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
             catch (Exception e)
             {
-                Debug.LogError("Error occured when trying to load data from file: " + fullPath + "\n" + e);
+                Debug.LogError("Error hände när vi försökte ladda upp data från filen: " + fullPath + "\n" + e);
             }
         }
         return loadedData;
     }
-
     public void Save(GameData data)
     {
+        //kombinera dessa med Combine så att de blir rätt path oavsett va de är för operativ system
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try
         {
-            //Create the directory the file will be written to if it doesnt already exist
+            //skapa en plats för filen om den inte redan finns
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-            //Serilaize
+            // kör filen till en läsbar fil via Json
             string dataToStore = JsonUtility.ToJson(data, true);
 
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
@@ -61,11 +61,11 @@ public class FileDataHandler
                     writer.Write(dataToStore);
                 }
             }
+
         }
         catch (Exception e)
         {
-            Debug.LogError("Error occured when trying to save data to file: " + fullPath + "\n" + e);
+            Debug.LogError("Error hände när vi försökte spara data till filen: " + fullPath + "\n" + e);
         }
     }
 }
-*/

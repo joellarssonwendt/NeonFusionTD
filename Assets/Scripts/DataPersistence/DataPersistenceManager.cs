@@ -5,21 +5,20 @@ using System.Linq;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-   /* [Header("File Storage Config")]
+    [Header("File Storage Config")]
     [SerializeField] private string fileName;
 
- public static DataPersistenceManager instance {  get; private set; }
-    //get private set gör så att man kommer åt innehållet men inte kan göra ändringar
-
+    [SerializeField] private GameObject healthSystem;
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    private void Awake()
+    public static DataPersistenceManager instance { get; private set; }
+
+    public void Awake()
     {
         if (instance != null)
         {
-            Debug.Log("Det finns redan en DataPersistenceManager");
-            return;
+            Debug.LogError("Hittade mer än en DataPersistenceManager i scenen.");
         }
         instance = this;
     }
@@ -30,48 +29,52 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
+
     public void NewGame()
     {
         this.gameData = new GameData();
     }
     public void LoadGame()
     {
-        // ladda all sparad data från fil med data handler
+        // laddar data från fil med dataHandler
         this.gameData = dataHandler.Load();
 
-        //om det inte finns nån data, starta new game
-        if(this.gameData == null)
+        if (this.gameData == null)
         {
-            Debug.Log("Ingen data hittades, börja med default data");
+            Debug.Log("Ingen data hittades, starta default values");
             NewGame();
         }
-        // pusha alla loaded data till alla scripts som behöver de.
-        foreach(IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.LoadData(gameData);
         }
-
+        //Debug.Log("Crystaller när man laddar upp: " + gameData.Bits.ToString());
+        // Debug.Log("wave när man laddar upp: " + gameData.currentWave.ToString());
     }
     public void SaveGame()
     {
-        // Lägg in alla data i andra scripts så de kan uppdatera det
+        // sparar data till fil med dataHandler, om inte health är 0
+        if (healthSystem.GetComponent<HealthSystem>().currentHealth <= 0)
+        {
+            NewGame();
+        }
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
 
-        // spara den datan i en fil med hjälp av data handler
         dataHandler.Save(gameData);
-
     }
-    
+
     private void OnApplicationQuit()
     {
         SaveGame();
     }
+
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
-    }*/
+    }
 }

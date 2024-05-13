@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
 
         if (keys.Count != values.Count)
         {
-            Debug.LogError("F rs kte deserialize en Serializable Dictionary, men m ngden nycklar (" + keys.Count + ") matchar inte nummret av v rden (" + values.Count + ") vilket betyder att n got gick j vligt fel");
+            Debug.LogError("Förskte deserialize en Serializable Dictionary, men mängden nycklar (" + keys.Count + ") matchar inte nummret av värden (" + values.Count + ") vilket betyder att något gick jävligt fel");
         }
 
         for (int i = 0; i < keys.Count; i++)
@@ -35,4 +35,3 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
         }
     }
 }
-*/

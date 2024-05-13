@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using UnityEngine;
 
-public class MergeManager : MonoBehaviour
+public class MergeManager : MonoBehaviour, IDataPersistence
 {
     // Cache
     public static MergeManager instance;
@@ -32,6 +32,54 @@ public class MergeManager : MonoBehaviour
     void Start()
     {
         buildManager = BuildManager.instance;
+    }
+    private void Update()
+    {
+        if (MergeDictionary["pulverizer"] == true)
+        {
+            Debug.Log("Den första merge finns med");
+        }
+    }
+    public void LoadData(GameData data)
+    {
+        // Ladda alla bool-värden från MergeDictionary
+        foreach (var kvp in data.MergeDictionary)
+        {
+            string key = kvp.Key;
+            bool value = kvp.Value;
+
+            // Kolla om nyckeln finns i din MergeDictionary
+            if (MergeDictionary.ContainsKey(key))
+            {
+                MergeDictionary[key] = value;
+            }
+            else
+            {
+                // Om nyckeln inte finns, lägg till den och värdet
+                MergeDictionary.Add(key, value);
+            }
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        // Spara alla bool-värden till GameData
+        foreach (var kvp in MergeDictionary)
+        {
+            string key = kvp.Key;
+            bool value = kvp.Value;
+
+            // Kolla om nyckeln finns i GameData
+            if (data.MergeDictionary.ContainsKey(key))
+            {
+                data.MergeDictionary[key] = value;
+            }
+            else
+            {
+                // Om nyckeln inte finns, lägg till den och värdet
+                data.MergeDictionary.Add(key, value);
+            }
+        }
     }
 
     public bool CanMerge(GameObject heldTurret, GameObject tileTurret)

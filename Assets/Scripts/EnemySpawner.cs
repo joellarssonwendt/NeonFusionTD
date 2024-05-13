@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemySpawner : MonoBehaviour//, IDataPersistence
+public class EnemySpawner : MonoBehaviour, IDataPersistence
 {
     public static EnemySpawner instance;
     public OptionsMenu optionsMenu;
@@ -50,6 +50,10 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         }
         instance = this;
     }
+    private void Start()
+    {
+        Invoke("CheckAndUpdateShopButtons", 0.1f);
+    }
     void Update()
     {
         if (!isSpawning) return;
@@ -70,14 +74,14 @@ public class EnemySpawner : MonoBehaviour//, IDataPersistence
         }
     }
 
-    /* public void LoadData(GameData data)
-     {
-         this.currentWave = data.currentWave;
-     }
-     public void SaveData(ref GameData data)
-     {
-         data.currentWave = this.currentWave;
-     }*/
+    public void LoadData(GameData data)
+    {
+        this.currentWave = data.currentWave;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.currentWave = this.currentWave;
+    }
 
     private void EnemyDestroyed()
     {

@@ -167,7 +167,7 @@ public class BuildManager : MonoBehaviour
                 }
             }
 
-            if (tileObjectScript.GetTurret() != null)
+            if (tileObjectScript.GetTurret() != null && selectedTurret != null)
             { 
 
                 if (mergeManager.CanMerge(heldTurret, targetTurret))
@@ -357,7 +357,10 @@ public class BuildManager : MonoBehaviour
         tileUnderPointer.GetComponent<Tile>().SetTurret(selectedTurret);
 
         // Här rensas referensen från den gamla tilen (som sparades när man klickade på tornet som ska flytts) 
-        pressedTileObject.GetComponent<Tile>().SetTurretToNull();
+        if (pressedTileObject != null)
+        {
+            pressedTileObject.GetComponent<Tile>().SetTurretToNull();
+        }
 
         // Rensar referensen för tornet som blev klickad på och deaktiverar den temporära turret spriten. 
         deselectBuiltTurret();

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IDataPersistence
 {
-    public static int Bits { get; private set; }
+    public static int Bits;
     public int startingBits;
-    public static int Crystals { get; private set; }
+    public static int Crystals; 
     public int startingCrystals;
 
     [Header("TowerCosts")]
@@ -22,8 +22,8 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        Bits = startingBits;
-        Crystals = startingCrystals;
+        //Bits = startingBits;
+       // Crystals = startingCrystals;
     }
 
     public static void AddBits(int amount)
@@ -45,12 +45,14 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    /*public void LoadData(GameData data)
+    public void LoadData(GameData data)
     {
-        PlayerStats.Chrystals = data.Chrystals;
+        PlayerStats.Bits = data.Bits;
+        PlayerStats.Crystals = data.Crystals;
     }
     public void SaveData(ref GameData data)
     {
-        data.Chrystals = PlayerStats.Chrystals;
-    }*/
+        data.Bits = PlayerStats.Bits;
+        data.Crystals = PlayerStats.Crystals;
+    }
 }

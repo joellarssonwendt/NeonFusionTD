@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Tile : MonoBehaviour//, IDataPersistence
+public class Tile : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private string id;
     [ContextMenu("Generera guid för referens till enskilt gameobject")]
@@ -71,17 +71,22 @@ public class Tile : MonoBehaviour//, IDataPersistence
     //    Gizmos.DrawSphere(transform.position, 0.5f);
     //}
 
-    /*public void LoadData(GameData data)
+    public void LoadData(GameData data)
     {
         if (data.turretPrefabNames.TryGetValue(id, out string prefabName) && data.turretPositions.TryGetValue(id, out Vector3 position))
         {
-            turretPrefabName = prefabName;
+            Debug.Log("Laddar turret/tile data");
             turretPosition = position;
+            turretPrefabName = prefabName;
+            string fixedPrefabName = turretPrefabName.Replace("(Clone)", "");
 
-            string path = "TurretTypes/" + turretPrefabName;
+            string path = "TurretTypes/" + fixedPrefabName;
+            Debug.Log(path);
             GameObject turretPrefab = Resources.Load<GameObject>(path);
             if (turretPrefab != null)
             {
+                Debug.Log("Spawnar sparade turrets vid uppladning");
+                SetTurret(turret);
                 turret = Instantiate(turretPrefab, turretPosition, Quaternion.identity);
             }
         }
@@ -90,6 +95,7 @@ public class Tile : MonoBehaviour//, IDataPersistence
     {
         if (turret != null && !string.IsNullOrEmpty(turretPrefabName))
         {
+            Debug.Log("Sparar turret/tile data");
             // Spara namnet p  turreten prefab och positionen där den  är placerad
             data.turretPrefabNames[id] = turretPrefabName;
             data.turretPositions[id] = turret.transform.position;
@@ -100,7 +106,7 @@ public class Tile : MonoBehaviour//, IDataPersistence
             data.turretPrefabNames.Remove(id);
             data.turretPositions.Remove(id);
         }
-    }*/
+    }
     public void PlaceTurret()
     {
         if (PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))

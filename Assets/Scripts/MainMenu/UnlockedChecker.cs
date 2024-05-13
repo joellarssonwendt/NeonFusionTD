@@ -30,7 +30,10 @@ public class UnlockedChecker : MonoBehaviour
     {
         MergeManager.OnMergeAction += OnMergeAction;
     }
-
+    private void Start()
+    {
+        Invoke("UpdateSilhouettes", 0.1f);
+    }
     private void UpdateSilhouettes()
     {
         pulverizerT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("pulverizer", out bool pulverizer) || !pulverizer);
