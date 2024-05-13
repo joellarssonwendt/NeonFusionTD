@@ -10,7 +10,7 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string fileName;
 
     [SerializeField] private GameObject healthSystem;
-    private GameData gameData;
+    public GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
     public bool playerDied = false;
@@ -39,7 +39,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         // laddar data från fil med dataHandler
-        //this.gameData = dataHandler.Load();
+        this.gameData = dataHandler.Load();
 
         if (this.gameData == null)
         {
@@ -80,6 +80,21 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        {
+            if (playerDied)
+            {
+                NewGame();
+                Debug.Log("Eftersom HP är 0 så rensas data");
+            }
+            dataPersistenceObj.SaveData(ref gameData);
+        }
+        if (playerDied)
+        {
+            NewGame();
+            Debug.Log("Eftersom HP är 0 så rensas data");
+        }
+        dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()
