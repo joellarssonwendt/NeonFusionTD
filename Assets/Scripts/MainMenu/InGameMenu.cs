@@ -8,6 +8,7 @@ public class InGameMenu : MonoBehaviour
     public GameObject inGameMenuUI;
     public GameObject inGameSettingsUI;
     public OptionsMenu settingsMenu;
+    public DataPersistenceManager dataPersistenceManager;
 
     private float originalTimeScale;
 
@@ -53,6 +54,7 @@ public class InGameMenu : MonoBehaviour
 
     public void ExitToMainMenu()
     {
+        dataPersistenceManager.SaveGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

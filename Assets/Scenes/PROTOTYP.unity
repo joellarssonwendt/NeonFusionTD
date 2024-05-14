@@ -41286,6 +41286,7 @@ MonoBehaviour:
   inGameMenuUI: {fileID: 2019505871}
   inGameSettingsUI: {fileID: 1155754433}
   settingsMenu: {fileID: 1155754435}
+  dataPersistenceManager: {fileID: 1115186291}
 --- !u!1 &2023568716
 GameObject:
   m_ObjectHideFlags: 0
