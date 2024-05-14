@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour, IDataPersistence
 {
@@ -25,6 +26,8 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
     [SerializeField] private GameObject shopNormalTurretButton, shopIceTurretButton, shopLightningTurretButton, shopFireTurretButton;
+    [SerializeField] public GameObject bossHealthObject;
+    [SerializeField] public Slider bossHealthSlider;
 
 
 
@@ -53,6 +56,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     private void Start()
     {
         Invoke("CheckAndUpdateShopButtons", 0.1f);
+        bossHealthObject.SetActive(false);
     }
     void Update()
     {

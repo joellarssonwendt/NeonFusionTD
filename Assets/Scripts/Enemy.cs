@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int bossNumber = 0;
     [SerializeField] private bool obsidianResistant = false;
 
+    private EnemySpawner enemySpawner;
     private SpriteRenderer spriteRenderer;
     private Transform target;
     private int pathIndex = 0;
@@ -31,9 +32,11 @@ public class Enemy : MonoBehaviour
     private float obsidianEffectDuration = 3f;
     private bool isAffectedByObsidian = false;
     private bool bossActive = false;
+    
 
     private void Start()
     {
+        enemySpawner = EnemySpawner.instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
         target = LevelManager.main.pathingNodes[pathIndex];
         currentHealth = enemyStats.maxHealth;
@@ -109,6 +112,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        if (bossNumber != 0) enemySpawner.bossHealthSlider.value = currentHealth;
 
         if (currentHealth <= 0 && !isDead) // Check if the enemy is not already dead
         {
@@ -185,6 +189,7 @@ public class Enemy : MonoBehaviour
 
             // Apply the accumulated Dot damage
             currentHealth -= accumulatedDotDamage;
+            if (bossNumber != 0) enemySpawner.bossHealthSlider.value = currentHealth;
 
             if (currentHealth <= 0)
             {
@@ -311,13 +316,22 @@ public class Enemy : MonoBehaviour
             Destroy(iceIcon);
         }
 
-        if (bossNumber != 0) bossActive = false;
+        if (bossNumber != 0)
+        {
+            bossActive = false;
+            enemySpawner.bossHealthObject.SetActive(false);
+        }
         Destroy(gameObject, 1f);
     }
 
     private void RunBossBehaviour()
     {
         bossActive = true;
+        
+        enemySpawner.bossHealthSlider.maxValue = currentHealth;
+        enemySpawner.bossHealthSlider.value = currentHealth;
+        enemySpawner.bossHealthObject.SetActive(true);
+
         // Spela "Boss Fight Startar" ljudeffekt
 
         if (bossNumber == 1)
@@ -372,6 +386,7 @@ public class Enemy : MonoBehaviour
                 spriteRenderer.color = Color.white;
                 currentHealth += 10;
                 if (currentHealth > maxHealth) currentHealth = maxHealth;
+                enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
                 rb.bodyType = RigidbodyType2D.Static;
                 yield return new WaitForSeconds(1f);
