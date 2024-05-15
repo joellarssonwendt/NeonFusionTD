@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour, IDataPersistence
 {
-    public static int Bits;
-    public int startingBits;
-    public static int Crystals; 
-    public int startingCrystals;
+    public static int Bits { get; private set; } = 0;
+    public static int StartingBits { get; set; } = 0;
+    public static int Crystals { get; private set; } = 0;
+    public static int StartingCrystals { get; set; } = 0;
+
+    public static event Action<int> OnBitsChanged;
+    public static event Action<int> OnCrystalsChanged;
 
     [Header("TowerCosts")]
     public static int normalTowerCost = 100;
@@ -21,12 +24,6 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
     private const int maxBits = 9999;
     private const int maxCrystals = 999;
 
-    void Start()
-    {
-        //Bits = startingBits;
-       // Crystals = startingCrystals;
-    }
-
     public static void AddBits(int amount)
     {
         Bits += amount;
@@ -35,10 +32,7 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
             Bits = maxBits;
         }
 
-        if (OnBitsChanged != null) 
-        {
-            OnBitsChanged.Invoke(Bits);
-        }
+        OnBitsChanged?.Invoke(Bits);
     }
 
     public static void AddCrystals(int amount)
@@ -48,13 +42,28 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         {
             Crystals = maxCrystals;
         }
+
+        OnCrystalsChanged?.Invoke(Crystals);
+
     }
 
+    public static void NotifyBitsChanged()
+    {
+        OnBitsChanged?.Invoke(Bits);
+    }
+
+    public static void NotifyCrystalsChanged()
+    {
+        OnCrystalsChanged?.Invoke(Crystals);
+    }
 
     public void LoadData(GameData data)
     {
         PlayerStats.Bits = data.Bits;
         PlayerStats.Crystals = data.Crystals;
+        Debug.Log($"Loaded Bits: {PlayerStats.Bits}, Loaded Crystals: {PlayerStats.Crystals}");
+        OnBitsChanged?.Invoke(Bits);
+        OnCrystalsChanged?.Invoke(Crystals);
     }
     public void SaveData(ref GameData data)
     {
@@ -62,5 +71,4 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         data.Crystals = PlayerStats.Crystals;
     }
 
-    public static event Action<int> OnBitsChanged;
 }

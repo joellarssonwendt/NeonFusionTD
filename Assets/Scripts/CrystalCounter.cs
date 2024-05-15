@@ -2,11 +2,11 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class BitsCounter : MonoBehaviour
+public class CrystalCounter : MonoBehaviour
 {
     public TextMeshProUGUI Text;
     public int CountFPS = 60;
-    public float Duration = 2f;
+    public float Duration = 20f;
     private int _Value = 0;
 
     public int Value
@@ -24,23 +24,23 @@ public class BitsCounter : MonoBehaviour
     private void Awake()
     {
         Text = GetComponent<TextMeshProUGUI>();
-        PlayerStats.OnBitsChanged += UpdateBitsDisplay;
+        PlayerStats.OnCrystalsChanged += UpdateCrystalsDisplay;
+        UpdateCrystalsDisplay(PlayerStats.Crystals);
     }
 
     private void OnDestroy()
     {
-        PlayerStats.OnBitsChanged -= UpdateBitsDisplay;
+        PlayerStats.OnCrystalsChanged -= UpdateCrystalsDisplay;
     }
 
     private void UpdateText(int newValue)
     {
         CountingCoroutine = StartCoroutine(CountText(newValue));
     }
-
-    public void UpdateBitsDisplay(int newValue)
+    private void UpdateCrystalsDisplay(int newValue)
     {
-        Debug.Log($"Updating Bits Display to: {newValue}");
-        Value = newValue; 
+        Debug.Log($"Updating Crystals Display to: {newValue}");
+        Value = newValue;
     }
 
     private IEnumerator CountText(int newValue)
