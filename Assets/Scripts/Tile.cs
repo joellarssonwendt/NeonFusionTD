@@ -125,6 +125,7 @@ public class Tile : MonoBehaviour, IDataPersistence
         {
             Debug.Log("Trying to merge...");
 
+            // Hämta selected turret innan det deselectas på något vis. Ny variabel i build managern?
             GameObject heldTurret = buildManager.GetTurretToBuild();
             GameObject targetTurret = turret;
             Vector3 mergeLocation = transform.position;

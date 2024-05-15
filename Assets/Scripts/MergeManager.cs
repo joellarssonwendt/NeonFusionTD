@@ -95,11 +95,13 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 {
                     MergeDictionary["pulverizer"] = true;
                     OnMergeAction?.Invoke(true);
-                } else {
+                }
+                else
+                {
                     MergeDictionary["pulverizer"] = true;
                     OnMergeAction?.Invoke(false);
                 }
-                
+
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
