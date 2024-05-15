@@ -11,7 +11,6 @@ public class BitsText : MonoBehaviour
         bitsAmountText = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         bitsAmountText.text = PlayerStats.Bits.ToString();

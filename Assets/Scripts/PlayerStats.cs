@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,11 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         {
             Bits = maxBits;
         }
+
+        if (OnBitsChanged != null) 
+        {
+            OnBitsChanged.Invoke(Bits);
+        }
     }
 
     public static void AddCrystals(int amount)
@@ -55,4 +61,6 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         data.Bits = PlayerStats.Bits;
         data.Crystals = PlayerStats.Crystals;
     }
+
+    public static event Action<int> OnBitsChanged;
 }
