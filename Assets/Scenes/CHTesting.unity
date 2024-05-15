@@ -3810,6 +3810,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d645e074240c5f04e885fecb81690f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsMenu: {fileID: 0}
+  roundAndTimeToggle: {fileID: 0}
+  autoWaveCountdown: {fileID: 0}
   handCraftedWaves: []
   randomEnemyArray: []
   baseAmount: 8
@@ -3820,6 +3823,8 @@ MonoBehaviour:
   shopIceTurretButton: {fileID: 0}
   shopLightningTurretButton: {fileID: 0}
   shopFireTurretButton: {fileID: 0}
+  bossHealthObject: {fileID: 0}
+  bossHealthSlider: {fileID: 0}
   currentWave: 1
   activeRoundPlaying: 0
 --- !u!1001 &1762057101
