@@ -28,7 +28,7 @@ public class UnlockedChecker : MonoBehaviour
     
     private void OnDisable()
     {
-        MergeManager.OnMergeAction += OnMergeAction;
+        MergeManager.OnMergeAction -= OnMergeAction;
     }
     private void Start()
     {
@@ -36,27 +36,45 @@ public class UnlockedChecker : MonoBehaviour
     }
     private void UpdateSilhouettes()
     {
-        pulverizerT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("pulverizer", out bool pulverizer) || !pulverizer);
-        flamethrowerT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("flamethrower", out bool flamethrower) || !flamethrower);
-        fireburstT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("fireburst", out bool fireburst) || !fireburst);
-        frostbiteT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("frostbite", out bool frostbite) || !frostbite);
-        shockwaveT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("shockwave", out bool shockwave) || !shockwave);
-        arcticT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("arctic", out bool arctic) || !arctic);
-        frostshockT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("frostshock", out bool frostshock) || !frostshock);
-        obsidianT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("obsidian", out bool obsidian) || !obsidian);
-        embersurgeT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("embersurge", out bool embersurge) || !embersurge);
-        teslaT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("tesla", out bool tesla) || !tesla);
+        if(MergeManager.instance != null)
+        {
+            pulverizerT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("pulverizer", out bool pulverizer) || !pulverizer);
+            flamethrowerT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("flamethrower", out bool flamethrower) || !flamethrower);
+            fireburstT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("fireburst", out bool fireburst) || !fireburst);
+            frostbiteT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("frostbite", out bool frostbite) || !frostbite);
+            shockwaveT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("shockwave", out bool shockwave) || !shockwave);
+            arcticT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("arctic", out bool arctic) || !arctic);
+            frostshockT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("frostshock", out bool frostshock) || !frostshock);
+            obsidianT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("obsidian", out bool obsidian) || !obsidian);
+            embersurgeT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("embersurge", out bool embersurge) || !embersurge);
+            teslaT2Siluette.gameObject.SetActive(!MergeManager.instance.MergeDictionary.TryGetValue("tesla", out bool tesla) || !tesla);
+        } else {
+            Debug.LogWarning("MergeManager is null in UpdateSilhouettes");
+        }
+        
     }
 
     private void OnMergeAction(bool state)
-    {        
-        Debug.Log("Method is used");
-        notificationBubble.SetActive(state);
-        UpdateSilhouettes();
+    {   
+        if(notificationBubble != null)
+        {
+            notificationBubble.SetActive(state);
+            UpdateSilhouettes();
+        } else
+        {
+            Debug.LogWarning("notificationBubble is null in OnMergeAction");
+        }
     }
 
     public void RemoveNotificationBubble()
     {
-        notificationBubble.SetActive(false);
+        if (notificationBubble != null)
+        {
+            notificationBubble.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("notificationBubble is null in RemoveNotificationBubble");
+        }
     }
 }
