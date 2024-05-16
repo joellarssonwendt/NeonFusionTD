@@ -17,6 +17,7 @@ public class Tile : MonoBehaviour, IDataPersistence
     public bool isOverATile = false;
     [SerializeField] private GameObject turret;
     [SerializeField] private LayerMask turretLayer;
+    [SerializeField] private GameObject audioManager;
     public GameObject currentTile;
 
     BuildManager buildManager;
@@ -153,6 +154,8 @@ public class Tile : MonoBehaviour, IDataPersistence
             Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
             GameObject turretToBuild = buildManager.GetTurretToBuild();
             turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
+            audioManager.GetComponent<AudioManager>().PlaySoundEffect("BuyTower");
+            audioManager.GetComponent<AudioManager>().PlaySoundEffect("PlaceTower");
             //turretPrefabName = turret.name;
             ClearSelection();
         }

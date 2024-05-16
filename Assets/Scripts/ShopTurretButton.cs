@@ -7,6 +7,7 @@ public class ShopTurretButton : MonoBehaviour
     [SerializeField] private string turretName;
     [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempSuperNormalTurret, tempSuperFireTurret;
     [SerializeField] private GameObject normalTurretButtonObject, fireTurretButtonObject, iceTurretButtonObject, lightningTurretButtonObject;
+    [SerializeField] private GameObject audioManager;
     private GameObject shopPanel;
     private Shop shop;
     
@@ -23,21 +24,29 @@ public class ShopTurretButton : MonoBehaviour
         {
             shop.SelectStandardTurret();
             tempNormalTurret.SetActive(true);
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("ShopButton");
         }
-        if (turretName.ToLower() == "fire" && fireTurretButtonObject.GetComponent<Button>().interactable)
+        else if (turretName.ToLower() == "fire" && fireTurretButtonObject.GetComponent<Button>().interactable)
         {
             shop.SelectFireTurret();
             tempFireTurret.SetActive(true);
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("ShopButton");
         }
-        if (turretName.ToLower() == "ice" && iceTurretButtonObject.GetComponent<Button>().interactable)
+        else if (turretName.ToLower() == "ice" && iceTurretButtonObject.GetComponent<Button>().interactable)
         {
             shop.SelectIceTurret();
             tempIceTurret.SetActive(true);
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("ShopButton");
         }
-        if (turretName.ToLower() == "lightning" && lightningTurretButtonObject.GetComponent<Button>().interactable)
+        else if (turretName.ToLower() == "lightning" && lightningTurretButtonObject.GetComponent<Button>().interactable)
         {
             shop.SelectLightningTurret();
             tempLightningTurret.SetActive(true);
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("ShopButton");
+        }
+        else
+        {
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("ErrorShopButton");
         }
     }
 

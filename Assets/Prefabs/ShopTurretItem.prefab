@@ -414,12 +414,10 @@ MonoBehaviour:
   tempLightningTurret: {fileID: 0}
   tempSuperNormalTurret: {fileID: 0}
   tempSuperFireTurret: {fileID: 0}
-  normalTurretSprite: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
-  fireTurretSprite: {fileID: 3056856402117988083, guid: c06cadc6b157b384e956227960c2239e, type: 3}
-  iceTurretSprite: {fileID: 0}
-  lightningTurretSprite: {fileID: 0}
-  superNormalSprite: {fileID: 0}
-  superFireSprite: {fileID: 0}
+  normalTurretButtonObject: {fileID: 0}
+  fireTurretButtonObject: {fileID: 0}
+  iceTurretButtonObject: {fileID: 0}
+  lightningTurretButtonObject: {fileID: 0}
 --- !u!1 &5461006008605959444
 GameObject:
   m_ObjectHideFlags: 0

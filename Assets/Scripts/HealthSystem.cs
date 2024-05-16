@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class HealthSystem : MonoBehaviour, IDataPersistence
 {
 
+    [SerializeField] private GameObject audioManager;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Image fillColor;
     [SerializeField] private Color greenHealth, redHealth;
@@ -77,6 +78,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
         if (currentHealth == 0)
         {
             dataPersistenceManager.playerDied = true;
+            audioManager.GetComponent<AudioManager>().PlaySoundEffect("GameOver");
             StartCoroutine(gameOverscreen());
         }
     }

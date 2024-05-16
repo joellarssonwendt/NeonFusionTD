@@ -16,6 +16,7 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance;
     EnemySpawner enemySpawner;
     MergeManager mergeManager;
+    [SerializeField] private GameObject audioManager;
 
     [Header("Turret prefabs")]
     public GameObject standardTurretPrefab;
@@ -353,6 +354,8 @@ public class BuildManager : MonoBehaviour
 
         // Här hämtar vi positionen av den tile som är under muspekaren
         Vector3 newCalculatedTowerPosition = new Vector3(tileObjectScript.transform.position.x, tileObjectScript.transform.position.y, 0);
+
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("MoveTower");
 
         // Ta bort turrens referens från platsen den ska flyttas till
         if (tileUnderPointer.GetComponent<Tile>().GetTurret() != null)

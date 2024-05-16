@@ -143,6 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51a9288975b3dd4f979c006efb58298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   isOverATile: 0
   turret: {fileID: 0}
+  turretLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  audioManager: {fileID: 0}
   currentTile: {fileID: 0}
+  turretPrefabName: 
