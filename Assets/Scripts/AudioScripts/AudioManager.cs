@@ -70,6 +70,11 @@ public class AudioManager : MonoBehaviour
             {
                 s.source.volume = s.volume * SoundEffectsVolume;
             }
+
+            if (s.name == "TeslaTower")
+            {
+                s.source.loop = true;
+            }
         }
         PlayMusic();
     }
@@ -107,7 +112,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundEffect(string soundName, float pitch = 2.0f)
+    public void PlaySoundEffect(string soundName, float pitch = 1.0f)
     {
         Sound s = Array.Find(sounds, sound => sound.name == soundName && !sound.isMusic && !sound.isUISound);
         if (s != null)
@@ -121,6 +126,20 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound effect not found: " + soundName);
         }
     }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+        {
+            s.source.Stop();
+        }
+        else
+        {
+            Debug.LogWarning("Sound not found: " + name);
+        }
+    }
+
 
     public void UpdateMasterVolume()
     {

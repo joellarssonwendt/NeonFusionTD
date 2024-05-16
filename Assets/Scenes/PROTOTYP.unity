@@ -22572,7 +22572,7 @@ MonoBehaviour:
   - name: ShockAttack
     clip: {fileID: 8300000, guid: 0c9c228b09624994dbd75b8b8fb2b701, type: 3}
     volume: 0.5
-    pitch: 1.49
+    pitch: 3
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22581,7 +22581,7 @@ MonoBehaviour:
   - name: TeslaTowerBuildup
     clip: {fileID: 8300000, guid: 6eb42cdc82a23db43836f9d76aa16785, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 2
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22590,7 +22590,7 @@ MonoBehaviour:
   - name: TeslaTower
     clip: {fileID: 8300000, guid: cb5a7e9715300e64997dfcf26d49a674, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 2
     isMusic: 0
     isUISound: 0
     isSoundFX: 1

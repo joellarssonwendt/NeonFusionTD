@@ -9,19 +9,24 @@ public class TeslaTower : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject TemporaryTurretSprite;
     [SerializeField] private ParticleSystem teslaParticleSystem;
+
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
     [SerializeField] private TurretStats turretStats;
 
     private float timeUntilFire = 0f;
+    private bool hasPlayedBuildupSound = false;
+    private bool isPlayingLoop = false;
 
     private void Start()
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -49,10 +54,24 @@ public class TeslaTower : MonoBehaviour
                 Shoot(enemies);
                 timeUntilFire = Time.time + projectileShootInterval;
             }
+
+            if (!hasPlayedBuildupSound)
+            {
+                audioManager.PlaySoundEffect("TeslaTowerBuildup"); 
+                hasPlayedBuildupSound = true;
+            }
+            if (!isPlayingLoop)
+            {
+                audioManager.Play("TeslaTower"); 
+                isPlayingLoop = true;
+            }
         }
         else
         {
             teslaParticleSystem.Stop();
+            hasPlayedBuildupSound = false;
+            isPlayingLoop = false;
+            audioManager.Stop("TeslaTower");
         }
     }
 
