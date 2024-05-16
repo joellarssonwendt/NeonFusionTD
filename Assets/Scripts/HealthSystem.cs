@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 public class HealthSystem : MonoBehaviour, IDataPersistence
 {
 
-    [SerializeField] private GameObject audioManager;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Image fillColor;
     [SerializeField] private Color greenHealth, redHealth;
     DataPersistenceManager dataPersistenceManager;
+    AudioManager audioManager;
 
-    public int startingHealth = 5;
+    public int startingHealth = 10;
     public int currentHealth = 0;
     public GameObject gameOver;
     public int passAmount = 1;
@@ -26,6 +26,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
     void Start()
     {
         dataPersistenceManager = DataPersistenceManager.instance;
+        audioManager = AudioManager.instance;
         //currentHealth = startingHealth;
         Invoke("UpdateHealthBar", 0.1f);
     }
@@ -47,7 +48,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
         SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 
-    
+
 
 
     void OnTriggerEnter2D(Collider2D other)
@@ -59,6 +60,9 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
 
             UpdateHealthBar();
             Debug.Log("Hit!");
+
+            float pitch = 1f + (currentHealth * 0.1f); // Adjust pitch based on current health
+            audioManager.PlaySoundEffect("PlayerTakeDamage", pitch);
         }
     }
 
@@ -81,8 +85,5 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
             audioManager.GetComponent<AudioManager>().PlaySoundEffect("GameOver");
             StartCoroutine(gameOverscreen());
         }
-    }
-
-    
-    
+    } 
 }

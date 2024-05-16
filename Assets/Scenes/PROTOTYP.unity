@@ -5214,7 +5214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb75d5d2766e9748b359e302a1a3056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 1492946863}
   healthSlider: {fileID: 1974029598}
   fillColor: {fileID: 417565672}
   greenHealth: {r: 0.2901961, g: 1, b: 0.5372549, a: 1}
@@ -22474,7 +22473,7 @@ MonoBehaviour:
   - name: 
     clip: {fileID: 8300000, guid: f7aafd3962bba1e4b98bd54d13d80163, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 1
     isUISound: 0
     isSoundFX: 0
@@ -22483,7 +22482,7 @@ MonoBehaviour:
   - name: NextWave
     clip: {fileID: 8300000, guid: 894b9e42cb3d7cd45a2724d398292b7d, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 1
     isSoundFX: 0
@@ -22492,7 +22491,7 @@ MonoBehaviour:
   - name: Button
     clip: {fileID: 8300000, guid: 3da05e4cf180473458ae67c9c0f34138, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 1
     isSoundFX: 0
@@ -22501,7 +22500,7 @@ MonoBehaviour:
   - name: ShopButton
     clip: {fileID: 8300000, guid: 5d2b802a8fc253b46a7a5ff9373d421e, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 1
     isSoundFX: 0
@@ -22510,7 +22509,7 @@ MonoBehaviour:
   - name: BuyTower
     clip: {fileID: 8300000, guid: e61ceb849c7a48342b5a9f96d5e7ca65, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22519,7 +22518,7 @@ MonoBehaviour:
   - name: PlaceTower
     clip: {fileID: 8300000, guid: 5652adbcc49498e46b089dca04f3cd3f, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22528,7 +22527,7 @@ MonoBehaviour:
   - name: MoveTower
     clip: {fileID: 8300000, guid: 81d4d678784995245862a0be97aab3d7, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22546,7 +22545,7 @@ MonoBehaviour:
   - name: ErrorShopButton
     clip: {fileID: 8300000, guid: b4110c08fd990774baa02ca878ccc6b7, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 1
     isSoundFX: 0
@@ -22555,7 +22554,7 @@ MonoBehaviour:
   - name: ObsidianAttack
     clip: {fileID: 8300000, guid: 2493c232cba91e1438f3dba2875fba27, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22564,7 +22563,7 @@ MonoBehaviour:
   - name: PlayerTakeDamage
     clip: {fileID: 8300000, guid: c04aabaa426f54246a2526b4552ff87b, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22582,7 +22581,7 @@ MonoBehaviour:
   - name: TeslaTowerBuildup
     clip: {fileID: 8300000, guid: 6eb42cdc82a23db43836f9d76aa16785, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22591,7 +22590,7 @@ MonoBehaviour:
   - name: TeslaTower
     clip: {fileID: 8300000, guid: cb5a7e9715300e64997dfcf26d49a674, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -22600,7 +22599,7 @@ MonoBehaviour:
   - name: FlamethrowerTower
     clip: {fileID: 8300000, guid: 53d398234440d684c8dd886fb1c24609, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1

@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
         [Range(0f, 1f)]
         public float volume;
-        [Range(-3f, 3f)]
+        [Range(0f, 3f)]
         public float pitch;
         public bool isMusic;
         public bool isUISound;
@@ -107,11 +107,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundEffect(string soundName)
+    public void PlaySoundEffect(string soundName, float pitch = 2.0f)
     {
         Sound s = Array.Find(sounds, sound => sound.name == soundName && !sound.isMusic && !sound.isUISound);
         if (s != null)
         {
+            Debug.Log("Sound effect played");
+            s.source.pitch = pitch;
             s.source.PlayOneShot(s.clip);
         }
         else
