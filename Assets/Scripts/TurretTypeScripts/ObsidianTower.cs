@@ -10,6 +10,7 @@ public class ObsidianTower: MonoBehaviour
     [SerializeField] private GameObject tilePrefab;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -24,6 +25,7 @@ public class ObsidianTower: MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -52,6 +54,8 @@ public class ObsidianTower: MonoBehaviour
     }
     private void Shoot() // Instantiate a projectile and set its target
     {
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("ObsidianAttack");
+
         GameObject projectileObject = Instantiate(obsidianProjectilePrefab, firingPoint.position, Quaternion.identity);
         ObsidianProjectile obsidianProjectileScript = projectileObject.GetComponent<ObsidianProjectile>();
         obsidianProjectileScript.SetTarget(target);

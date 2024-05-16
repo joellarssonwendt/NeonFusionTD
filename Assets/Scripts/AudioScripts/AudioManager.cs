@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour
     public bool isSoundEffectsVolumeMuted = false;
     public bool isUISoundEffectsVolumeMuted = false;
 
+    public static AudioManager instance;
+
+
     [System.Serializable]
     public class Sound
     {
@@ -23,6 +26,8 @@ public class AudioManager : MonoBehaviour
 
         [Range(0f, 1f)]
         public float volume;
+        [Range(-3f, 3f)]
+        public float pitch;
         public bool isMusic;
         public bool isUISound;
         public bool isSoundFX;
@@ -32,8 +37,15 @@ public class AudioManager : MonoBehaviour
         public float originalVolume;
     }
 
-    void Awake()
+    private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.Log("Det finns redan en AudioManager");
+            return;
+        }
+        instance = this;
+
         MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
         MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f); 
         SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
