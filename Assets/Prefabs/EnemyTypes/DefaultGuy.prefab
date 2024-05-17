@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6784010093378896535}
   - component: {fileID: 7894114672743940651}
-  - component: {fileID: 5546459295073055965}
   - component: {fileID: 6377493838693588582}
   - component: {fileID: 6786164646476171399}
   - component: {fileID: 8158652580253090061}
+  - component: {fileID: 7118192089208586155}
   m_Layer: 6
   m_Name: DefaultGuy
   m_TagString: Enemy
@@ -49,32 +49,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6786164646476171399}
-  animator: {fileID: 5546459295073055965}
+  animator: {fileID: 0}
   enemyStats: {fileID: 11400000, guid: 8e849d0821b34fa4881ebe574f2fed47, type: 2}
   fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
   iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
+  bossNumber: 0
+  obsidianResistant: 0
+  fireColor1: {r: 1, g: 0, b: 0, a: 0}
+  fireColor2: {r: 1, g: 0.5309945, b: 0, a: 0}
   isDead: 0
---- !u!95 &5546459295073055965
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8054526396113401650}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6d82753b4fa5a9a45916f0833a0a1b71, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &6377493838693588582
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -189,3 +172,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0.00000846386, y: -0.002984047}
   m_Size: {x: 1.1452234, y: 1.2660465}
   m_Direction: 0
+--- !u!95 &7118192089208586155
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8054526396113401650}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d7ae0672d1c1c04ab55b6ee95bb5839, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

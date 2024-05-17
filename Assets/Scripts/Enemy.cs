@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject iceIconPrefab;
     [SerializeField] private int bossNumber = 0;
     [SerializeField] private bool obsidianResistant = false;
+    [SerializeField] private Color fireColor1, fireColor2;
 
     private EnemySpawner enemySpawner;
     private SpriteRenderer spriteRenderer;
@@ -371,6 +373,35 @@ public class Enemy : MonoBehaviour
             this.sourceOfChill = sourceOfChill;
         }
     }
+
+
+    // Coroutines för eld och is-effekter
+    private IEnumerator FireEffect()
+    {
+        Color orginialColor = spriteRenderer.color;
+        float elapsedTime = 0f;  
+        while(accumulatedDotDamage < elapsedTime)
+        {
+            float interval = 0.25f;
+
+            spriteRenderer.color = spriteRenderer.color;
+            yield return new WaitForSeconds(interval);
+
+            spriteRenderer.color = fireColor1;
+            yield return new WaitForSeconds(interval);
+
+            spriteRenderer.color = fireColor2;
+            yield return new WaitForSeconds(interval);
+
+            if (accumulatedDotDamage <= 0)
+            {
+                spriteRenderer.color = orginialColor; // Restore the original color
+                
+            }
+            
+        }
+    }
+   
 
     // Boss beteenden
     private IEnumerator Boss1()
