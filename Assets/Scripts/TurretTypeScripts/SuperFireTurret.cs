@@ -90,7 +90,7 @@ public class SuperFireTurret : MonoBehaviour
         float adjustedProjectileDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseProjectileDamage / validTargetsCount;
         float adjustedDoTDamage = validTargetsCount <= 5 ? turretStats.dotDamagePerSecond : baseDoTDamage / validTargetsCount;
 
-        Debug.Log($"Base DoT Damage: {baseDoTDamage}, Enemies in range: {validTargetsCount}, Adjusted DoT damage Per Target: {adjustedDoTDamage}");
+        //Debug.Log($"Base DoT Damage: {baseDoTDamage}, Enemies in range: {validTargetsCount}, Adjusted DoT damage Per Target: {adjustedDoTDamage}");
 
         foreach (var enemy in enemiesInArea)
         {

@@ -91,7 +91,7 @@ public class TeslaTower : MonoBehaviour
 
         float baseTotalDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, 5);
         float adjustedDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseTotalDamage / validTargetsCount;
-        Debug.Log($"Base Total Damage: {baseTotalDamage}, Enemies in range: {validTargetsCount}, Adjusted Damage Per Target: {adjustedDamage}");
+        //Debug.Log($"Base Total Damage: {baseTotalDamage}, Enemies in range: {validTargetsCount}, Adjusted Damage Per Target: {adjustedDamage}");
 
         foreach (var enemy in enemies)
         {
