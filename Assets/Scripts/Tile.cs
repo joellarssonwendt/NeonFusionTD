@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Tile : MonoBehaviour, IDataPersistence
 {
@@ -18,6 +19,8 @@ public class Tile : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject turret;
     [SerializeField] private LayerMask turretLayer;
     [SerializeField] private GameObject audioManager;
+    [SerializeField] private ParticleSystem placeTowerEffect;
+    private GameObject placeEffectReference;
     public GameObject currentTile;
 
     BuildManager buildManager;
@@ -139,6 +142,7 @@ public class Tile : MonoBehaviour, IDataPersistence
                 Destroy(targetTurret);
                 GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
                 mergeResult.transform.position = mergeLocation;
+                CreatePlaceTowerParticles(mergeLocation);
             }
             else
             {
@@ -154,8 +158,10 @@ public class Tile : MonoBehaviour, IDataPersistence
             Vector3 newCalculatedTowerPosition = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, 0);
             GameObject turretToBuild = buildManager.GetTurretToBuild();
             turret = (GameObject)Instantiate(turretToBuild, newCalculatedTowerPosition, Quaternion.identity);
+            CreatePlaceTowerParticles(newCalculatedTowerPosition);
             audioManager.GetComponent<AudioManager>().PlaySoundEffect("BuyTower");
             audioManager.GetComponent<AudioManager>().PlaySoundEffect("PlaceTower");
+            
             //turretPrefabName = turret.name;
             ClearSelection();
         }
@@ -219,4 +225,24 @@ public class Tile : MonoBehaviour, IDataPersistence
         turret = null;
         turretPrefabName = null;
     }
+    private void CreatePlaceTowerParticles(Vector3 position)
+    {
+        ParticleSystem particleObject = Instantiate(placeTowerEffect, position, Quaternion.identity);
+        placeEffectReference = particleObject.gameObject;
+        if(placeEffectReference != null)
+        {
+            Invoke("DestroyPlaceTowerParticles", 3f);
+        }
+
+    }
+    private void DestroyPlaceTowerParticles()
+    {
+        if (placeEffectReference != null)
+        {
+            Destroy(placeEffectReference);
+        }
+    }
+
+
+
 }

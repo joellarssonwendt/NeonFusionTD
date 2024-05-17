@@ -11,6 +11,8 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private GameObject tempIceFireTurret, tempIceLightningTurret, tempLightningFireTurret, tempNormalIceTurret, tempNormalLightningTurret, tempLightningLightningTurret, tempNormalFireTurret;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject testDiamond;
+    [SerializeField] private ParticleSystem placeTowerEffect;
+    private GameObject placeEffectReference;
     //[SerializeField] private LayerMask turret, tile;
     private int rayCastDistance = 100;
     public static BuildManager instance;
@@ -198,6 +200,7 @@ public class BuildManager : MonoBehaviour
                     // Skapa en kopia av merge resultatet, ställ in mottagande tilens tillstånd och flytta kopian till rätt plats
                     GameObject mergeResult = Instantiate(mergeManager.GetMergeResult());
                     mergeResult.transform.position = mergeLocation;
+                    CreatePlaceTowerParticles(mergeLocation);
                 }
                 else
                 {
@@ -390,5 +393,22 @@ public class BuildManager : MonoBehaviour
     public RaycastHit2D GetMouseTowerPointer()
     {
         return mouseTowerPointer;
+    }
+    private void CreatePlaceTowerParticles(Vector3 position)
+    {
+        ParticleSystem particleObject = Instantiate(placeTowerEffect, position, Quaternion.identity);
+        placeEffectReference = particleObject.gameObject;
+        if (placeEffectReference != null)
+        {
+            Invoke("DestroyPlaceTowerParticles", 3f);
+        }
+
+    }
+    private void DestroyPlaceTowerParticles()
+    {
+        if (placeEffectReference != null)
+        {
+            Destroy(placeEffectReference);
+        }
     }
 }
