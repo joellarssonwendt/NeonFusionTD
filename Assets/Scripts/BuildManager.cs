@@ -62,6 +62,12 @@ public class BuildManager : MonoBehaviour
         enemySpawner = EnemySpawner.instance;
         tileObjectScript = tileObjectPrefab.GetComponent<Tile>();
         mergeManager = MergeManager.instance;
+        
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow; // Du kan ändra färgen efter behov
+        Gizmos.DrawWireSphere(new Vector3(-0.92f, 6.3f, -1), 3f);
     }
     private void Update()
     {
