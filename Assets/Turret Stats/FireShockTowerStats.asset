@@ -16,7 +16,7 @@ MonoBehaviour:
   rotationSpeed: 700
   projectilesPerSecond: 3
   projectileDamage: 0.15
-  dotDamagePerSecond: 0.7
+  dotDamagePerSecond: 0.5
   dotDuration: 3
   chillAmount: 0
   chillDuration: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TeslaTower : MonoBehaviour
@@ -77,6 +78,21 @@ public class TeslaTower : MonoBehaviour
 
     private void Shoot(Collider2D[] enemies)
     {
+        int validTargetsCount = 0;
+
+        foreach (var enemy in enemies)
+        {
+            Enemy enemyComponent = enemy.GetComponent<Enemy>();
+            if (enemyComponent != null && !enemyComponent.isDead)
+            {
+                validTargetsCount++;
+            }
+        }
+
+        float baseTotalDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, 5);
+        float adjustedDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseTotalDamage / validTargetsCount;
+        //Debug.Log($"Base Total Damage: {baseTotalDamage}, Enemies in range: {validTargetsCount}, Adjusted Damage Per Target: {adjustedDamage}");
+
         foreach (var enemy in enemies)
         {
             Enemy enemyComponent = enemy.GetComponent<Enemy>();
@@ -85,7 +101,7 @@ public class TeslaTower : MonoBehaviour
                 GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
                 Projectile projectileScript = projectileObject.GetComponent<Projectile>();
 
-                projectileScript.SetDamage(turretStats.projectileDamage);
+                projectileScript.SetDamage(adjustedDamage);
                 projectileScript.SetTarget(enemy.transform);
 
                 projectileScript.SetMaxChains(turretStats.maxChains);

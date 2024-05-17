@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -59,6 +60,8 @@ public class SuperFireTurret : MonoBehaviour
 
     private void Shoot()
     {
+        int validTargetsCount = 0;
+
         PolygonCollider2D polygonCollider = turretRotationPoint.GetComponent<PolygonCollider2D>();
 
         // Convert the polygon collider's points to world space
@@ -78,18 +81,24 @@ public class SuperFireTurret : MonoBehaviour
             if (IsPointInPolygon(enemy.transform.position, worldPoints))
             {
                 enemiesInArea.Add(enemy);
+                validTargetsCount++;
             }
         }
 
-        //Debug.Log("Enemies in collider area: " + enemiesInArea.Count);
+        float baseProjectileDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, 5);
+        float baseDoTDamage = turretStats.dotDamagePerSecond * Math.Min(validTargetsCount, 5);
+        float adjustedProjectileDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseProjectileDamage / validTargetsCount;
+        float adjustedDoTDamage = validTargetsCount <= 5 ? turretStats.dotDamagePerSecond : baseDoTDamage / validTargetsCount;
+
+        //Debug.Log($"Base DoT Damage: {baseDoTDamage}, Enemies in range: {validTargetsCount}, Adjusted DoT damage Per Target: {adjustedDoTDamage}");
 
         foreach (var enemy in enemiesInArea)
         {
             GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
             DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
 
-            dotProjectile.SetDamage(turretStats.projectileDamage);
-            dotProjectile.SetDotDamage(turretStats.dotDamagePerSecond);
+            dotProjectile.SetDamage(adjustedProjectileDamage);
+            dotProjectile.SetDotDamage(adjustedDoTDamage);
             dotProjectile.SetDotDuration(turretStats.dotDuration);
             dotProjectile.SetTarget(enemy.transform);
         }

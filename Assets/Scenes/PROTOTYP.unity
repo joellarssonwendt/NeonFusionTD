@@ -341,7 +341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -368,7 +368,7 @@ RectTransform:
   m_GameObject: {fileID: 3114248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1909518262}
@@ -1067,6 +1067,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -1152,7 +1156,7 @@ RectTransform:
   m_GameObject: {fileID: 51890814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1633964705}
@@ -1225,6 +1229,7 @@ GameObject:
   - component: {fileID: 66187768}
   - component: {fileID: 66187770}
   - component: {fileID: 66187769}
+  - component: {fileID: 66187771}
   m_Layer: 5
   m_Name: AttackRange
   m_TagString: TemporaryTurretSprites
@@ -1241,7 +1246,7 @@ RectTransform:
   m_GameObject: {fileID: 66187767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1520910873}
@@ -1271,7 +1276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1289,6 +1294,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66187767}
   m_CullTransparentMesh: 1
+--- !u!58 &66187771
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66187767}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &66500488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,7 +1432,7 @@ RectTransform:
   m_GameObject: {fileID: 74516024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449720458}
@@ -1482,7 +1522,7 @@ RectTransform:
   m_GameObject: {fileID: 79462659}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1322833594}
@@ -1560,6 +1600,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -2086,6 +2130,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -2159,6 +2207,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -2308,6 +2360,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -2560,6 +2616,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -2829,7 +2889,7 @@ RectTransform:
   m_GameObject: {fileID: 156019392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1312589588}
@@ -2873,7 +2933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: faa6c4b357c273d44b96fb270502afc8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb4d2f5f0bdf2c34195d7dc5cc631ae4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3103,6 +3163,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -3291,6 +3355,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -3596,6 +3664,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -3681,7 +3753,7 @@ RectTransform:
   m_GameObject: {fileID: 216203882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1909518262}
@@ -3759,6 +3831,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -4065,6 +4141,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -4386,7 +4466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4413,7 +4493,7 @@ RectTransform:
   m_GameObject: {fileID: 258078534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1818426204}
@@ -4721,6 +4801,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -5036,6 +5120,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -5359,6 +5447,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -5890,6 +5982,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -6392,6 +6488,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -6761,6 +6861,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -6846,7 +6950,7 @@ RectTransform:
   m_GameObject: {fileID: 371765495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1931560909}
@@ -6924,6 +7028,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -7499,6 +7607,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -7583,6 +7695,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -7669,6 +7785,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -7742,6 +7862,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -7978,6 +8102,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -8200,6 +8328,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -8705,6 +8837,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -8918,6 +9054,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -8991,6 +9131,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -9416,6 +9560,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -9489,6 +9637,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -9574,6 +9726,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -9926,6 +10082,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -10011,7 +10171,7 @@ RectTransform:
   m_GameObject: {fileID: 528754735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1226396397}
@@ -10090,6 +10250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -10163,6 +10327,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -10313,6 +10481,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -10398,6 +10570,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -10482,6 +10658,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -10642,6 +10822,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -11032,7 +11216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11059,7 +11243,7 @@ RectTransform:
   m_GameObject: {fileID: 596118812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1633964705}
@@ -11293,7 +11477,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11320,7 +11504,7 @@ RectTransform:
   m_GameObject: {fileID: 624353180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1312589588}
@@ -11346,6 +11530,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -11420,6 +11608,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -11678,7 +11870,7 @@ RectTransform:
   m_GameObject: {fileID: 656767584}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1520910873}
@@ -11756,6 +11948,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -11924,6 +12120,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -11997,6 +12197,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -12147,6 +12351,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -12295,6 +12503,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -12740,7 +12952,7 @@ RectTransform:
   m_GameObject: {fileID: 799751980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 933020216}
@@ -13100,7 +13312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13127,7 +13339,7 @@ RectTransform:
   m_GameObject: {fileID: 833098956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449720458}
@@ -13153,6 +13365,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -13227,6 +13443,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -13313,7 +13533,7 @@ RectTransform:
   m_GameObject: {fileID: 840470337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1818426204}
@@ -13357,7 +13577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f7c0c7662e2636e48a73d4e85df3573c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55db9d2678a5def4ca15cc6d249bbfcc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13506,6 +13726,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -14166,6 +14390,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -14374,6 +14602,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -14533,6 +14765,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -14769,6 +15005,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -14919,6 +15159,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -15068,6 +15312,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -15152,6 +15400,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -15259,7 +15511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15286,7 +15538,7 @@ RectTransform:
   m_GameObject: {fileID: 1028469768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1315825200}
@@ -15529,6 +15781,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -15811,6 +16067,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -16003,6 +16263,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -16532,6 +16796,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -16617,7 +16885,7 @@ RectTransform:
   m_GameObject: {fileID: 1107044456}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1734308}
@@ -16695,6 +16963,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -17519,6 +17791,7 @@ MonoBehaviour:
   tempNormalFireTurret: {fileID: 1226396396}
   mainCamera: {fileID: 1824152345}
   testDiamond: {fileID: 0}
+  placeTowerEffect: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
   audioManager: {fileID: 1492946863}
   standardTurretPrefab: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
   fireTurretPrefab: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
@@ -17600,6 +17873,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -17836,6 +18113,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -17920,6 +18201,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -18894,7 +19179,7 @@ RectTransform:
   m_GameObject: {fileID: 1264231383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1315825200}
@@ -19080,6 +19365,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -19164,6 +19453,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -19488,6 +19781,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -19583,6 +19880,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -20225,6 +20526,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -20309,6 +20614,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -20695,6 +21004,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -20865,7 +21178,7 @@ RectTransform:
   m_GameObject: {fileID: 1380879629}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1931560909}
@@ -20895,7 +21208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20929,6 +21242,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -21014,6 +21331,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -21187,6 +21508,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -21349,6 +21674,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -21508,6 +21837,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -22123,6 +22456,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -22207,6 +22544,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -22367,6 +22708,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -22920,6 +23265,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -23986,6 +24335,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -24322,6 +24675,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -24555,6 +24912,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -24888,6 +25249,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -25106,6 +25471,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -25509,7 +25878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25536,7 +25905,7 @@ RectTransform:
   m_GameObject: {fileID: 1679013897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 808074744}
@@ -25660,7 +26029,7 @@ RectTransform:
   m_GameObject: {fileID: 1693937483}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 694378002}
@@ -25738,6 +26107,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -26381,6 +26754,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -26477,6 +26854,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -26561,6 +26942,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -26967,6 +27352,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -27164,7 +27553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27191,7 +27580,7 @@ RectTransform:
   m_GameObject: {fileID: 1754658547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 694378002}
@@ -27541,6 +27930,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -27609,6 +28002,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -27916,6 +28313,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -28495,6 +28896,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -28843,6 +29248,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -28949,7 +29358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28976,7 +29385,7 @@ RectTransform:
   m_GameObject: {fileID: 1887015077}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 933020216}
@@ -29002,6 +29411,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -29710,7 +30123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29737,7 +30150,7 @@ RectTransform:
   m_GameObject: {fileID: 1914215655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1322833594}
@@ -29763,6 +30176,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -29926,6 +30343,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -30011,6 +30432,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -30095,6 +30520,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -30508,6 +30937,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -41061,6 +41494,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -41565,6 +42002,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -41866,6 +42307,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -42365,7 +42810,7 @@ RectTransform:
   m_GameObject: {fileID: 2060052636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 808074744}
@@ -42454,6 +42899,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -42783,6 +43232,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1492946863}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -42867,6 +43320,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -42963,6 +43420,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
+      propertyPath: placeTowerEffect
+      value: 
+      objectReference: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
     - target: {fileID: 869379578444172984, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
       propertyPath: turretLayer.m_Bits
       value: 256
@@ -43622,7 +44083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -43649,7 +44110,7 @@ RectTransform:
   m_GameObject: {fileID: 2135955013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1226396397}
@@ -43772,7 +44233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cafe2e5f7dfad33458e0a4f002f51582, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 632317646be97a747a9f9135d772cf50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -43799,7 +44260,7 @@ RectTransform:
   m_GameObject: {fileID: 2139596072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1734308}

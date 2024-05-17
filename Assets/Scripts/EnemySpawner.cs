@@ -123,6 +123,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         onRoundEnd.Invoke();
         CheckAndUpdateShopButtons();
 
+
         if (optionsMenu.autoPlayNextWaveToggle.isOn)
         {
             roundAndTimeToggle.UpdateButtonSprite();
