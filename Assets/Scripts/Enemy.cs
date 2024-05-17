@@ -376,7 +376,7 @@ public class Enemy : MonoBehaviour
 
 
     // Coroutines för eld och is-effekter
-    private IEnumerator FireEffect()
+   /* private IEnumerator FireEffect()
     {
         Color orginialColor = spriteRenderer.color;
         float elapsedTime = 0f;  
@@ -400,7 +400,7 @@ public class Enemy : MonoBehaviour
             }
             
         }
-    }
+    }*/
    
 
     // Boss beteenden

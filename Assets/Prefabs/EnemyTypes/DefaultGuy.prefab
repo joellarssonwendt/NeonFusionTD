@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6786164646476171399}
-  animator: {fileID: 0}
+  animator: {fileID: 7118192089208586155}
   enemyStats: {fileID: 11400000, guid: 8e849d0821b34fa4881ebe574f2fed47, type: 2}
   fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
   iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
@@ -182,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 8054526396113401650}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3d7ae0672d1c1c04ab55b6ee95bb5839, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6d82753b4fa5a9a45916f0833a0a1b71, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
