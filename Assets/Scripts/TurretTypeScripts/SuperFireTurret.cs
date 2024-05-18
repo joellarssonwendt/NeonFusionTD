@@ -13,6 +13,7 @@ public class SuperFireTurret : MonoBehaviour
     [SerializeField] private ParticleSystem flamethrowerParticle;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -20,11 +21,14 @@ public class SuperFireTurret : MonoBehaviour
 
     private Transform target;
     private float timeUntilFire = 0f;
+    private bool soundIsPlaying = false;
+    private float timeSinceLastTargetFoundOrKilled = 0f;
 
     private void Start()
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -32,15 +36,19 @@ public class SuperFireTurret : MonoBehaviour
         {
             StopFlamethrower();
             FindTarget();
+            timeSinceLastTargetFoundOrKilled = Time.time;
             return;
         }
 
         RotateTowardsTarget();
 
-        if (!CheckTargetIsInRange()) // If the target is out of range, reset target to null
+        if (!CheckTargetIsInRange()) 
         {
             StopFlamethrower();
+            audioManager.Stop("Flamethrower");
+            soundIsPlaying = false;
             target = null;
+            timeSinceLastTargetFoundOrKilled = Time.time;
         }
         else
         {
@@ -49,12 +57,24 @@ public class SuperFireTurret : MonoBehaviour
                 flamethrowerParticle.Play();
             }
 
+            if (!soundIsPlaying)
+            {
+                soundIsPlaying = true;
+                audioManager.PlaySoundEffect("Flamethrower");
+            }
+
             float projectileShootInterval = 1f / turretStats.projectilesPerSecond;
             if (Time.time >= timeUntilFire)
             {
                 Shoot();
                 timeUntilFire = Time.time + projectileShootInterval;
             }
+        }
+        
+        if (timeSinceLastTargetFoundOrKilled >= 1 && target == null)
+        {
+            audioManager.Stop("Flamethrower");
+            soundIsPlaying = false;
         }
     }
 

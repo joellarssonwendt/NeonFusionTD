@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     public OptionsMenu optionsMenu;
     public RoundAndTimeToggle roundAndTimeToggle;
     public GameObject autoWaveCountdown;
+    AudioManager audioManager;
 
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
@@ -57,6 +58,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     {
         Invoke("CheckAndUpdateShopButtons", 0.1f);
         bossHealthObject.SetActive(false);
+        audioManager = AudioManager.instance;
     }
     void Update()
     {
@@ -122,6 +124,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         nextRoundButton.SetActive(true);
         onRoundEnd.Invoke();
         CheckAndUpdateShopButtons();
+        audioManager.Stop("Flamethrower");
 
 
         if (optionsMenu.autoPlayNextWaveToggle.isOn)
