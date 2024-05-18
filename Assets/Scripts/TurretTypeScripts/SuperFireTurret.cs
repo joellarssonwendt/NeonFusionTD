@@ -71,7 +71,7 @@ public class SuperFireTurret : MonoBehaviour
             }
         }
         
-        if (timeSinceLastTargetFoundOrKilled >= 1 && target == null)
+        if (timeSinceLastTargetFoundOrKilled >= 0.5f && target == null)
         {
             audioManager.Stop("Flamethrower");
             soundIsPlaying = false;
