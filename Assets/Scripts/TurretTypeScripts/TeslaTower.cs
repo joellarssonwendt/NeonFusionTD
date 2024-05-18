@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TeslaTower : MonoBehaviour
 {
-    [Header("References")] // Header to group serialized fields in the inspector
+    [Header("References")]
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject projectilePrefab;
@@ -21,7 +21,6 @@ public class TeslaTower : MonoBehaviour
 
     private float timeUntilFire = 0f;
     private bool hasPlayedBuildupSound = false;
-    private bool isPlayingLoop = false;
 
     private void Start()
     {
@@ -29,6 +28,7 @@ public class TeslaTower : MonoBehaviour
         buildManager = BuildManager.instance;
         audioManager = AudioManager.instance;
     }
+
     private void Update()
     {
         float Range = turretStats.targetingRange;
@@ -58,27 +58,21 @@ public class TeslaTower : MonoBehaviour
 
             if (!hasPlayedBuildupSound)
             {
-                audioManager.PlaySoundEffect("TeslaTowerBuildup"); 
+                audioManager.PlaySoundEffect("TeslaTowerBuildup");
                 hasPlayedBuildupSound = true;
-            }
-            if (!isPlayingLoop)
-            {
-                audioManager.Play("TeslaTower"); 
-                isPlayingLoop = true;
             }
         }
         else
         {
             teslaParticleSystem.Stop();
             hasPlayedBuildupSound = false;
-            isPlayingLoop = false;
-            audioManager.Stop("TeslaTower");
         }
     }
 
     private void Shoot(Collider2D[] enemies)
     {
         int validTargetsCount = 0;
+        audioManager.PlaySoundEffect("ShockAttack");
 
         foreach (var enemy in enemies)
         {
@@ -91,7 +85,6 @@ public class TeslaTower : MonoBehaviour
 
         float baseTotalDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, 5);
         float adjustedDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseTotalDamage / validTargetsCount;
-        //Debug.Log($"Base Total Damage: {baseTotalDamage}, Enemies in range: {validTargetsCount}, Adjusted Damage Per Target: {adjustedDamage}");
 
         foreach (var enemy in enemies)
         {
@@ -110,6 +103,7 @@ public class TeslaTower : MonoBehaviour
             }
         }
     }
+
 
     /* private void OnDrawGizmosSelected()
      {   // Draws a circle in the scene view to visualize the turret's targeting range

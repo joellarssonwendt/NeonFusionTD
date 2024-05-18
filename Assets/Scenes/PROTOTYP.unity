@@ -22316,7 +22316,7 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
-  - name: FlamethrowerTower
+  - name: Flamethrower
     clip: {fileID: 8300000, guid: 53d398234440d684c8dd886fb1c24609, type: 3}
     volume: 1
     pitch: 1
@@ -22324,7 +22324,7 @@ MonoBehaviour:
     isUISound: 0
     isSoundFX: 1
     source: {fileID: 0}
-    originalVolume: 0
+    originalVolume: 1
   MasterVolume: 0.5
   MusicVolume: 0.5
   SoundEffectsVolume: 0.5
