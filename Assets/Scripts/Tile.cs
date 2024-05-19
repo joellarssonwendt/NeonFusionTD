@@ -40,6 +40,7 @@ public class Tile : MonoBehaviour, IDataPersistence
         {
             if (PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
             {
+                audioManager.GetComponent<AudioManager>().Play("Error");
                 ClearSelection();
                 return;
             }
@@ -48,6 +49,7 @@ public class Tile : MonoBehaviour, IDataPersistence
         }
         else if (Input.GetMouseButtonUp(0) && !buildManager.isRaycastHittingTile() && buildManager.GetTurretToBuild() != null)
         {
+            audioManager.GetComponent<AudioManager>().Play("Error");
             ClearSelection();
         }
 

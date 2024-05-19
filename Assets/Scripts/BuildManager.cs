@@ -384,7 +384,7 @@ public class BuildManager : MonoBehaviour
             pressedTileObject.GetComponent<Tile>().SetTurretToNull();
         }
 
-        // Rensar referensen för tornet som blev klickad på och deaktiverar den temporära turret spriten. 
+        // Rensar referensen för tornet som blev klickad på och deaktiverar den temporära turret spriten.
         deselectBuiltTurret();
     }
 
