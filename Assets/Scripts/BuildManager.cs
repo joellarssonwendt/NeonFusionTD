@@ -181,6 +181,7 @@ public class BuildManager : MonoBehaviour
                     //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
                     deselectBuiltTurret();
                     Debug.Log("deselect");
+                    audioManager.GetComponent<AudioManager>().Play("Error");
                 }
             }
 
@@ -250,7 +251,6 @@ public class BuildManager : MonoBehaviour
     public void SetTurretToBuildIsNull()
     {
         // Rensar referensen till det tornet som ska byggas från shoppen och deaktiverar den temporära spriten
-        audioManager.GetComponent<AudioManager>().Play("Error");
         deactivateTempTurretSprites();
         turretToBuild = null;
     }
@@ -356,7 +356,6 @@ public class BuildManager : MonoBehaviour
     {
         //rensar referensen till det klickade tornet samt det temporära flyttspritsen blir inaktiva
         //audioManager.GetComponent<AudioManager>().Play("Error");
-        audioManager.GetComponent<AudioManager>().Play("Error");
         selectedTurret = null;
         deactivateTempTurretSprites();
     }

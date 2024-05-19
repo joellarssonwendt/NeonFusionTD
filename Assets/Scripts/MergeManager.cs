@@ -84,6 +84,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
         {
             buildManager.deselectBuiltTurret();
             Debug.Log("Can't merge with itself!");
+            audioManager.Play("Error");
             return false;
         }
 

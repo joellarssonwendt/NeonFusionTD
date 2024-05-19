@@ -121,6 +121,7 @@ public class Tile : MonoBehaviour, IDataPersistence
     {
         if (PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
         {
+            audioManager.GetComponent<AudioManager>().Play("Error");
             ClearSelection();
             return;
         }
