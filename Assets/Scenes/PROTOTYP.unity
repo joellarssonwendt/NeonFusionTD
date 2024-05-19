@@ -22271,15 +22271,6 @@ MonoBehaviour:
     isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
-  - name: ObsidianAttack
-    clip: {fileID: 8300000, guid: 2493c232cba91e1438f3dba2875fba27, type: 3}
-    volume: 1
-    pitch: 1
-    isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
-    source: {fileID: 0}
-    originalVolume: 0
   - name: PlayerTakeDamage
     clip: {fileID: 8300000, guid: c04aabaa426f54246a2526b4552ff87b, type: 3}
     volume: 1
@@ -22289,35 +22280,17 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
-  - name: ShockAttack
-    clip: {fileID: 8300000, guid: 0c9c228b09624994dbd75b8b8fb2b701, type: 3}
-    volume: 0.5
-    pitch: 3
-    isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
-    source: {fileID: 0}
-    originalVolume: 0
-  - name: TeslaTowerBuildup
-    clip: {fileID: 8300000, guid: 6eb42cdc82a23db43836f9d76aa16785, type: 3}
+  - name: ObsidianAttack
+    clip: {fileID: 8300000, guid: 2493c232cba91e1438f3dba2875fba27, type: 3}
     volume: 1
-    pitch: 2
+    pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
-  - name: TeslaTower
-    clip: {fileID: 8300000, guid: cb5a7e9715300e64997dfcf26d49a674, type: 3}
-    volume: 1
-    pitch: 2
-    isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
-    source: {fileID: 0}
-    originalVolume: 0
-  - name: Flamethrower
-    clip: {fileID: 8300000, guid: 53d398234440d684c8dd886fb1c24609, type: 3}
+  - name: IceAttack
+    clip: {fileID: 8300000, guid: ff59dbcda4037534495a584e2f0ebaad, type: 3}
     volume: 1
     pitch: 1
     isMusic: 0
@@ -22325,6 +22298,60 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 1
+  - name: ShockAttack
+    clip: {fileID: 8300000, guid: 457ba99533793834ab144c95507c6967, type: 3}
+    volume: 0.5
+    pitch: 3
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: FireAttack
+    clip: {fileID: 8300000, guid: f519c058c1953bc48b289b6971d0054e, type: 3}
+    volume: 1
+    pitch: 2
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: FireShockAttack
+    clip: {fileID: 8300000, guid: dc28d58d2cee74749b4f83b2317397d9, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 1
+  - name: IceShockAttack
+    clip: {fileID: 8300000, guid: e1a607d1d8fd79a458a9c6a0b54aad26, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 1
+  - name: Flamethrower
+    clip: {fileID: 8300000, guid: b0974ab83c3fb23429bb6fbded7babfd, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 1
+  - name: TeslaTower
+    clip: {fileID: 8300000, guid: 52e9f2ae5df9ebd47a0e1f87d636dab7, type: 3}
+    volume: 1
+    pitch: 2
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
   MasterVolume: 0.5
   MusicVolume: 0.5
   SoundEffectsVolume: 0.5

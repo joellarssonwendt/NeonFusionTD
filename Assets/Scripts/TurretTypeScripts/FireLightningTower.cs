@@ -55,7 +55,7 @@ public class FireLightningTower : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
-        audioManager.GetComponent<AudioManager>().PlaySoundEffect("ShockAttack");
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("FireShockAttack");
 
         // Determine which firing point to use based on the flag
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;

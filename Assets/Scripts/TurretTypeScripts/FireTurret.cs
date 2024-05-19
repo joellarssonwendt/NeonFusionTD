@@ -10,6 +10,7 @@ public class FireTurret : MonoBehaviour
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -22,6 +23,7 @@ public class FireTurret : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -51,6 +53,8 @@ public class FireTurret : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("FireAttack");
+
         // Instantiate a dot projectile and set its target
         GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
         DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class TeslaTower : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class TeslaTower : MonoBehaviour
     [SerializeField] private TurretStats turretStats;
 
     private float timeUntilFire = 0f;
-    private bool hasPlayedBuildupSound = false;
+    private bool soundIsPlaying = false;
+    private float timeSinceLastTargetFoundOrKilled = 0f;
 
     private void Start()
     {
@@ -48,6 +50,7 @@ public class TeslaTower : MonoBehaviour
         if (aliveEnemyInRange)
         {
             teslaParticleSystem.Play();
+            timeSinceLastTargetFoundOrKilled = Time.time;
 
             float projectileShootInterval = 1f / turretStats.projectilesPerSecond;
             if (Time.time >= timeUntilFire)
@@ -56,16 +59,22 @@ public class TeslaTower : MonoBehaviour
                 timeUntilFire = Time.time + projectileShootInterval;
             }
 
-            if (!hasPlayedBuildupSound)
+            if (!soundIsPlaying)
             {
-                audioManager.PlaySoundEffect("TeslaTowerBuildup");
-                hasPlayedBuildupSound = true;
+                soundIsPlaying = true;
+                audioManager.PlaySoundEffect("TeslaTower");
             }
+
         }
         else
         {
             teslaParticleSystem.Stop();
-            hasPlayedBuildupSound = false;
+            if (timeSinceLastTargetFoundOrKilled >= 0.5f && !aliveEnemyInRange)
+            {
+                audioManager.Stop("TeslaTower");
+                soundIsPlaying = false;
+            }
+            timeSinceLastTargetFoundOrKilled = Time.time;
         }
     }
 

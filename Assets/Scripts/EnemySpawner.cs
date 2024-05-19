@@ -125,6 +125,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         onRoundEnd.Invoke();
         CheckAndUpdateShopButtons();
         audioManager.Stop("Flamethrower");
+        audioManager.Stop("TeslaTower");
 
 
         if (optionsMenu.autoPlayNextWaveToggle.isOn)
