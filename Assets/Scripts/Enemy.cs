@@ -55,7 +55,11 @@ public class Enemy : MonoBehaviour
         ApplyDotEffects();
         CheckDoTDuration();
         CheckChillDuration();
-        if (bossNumber != 0 && !bossActive) RunBossBehaviour();
+
+        if (bossNumber != 0 && !bossActive)
+        {
+            RunBossBehaviour();
+        }
     }
 
     private void Move()
@@ -324,6 +328,7 @@ public class Enemy : MonoBehaviour
         if (bossNumber != 0)
         {
             bossActive = false;
+            bossNumber = 0;
             audioManager.Play("BossDeath");
             enemySpawner.bossHealthObject.SetActive(false);
         }

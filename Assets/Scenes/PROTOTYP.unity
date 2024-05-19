@@ -22292,7 +22292,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: IceAttack
     clip: {fileID: 8300000, guid: ff59dbcda4037534495a584e2f0ebaad, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isMusic: 0
     isUISound: 0
