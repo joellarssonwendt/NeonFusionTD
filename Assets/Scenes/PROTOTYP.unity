@@ -22389,6 +22389,15 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: d1e7b3731390e204ea0a93027afca062, type: 3}
+    volume: 1
+    pitch: 2
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
   MasterVolume: 0.5
   MusicVolume: 0.5
   SoundEffectsVolume: 0.5

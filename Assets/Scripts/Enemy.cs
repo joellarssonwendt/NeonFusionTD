@@ -324,6 +324,7 @@ public class Enemy : MonoBehaviour
         if (bossNumber != 0)
         {
             bossActive = false;
+            audioManager.Play("BossDeath");
             enemySpawner.bossHealthObject.SetActive(false);
         }
         Destroy(gameObject, 1f);
