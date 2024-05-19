@@ -10,6 +10,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
     // Cache
     public static MergeManager instance;
     BuildManager buildManager;
+    AudioManager audioManager;
 
     public static Action<bool> OnMergeAction;
     public Dictionary<string, bool> MergeDictionary = new Dictionary<string, bool>(); //TDname
@@ -32,6 +33,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
     void Start()
     {
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
    
     public void LoadData(GameData data)
@@ -105,6 +107,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 2
@@ -124,6 +127,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 3
@@ -143,6 +147,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 4
@@ -162,6 +167,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 5
@@ -181,6 +187,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 6
@@ -201,6 +208,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 7
@@ -221,6 +229,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 8
@@ -241,6 +250,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 9
@@ -260,6 +270,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
             //combo 10
@@ -280,11 +291,14 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 PlayerStats.AddCrystals(-PlayerStats.mergeCost);
                 Debug.Log("Combination found!");
                 //Merge();
+                audioManager.Play("MergeSuccess");
                 return true;
             }
+            audioManager.Play("Error");
             return false;
         }
         Debug.Log("Not enough bits to merge");
+        audioManager.Play("Error");
         return false;
     }
 

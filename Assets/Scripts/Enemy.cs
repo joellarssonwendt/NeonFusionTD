@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool obsidianResistant = false;
     [SerializeField] private Color fireColor1, fireColor2;
 
+    private AudioManager audioManager;
     private EnemySpawner enemySpawner;
     private SpriteRenderer spriteRenderer;
     private Transform target;
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        audioManager = AudioManager.instance;
         enemySpawner = EnemySpawner.instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
         target = LevelManager.main.pathingNodes[pathIndex];
@@ -306,6 +308,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         isDead = true; // Set the flag to true to indicate that the enemy has died
+        audioManager.Play("EnemyDeath");
         EnemySpawner.onEnemyDestroy.Invoke();
         animator.Play("Ghost_Death");
 
@@ -329,7 +332,9 @@ public class Enemy : MonoBehaviour
     private void RunBossBehaviour()
     {
         bossActive = true;
-        
+
+        audioManager.Play("BossSpawn");
+
         enemySpawner.bossHealthSlider.maxValue = currentHealth;
         enemySpawner.bossHealthSlider.value = currentHealth;
         enemySpawner.bossHealthObject.SetActive(true);

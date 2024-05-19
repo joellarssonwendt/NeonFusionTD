@@ -13394,6 +13394,7 @@ Transform:
   - {fileID: 297445484}
   - {fileID: 1838619945}
   - {fileID: 1115186290}
+  - {fileID: 1492946864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &870499783
@@ -22170,12 +22171,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492946863}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 698.7503, y: 911.98535, z: -19.199722}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 869759597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1492946865
 MonoBehaviour:
@@ -22345,6 +22346,42 @@ MonoBehaviour:
     originalVolume: 1
   - name: TeslaTower
     clip: {fileID: 8300000, guid: 52e9f2ae5df9ebd47a0e1f87d636dab7, type: 3}
+    volume: 1
+    pitch: 2
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: Error
+    clip: {fileID: 8300000, guid: 2ec57b4d7f7de2749bd8cd3b8982b109, type: 3}
+    volume: 1
+    pitch: 2
+    isMusic: 0
+    isUISound: 1
+    isSoundFX: 0
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: MergeSuccess
+    clip: {fileID: 8300000, guid: 5ad26f47af4aec8499dec1afef60a411, type: 3}
+    volume: 1
+    pitch: 2
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: 00e749b159c570449949cf81086e3a88, type: 3}
+    volume: 1
+    pitch: 2
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: BossSpawn
+    clip: {fileID: 8300000, guid: f62f2a6f428e5a54f936e84ae7faf83d, type: 3}
     volume: 1
     pitch: 2
     isMusic: 0
@@ -43726,4 +43763,3 @@ SceneRoots:
   - {fileID: 2082496822}
   - {fileID: 181063257}
   - {fileID: 1519298733}
-  - {fileID: 1492946864}
