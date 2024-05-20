@@ -57,6 +57,7 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.originalVolume = s.volume;
             s.source.volume = s.volume * MasterVolume;
+            s.source.pitch = s.pitch;
 
             if (s.isMusic)
             {
@@ -82,7 +83,15 @@ public class AudioManager : MonoBehaviour
     public void Play (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        if (s != null)
+        {
+            s.source.pitch = s.pitch; 
+            s.source.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Sound not found: " + name);
+        }
     }
 
     public void PlayMusic()
@@ -91,6 +100,7 @@ public class AudioManager : MonoBehaviour
         if (music != null)
         {
             music.source.loop = true;
+            music.source.pitch = music.pitch;
             music.source.Play();
         }
         else
@@ -104,6 +114,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == soundName && !sound.isMusic);
         if (s != null)
         {
+            s.source.pitch = s.pitch; 
             s.source.PlayOneShot(s.clip);
         }
         else
@@ -118,7 +129,7 @@ public class AudioManager : MonoBehaviour
         if (s != null)
         {
             Debug.Log("Sound effect played");
-            s.source.pitch = pitch;
+            s.source.pitch = pitch; 
             s.source.PlayOneShot(s.clip);
         }
         else
