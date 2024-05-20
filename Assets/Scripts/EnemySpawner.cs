@@ -27,6 +27,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
     [SerializeField] private GameObject shopNormalTurretButton, shopIceTurretButton, shopLightningTurretButton, shopFireTurretButton;
+    [SerializeField] private GameObject lockIce, lockLightning, lockFire;
     [SerializeField] public GameObject bossHealthObject;
     [SerializeField] public Slider bossHealthSlider;
 
@@ -197,14 +198,17 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         if (currentWave >= 4)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableIceTowerButton();
+            lockIce.SetActive(false);
         }
         if (currentWave >= 8)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableLightningTowerButton();
+            lockLightning.SetActive(false);
         }
         if (currentWave >= 12)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableFireTowerButton();
+            lockFire.SetActive(false);
         }
     }
     private IEnumerator StartNextWaveAfterDelay(float delay)

@@ -59,7 +59,8 @@ public class InGameMenu : MonoBehaviour
 
     private IEnumerator SaveAndExit()
     {
-        dataPersistenceManager.SaveGame(); 
+        dataPersistenceManager.SaveGame();
+        Time.timeScale = 1;
         yield return null;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
