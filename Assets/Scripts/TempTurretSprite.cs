@@ -7,11 +7,12 @@ public class TempTurretSprite : MonoBehaviour
     [SerializeField] private GameObject attackRangeSprite;
     private Image image;
     private Image attackRangeImage;
-    private Color green = Color.green
-;   private Color transparentGreen = new Color(67f, 255f, 100f, 0.4f);
+    private Color targetRangeGreen = new Color(0, 255, 0.5f, 0.1f);
+    private Color targetRangeRed = new Color(222, 0, 0, 0.1f);
+    private Color transparentGreen = new Color(67f, 255f, 100f, 0.4f);
     private Color red = new Color(222f, 0, 0, 0.7f);
     private Color redTransparent = new Color(222f, 0, 0, 0.4f);
-
+    
     BuildManager buildManager;
     // Start is called before the first frame update
     void Start()
@@ -38,11 +39,11 @@ public class TempTurretSprite : MonoBehaviour
     private void changeColorToRed()
     {
         image.color = redTransparent;
-        attackRangeImage.color = red;
+        attackRangeImage.color = targetRangeRed;
     }
     private void changeColorToGreen()
     {
-        image.color = green;
-        attackRangeImage.color = transparentGreen;
+        image.color = transparentGreen;
+        attackRangeImage.color = targetRangeGreen;
     }
 }

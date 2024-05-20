@@ -3,26 +3,40 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour, IDataPersistence
 {
     public static EnemySpawner instance;
+    public OptionsMenu optionsMenu;
+    public RoundAndTimeToggle roundAndTimeToggle;
+    public AutoWaveCountdown autoWaveCountdown;
+    public GameObject autoWaveCountdownSprite;
+    AudioManager audioManager;
+
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
+    public static UnityEvent onRoundEnd = new UnityEvent();
 
     // Variables
     [SerializeField] private List<HandCraftedWave> handCraftedWaves;
-    [SerializeField] private GameObject[] enemyTypes;
+    [SerializeField] private GameObject[] randomEnemyArray;
     [SerializeField] private int baseAmount = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float difficultyScalingFactor = 0.75f;
+    [SerializeField] private float difficultyScalingFactor = 0.9f;
 
     [Header("referenser")]
     [SerializeField] private GameObject nextRoundButton;
-    
+    [SerializeField] private GameObject shopNormalTurretButton, shopIceTurretButton, shopLightningTurretButton, shopFireTurretButton;
+    [SerializeField] private GameObject lockIce, lockLightning, lockFire;
+    [SerializeField] public GameObject bossHealthObject;
+    [SerializeField] public Slider bossHealthSlider;
 
-    private int currentWave = 1;
-    private int chrystalGainPerRound = 100;
+
+
+    public int currentWave = 1;
+    private int bitsGainPerRound = 100;
+    private int crystalGainPerRound = 2;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
@@ -34,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
     void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
-     
+
         if (instance != null)
         {
             Debug.Log("Det finns redan en EnemySpawner");
@@ -42,16 +56,16 @@ public class EnemySpawner : MonoBehaviour
         }
         instance = this;
     }
-
-    void Start()
+    private void Start()
     {
-        
+        Invoke("CheckAndUpdateShopButtons", 0.1f);
+        bossHealthObject.SetActive(false);
+        audioManager = AudioManager.instance;
     }
-
     void Update()
     {
         if (!isSpawning) return;
-
+        //Debug.Log(currentWave.ToString());
         timeSinceLastSpawn += Time.deltaTime;
 
         if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
@@ -68,6 +82,15 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void LoadData(GameData data)
+    {
+        this.currentWave = data.currentWave;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.currentWave = this.currentWave;
+    }
+
     private void EnemyDestroyed()
     {
         enemiesAlive--;
@@ -77,8 +100,12 @@ public class EnemySpawner : MonoBehaviour
     public void StartWave()
     {
         Debug.Log("Wave Started!");
+        if (currentWave <= handCraftedWaves.Count) enemiesPerSecond = handCraftedWaves[currentWave - 1].enemiesPerSecond;
+        enemiesPerSecond += (currentWave * 0.05f);
+
         isSpawning = true;
         activeRoundPlaying = true;
+        autoWaveCountdownSprite.SetActive(false);
         enemiesLeftToSpawn = EnemiesPerWave();
     }
 
@@ -87,10 +114,38 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("Wave Ended!");
         isSpawning = false;
         activeRoundPlaying = false;
+        autoWaveCountdownSprite.SetActive(true);
         timeSinceLastSpawn = 0f;
         currentWave++;
-        PlayerStats.Chrystals += chrystalGainPerRound;
+
+        PlayerStats.AddBits(bitsGainPerRound);
+        PlayerStats.AddCrystals(crystalGainPerRound);
+        bitsGainPerRound += 10;
+        crystalGainPerRound += 1;
+
         nextRoundButton.SetActive(true);
+        onRoundEnd.Invoke();
+        CheckAndUpdateShopButtons();
+        audioManager.Stop("Flamethrower");
+        audioManager.Stop("TeslaTower");
+        autoWaveCountdown.ResetCountdownSprite();
+
+
+        if (optionsMenu.autoPlayNextWaveToggle.isOn)
+        {
+            roundAndTimeToggle.UpdateButtonSprite();
+        }
+
+
+        if (optionsMenu.autoPlayNextWaveToggle.isOn)
+        {
+            StartCoroutine(StartNextWaveAfterDelay(5f));
+        }
+
+        else
+        {
+            Debug.Log("Auto-start next wave is disabled");
+        }
     }
 
     private int EnemiesPerWave()
@@ -98,9 +153,9 @@ public class EnemySpawner : MonoBehaviour
         if (currentWave > handCraftedWaves.Count) return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
 
         int enemiesPerWave = 0;
-        for (int i = 0; i < handCraftedWaves[currentWave-1].enemyTypes.Length; i++)
+        for (int i = 0; i < handCraftedWaves[currentWave - 1].enemyTypes.Count; i++)
         {
-            enemiesPerWave += handCraftedWaves[currentWave-1].enemyAmounts[i];
+            enemiesPerWave += handCraftedWaves[currentWave - 1].enemyAmounts[i];
         }
         return enemiesPerWave;
     }
@@ -111,16 +166,13 @@ public class EnemySpawner : MonoBehaviour
 
         if (currentWave <= handCraftedWaves.Count)
         {
-            // Håll ordning på vilken enemyAmount vi är på
-            enemyAmountCounter++;
-
-            if (enemyAmountCounter >= handCraftedWaves[currentWave-1].enemyAmounts.Length)
+            if (enemyAmountCounter >= handCraftedWaves[currentWave - 1].enemyAmounts[enemyTypeCounter])
             {
                 // Håll ordning på vilken enemyType vi är på
-                enemyTypeCounter++;
                 enemyAmountCounter = 0;
+                enemyTypeCounter++;
 
-                if (enemyTypeCounter > handCraftedWaves[currentWave-1].enemyTypes.Length)
+                if (enemyTypeCounter > handCraftedWaves[currentWave - 1].enemyTypes.Count - 1)
                 {
                     // Återställ när waven är slut
                     enemyTypeCounter = 0;
@@ -128,13 +180,48 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
 
-            enemyToSpawn = handCraftedWaves[currentWave-1].enemyTypes[enemyTypeCounter];
+            // Håll ordning på vilken enemyAmount vi är på
+            enemyAmountCounter++;
+
+
+
+            enemyToSpawn = handCraftedWaves[currentWave - 1].enemyTypes[enemyTypeCounter];
         }
         else
         {
-            enemyToSpawn = enemyTypes[Random.Range(0, enemyTypes.Length)];
+            // Spawnar random fiende-typ om det inte finns några fler HandCraftedWaves
+            enemyToSpawn = randomEnemyArray[Random.Range(0, randomEnemyArray.Length)];
         }
 
         Instantiate(enemyToSpawn, LevelManager.main.spawnPoint.position, Quaternion.identity);
+    }
+    private void CheckAndUpdateShopButtons()
+    {
+        if (currentWave >= 4)
+        {
+            shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableIceTowerButton();
+            lockIce.SetActive(false);
+        }
+        if (currentWave >= 8)
+        {
+            shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableLightningTowerButton();
+            lockLightning.SetActive(false);
+        }
+        if (currentWave >= 12)
+        {
+            shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableFireTowerButton();
+            lockFire.SetActive(false);
+        }
+    }
+    private IEnumerator StartNextWaveAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        StartWave();
+        NotifyTimeScaleChange(Time.timeScale);
+    }
+
+    public void NotifyTimeScaleChange(float timeScale)
+    {
+        roundAndTimeToggle.UpdateButtonSpriteBasedOnTimeScale(timeScale);
     }
 }

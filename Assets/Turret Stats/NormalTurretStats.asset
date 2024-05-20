@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b9d5076e8e6a84398a7c555fd47ef2, type: 3}
   m_Name: NormalTurretStats
   m_EditorClassIdentifier: 
-  targetingRange: 4.5
-  rotationSpeed: 600
-  projectilesPerSecond: 2
-  projectileDamage: 0.5
-  dotAmount: 0
+  targetingRange: 5.2
+  rotationSpeed: 650
+  projectilesPerSecond: 1
+  projectileDamage: 1.5
+  dotDamagePerSecond: 0
   dotDuration: 0
+  chillAmount: 0
+  chillDuration: 0
+  maxChains: 0
+  chainRange: 0

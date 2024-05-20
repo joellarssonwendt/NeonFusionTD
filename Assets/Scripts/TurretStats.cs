@@ -7,8 +7,10 @@ public class TurretStats : ScriptableObject
     public float rotationSpeed;
     public float projectilesPerSecond;
     public float projectileDamage;
-    public float dotAmount; //Total damage from the damage over time debuff 
-    public float dotDuration; //Duration of the damage over time debuff 
+    public float dotDamagePerSecond; 
+    public float dotDuration; 
     public float chillAmount;
     public float chillDuration;
+    public int maxChains;
+    public float chainRange;
 }

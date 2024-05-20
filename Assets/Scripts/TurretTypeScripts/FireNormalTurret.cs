@@ -61,7 +61,7 @@ public class FireNormalTurret : MonoBehaviour
 
         // Set the damage value of the dot projectile from the Scriptable Object
         dotProjectile.SetDamage(turretStats.projectileDamage);
-        dotProjectile.SetDotDamage(turretStats.dotAmount); // Set dot damage
+        dotProjectile.SetDotDamage(turretStats.dotDamagePerSecond); // Set dot damage
         dotProjectile.SetDotDuration(turretStats.dotDuration); // Set dot duration
         dotProjectile.SetTarget(target);
 
@@ -107,7 +107,7 @@ public class FireNormalTurret : MonoBehaviour
     {
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
+        buildManager.ActivateTemporaryTurretSprite();
         buildManager.tileObject.SetTurretToNull();
     }
 

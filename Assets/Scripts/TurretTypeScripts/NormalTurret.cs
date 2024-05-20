@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class NormalTurret : MonoBehaviour
 {
@@ -104,7 +103,7 @@ private void FindTarget()
     {
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
+        buildManager.ActivateTemporaryTurretSprite();
         buildManager.tileObject.SetTurretToNull();
     }
 

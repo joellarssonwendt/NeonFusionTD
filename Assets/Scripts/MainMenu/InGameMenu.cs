@@ -8,6 +8,9 @@ public class InGameMenu : MonoBehaviour
     public GameObject inGameMenuUI;
     public GameObject inGameSettingsUI;
     public OptionsMenu settingsMenu;
+    public DataPersistenceManager dataPersistenceManager;
+
+    private float originalTimeScale;
 
     private void Start()
     {
@@ -18,37 +21,47 @@ public class InGameMenu : MonoBehaviour
     {
         inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
 
-        Time.timeScale = inGameMenuUI.activeSelf ? 0.0f : 1.0f;
+        originalTimeScale = Time.timeScale;
+
+        Time.timeScale = inGameMenuUI.activeSelf ? 0.0f : originalTimeScale;
     }
+
 
     public void toggleSettings()
     {
         inGameSettingsUI.SetActive(!inGameSettingsUI.activeSelf);
 
-        Time.timeScale = inGameSettingsUI.activeSelf ? 0.0f : 1.0f;
+        Time.timeScale = 0.0f;
     }
 
     public void ContinueGame()
     {
         inGameMenuUI.SetActive (false);
-        Time.timeScale = 1.0f;
+        Time.timeScale = originalTimeScale;
     }
 
     public void openSettings()
     {
         settingsMenu.UpdateSliders();
         inGameSettingsUI.SetActive (true);
-        Time.timeScale = 1.0f;
+        Time.timeScale = 0.0f;
     }
 
     public void closeSettings ()
     {
         inGameSettingsUI.SetActive(false);
-        Time.timeScale = 1.0f;
     }
 
     public void ExitToMainMenu()
     {
+        StartCoroutine(SaveAndExit());
+    }
+
+    private IEnumerator SaveAndExit()
+    {
+        dataPersistenceManager.SaveGame();
+        Time.timeScale = 1;
+        yield return null;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

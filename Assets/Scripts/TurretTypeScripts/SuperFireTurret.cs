@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class SuperFireTurret : MonoBehaviour
     [SerializeField] private ParticleSystem flamethrowerParticle;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -19,11 +21,14 @@ public class SuperFireTurret : MonoBehaviour
 
     private Transform target;
     private float timeUntilFire = 0f;
+    private bool soundIsPlaying = false;
+    private float timeSinceLastTargetFoundOrKilled = 0f;
 
     private void Start()
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -31,21 +36,31 @@ public class SuperFireTurret : MonoBehaviour
         {
             StopFlamethrower();
             FindTarget();
+            timeSinceLastTargetFoundOrKilled = Time.time;
             return;
         }
 
         RotateTowardsTarget();
 
-        if (!CheckTargetIsInRange()) // If the target is out of range, reset target to null
+        if (!CheckTargetIsInRange()) 
         {
             StopFlamethrower();
+            audioManager.Stop("Flamethrower");
+            soundIsPlaying = false;
             target = null;
+            timeSinceLastTargetFoundOrKilled = Time.time;
         }
         else
         {
             if (!flamethrowerParticle.isPlaying)
             {
                 flamethrowerParticle.Play();
+            }
+
+            if (!soundIsPlaying)
+            {
+                soundIsPlaying = true;
+                audioManager.PlaySoundEffect("Flamethrower");
             }
 
             float projectileShootInterval = 1f / turretStats.projectilesPerSecond;
@@ -55,10 +70,18 @@ public class SuperFireTurret : MonoBehaviour
                 timeUntilFire = Time.time + projectileShootInterval;
             }
         }
+        
+        if (timeSinceLastTargetFoundOrKilled >= 0.5f && target == null)
+        {
+            audioManager.Stop("Flamethrower");
+            soundIsPlaying = false;
+        }
     }
 
     private void Shoot()
     {
+        int validTargetsCount = 0;
+
         PolygonCollider2D polygonCollider = turretRotationPoint.GetComponent<PolygonCollider2D>();
 
         // Convert the polygon collider's points to world space
@@ -78,18 +101,24 @@ public class SuperFireTurret : MonoBehaviour
             if (IsPointInPolygon(enemy.transform.position, worldPoints))
             {
                 enemiesInArea.Add(enemy);
+                validTargetsCount++;
             }
         }
 
-        //Debug.Log("Enemies in collider area: " + enemiesInArea.Count);
+        float baseProjectileDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, 5);
+        float baseDoTDamage = turretStats.dotDamagePerSecond * Math.Min(validTargetsCount, 5);
+        float adjustedProjectileDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseProjectileDamage / validTargetsCount;
+        float adjustedDoTDamage = validTargetsCount <= 5 ? turretStats.dotDamagePerSecond : baseDoTDamage / validTargetsCount;
+
+        //Debug.Log($"Base DoT Damage: {baseDoTDamage}, Enemies in range: {validTargetsCount}, Adjusted DoT damage Per Target: {adjustedDoTDamage}");
 
         foreach (var enemy in enemiesInArea)
         {
             GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
             DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
 
-            dotProjectile.SetDamage(turretStats.projectileDamage);
-            dotProjectile.SetDotDamage(turretStats.dotAmount);
+            dotProjectile.SetDamage(adjustedProjectileDamage);
+            dotProjectile.SetDotDamage(adjustedDoTDamage);
             dotProjectile.SetDotDuration(turretStats.dotDuration);
             dotProjectile.SetTarget(enemy.transform);
         }
@@ -158,7 +187,7 @@ public class SuperFireTurret : MonoBehaviour
      {
          currentTurretOnPointer = gameObject;
          buildManager.selectedTurret = currentTurretOnPointer;
-         buildManager.selectBuiltTurret();
+         buildManager.ActivateTemporaryTurretSprite();
          buildManager.tileObject.SetTurretToNull();
      }
 

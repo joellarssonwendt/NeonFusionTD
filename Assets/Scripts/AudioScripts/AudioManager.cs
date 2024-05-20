@@ -5,9 +5,18 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    public float MasterVolume = 0.5f;
     public float MusicVolume = 0.5f;
     public float SoundEffectsVolume = 0.5f;
     public float UISoundEffectsVolume = 0.5f;
+
+    public bool isMasterVolumeMuted = false;
+    public bool isMusicVolumeMuted = false;
+    public bool isSoundEffectsVolumeMuted = false;
+    public bool isUISoundEffectsVolumeMuted = false;
+
+    public static AudioManager instance;
+
 
     [System.Serializable]
     public class Sound
@@ -15,17 +24,29 @@ public class AudioManager : MonoBehaviour
         public string name;
         public AudioClip clip;
 
-        [Range(0f, 1f)]
+        [Range(0f, 3f)]
         public float volume;
+        [Range(0f, 3f)]
+        public float pitch;
         public bool isMusic;
         public bool isUISound;
+        public bool isSoundFX;
 
         [HideInInspector]
         public AudioSource source;
+        public float originalVolume;
     }
 
-    void Awake()
+    private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.Log("Det finns redan en AudioManager");
+            return;
+        }
+        instance = this;
+
+        MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
         MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f); 
         SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
         UISoundEffectsVolume = PlayerPrefs.GetFloat("UISoundEffectsVolume", 0.5f);
@@ -34,6 +55,9 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>(); 
             s.source.clip = s.clip;
+            s.originalVolume = s.volume;
+            s.source.volume = s.volume * MasterVolume;
+            s.source.pitch = s.pitch;
 
             if (s.isMusic)
             {
@@ -43,9 +67,14 @@ public class AudioManager : MonoBehaviour
             {
                 s.source.volume = s.volume * UISoundEffectsVolume;
             }
-            else
+            else if (s.isSoundFX)
             {
                 s.source.volume = s.volume * SoundEffectsVolume;
+            }
+
+            if (s.name == "TeslaTower")
+            {
+                s.source.loop = true;
             }
         }
         PlayMusic();
@@ -54,7 +83,15 @@ public class AudioManager : MonoBehaviour
     public void Play (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        if (s != null)
+        {
+            s.source.pitch = s.pitch; 
+            s.source.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Sound not found: " + name);
+        }
     }
 
     public void PlayMusic()
@@ -62,6 +99,8 @@ public class AudioManager : MonoBehaviour
         Sound music = Array.Find(sounds, sound => sound.isMusic);
         if (music != null)
         {
+            music.source.loop = true;
+            music.source.pitch = music.pitch;
             music.source.Play();
         }
         else
@@ -75,6 +114,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == soundName && !sound.isMusic);
         if (s != null)
         {
+            s.source.pitch = s.pitch; 
             s.source.PlayOneShot(s.clip);
         }
         else
@@ -83,16 +123,40 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundEffect(string soundName)
+    public void PlaySoundEffect(string soundName, float pitch = 1.0f)
     {
         Sound s = Array.Find(sounds, sound => sound.name == soundName && !sound.isMusic && !sound.isUISound);
         if (s != null)
         {
+            Debug.Log("Sound effect played");
+            s.source.pitch = pitch; 
             s.source.PlayOneShot(s.clip);
         }
         else
         {
             Debug.LogWarning("Sound effect not found: " + soundName);
+        }
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+        {
+            s.source.Stop();
+        }
+        else
+        {
+            Debug.LogWarning("Sound not found: " + name);
+        }
+    }
+
+
+    public void UpdateMasterVolume()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = isMasterVolumeMuted ? 0 : s.volume * MasterVolume;
         }
     }
 
@@ -101,7 +165,7 @@ public class AudioManager : MonoBehaviour
         Sound music = Array.Find(sounds, sound => sound.isMusic);
         if (music != null)
         {
-            music.source.volume = MusicVolume;
+            music.source.volume = isMusicVolumeMuted ? 0 : MusicVolume;
         }
     }
 
@@ -111,7 +175,7 @@ public class AudioManager : MonoBehaviour
         {
             if (s.isUISound)
             {
-                s.source.volume = UISoundEffectsVolume;
+                s.source.volume = isUISoundEffectsVolumeMuted ? 0 : UISoundEffectsVolume;
             }
         }
     }
@@ -120,10 +184,11 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sounds)
         {
-            if (!s.isMusic && !s.isUISound) 
+            if (!s.isMusic && !s.isUISound)
             {
-                s.source.volume = SoundEffectsVolume;
+                s.source.volume = isSoundEffectsVolumeMuted ? 0 : SoundEffectsVolume;
             }
         }
     }
 }
+

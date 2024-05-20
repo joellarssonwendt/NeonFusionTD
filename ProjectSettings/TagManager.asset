@@ -20,7 +20,14 @@ TagManager:
   - ice
   - icekinetic
   - arctic
-  - fireice
+  - lightning
+  - lightningkinetic
+  - firelightning
+  - lightningice
+  - icefire
+  - tesla
+  - obsidian
+  - DrawingCamera
   layers:
   - Default
   - TransparentFX
@@ -69,4 +76,10 @@ TagManager:
     locked: 0
   - name: Debuff
     uniqueID: 1828744649
+    locked: 0
+  - name: Canvas
+    uniqueID: 3746565017
+    locked: 0
+  - name: UI/LineRender
+    uniqueID: 1907033393
     locked: 0

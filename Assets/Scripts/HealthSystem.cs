@@ -5,15 +5,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IDataPersistence
 {
 
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Image fillColor;
     [SerializeField] private Color greenHealth, redHealth;
+    DataPersistenceManager dataPersistenceManager;
+    AudioManager audioManager;
 
-
-    public int startingHealth = 5;
+    public int startingHealth = 10;
     public int currentHealth = 0;
     public GameObject gameOver;
     public int passAmount = 1;
@@ -24,29 +25,30 @@ public class HealthSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = startingHealth;
-
+        dataPersistenceManager = DataPersistenceManager.instance;
+        audioManager = AudioManager.instance;
+        //currentHealth = startingHealth;
+        Invoke("UpdateHealthBar", 0.1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadData(GameData data)
     {
-
+        this.currentHealth = data.currentHealth;
     }
-
-
-    
+    public void SaveData(ref GameData data)
+    {
+        data.currentHealth = this.currentHealth;
+    }
 
     private IEnumerator gameOverscreen()
     {
-
-
         gameOver.SetActive(true);
         yield return new WaitForSeconds(gameOverDelay);
+        dataPersistenceManager.SaveGame();
         SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 
-    
+
 
 
     void OnTriggerEnter2D(Collider2D other)
@@ -58,6 +60,9 @@ public class HealthSystem : MonoBehaviour
 
             UpdateHealthBar();
             Debug.Log("Hit!");
+
+            float pitch = 1f + (currentHealth * 0.1f); // Adjust pitch based on current health
+            audioManager.PlaySoundEffect("PlayerTakeDamage", pitch);
         }
     }
 
@@ -76,12 +81,9 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth == 0)
         {
+            dataPersistenceManager.playerDied = true;
+            audioManager.GetComponent<AudioManager>().PlaySoundEffect("GameOver");
             StartCoroutine(gameOverscreen());
-
-            
         }
-    }
-
-    
-    
+    } 
 }

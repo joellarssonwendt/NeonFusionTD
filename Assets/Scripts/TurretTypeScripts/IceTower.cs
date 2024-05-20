@@ -10,6 +10,7 @@ public class IceTower : MonoBehaviour
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -22,6 +23,7 @@ public class IceTower : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -51,6 +53,8 @@ public class IceTower : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("IceAttack");
+
         GameObject projectileObject = Instantiate(iceProjectilePrefab, firingPoint.position, Quaternion.identity);
         IceProjectile iceProjectile = projectileObject.GetComponent<IceProjectile>();
 
@@ -101,7 +105,7 @@ public class IceTower : MonoBehaviour
     {
         currentTurretOnPointer = gameObject;
         buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.selectBuiltTurret();
+        buildManager.ActivateTemporaryTurretSprite();
         buildManager.tileObject.SetTurretToNull();
     }
 
