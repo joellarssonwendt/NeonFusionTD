@@ -65,8 +65,8 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     }
     void Update()
     {
-        Debug.Log(bitsGainPerRound.ToString());
-        Debug.Log(crystalGainPerRound.ToString());
+        //Debug.Log(bitsGainPerRound.ToString());
+        //Debug.Log(crystalGainPerRound.ToString());
         if (!isSpawning) return;
         //Debug.Log(currentWave.ToString());
         timeSinceLastSpawn += Time.deltaTime;
@@ -124,7 +124,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
 
         PlayerStats.AddBits(bitsGainPerRound);
         PlayerStats.AddCrystals(crystalGainPerRound);
-        if(bitsGainPerRound > 500)
+        if(bitsGainPerRound < 500)
         {
             bitsGainPerRound += 10;
         }
