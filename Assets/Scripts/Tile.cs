@@ -40,7 +40,7 @@ public class Tile : MonoBehaviour, IDataPersistence
         {
             if (PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
             {
-                audioManager.GetComponent<AudioManager>().Play("Error");
+                audioManager.GetComponent<AudioManager>().Play("ErrorShopButton");
                 ClearSelection();
                 return;
             }
@@ -49,7 +49,7 @@ public class Tile : MonoBehaviour, IDataPersistence
         }
         else if (Input.GetMouseButtonUp(0) && !buildManager.isRaycastHittingTile() && buildManager.GetTurretToBuild() != null)
         {
-            audioManager.GetComponent<AudioManager>().Play("Error");
+            audioManager.GetComponent<AudioManager>().Play("ErrorShopButton");
             ClearSelection();
         }
 
@@ -123,7 +123,7 @@ public class Tile : MonoBehaviour, IDataPersistence
     {
         if (PlayerStats.Bits < GetTowerCost(buildManager.GetTurretToBuild()))
         {
-            audioManager.GetComponent<AudioManager>().Play("Error");
+            audioManager.GetComponent<AudioManager>().Play("ErrorShopButton");
             ClearSelection();
             return;
         }

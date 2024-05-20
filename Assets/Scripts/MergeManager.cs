@@ -84,7 +84,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
         {
             buildManager.deselectBuiltTurret();
             Debug.Log("Can't merge with itself!");
-            audioManager.Play("Error");
+            audioManager.Play("ErrorShopButton");
             return false;
         }
 
@@ -295,11 +295,11 @@ public class MergeManager : MonoBehaviour, IDataPersistence
                 audioManager.Play("MergeSuccess");
                 return true;
             }
-            audioManager.Play("Error");
+            audioManager.Play("ErrorShopButton");
             return false;
         }
         Debug.Log("Not enough bits to merge");
-        audioManager.Play("Error");
+        audioManager.Play("ErrorShopButton");
         return false;
     }
 
