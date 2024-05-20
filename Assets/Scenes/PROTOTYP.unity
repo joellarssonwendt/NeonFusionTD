@@ -14067,13 +14067,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24dc48e47605f674e8df3fdc2c45f3ff, type: 2}
   - {fileID: 11400000, guid: e9c71d1e5e2ea294c8ecafcd8b14ab8a, type: 2}
   - {fileID: 11400000, guid: 3e13053b11b2d444fb42d4375ec08fb5, type: 2}
+  - {fileID: 11400000, guid: ef5e34f905c90844b944e59625f16376, type: 2}
+  - {fileID: 11400000, guid: b32c0867ed450fa4bba8d7dd108504a3, type: 2}
   randomEnemyArray:
-  - {fileID: 8054526396113401650, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
-  - {fileID: 7079963385403916101, guid: b79ad26ed75426e4baa2b77bce234b30, type: 3}
-  - {fileID: 5907289287979489079, guid: e6effcea98c149a498f2789759a2ea66, type: 3}
+  - {fileID: 8054526396113401650, guid: e1ee2d9ea633926498fba8af2f262484, type: 3}
+  - {fileID: 7079963385403916101, guid: 67e0d04a1ab136a45ab32cfd63df3f86, type: 3}
+  - {fileID: 5907289287979489079, guid: c507935a712582448a3910471d3e36e5, type: 3}
   baseAmount: 8
   enemiesPerSecond: 0.75
-  difficultyScalingFactor: 0.75
+  difficultyScalingFactor: 0.66
   nextRoundButton: {fileID: 489971314}
   shopNormalTurretButton: {fileID: 1745063078}
   shopIceTurretButton: {fileID: 143825232}
@@ -22648,7 +22650,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: MergeSuccess
     clip: {fileID: 8300000, guid: 5ad26f47af4aec8499dec1afef60a411, type: 3}
-    volume: 1
+    volume: 0.9
     pitch: 1
     isMusic: 0
     isUISound: 0

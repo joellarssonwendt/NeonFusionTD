@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2297878006528734798}
   - component: {fileID: 6846274089773008639}
   m_Layer: 6
-  m_Name: BigBoy2
+  m_Name: BigBoy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -987325758, guid: 67773d5f1f6899247904facdfb6782f4, type: 3}
-  m_Color: {r: 0.8018868, g: 0.3290762, b: 0.7400417, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.875, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

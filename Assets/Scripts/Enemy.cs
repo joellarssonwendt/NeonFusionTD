@@ -358,6 +358,12 @@ public class Enemy : MonoBehaviour
             Debug.Log("kör Boss 2 beteende");
             StartCoroutine(Boss2());
         }
+
+        if (bossNumber == 3)
+        {
+            Debug.Log("kör Boss 3 beteende");
+            StartCoroutine(Boss3());
+        }
     }
 
     private class DotEffect
@@ -444,7 +450,7 @@ public class Enemy : MonoBehaviour
             {
                 yield return new WaitForSeconds(3f);
                 spriteRenderer.color = Color.white;
-                currentHealth += 10;
+                currentHealth += 20;
                 if (currentHealth > maxHealth) currentHealth = maxHealth;
                 enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
@@ -454,6 +460,31 @@ public class Enemy : MonoBehaviour
                 spriteRenderer.color = originalColor;
             }
             
+            yield return null;
+        }
+    }
+
+    private IEnumerator Boss3()
+    {
+        Color originalColor = spriteRenderer.color;
+        float maxHealth = currentHealth;
+
+        while (currentHealth > 0)
+        {
+            if (currentHealth < maxHealth)
+            {
+                yield return new WaitForSeconds(3f);
+                spriteRenderer.color = Color.white;
+                currentHealth += 30;
+                if (currentHealth > maxHealth) currentHealth = maxHealth;
+                enemySpawner.bossHealthSlider.value = currentHealth;
+                Debug.Log(currentHealth);
+                rb.bodyType = RigidbodyType2D.Static;
+                yield return new WaitForSeconds(1f);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                spriteRenderer.color = originalColor;
+            }
+
             yield return null;
         }
     }
