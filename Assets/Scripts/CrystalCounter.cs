@@ -25,7 +25,7 @@ public class CrystalCounter : MonoBehaviour
     {
         Text = GetComponent<TextMeshProUGUI>();
         PlayerStats.OnCrystalsChanged += UpdateCrystalsDisplay;
-        UpdateCrystalsDisplay(PlayerStats.Crystals);
+        StartCoroutine(DelayedUpdateCrystalsDisplay());
     }
 
     private void OnDestroy()
@@ -41,6 +41,12 @@ public class CrystalCounter : MonoBehaviour
     {
         Debug.Log($"Updating Crystals Display to: {newValue}");
         Value = newValue;
+    }
+    private IEnumerator DelayedUpdateCrystalsDisplay()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        UpdateCrystalsDisplay(PlayerStats.Crystals);
     }
 
     private IEnumerator CountText(int newValue)

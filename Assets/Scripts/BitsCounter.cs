@@ -25,6 +25,8 @@ public class BitsCounter : MonoBehaviour
     {
         Text = GetComponent<TextMeshProUGUI>();
         PlayerStats.OnBitsChanged += UpdateBitsDisplay;
+
+        StartCoroutine(DelayedUpdateBitsDisplay());
     }
 
     private void OnDestroy()
@@ -41,6 +43,11 @@ public class BitsCounter : MonoBehaviour
     {
         Debug.Log($"Updating Bits Display to: {newValue}");
         Value = newValue; 
+    }
+    private IEnumerator DelayedUpdateBitsDisplay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        UpdateBitsDisplay(PlayerStats.Bits);
     }
 
     private IEnumerator CountText(int newValue)
