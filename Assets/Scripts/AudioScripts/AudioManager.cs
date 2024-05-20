@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
         public string name;
         public AudioClip clip;
 
-        [Range(0f, 1f)]
+        [Range(0f, 3f)]
         public float volume;
         [Range(0f, 3f)]
         public float pitch;

@@ -22283,7 +22283,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: ObsidianAttack
     clip: {fileID: 8300000, guid: 2493c232cba91e1438f3dba2875fba27, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isMusic: 0
     isUISound: 0
@@ -22292,7 +22292,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: IceAttack
     clip: {fileID: 8300000, guid: ff59dbcda4037534495a584e2f0ebaad, type: 3}
-    volume: 0.33
+    volume: 0.2
     pitch: 1
     isMusic: 0
     isUISound: 0
@@ -22373,7 +22373,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: EnemyDeath
     clip: {fileID: 8300000, guid: 00e749b159c570449949cf81086e3a88, type: 3}
-    volume: 1
+    volume: 2
     pitch: 2
     isMusic: 0
     isUISound: 0
@@ -22382,7 +22382,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: BossSpawn
     clip: {fileID: 8300000, guid: f62f2a6f428e5a54f936e84ae7faf83d, type: 3}
-    volume: 1
+    volume: 1.3
     pitch: 2
     isMusic: 0
     isUISound: 0
@@ -22391,7 +22391,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: BossDeath
     clip: {fileID: 8300000, guid: d1e7b3731390e204ea0a93027afca062, type: 3}
-    volume: 1
+    volume: 2.5
     pitch: 2
     isMusic: 0
     isUISound: 0
