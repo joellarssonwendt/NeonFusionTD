@@ -994,9 +994,21 @@ PrefabInstance:
       value: 0.69411767
       objectReference: {fileID: 0}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 2117539845}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: turretName
       value: ice
       objectReference: {fileID: 0}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1160034901}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: iceCostText
+      value: 
+      objectReference: {fileID: 2117539845}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: audioManager
       value: 
@@ -7425,12 +7437,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 90329015}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 349722207}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: lockFire
       value: 
       objectReference: {fileID: 1771858299}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: turretName
       value: lightning
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1160034901}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: iceCostText
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: audioManager
@@ -7456,6 +7480,10 @@ PrefabInstance:
       propertyPath: tempNormalTurret
       value: 
       objectReference: {fileID: 1520910871}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: lightningCostText
+      value: 
+      objectReference: {fileID: 349722207}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempLightningTurret
       value: 
@@ -17654,6 +17682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f5eb76640c3c548be6d31a02cdaf4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopTurretButton: {fileID: 3729852847085432312, guid: 8933870538464bd428c667759443e0a3, type: 3}
 --- !u!114 &1160034905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22515,7 +22544,7 @@ MonoBehaviour:
   - name: ErrorShopButton
     clip: {fileID: 8300000, guid: b4110c08fd990774baa02ca878ccc6b7, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.8
     isMusic: 0
     isUISound: 1
     isSoundFX: 0
@@ -26892,13 +26921,25 @@ PrefabInstance:
       value: 0.69411767
       objectReference: {fileID: 0}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 955740087}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: turretName
       value: fire
       objectReference: {fileID: 0}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1160034901}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: fireCostText
+      value: 
+      objectReference: {fileID: 955740087}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: tempFireTurret
       value: 
@@ -44096,13 +44137,25 @@ PrefabInstance:
       value: 0.69411767
       objectReference: {fileID: 0}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 1649363714}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: turretName
       value: normal
       objectReference: {fileID: 0}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1160034901}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1492946863}
+    - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
+      propertyPath: normalCostText
+      value: 
+      objectReference: {fileID: 1649363714}
     - target: {fileID: 9034316653245427141, guid: 8933870538464bd428c667759443e0a3, type: 3}
       propertyPath: iceTurretSprite
       value: 

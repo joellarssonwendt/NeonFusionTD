@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,11 @@ public class ShopTurretButton : MonoBehaviour
     [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempSuperNormalTurret, tempSuperFireTurret;
     [SerializeField] private GameObject normalTurretButtonObject, fireTurretButtonObject, iceTurretButtonObject, lightningTurretButtonObject;
     [SerializeField] private GameObject audioManager;
+    [SerializeField] private GameObject gameManager;
+    [SerializeField] private GameObject costText;
+    private PlayerStats playerStats;
+    private Color greenText = new Color(0f, 241f, 0.5f, 1f);
+    private Color redText = Color.red;
     private GameObject shopPanel;
     private Shop shop;
     
@@ -16,7 +22,12 @@ public class ShopTurretButton : MonoBehaviour
     {
         shopPanel = GameObject.FindWithTag("Shop");
         shop = shopPanel.GetComponent<Shop>();
-        
+        playerStats = gameManager.GetComponent<PlayerStats>();
+        Invoke("UpdateCostTextColor", 0.1f);
+    }
+    private void Update()
+    {
+        UpdateCostTextColor();
     }
     public void pointerDown()
     {
@@ -67,4 +78,50 @@ public class ShopTurretButton : MonoBehaviour
         fireTurretButtonObject.GetComponent<Button>().interactable = true;
     }
 
+    public void UpdateCostTextColor()
+    {
+        if (turretName.ToLower() == "normal")
+        {
+            if(PlayerStats.Bits >= PlayerStats.normalTowerCost)
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = greenText;
+            }
+            else
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = redText;
+            }
+        }
+        else if (turretName.ToLower() == "ice"){
+            if (PlayerStats.Bits >= PlayerStats.iceTowerCost)
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = greenText;
+            }
+            else
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = redText;
+            }
+        }
+        else if (turretName.ToLower() == "lightning")
+        {
+            if (PlayerStats.Bits >= PlayerStats.lightningTowerCost)
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = greenText;
+            }
+            else
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = redText;
+            }
+        }
+        else if (turretName.ToLower() == "fire")
+        {
+            if (PlayerStats.Bits >= PlayerStats.fireTowerCost)
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = greenText;
+            }
+            else
+            {
+                costText.GetComponent<TextMeshProUGUI>().color = redText;
+            }
+        }
+    }
 }

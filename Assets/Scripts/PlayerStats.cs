@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour, IDataPersistence
 {
+    public static PlayerStats instance { get; private set; }
+    [SerializeField] private GameObject shopTurretButton;
     public static int Bits { get; private set; } = 0;
     public static int StartingBits { get; set; } = 0;
     public static int Crystals { get; private set; } = 0;
@@ -24,6 +26,17 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
     private const int maxBits = 9999;
     private const int maxCrystals = 999;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
     public static void AddBits(int amount)
     {
         Bits += amount;
@@ -33,6 +46,7 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         }
 
         OnBitsChanged?.Invoke(Bits);
+        instance.shopTurretButton.GetComponent<ShopTurretButton>().UpdateCostTextColor();
     }
 
     public static void AddCrystals(int amount)
@@ -44,7 +58,6 @@ public class PlayerStats : MonoBehaviour, IDataPersistence
         }
 
         OnCrystalsChanged?.Invoke(Crystals);
-
     }
 
     public static void NotifyBitsChanged()
