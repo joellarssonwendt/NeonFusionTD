@@ -61,9 +61,12 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         Invoke("CheckAndUpdateShopButtons", 0.1f);
         bossHealthObject.SetActive(false);
         audioManager = AudioManager.instance;
+        Invoke("UpdateResourcesAfterCurrentWave", 0.1f);
     }
     void Update()
     {
+        Debug.Log(bitsGainPerRound.ToString());
+        Debug.Log(crystalGainPerRound.ToString());
         if (!isSpawning) return;
         //Debug.Log(currentWave.ToString());
         timeSinceLastSpawn += Time.deltaTime;
@@ -80,6 +83,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         {
             EndWave();
         }
+
     }
 
     public void LoadData(GameData data)
@@ -120,8 +124,14 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
 
         PlayerStats.AddBits(bitsGainPerRound);
         PlayerStats.AddCrystals(crystalGainPerRound);
-        bitsGainPerRound += 10;
-        crystalGainPerRound += 1;
+        if(bitsGainPerRound > 500)
+        {
+            bitsGainPerRound += 10;
+        }
+        if(crystalGainPerRound < 10)
+        {
+            crystalGainPerRound += 1;
+        }
 
         nextRoundButton.SetActive(true);
         onRoundEnd.Invoke();
@@ -223,5 +233,13 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     public void NotifyTimeScaleChange(float timeScale)
     {
         roundAndTimeToggle.UpdateButtonSpriteBasedOnTimeScale(timeScale);
+    }
+    private void UpdateResourcesAfterCurrentWave()
+    {
+        if (currentWave != 1)
+        {
+            bitsGainPerRound = Mathf.Min(bitsGainPerRound + 10 * (currentWave - 1), 500);
+            crystalGainPerRound = Mathf.Min(crystalGainPerRound + 1 * (currentWave - 1), 10);
+        }
     }
 }
