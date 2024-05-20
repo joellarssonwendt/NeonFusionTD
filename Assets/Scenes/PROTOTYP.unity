@@ -14054,7 +14054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 1155754435}
   roundAndTimeToggle: {fileID: 489971316}
-  autoWaveCountdown: {fileID: 268708258}
+  autoWaveCountdown: {fileID: 268708264}
+  autoWaveCountdownSprite: {fileID: 268708258}
   handCraftedWaves:
   - {fileID: 11400000, guid: cedd529291827ce42a19eb2aeafe6ec4, type: 2}
   - {fileID: 11400000, guid: e5da7b8dcb6b4a64c90e2ad2c04e98b7, type: 2}

@@ -26,7 +26,7 @@ public class AutoWaveCountdown : MonoBehaviour
 
     private void OnEnable()
     {
-        initialCountdownSprite = countdownRing.sprite;
+        ResetCountdownSprite();
         StartCountdown(0f); 
     }
 
@@ -36,6 +36,11 @@ public class AutoWaveCountdown : MonoBehaviour
         {
             StartCoroutine(CountdownToNextWave(delay));
         }
+    }
+
+    public void ResetCountdownSprite()
+    {
+        initialCountdownSprite = countdownRing.sprite;
     }
 
     private IEnumerator CountdownToNextWave(float delay)
@@ -50,7 +55,7 @@ public class AutoWaveCountdown : MonoBehaviour
                 yield return new WaitForSecondsRealtime(1f);
             }
             enemySpawner.StartWave();
-            countdownRing.sprite = initialCountdownSprite;
+            ResetCountdownSprite();
         }
     }
 }

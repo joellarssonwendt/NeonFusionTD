@@ -10,7 +10,8 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     public static EnemySpawner instance;
     public OptionsMenu optionsMenu;
     public RoundAndTimeToggle roundAndTimeToggle;
-    public GameObject autoWaveCountdown;
+    public AutoWaveCountdown autoWaveCountdown;
+    public GameObject autoWaveCountdownSprite;
     AudioManager audioManager;
 
     // Events
@@ -104,7 +105,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
 
         isSpawning = true;
         activeRoundPlaying = true;
-        autoWaveCountdown.SetActive(false);
+        autoWaveCountdownSprite.SetActive(false);
         enemiesLeftToSpawn = EnemiesPerWave();
     }
 
@@ -113,7 +114,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         Debug.Log("Wave Ended!");
         isSpawning = false;
         activeRoundPlaying = false;
-        autoWaveCountdown.SetActive(true);
+        autoWaveCountdownSprite.SetActive(true);
         timeSinceLastSpawn = 0f;
         currentWave++;
 
@@ -127,6 +128,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         CheckAndUpdateShopButtons();
         audioManager.Stop("Flamethrower");
         audioManager.Stop("TeslaTower");
+        autoWaveCountdown.ResetCountdownSprite();
 
 
         if (optionsMenu.autoPlayNextWaveToggle.isOn)
