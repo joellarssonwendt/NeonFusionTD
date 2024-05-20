@@ -197,17 +197,17 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     }
     private void CheckAndUpdateShopButtons()
     {
-        if (currentWave >= 4)
+        if (currentWave >= 5)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableIceTowerButton();
             lockIce.SetActive(false);
         }
-        if (currentWave >= 8)
+        if (currentWave >= 9)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableLightningTowerButton();
             lockLightning.SetActive(false);
         }
-        if (currentWave >= 12)
+        if (currentWave >= 13)
         {
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableFireTowerButton();
             lockFire.SetActive(false);
