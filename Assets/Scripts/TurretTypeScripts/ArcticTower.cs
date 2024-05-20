@@ -8,7 +8,13 @@ public class ArcticTower : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private ParticleSystem iceAuraParticleSystem;
 
+    AudioManager audioManager;
+
     private List<Enemy> enemiesInRange = new List<Enemy>();
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
 
     private void Update()
     {
@@ -35,6 +41,7 @@ public class ArcticTower : MonoBehaviour
         if (enemiesInRange.Count > 0)
         {
             iceAuraParticleSystem.Play();
+            audioManager.GetComponent<AudioManager>().PlaySoundEffect("Arctic");
         }
         else
         {

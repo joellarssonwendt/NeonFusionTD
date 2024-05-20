@@ -11,6 +11,7 @@ public class IceKineticTower : MonoBehaviour
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -24,6 +25,7 @@ public class IceKineticTower : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -53,6 +55,7 @@ public class IceKineticTower : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("KineticIceAttack");
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
 
         GameObject projectileObject = Instantiate(iceProjectilePrefab, currentFiringPoint.position, Quaternion.identity);

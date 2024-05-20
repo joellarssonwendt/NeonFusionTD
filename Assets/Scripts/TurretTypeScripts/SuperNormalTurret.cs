@@ -11,6 +11,7 @@ public class SuperNormalTurret : MonoBehaviour
     [SerializeField] private GameObject TemporaryTurretSprite;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")] 
@@ -25,6 +26,7 @@ public class SuperNormalTurret : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -54,6 +56,7 @@ public class SuperNormalTurret : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("KineticAttack");
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
 
         // Instantiate a projectile at the current firing point

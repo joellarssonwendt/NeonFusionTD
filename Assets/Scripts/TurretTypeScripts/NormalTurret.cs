@@ -10,6 +10,7 @@ public class NormalTurret : MonoBehaviour
     [SerializeField] private GameObject tilePrefab;
     BuildManager buildManager;
     EnemySpawner enemySpawner;
+    AudioManager audioManager;
     private GameObject currentTurretOnPointer;
 
     [Header("Stats")]
@@ -24,6 +25,7 @@ public class NormalTurret : MonoBehaviour
     {
         enemySpawner = EnemySpawner.instance;
         buildManager = BuildManager.instance;
+        audioManager = AudioManager.instance;
     }
     private void Update()
     {
@@ -52,6 +54,7 @@ public class NormalTurret : MonoBehaviour
     }
     private void Shoot() // Instantiate a projectile and set its target
     {
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("KineticAttack");
         GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
         Projectile projectileScript = projectileObject.GetComponent<Projectile>();
 

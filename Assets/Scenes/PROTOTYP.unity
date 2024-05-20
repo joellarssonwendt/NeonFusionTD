@@ -22684,6 +22684,51 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
+  - name: KineticAttack
+    clip: {fileID: 8300000, guid: f68be9f3ef8e56e4ebdbce1b195ebaed, type: 3}
+    volume: 3
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: KineticIceAttack
+    clip: {fileID: 8300000, guid: af43df766438d8540b6d694c3fb03125, type: 3}
+    volume: 3
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: KineticFireAttack
+    clip: {fileID: 8300000, guid: 026e72b431077af41a34a60d65a0dce5, type: 3}
+    volume: 3
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: KineticLightningAttack
+    clip: {fileID: 8300000, guid: 6ee1e6447c98dce449ce26603c67fb34, type: 3}
+    volume: 3
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: Arctic
+    clip: {fileID: 8300000, guid: 720ecb80feeefc54881ad0b00bbc8947, type: 3}
+    volume: 3
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
   MasterVolume: 0.5
   MusicVolume: 0.5
   SoundEffectsVolume: 0.5
