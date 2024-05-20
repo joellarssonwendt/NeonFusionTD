@@ -14061,7 +14061,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5da7b8dcb6b4a64c90e2ad2c04e98b7, type: 2}
   - {fileID: 11400000, guid: a62e99c87b192334685887be107e50f2, type: 2}
   - {fileID: 11400000, guid: 8c6cb988795c57149a0cb3b161d1da01, type: 2}
-  - {fileID: 11400000, guid: ee8782e0f36a463459a8412b265b0588, type: 2}
+  - {fileID: 11400000, guid: ca2c8a5d442bc2243a0c4a17a36b7750, type: 2}
+  - {fileID: 11400000, guid: 4f7d44f7073b0a64580b3f54ee118784, type: 2}
+  - {fileID: 11400000, guid: 7d2646e0510fc804faac921485698ced, type: 2}
+  - {fileID: 11400000, guid: 24dc48e47605f674e8df3fdc2c45f3ff, type: 2}
+  - {fileID: 11400000, guid: e9c71d1e5e2ea294c8ecafcd8b14ab8a, type: 2}
+  - {fileID: 11400000, guid: 3e13053b11b2d444fb42d4375ec08fb5, type: 2}
   randomEnemyArray:
   - {fileID: 8054526396113401650, guid: 12c40d015d1b2ae4c83f654153089182, type: 3}
   - {fileID: 7079963385403916101, guid: b79ad26ed75426e4baa2b77bce234b30, type: 3}

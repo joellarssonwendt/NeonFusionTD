@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6ed3f9a16824143a73b80da06d2f51, type: 3}
-  m_Name: Wave5(Boss1)
+  m_Script: {fileID: 11500000, guid: 394398b3735e7c7499884fdf23695477, type: 3}
+  m_Name: Speedy1
   m_EditorClassIdentifier: 
-  enemyTypes:
-  - {fileID: 8054526396113401650, guid: 81947d1cdb82a4141ae5b013340f5781, type: 3}
-  enemyAmounts: 01000000
-  enemiesPerSecond: 1
+  maxHealth: 2
+  moveSpeed: 4

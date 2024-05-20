@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394398b3735e7c7499884fdf23695477, type: 3}
-  m_Name: Boss1
+  m_Script: {fileID: 11500000, guid: 3e6ed3f9a16824143a73b80da06d2f51, type: 3}
+  m_Name: Wave7
   m_EditorClassIdentifier: 
-  maxHealth: 70
-  moveSpeed: 1
+  enemyTypes:
+  - {fileID: 7079963385403916101, guid: 2fe98e3c57070964db0cc6389de8f095, type: 3}
+  enemyAmounts: 14000000
+  enemiesPerSecond: 0.75

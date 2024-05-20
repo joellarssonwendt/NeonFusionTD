@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5927327340141245586}
   - component: {fileID: 5877528046193985349}
   m_Layer: 6
-  m_Name: MiniLad
+  m_Name: Speedy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

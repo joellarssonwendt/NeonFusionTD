@@ -356,6 +356,7 @@ public class Enemy : MonoBehaviour
         if (bossNumber == 2)
         {
             Debug.Log("kör Boss 2 beteende");
+            StartCoroutine(Boss2());
         }
     }
 
@@ -387,35 +388,52 @@ public class Enemy : MonoBehaviour
 
 
     // Coroutines för eld och is-effekter
-   /* private IEnumerator FireEffect()
-    {
-        Color orginialColor = spriteRenderer.color;
-        float elapsedTime = 0f;  
-        while(accumulatedDotDamage < elapsedTime)
-        {
-            float interval = 0.25f;
+    /* private IEnumerator FireEffect()
+     {
+         Color orginialColor = spriteRenderer.color;
+         float elapsedTime = 0f;  
+         while(accumulatedDotDamage < elapsedTime)
+         {
+             float interval = 0.25f;
 
-            spriteRenderer.color = spriteRenderer.color;
-            yield return new WaitForSeconds(interval);
+             spriteRenderer.color = spriteRenderer.color;
+             yield return new WaitForSeconds(interval);
 
-            spriteRenderer.color = fireColor1;
-            yield return new WaitForSeconds(interval);
+             spriteRenderer.color = fireColor1;
+             yield return new WaitForSeconds(interval);
 
-            spriteRenderer.color = fireColor2;
-            yield return new WaitForSeconds(interval);
+             spriteRenderer.color = fireColor2;
+             yield return new WaitForSeconds(interval);
 
-            if (accumulatedDotDamage <= 0)
-            {
-                spriteRenderer.color = orginialColor; // Restore the original color
-                
-            }
-            
-        }
-    }*/
-   
+             if (accumulatedDotDamage <= 0)
+             {
+                 spriteRenderer.color = orginialColor; // Restore the original color
+
+             }
+
+         }
+     }*/
+
 
     // Boss beteenden
     private IEnumerator Boss1()
+    {
+        Color originalColor = spriteRenderer.color;
+        float maxHealth = currentHealth;
+
+        while (currentHealth > 0)
+        {
+            if (currentHealth < maxHealth)
+            {
+                yield return new WaitForSeconds(3f);
+                // Do something
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator Boss2()
     {
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
