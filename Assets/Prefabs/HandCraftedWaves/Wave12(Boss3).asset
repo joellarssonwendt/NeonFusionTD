@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wave12(Boss3)
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 8054526396113401650, guid: 34d93b119af44a942aeca5799e811193, type: 3}
+  - {fileID: 8054526396113401650, guid: 58812f6099d92f44290e0497871334da, type: 3}
   enemyAmounts: 01000000
   enemiesPerSecond: 1
