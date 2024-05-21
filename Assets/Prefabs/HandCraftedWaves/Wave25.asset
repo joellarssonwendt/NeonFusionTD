@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6ed3f9a16824143a73b80da06d2f51, type: 3}
+  m_Name: Wave25
+  m_EditorClassIdentifier: 
+  enemyTypes:
+  - {fileID: 8054526396113401650, guid: 9caf41abe50ae4943b5fcac05d101db0, type: 3}
+  - {fileID: 7079963385403916101, guid: 686b7bf710d7a3d4bb15003d4255438e, type: 3}
+  - {fileID: 5907289287979489079, guid: 30f75c35080a24c4abf25f9fd06d6927, type: 3}
+  enemyAmounts: 0a0000000a0000000a000000
+  enemiesPerSecond: 1

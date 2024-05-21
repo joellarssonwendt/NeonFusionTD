@@ -201,6 +201,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         {
             // Spawnar random fiende-typ om det inte finns några fler HandCraftedWaves
             enemyToSpawn = randomEnemyArray[Random.Range(0, randomEnemyArray.Length)];
+            //enemyToSpawn.GetComponent<Enemy>().currentHealth = Mathf.RoundToInt(enemyToSpawn.GetComponent<Enemy>().currentHealth * Mathf.Pow(currentWave, difficultyScalingFactor));
         }
 
         Instantiate(enemyToSpawn, LevelManager.main.spawnPoint.position, Quaternion.identity);

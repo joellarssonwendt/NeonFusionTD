@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Transform target;
     private int pathIndex = 0;
-    private float currentHealth;
+    public float currentHealth;
     public bool isDead = false;
     private List<DotEffect> dotEffects = new List<DotEffect>();
     private float accumulatedDotDamage = 0f;
@@ -364,6 +364,18 @@ public class Enemy : MonoBehaviour
             Debug.Log("kör Boss 3 beteende");
             StartCoroutine(Boss3());
         }
+
+        if (bossNumber == 4)
+        {
+            Debug.Log("kör Boss 4 beteende");
+            StartCoroutine(Boss4());
+        }
+
+        if (bossNumber == 5)
+        {
+            Debug.Log("kör Boss 5 beteende");
+            StartCoroutine(Boss5());
+        }
     }
 
     private class DotEffect
@@ -465,6 +477,46 @@ public class Enemy : MonoBehaviour
     }
 
     private IEnumerator Boss3()
+    {
+        Color originalColor = spriteRenderer.color;
+        float maxHealth = currentHealth;
+
+        while (currentHealth > 0)
+        {
+            if (currentHealth < maxHealth)
+            {
+                yield return new WaitForSeconds(3f);
+                spriteRenderer.color = Color.white;
+                currentHealth += 30;
+                if (currentHealth > maxHealth) currentHealth = maxHealth;
+                enemySpawner.bossHealthSlider.value = currentHealth;
+                Debug.Log(currentHealth);
+                rb.bodyType = RigidbodyType2D.Static;
+                yield return new WaitForSeconds(1f);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                spriteRenderer.color = originalColor;
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator Boss4()
+    {
+        Color originalColor = spriteRenderer.color;
+        float maxHealth = currentHealth;
+
+        while (currentHealth > 0)
+        {
+            spriteRenderer.color = Random.ColorHSV();
+            yield return new WaitForSeconds(1f);
+            spriteRenderer.color = originalColor;
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator Boss5()
     {
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;

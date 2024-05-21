@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394398b3735e7c7499884fdf23695477, type: 3}
-  m_Name: BigBoy2
+  m_Script: {fileID: 11500000, guid: 3e6ed3f9a16824143a73b80da06d2f51, type: 3}
+  m_Name: Wave15
   m_EditorClassIdentifier: 
-  maxHealth: 22
-  moveSpeed: 1.5
+  enemyTypes:
+  - {fileID: 5907289287979489079, guid: 6bfb3d9dbb2f6834fb78b46c0adc42c2, type: 3}
+  enemyAmounts: 0f000000
+  enemiesPerSecond: 1

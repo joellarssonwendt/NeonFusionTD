@@ -14070,13 +14070,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e13053b11b2d444fb42d4375ec08fb5, type: 2}
   - {fileID: 11400000, guid: ef5e34f905c90844b944e59625f16376, type: 2}
   - {fileID: 11400000, guid: b32c0867ed450fa4bba8d7dd108504a3, type: 2}
+  - {fileID: 11400000, guid: 8a2e7d2711901184095a4299da2cb032, type: 2}
+  - {fileID: 11400000, guid: 0b07a03ccc9b9fa449dbd65afebe8268, type: 2}
+  - {fileID: 11400000, guid: 675fd21fc1cbf5140b640c590b0a1356, type: 2}
+  - {fileID: 11400000, guid: e53760892a1426a4894bb1efb95f5513, type: 2}
+  - {fileID: 11400000, guid: d4902b2627e209d4aa474373811dfc6e, type: 2}
+  - {fileID: 11400000, guid: b564db4dfc20a484ca24f559e387055f, type: 2}
+  - {fileID: 11400000, guid: 8cac521bb9c03b149813899e82391a0f, type: 2}
+  - {fileID: 11400000, guid: be32761f84860634aa374bf038a98a89, type: 2}
+  - {fileID: 11400000, guid: 4eb249afc03198544973bd24758174d4, type: 2}
+  - {fileID: 11400000, guid: ef1b55fbee7ee6b4192848faad3c5fd2, type: 2}
+  - {fileID: 11400000, guid: 31c703f712ad2974e963be71b5b0f149, type: 2}
+  - {fileID: 11400000, guid: 20b53f219ade1634bac77ab8fbcbe173, type: 2}
+  - {fileID: 11400000, guid: 9bb9c7feea87d3d4f84cc560e7c20f19, type: 2}
+  - {fileID: 11400000, guid: 835473fb350414943bebb938067e04e0, type: 2}
+  - {fileID: 11400000, guid: 8eaf61ae2a6b6a14e9d794658c47fc83, type: 2}
+  - {fileID: 11400000, guid: ac9c1c1f3745a7945b60957ccfa3a9ac, type: 2}
+  - {fileID: 11400000, guid: f7a8b4899064bce4784bfffa81dc7d27, type: 2}
+  - {fileID: 11400000, guid: f1ca5bc8516578f4aac206b6e48b9864, type: 2}
   randomEnemyArray:
-  - {fileID: 8054526396113401650, guid: e1ee2d9ea633926498fba8af2f262484, type: 3}
-  - {fileID: 7079963385403916101, guid: 67e0d04a1ab136a45ab32cfd63df3f86, type: 3}
-  - {fileID: 5907289287979489079, guid: c507935a712582448a3910471d3e36e5, type: 3}
-  baseAmount: 8
+  - {fileID: 8054526396113401650, guid: 9c800daac9c21244bac9ba4c5a2714b2, type: 3}
+  baseAmount: 10
   enemiesPerSecond: 0.75
-  difficultyScalingFactor: 0.66
+  difficultyScalingFactor: 0.75
   nextRoundButton: {fileID: 489971314}
   shopNormalTurretButton: {fileID: 1745063078}
   shopIceTurretButton: {fileID: 143825232}
