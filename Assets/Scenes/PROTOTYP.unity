@@ -25911,7 +25911,7 @@ MonoBehaviour:
     source: {fileID: 0}
     originalVolume: 0
   - name: KineticAttack
-    clip: {fileID: 8300000, guid: f68be9f3ef8e56e4ebdbce1b195ebaed, type: 3}
+    clip: {fileID: 8300000, guid: d26855bf97bc23f4cad76d734c383db0, type: 3}
     volume: 0.1
     pitch: 1
     isMusic: 0
