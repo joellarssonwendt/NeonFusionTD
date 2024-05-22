@@ -14103,6 +14103,7 @@ MonoBehaviour:
   lockFire: {fileID: 1771858299}
   bossHealthObject: {fileID: 1935957637}
   bossHealthSlider: {fileID: 1935957639}
+  healthSystem: {fileID: 297445483}
   currentWave: 1
   activeRoundPlaying: 0
 --- !u!114 &906432741

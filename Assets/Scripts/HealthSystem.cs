@@ -14,7 +14,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
     DataPersistenceManager dataPersistenceManager;
     AudioManager audioManager;
 
-    public int startingHealth = 10;
+    public int startingHealth = 100;
     public int currentHealth = 0;
     public GameObject gameOver;
     public int passAmount = 1;
@@ -55,7 +55,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
     {
         if (other.CompareTag("Enemy"))
         {
-            currentHealth -= passAmount;
+            currentHealth -= other.GetComponent<EnemyStats>().damageAmount;
             healthSlider.value = currentHealth;
 
             UpdateHealthBar();
