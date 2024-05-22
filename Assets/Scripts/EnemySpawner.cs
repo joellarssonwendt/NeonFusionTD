@@ -120,6 +120,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         isSpawning = false;
         activeRoundPlaying = false;
         autoWaveCountdownSprite.SetActive(true);
+        bossHealthObject.SetActive(false);
         timeSinceLastSpawn = 0f;
         currentWave++;
         audioManager.GetComponent<AudioManager>().PlaySoundEffect("NewWave");
