@@ -25920,7 +25920,7 @@ MonoBehaviour:
     source: {fileID: 0}
     originalVolume: 0
   - name: FrostKineticAttack
-    clip: {fileID: 8300000, guid: af43df766438d8540b6d694c3fb03125, type: 3}
+    clip: {fileID: 8300000, guid: 7c03a4b9ca951ea4a970ad1f743c8b0a, type: 3}
     volume: 0.1
     pitch: 1
     isMusic: 0
@@ -25929,7 +25929,7 @@ MonoBehaviour:
     source: {fileID: 0}
     originalVolume: 0
   - name: FireKineticAttack
-    clip: {fileID: 8300000, guid: 026e72b431077af41a34a60d65a0dce5, type: 3}
+    clip: {fileID: 8300000, guid: 019b2895cdc1c224a854e137f9add9f4, type: 3}
     volume: 0.1
     pitch: 1
     isMusic: 0
@@ -25938,7 +25938,7 @@ MonoBehaviour:
     source: {fileID: 0}
     originalVolume: 0
   - name: ShockKineticAttack
-    clip: {fileID: 8300000, guid: 6ee1e6447c98dce449ce26603c67fb34, type: 3}
+    clip: {fileID: 8300000, guid: fdbf55a0546d8494680348518ec4cb0b, type: 3}
     volume: 0.1
     pitch: 1
     isMusic: 0
