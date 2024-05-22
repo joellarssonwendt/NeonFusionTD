@@ -33,6 +33,8 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     [SerializeField] public GameObject bossHealthObject;
     [SerializeField] public Slider bossHealthSlider;
     [SerializeField] private GameObject infinityBoss;
+    [SerializeField] private GameObject levelAchievementsGameObject;
+    private LevelAchievements levelAchievements;
 
 
 
@@ -64,6 +66,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         bossHealthObject.SetActive(false);
         audioManager = AudioManager.instance;
         Invoke("UpdateResourcesAfterCurrentWave", 0.1f);
+        levelAchievements = levelAchievementsGameObject.GetComponent<LevelAchievements>();
     }
     void Update()
     {
@@ -144,6 +147,10 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         audioManager.Stop("TeslaTower");
         autoWaveCountdown.ResetCountdownSprite();
 
+        if(currentWave % 5 == 0)
+        {
+            levelAchievements.enableLevelPopUp(currentWave);
+        }
 
         if (optionsMenu.autoPlayNextWaveToggle.isOn)
         {
