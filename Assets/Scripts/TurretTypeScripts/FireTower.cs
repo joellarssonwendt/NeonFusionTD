@@ -1,24 +1,23 @@
 using UnityEngine;
 
-public class FireNormalTurret : MonoBehaviour
+public class FireTower : MonoBehaviour
 {
     [Header("References")] // Header to group serialized fields in the inspector
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private GameObject dotProjectilePrefab;
-    [SerializeField] private Transform firingPoint1;
-    [SerializeField] private Transform firingPoint2;
+    [SerializeField] private GameObject dotProjectilePrefab; 
+    [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject TemporaryTurretSprite;
-    EnemySpawner enemySpawner;
     BuildManager buildManager;
+    EnemySpawner enemySpawner;
     AudioManager audioManager;
     private GameObject currentTurretOnPointer;
+
     [Header("Stats")]
     [SerializeField] private TurretStats turretStats;
 
     private Transform target;
     private float timeUntilFire;
-    private bool useFiringPoint1 = true;
 
     private void Start()
     {
@@ -54,23 +53,20 @@ public class FireNormalTurret : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
-        audioManager.PlaySoundEffect("KineticFireAttack");
-        // Determine which firing point to use based on the flag
-        Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
+        audioManager.PlaySoundEffect("FireAttack");
 
         // Instantiate a dot projectile and set its target
-        GameObject projectileObject = Instantiate(dotProjectilePrefab, currentFiringPoint.position, Quaternion.identity);
+        GameObject projectileObject = Instantiate(dotProjectilePrefab, firingPoint.position, Quaternion.identity);
         DotProjectile dotProjectile = projectileObject.GetComponent<DotProjectile>();
 
         // Set the damage value of the dot projectile from the Scriptable Object
         dotProjectile.SetDamage(turretStats.projectileDamage);
         dotProjectile.SetDotDamage(turretStats.dotDamagePerSecond); // Set dot damage
         dotProjectile.SetDotDuration(turretStats.dotDuration); // Set dot duration
-        dotProjectile.SetTarget(target);
 
-        // Toggle the flag for the next shot
-        useFiringPoint1 = !useFiringPoint1;
+        dotProjectile.SetTarget(target);
     }
+
     private void FindTarget()
     {
         // Raycast in a circle around the turret's position to find enemies within targeting range
@@ -100,47 +96,6 @@ public class FireNormalTurret : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
-
-   /* private void OnDrawGizmosSelected()
-    {   // Draws a circle in the scene view to visualize the turret's targeting range
-        //Handles.color = Color.green;
-        //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
-    }
-    private void OnMouseDown()
-    {
-        currentTurretOnPointer = gameObject;
-        buildManager.selectedTurret = currentTurretOnPointer;
-        buildManager.ActivateTemporaryTurretSprite();
-        buildManager.tileObject.SetTurretToNull();
-    }
-
-    private void OnMouseUp()
-    {
-        if (buildManager.tileObject.GetTurret() != null)
-        {
-            buildManager.deselectBuiltTurret();
-            Debug.Log("deselect, Men kan köra merge också sen");
-        }
-        if (buildManager.tileObject.GetTurret() == null)
-        {
-            if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
-            {
-                //här flyttas turreten till tilen som musen är över
-                Debug.Log("flytta turret");
-                buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
-                buildManager.tileObject.SetTurretToNull();
-                buildManager.deselectBuiltTurret();
-            }
-            else
-            {
-                //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
-                buildManager.deselectBuiltTurret();
-                Debug.Log("deselect");
-            }
-        }
-    }
-    public GameObject GetTurret()
-    {
-        return currentTurretOnPointer;
-    }*/
 }
+
+

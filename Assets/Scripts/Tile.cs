@@ -172,15 +172,15 @@ public class Tile : MonoBehaviour, IDataPersistence
 
     private int GetTowerCost(GameObject turret)
     {
-        if(turret.GetComponent<IceTower>() != null)
+        if(turret.GetComponent<FrostTower>() != null)
         {
             return PlayerStats.iceTowerCost;
         }
-        else if(turret.GetComponent<FireTurret>() != null)
+        else if(turret.GetComponent<FireTower>() != null)
         {
             return PlayerStats.fireTowerCost;
         }
-        else if(turret.GetComponent<LightningTower>() != null)
+        else if(turret.GetComponent<ShockTower>() != null)
         {
             return PlayerStats.lightningTowerCost;
         }

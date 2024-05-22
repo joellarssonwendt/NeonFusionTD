@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4151991782168928605}
   m_Layer: 0
-  m_Name: FiringPoint
+  m_Name: FiringPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1263301981538038310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.94, z: 0}
+  m_LocalPosition: {x: -1, y: 2.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: -937705975
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d7afbdc6692c5134288fa8f76c591b5f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac51d76819e644f4fb98dd8436e9debc, type: 3}
   m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -208,11 +208,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7385017187038225018}
-  - component: {fileID: 9019837475358485645}
-  - component: {fileID: 4243902865188377055}
+  - component: {fileID: 9217159103870967218}
+  - component: {fileID: 2853716991912503806}
   m_Layer: 8
-  m_Name: LightningTower
-  m_TagString: lightning
+  m_Name: ShockKineticTower
+  m_TagString: lightningkinetic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,7 +234,7 @@ Transform:
   - {fileID: 5995222955780666773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9019837475358485645
+--- !u!114 &9217159103870967218
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3056856402117988083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266a0925d5571fe4a94df718df75fd4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e23a639b875b324d9c21ff2ff8dea14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationPoint: {fileID: 5995222955780666773}
@@ -251,11 +251,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   projectilePrefab: {fileID: 4404795518819960278, guid: 55a16761925acf444a7ce5b8cdd53f62, type: 3}
-  firingPoint: {fileID: 4151991782168928605}
-  tilePrefab: {fileID: 0}
-  turretStats: {fileID: 11400000, guid: f6b006cdd80bfbc47b5334bd51b9cd29, type: 2}
-  turretsTile: {fileID: 0}
---- !u!58 &4243902865188377055
+  firingPoint1: {fileID: 4151991782168928605}
+  firingPoint2: {fileID: 3371979763288286575}
+  TemporaryTurretSprite: {fileID: 0}
+  turretStats: {fileID: 11400000, guid: d69dca2cb176f034f931d7fc21da8b22, type: 2}
+--- !u!58 &2853716991912503806
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,5 +321,37 @@ Transform:
   m_Children:
   - {fileID: 597735949303664766}
   - {fileID: 4151991782168928605}
+  - {fileID: 3371979763288286575}
   m_Father: {fileID: 7385017187038225018}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5739734557796066160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3371979763288286575}
+  m_Layer: 0
+  m_Name: FiringPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3371979763288286575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5739734557796066160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.31, y: 2.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5995222955780666773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

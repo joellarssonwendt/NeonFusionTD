@@ -19987,28 +19987,28 @@ MonoBehaviour:
   - {fileID: 1584706896}
   - {fileID: 1617077777}
   - {fileID: 0}
-  tempNormalTurret: {fileID: 1520910871}
-  tempFireTurret: {fileID: 1931560907}
-  tempIceTurret: {fileID: 1909518261}
-  tempLightningTurret: {fileID: 1449720457}
-  tempNormalNormalTurret: {fileID: 808074743}
-  tempFireFireTurret: {fileID: 1315825199}
-  tempIceIceTurret: {fileID: 1312589587}
-  tempIceFireTurret: {fileID: 933020215}
-  tempIceLightningTurret: {fileID: 1322833593}
-  tempLightningFireTurret: {fileID: 694378001}
-  tempNormalIceTurret: {fileID: 1633964704}
-  tempNormalLightningTurret: {fileID: 1734307}
-  tempLightningLightningTurret: {fileID: 1818426203}
-  tempNormalFireTurret: {fileID: 1226396396}
+  tempKineticTower: {fileID: 1520910871}
+  tempFireTower: {fileID: 1931560907}
+  tempFrostTower: {fileID: 1909518261}
+  tempShockTower: {fileID: 1449720457}
+  tempPulverizerTower: {fileID: 808074743}
+  tempFlamethrowerTower: {fileID: 1315825199}
+  tempArcticTower: {fileID: 1312589587}
+  tempObsidianTower: {fileID: 933020215}
+  tempShockFrostTower: {fileID: 1322833593}
+  tempFireShockTower: {fileID: 694378001}
+  tempFrostKineticTower: {fileID: 1633964704}
+  tempShockKineticTower: {fileID: 1734307}
+  tempTeslaTower: {fileID: 1818426203}
+  tempFireKineticTower: {fileID: 1226396396}
   mainCamera: {fileID: 1824152345}
   testDiamond: {fileID: 0}
   placeTowerEffect: {fileID: 405344940930484553, guid: 4b5bfb3e1975ec747b473af7e5c4c49d, type: 3}
   audioManager: {fileID: 1492946863}
-  standardTurretPrefab: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
-  fireTurretPrefab: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
-  iceTurretPrefab: {fileID: 3056856402117988083, guid: 76c7a381585e80e4fa9c80fa5c4d229d, type: 3}
-  lightningTurretPrefab: {fileID: 3056856402117988083, guid: 32d2a75be92486349b423f00b83dfa78, type: 3}
+  kineticTowerPrefab: {fileID: 3056856402117988083, guid: a2dbb7bccf6d06848aa7973549f01e05, type: 3}
+  fireTowerPrefab: {fileID: 3056856402117988083, guid: ed8a22972e7cfc84f9f7db6ec235ba24, type: 3}
+  frostTowerPrefab: {fileID: 3056856402117988083, guid: 76c7a381585e80e4fa9c80fa5c4d229d, type: 3}
+  shockTowerPrefab: {fileID: 3056856402117988083, guid: 32d2a75be92486349b423f00b83dfa78, type: 3}
   tileObjectScript: {fileID: 0}
   tileObjectPrefab: {fileID: 5788754456216221652, guid: f67cfd99959a36144ab0e0309bae7e2a, type: 3}
   selectedTurret: {fileID: 0}
@@ -25254,7 +25254,7 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
-  - name: IceAttack
+  - name: FrostAttack
     clip: {fileID: 8300000, guid: ff59dbcda4037534495a584e2f0ebaad, type: 3}
     volume: 0.2
     pitch: 1
@@ -25290,7 +25290,7 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 1
-  - name: IceShockAttack
+  - name: ShockFrostAttack
     clip: {fileID: 8300000, guid: e1a607d1d8fd79a458a9c6a0b54aad26, type: 3}
     volume: 1
     pitch: 1
@@ -25371,7 +25371,7 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
-  - name: KineticIceAttack
+  - name: FrostKineticAttack
     clip: {fileID: 8300000, guid: af43df766438d8540b6d694c3fb03125, type: 3}
     volume: 0.1
     pitch: 1
@@ -25380,7 +25380,7 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
-  - name: KineticFireAttack
+  - name: FireKineticAttack
     clip: {fileID: 8300000, guid: 026e72b431077af41a34a60d65a0dce5, type: 3}
     volume: 0.1
     pitch: 1
@@ -25389,7 +25389,7 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
-  - name: KineticLightningAttack
+  - name: ShockKineticAttack
     clip: {fileID: 8300000, guid: 6ee1e6447c98dce449ce26603c67fb34, type: 3}
     volume: 0.1
     pitch: 1
@@ -32080,16 +32080,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb8bcaac5dcd3d4da9e37920121b752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalNormal: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
-  fireFire: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
-  normalFire: {fileID: 3056856402117988083, guid: 481e3ff2f4d51d0438a895392d9a0a12, type: 3}
-  normalIce: {fileID: 3056856402117988083, guid: 998e8491a5a47be48a66b21f71e9e2d9, type: 3}
-  normalLightning: {fileID: 3056856402117988083, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
-  iceIce: {fileID: 3056856402117988083, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
-  iceLightning: {fileID: 3056856402117988083, guid: 4280deeaa3bbe2e4e9af44f7fdce9888, type: 3}
-  iceFire: {fileID: 3056856402117988083, guid: 30389174004845649bbc46a6f0682ca6, type: 3}
-  lightningFire: {fileID: 3056856402117988083, guid: d84ef6d2e8d8c64418af2db631b9e9ca, type: 3}
-  lightningLightning: {fileID: 3056856402117988083, guid: 2d8ad55155fc19b49a0b1cb861873894, type: 3}
+  pulverizer: {fileID: 3056856402117988083, guid: f364e016e4fec8642905ce099e535538, type: 3}
+  flamethrower: {fileID: 3056856402117988083, guid: 4c88ed5111f0223478e4f23d1458e717, type: 3}
+  fireKinetic: {fileID: 3056856402117988083, guid: 481e3ff2f4d51d0438a895392d9a0a12, type: 3}
+  frostKinetic: {fileID: 3056856402117988083, guid: 998e8491a5a47be48a66b21f71e9e2d9, type: 3}
+  shockKinetic: {fileID: 3056856402117988083, guid: 0765e125b4bf02b4c93baaca3e2692a1, type: 3}
+  arctic: {fileID: 3056856402117988083, guid: a04ef1ac6c2dede449564496c4f3368d, type: 3}
+  shockFrost: {fileID: 3056856402117988083, guid: 4280deeaa3bbe2e4e9af44f7fdce9888, type: 3}
+  obsidian: {fileID: 3056856402117988083, guid: 30389174004845649bbc46a6f0682ca6, type: 3}
+  fireShock: {fileID: 3056856402117988083, guid: d84ef6d2e8d8c64418af2db631b9e9ca, type: 3}
+  tesla: {fileID: 3056856402117988083, guid: 2d8ad55155fc19b49a0b1cb861873894, type: 3}
 --- !u!1 &1841936972
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,8 @@ using static UnityEngine.GraphicsBuffer;
 public class BuildManager : MonoBehaviour
 {
     [SerializeField] List<Tile> listOfAllTiles;
-    [SerializeField] private GameObject tempNormalTurret, tempFireTurret, tempIceTurret, tempLightningTurret, tempNormalNormalTurret, tempFireFireTurret, tempIceIceTurret;
-    [SerializeField] private GameObject tempIceFireTurret, tempIceLightningTurret, tempLightningFireTurret, tempNormalIceTurret, tempNormalLightningTurret, tempLightningLightningTurret, tempNormalFireTurret;
+    [SerializeField] private GameObject tempKineticTower, tempFireTower, tempFrostTower, tempShockTower, tempPulverizerTower, tempFlamethrowerTower, tempArcticTower;
+    [SerializeField] private GameObject tempObsidianTower, tempShockFrostTower, tempFireShockTower, tempFrostKineticTower, tempShockKineticTower, tempTeslaTower, tempFireKineticTower;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject testDiamond;
     [SerializeField] private ParticleSystem placeTowerEffect;
@@ -21,10 +21,10 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private GameObject audioManager;
 
     [Header("Turret prefabs")]
-    public GameObject standardTurretPrefab;
-    public GameObject fireTurretPrefab;
-    public GameObject iceTurretPrefab;
-    public GameObject lightningTurretPrefab;
+    public GameObject kineticTowerPrefab;
+    public GameObject fireTowerPrefab;
+    public GameObject frostTowerPrefab;
+    public GameObject shockTowerPrefab;
    
     // Referens till shopen för vilken turret som ska byggas
     private GameObject turretToBuild;
@@ -257,21 +257,20 @@ public class BuildManager : MonoBehaviour
 
     public void deactivateTempTurretSprites()
     {
-        tempNormalTurret.SetActive(false);
-        tempFireTurret.SetActive(false);
-        tempIceTurret.SetActive(false);
-        tempLightningTurret.SetActive(false);
-        tempNormalNormalTurret.SetActive(false);
-        tempFireFireTurret.SetActive(false);
-
-        tempIceIceTurret.SetActive(false);
-        tempLightningLightningTurret.SetActive(false);
-        tempNormalIceTurret.SetActive(false);
-        tempNormalLightningTurret.SetActive(false);
-        tempNormalFireTurret.SetActive(false);
-        tempIceFireTurret.SetActive(false);
-        tempIceLightningTurret.SetActive(false);
-        tempLightningFireTurret.SetActive(false);
+        tempKineticTower.SetActive(false);
+        tempFireTower.SetActive(false);
+        tempFrostTower.SetActive(false);
+        tempShockTower.SetActive(false);
+        tempPulverizerTower.SetActive(false);
+        tempFlamethrowerTower.SetActive(false);
+        tempArcticTower.SetActive(false);
+        tempTeslaTower.SetActive(false);
+        tempFrostKineticTower.SetActive(false);
+        tempShockKineticTower.SetActive(false);
+        tempFireKineticTower.SetActive(false);
+        tempObsidianTower.SetActive(false);
+        tempShockFrostTower.SetActive(false);
+        tempFireShockTower.SetActive(false);
     }
 
     public void ActivateTemporaryTurretSprite()
@@ -280,75 +279,75 @@ public class BuildManager : MonoBehaviour
         if (turretToBuild == null)
         {
             Debug.Log("turretSelcted");
-            if (selectedTurret.GetComponent<NormalTurret>() != null)
+            if (selectedTurret.GetComponent<KineticTower>() != null)
             {
-                Debug.Log("normalTurretOnTileSelected");
-                tempNormalTurret.SetActive(true);
+                Debug.Log("KineticTowerOnTileSelected");
+                tempKineticTower.SetActive(true);
             }
-            else if (selectedTurret.GetComponent<FireTurret>() != null)
+            else if (selectedTurret.GetComponent<FireTower>() != null)
             {
-                Debug.Log("FireTurretOnTileSelected");
-                tempFireTurret.SetActive(true);
+                Debug.Log("FireTowerOnTileSelected");
+                tempFireTower.SetActive(true);
             }
-            else if (selectedTurret.GetComponent<SuperFireTurret>() != null)
+            else if (selectedTurret.GetComponent<FlamethrowerTower>() != null)
             {
-                Debug.Log("FireFireTurretOnTileSelected");
-                tempFireFireTurret.SetActive(true);
+                Debug.Log("FlamethrowerTowerOnTileSelected");
+                tempFlamethrowerTower.SetActive(true);
             }
-            else if (selectedTurret.GetComponent<SuperNormalTurret>() != null)
+            else if (selectedTurret.GetComponent<PulverizerTower>() != null)
             {
-                Debug.Log("NormalNormalTurretOnTileSelected");
-                tempNormalNormalTurret.SetActive(true);
+                Debug.Log("PulverizerTowerOnTileSelected");
+                tempPulverizerTower.SetActive(true);
             }
-            else if (selectedTurret.GetComponent<FireNormalTurret>() != null)
+            else if (selectedTurret.GetComponent<FireKineticTower>() != null)
             {
-                Debug.Log("FireNormalTurretOnTileSelected");
-                tempNormalFireTurret.SetActive(true);
+                Debug.Log("FireKineticTowerOnTileSelected");
+                tempFireKineticTower.SetActive(true);
             }
-            else if(selectedTurret.GetComponent<IceTower>() != null)
+            else if(selectedTurret.GetComponent<FrostTower>() != null)
             {
-                Debug.Log("IceTurretOnTileSelected");
-                tempIceTurret.SetActive(true);
+                Debug.Log("FrostTowerOnTileSelected");
+                tempFrostTower.SetActive(true);
             }
-            else if(selectedTurret.GetComponent<LightningTower>() != null)
+            else if(selectedTurret.GetComponent<ShockTower>() != null)
             {
-                Debug.Log("LightningTurretOnTileSelected");
-                tempLightningTurret.SetActive(true);
+                Debug.Log("ShockTowerOnTileSelected");
+                tempShockTower.SetActive(true);
             }
             else if(selectedTurret.GetComponent<TeslaTower>() != null)
             {
                 Debug.Log("TeslaTurretOnTileSelected");
-                tempLightningLightningTurret.SetActive(true);
+                tempTeslaTower.SetActive(true);
             }
             else if(selectedTurret.GetComponent<ArcticTower>() != null)
             {
                 Debug.Log("ArcticTurretOnTileSelected");
-                tempIceIceTurret.SetActive(true);
+                tempArcticTower.SetActive(true);
             }
-            else if(selectedTurret.GetComponent<LightningIceTower>() != null)
+            else if(selectedTurret.GetComponent<ShockFrostTower>() != null)
             {
-                Debug.Log("IceLightningTurretOnTileSelected");
-                tempIceLightningTurret.SetActive(true);
+                Debug.Log("ShockFrostTowerOnTileSelected");
+                tempShockFrostTower.SetActive(true);
             }
             else if(selectedTurret.GetComponent<ObsidianTower>() != null) 
             {
                 Debug.Log("ObsidianTurretOnTileSelected");
-                tempIceFireTurret.SetActive(true);
+                tempObsidianTower.SetActive(true);
             }
-            else if(selectedTurret.GetComponent<IceKineticTower>() != null)
+            else if(selectedTurret.GetComponent<FrostKineticTower>() != null)
             {
-                Debug.Log("IceKineticTurretOnTileSelected");
-                tempNormalIceTurret.SetActive(true);
+                Debug.Log("FrostKineticTowerTurretOnTileSelected");
+                tempFrostKineticTower.SetActive(true);
             }
-            else if(selectedTurret.GetComponent<LightningKineticTower>() != null)
+            else if(selectedTurret.GetComponent<ShockKineticTower>() != null)
             {
-                Debug.Log("LightningKineticTurretOnTileSelected");
-                tempNormalLightningTurret.SetActive(true);
+                Debug.Log("ShockKineticTowerTurretOnTileSelected");
+                tempShockKineticTower.SetActive(true);
             }
-            else if (selectedTurret.GetComponent<FireLightningTower>() != null)
+            else if (selectedTurret.GetComponent<FireShockTower>() != null)
             {
-                Debug.Log("FireLightningTurretOnTileSelected");
-                tempLightningFireTurret.SetActive(true);
+                Debug.Log("FireShockTowerOnTileSelected");
+                tempFireShockTower.SetActive(true);
             }
         }
     }

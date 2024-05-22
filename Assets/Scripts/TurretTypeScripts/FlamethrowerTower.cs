@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuperFireTurret : MonoBehaviour
+public class FlamethrowerTower : MonoBehaviour
 {
     [Header("References")] // Header to group serialized fields in the inspector
     [SerializeField] private Transform turretRotationPoint;
@@ -177,49 +177,4 @@ public class SuperFireTurret : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
-
-    /* private void OnDrawGizmosSelected()
-     {   // Draws a circle in the scene view to visualize the turret's targeting range
-         //Handles.color = Color.green;
-         //Handles.DrawWireDisc(transform.position, transform.forward, turretStats.targetingRange);
-     }
-
-     private void OnMouseDown()
-     {
-         currentTurretOnPointer = gameObject;
-         buildManager.selectedTurret = currentTurretOnPointer;
-         buildManager.ActivateTemporaryTurretSprite();
-         buildManager.tileObject.SetTurretToNull();
-     }
-
-     private void OnMouseUp()
-     {
-         if (buildManager.tileObject.GetTurret() != null)
-         {
-             //här kan merge koden vara sen
-             buildManager.deselectBuiltTurret();
-             Debug.Log("deselect, Men kan köra merge också sen");
-         }
-         if (buildManager.tileObject.GetTurret() == null)
-         {
-             if (buildManager.isRaycastHittingTile() && !enemySpawner.activeRoundPlaying)
-             {
-                 //här flyttas turreten till tilen som musen är över
-                 Debug.Log("flytta turret");
-                 buildManager.selectedTurret.transform.position = buildManager.tileObject.transform.position;
-                 buildManager.tileObject.SetTurretToNull();
-                 buildManager.deselectBuiltTurret();
-             }
-             else
-             {
-                 //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
-                 buildManager.deselectBuiltTurret();
-                 Debug.Log("deselect");
-             }
-         }
-     }
-     public GameObject GetTurret()
-     {
-         return currentTurretOnPointer;
-     }*/
 }

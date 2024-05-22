@@ -18,7 +18,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
     private GameObject mergeResult = null;
 
     // Upgrade Prefabs
-    [SerializeField] private GameObject normalNormal, fireFire, normalFire, normalIce, normalLightning, iceIce, iceLightning, iceFire, lightningFire, lightningLightning;
+    [SerializeField] private GameObject pulverizer, flamethrower, fireKinetic, frostKinetic, shockKinetic, arctic, shockFrost, obsidian, fireShock, tesla;
 
     private void Awake()
     {
@@ -93,7 +93,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 1
             if (heldTurret.CompareTag("normal") && tileTurret.CompareTag("normal"))
             {
-                mergeResult = normalNormal;
+                mergeResult = pulverizer;
                 if (!MergeDictionary.ContainsKey("pulverizer"))
                 {
                     MergeDictionary["pulverizer"] = true;
@@ -114,7 +114,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 2
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("fire"))
             {
-                mergeResult = fireFire;
+                mergeResult = flamethrower;
                 if (!MergeDictionary.ContainsKey("flamethrower"))
                 {
                     MergeDictionary["flamethrower"] = true;
@@ -134,7 +134,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 3
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("fire")))
             {
-                mergeResult = normalFire;
+                mergeResult = fireKinetic;
                 if (!MergeDictionary.ContainsKey("fireburst"))
                 {
                     MergeDictionary["fireburst"] = true;
@@ -154,7 +154,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 4
             if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("ice")))
             {
-                mergeResult = normalIce;
+                mergeResult = frostKinetic;
                 if (!MergeDictionary.ContainsKey("frostbite"))
                 {
                     MergeDictionary["frostbite"] = true;
@@ -174,7 +174,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 5
             if (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("normal") || (heldTurret.CompareTag("normal") && tileTurret.CompareTag("lightning")))
             {
-                mergeResult = normalLightning;
+                mergeResult = shockKinetic;
                 if (!MergeDictionary.ContainsKey("shockwave"))
                 {
                     MergeDictionary["shockwave"] = true;
@@ -194,7 +194,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 6
             if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("ice"))
             {
-                mergeResult = iceIce;
+                mergeResult = arctic;
                 if (!MergeDictionary.ContainsKey("arctic"))
                 {
                     MergeDictionary["arctic"] = true;
@@ -215,7 +215,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 7
             if (heldTurret.CompareTag("ice") && tileTurret.CompareTag("lightning") || (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("ice")))
             {
-                mergeResult = iceLightning;
+                mergeResult = shockFrost;
                 if (!MergeDictionary.ContainsKey("frostshock"))
                 {
                     MergeDictionary["frostshock"] = true;
@@ -236,7 +236,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 8
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("ice") || (heldTurret.CompareTag("ice") && tileTurret.CompareTag("fire")))
             {
-                mergeResult = iceFire;
+                mergeResult = obsidian;
                 if (!MergeDictionary.ContainsKey("obsidian"))
                 {
                     MergeDictionary["obsidian"] = true;
@@ -257,7 +257,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 9
             if (heldTurret.CompareTag("fire") && tileTurret.CompareTag("lightning") || (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("fire")))
             {
-                mergeResult = lightningFire;
+                mergeResult = fireShock;
                 if (!MergeDictionary.ContainsKey("embersurge"))
                 {
                     MergeDictionary["embersurge"] = true;
@@ -277,7 +277,7 @@ public class MergeManager : MonoBehaviour, IDataPersistence
             //combo 10
             if (heldTurret.CompareTag("lightning") && tileTurret.CompareTag("lightning"))
             {
-                mergeResult = lightningLightning;
+                mergeResult = tesla;
                 if (!MergeDictionary.ContainsKey("tesla"))
                 {
                     MergeDictionary["tesla"] = true;

@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ac51d76819e644f4fb98dd8436e9debc, type: 3}
-  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.19209698, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6f339a9f25e216245adf014ddeed56d0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -208,11 +208,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7385017187038225018}
-  - component: {fileID: 9217159103870967218}
-  - component: {fileID: 2853716991912503806}
+  - component: {fileID: 2531986366034032001}
+  - component: {fileID: -6459516361577626486}
   m_Layer: 8
-  m_Name: LightningKineticTower
-  m_TagString: lightningkinetic
+  m_Name: FireShockTower
+  m_TagString: firelightning
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,7 +234,7 @@ Transform:
   - {fileID: 5995222955780666773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9217159103870967218
+--- !u!114 &2531986366034032001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,19 +243,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3056856402117988083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e23a639b875b324d9c21ff2ff8dea14, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b9d2202df53f2d45b456acdf7162bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turretRotationPoint: {fileID: 5995222955780666773}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  projectilePrefab: {fileID: 4404795518819960278, guid: 55a16761925acf444a7ce5b8cdd53f62, type: 3}
+  dotProjectilePrefab: {fileID: 4404795518819960278, guid: f99b3738b917db1469e9fbc8d5e68e78, type: 3}
   firingPoint1: {fileID: 4151991782168928605}
   firingPoint2: {fileID: 3371979763288286575}
   TemporaryTurretSprite: {fileID: 0}
-  turretStats: {fileID: 11400000, guid: d69dca2cb176f034f931d7fc21da8b22, type: 2}
---- !u!58 &2853716991912503806
+  turretStats: {fileID: 11400000, guid: 2c65cedbfbf5c334cafbd4f2d5a0b611, type: 2}
+--- !u!58 &-6459516361577626486
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
