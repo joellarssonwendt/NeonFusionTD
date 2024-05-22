@@ -50,13 +50,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6786164646476171399}
   animator: {fileID: 7118192089208586155}
-  enemyStats: {fileID: 11400000, guid: 17efd3aad73261a4c8f93cf455b61a72, type: 2}
+  enemyStats: {fileID: 11400000, guid: 6e495d1be68b27d43957307d5b02f687, type: 2}
   fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
   iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
   bossNumber: 0
   obsidianResistant: 0
   fireColor1: {r: 1, g: 0, b: 0, a: 0}
   fireColor2: {r: 1, g: 0.5309945, b: 0, a: 0}
+  currentHealth: 0
   isDead: 0
 --- !u!212 &6377493838693588582
 SpriteRenderer:

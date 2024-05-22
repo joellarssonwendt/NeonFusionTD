@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6786164646476171399}
   animator: {fileID: 7118192089208586155}
-  enemyStats: {fileID: 11400000, guid: 17efd3aad73261a4c8f93cf455b61a72, type: 2}
+  enemyStats: {fileID: 11400000, guid: 1f3afb8f4cb6c61479c21e1773bdee8d, type: 2}
   fireIconPrefab: {fileID: 1718851811787073051, guid: af29e9d813168094a91b08801cd4c0a0, type: 3}
   iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
   bossNumber: 0

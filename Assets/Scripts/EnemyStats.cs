@@ -6,4 +6,5 @@ public class EnemyStats : ScriptableObject
     public float maxHealth;
     public float moveSpeed;
     public int damageAmount;
+    public bool infinityMode = false;
 }

@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         target = LevelManager.main.pathingNodes[pathIndex];
         currentHealth = enemyStats.maxHealth;
-
+        if (enemyStats.infinityMode == true) currentHealth *= enemySpawner.GetComponent<EnemySpawner>().currentWave;
         originalMoveSpeed = enemyStats.moveSpeed;
         chilledMoveSpeed = originalMoveSpeed;
     }
@@ -376,6 +376,12 @@ public class Enemy : MonoBehaviour
             Debug.Log("kör Boss 5 beteende");
             StartCoroutine(Boss5());
         }
+
+        if (bossNumber == 6)
+        {
+            Debug.Log("kör Boss 6 beteende");
+            StartCoroutine(Boss6());
+        }
     }
 
     private class DotEffect
@@ -517,6 +523,31 @@ public class Enemy : MonoBehaviour
     }
 
     private IEnumerator Boss5()
+    {
+        Color originalColor = spriteRenderer.color;
+        float maxHealth = currentHealth;
+
+        while (currentHealth > 0)
+        {
+            if (currentHealth < maxHealth)
+            {
+                yield return new WaitForSeconds(3f);
+                spriteRenderer.color = Color.white;
+                currentHealth += 30;
+                if (currentHealth > maxHealth) currentHealth = maxHealth;
+                enemySpawner.bossHealthSlider.value = currentHealth;
+                Debug.Log(currentHealth);
+                rb.bodyType = RigidbodyType2D.Static;
+                yield return new WaitForSeconds(1f);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                spriteRenderer.color = originalColor;
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator Boss6()
     {
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
