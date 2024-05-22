@@ -45,7 +45,7 @@ public class ArcticTower : MonoBehaviour
             if(!soundIsPlaying)
             {
                 soundIsPlaying = true;
-                audioManager.GetComponent<AudioManager>().PlaySoundEffect("Arctic");
+                audioManager.PlaySoundEffect("Arctic");
             }
         }
         else

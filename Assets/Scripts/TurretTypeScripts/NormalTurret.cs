@@ -54,7 +54,7 @@ public class NormalTurret : MonoBehaviour
     }
     private void Shoot() // Instantiate a projectile and set its target
     {
-        audioManager.GetComponent<AudioManager>().PlaySoundEffect("KineticAttack");
+        audioManager.PlaySoundEffect("KineticAttack");
         GameObject projectileObject = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
         Projectile projectileScript = projectileObject.GetComponent<Projectile>();
 

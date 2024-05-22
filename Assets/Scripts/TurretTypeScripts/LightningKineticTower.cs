@@ -55,7 +55,7 @@ public class LightningKineticTower : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
-        audioManager.GetComponent<AudioManager>().PlaySoundEffect("KineticLightningAttack");
+        audioManager.PlaySoundEffect("KineticLightningAttack");
 
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
 

@@ -55,7 +55,7 @@ public class IceKineticTower : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
-        audioManager.GetComponent<AudioManager>().PlaySoundEffect("KineticIceAttack");
+        audioManager.PlaySoundEffect("KineticIceAttack");
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
 
         GameObject projectileObject = Instantiate(iceProjectilePrefab, currentFiringPoint.position, Quaternion.identity);

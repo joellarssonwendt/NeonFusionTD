@@ -54,7 +54,7 @@ public class FireNormalTurret : MonoBehaviour
 
     private void Shoot() // Instantiate a projectile and set its target
     {
-        audioManager.GetComponent<AudioManager>().PlaySoundEffect("KineticFireAttack");
+        audioManager.PlaySoundEffect("KineticFireAttack");
         // Determine which firing point to use based on the flag
         Transform currentFiringPoint = useFiringPoint1 ? firingPoint1 : firingPoint2;
 
