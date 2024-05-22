@@ -32,6 +32,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject lockIce, lockLightning, lockFire;
     [SerializeField] public GameObject bossHealthObject;
     [SerializeField] public Slider bossHealthSlider;
+    [SerializeField] private GameObject infinityBoss;
 
 
 
@@ -163,9 +164,16 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
 
     private int EnemiesPerWave()
     {
-        if (currentWave > handCraftedWaves.Count) return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
+        if (currentWave > handCraftedWaves.Count && currentWave % 5 == 0)
+        {
+            return 1;
+        }
+        else if (currentWave > handCraftedWaves.Count)
+        {
+            return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
+        }
 
-        int enemiesPerWave = 0;
+            int enemiesPerWave = 0;
         for (int i = 0; i < handCraftedWaves[currentWave - 1].enemyTypes.Count; i++)
         {
             enemiesPerWave += handCraftedWaves[currentWave - 1].enemyAmounts[i];
@@ -205,6 +213,11 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
             // Spawnar random fiende-typ om det inte finns några fler HandCraftedWaves
             enemyToSpawn = randomEnemyArray[Random.Range(0, randomEnemyArray.Length)];
             //enemyToSpawn.GetComponent<Enemy>().currentHealth = Mathf.RoundToInt(enemyToSpawn.GetComponent<Enemy>().currentHealth * Mathf.Pow(currentWave, difficultyScalingFactor));
+        }
+
+        if (currentWave > handCraftedWaves.Count && currentWave % 5 == 0)
+        {
+            enemyToSpawn = infinityBoss;
         }
 
         Instantiate(enemyToSpawn, LevelManager.main.spawnPoint.position, Quaternion.identity);

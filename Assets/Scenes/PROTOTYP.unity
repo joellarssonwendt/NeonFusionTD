@@ -14090,6 +14090,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1ca5bc8516578f4aac206b6e48b9864, type: 2}
   randomEnemyArray:
   - {fileID: 8054526396113401650, guid: 9c800daac9c21244bac9ba4c5a2714b2, type: 3}
+  - {fileID: 8054526396113401650, guid: 4367b565aeb8bfe499d166c189e2a28d, type: 3}
+  - {fileID: 8054526396113401650, guid: 0ed163158e2a1cf48a63a84569bb3d6a, type: 3}
   baseAmount: 10
   enemiesPerSecond: 0.75
   difficultyScalingFactor: 0.75
@@ -14103,7 +14105,7 @@ MonoBehaviour:
   lockFire: {fileID: 1771858299}
   bossHealthObject: {fileID: 1935957637}
   bossHealthSlider: {fileID: 1935957639}
-  healthSystem: {fileID: 297445483}
+  infinityBoss: {fileID: 8054526396113401650, guid: d25e2663beb64ca43b73e236d9e46700, type: 3}
   currentWave: 1
   activeRoundPlaying: 0
 --- !u!114 &906432741
