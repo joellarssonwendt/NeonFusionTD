@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -121,6 +122,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         autoWaveCountdownSprite.SetActive(true);
         timeSinceLastSpawn = 0f;
         currentWave++;
+        audioManager.GetComponent<AudioManager>().PlaySoundEffect("NewWave");
 
         PlayerStats.AddBits(bitsGainPerRound);
         PlayerStats.AddCrystals(crystalGainPerRound);

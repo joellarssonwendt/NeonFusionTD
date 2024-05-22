@@ -22746,6 +22746,15 @@ MonoBehaviour:
     isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 5
+  - name: NewWave
+    clip: {fileID: 8300000, guid: 38bb055d7df5c4149a64ee800f986e6f, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
+    source: {fileID: 0}
+    originalVolume: 0
   MasterVolume: 0.5
   MusicVolume: 0.5
   SoundEffectsVolume: 0.5
