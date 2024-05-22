@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1734308}
   - component: {fileID: 1734309}
   m_Layer: 5
-  m_Name: TemporaryNormal-LightningTurret
+  m_Name: TemporaryShockKineticTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13331,7 +13331,7 @@ GameObject:
   - component: {fileID: 694378002}
   - component: {fileID: 694378003}
   m_Layer: 5
-  m_Name: TemporaryLightning-FireTurret
+  m_Name: TemporaryFireShockTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14327,7 +14327,7 @@ GameObject:
   - component: {fileID: 808074744}
   - component: {fileID: 808074745}
   m_Layer: 5
-  m_Name: TemporaryNormal-NormalTurret
+  m_Name: TemporaryPulverizerTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16004,7 +16004,7 @@ GameObject:
   - component: {fileID: 933020216}
   - component: {fileID: 933020217}
   m_Layer: 5
-  m_Name: 'TemporaryIce-FireTurret '
+  m_Name: TemporaryObsidianTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21089,7 +21089,7 @@ GameObject:
   - component: {fileID: 1226396397}
   - component: {fileID: 1226396398}
   m_Layer: 5
-  m_Name: TemporaryNormal-FireTurret
+  m_Name: TemporaryFireKineticTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22517,7 +22517,7 @@ GameObject:
   - component: {fileID: 1312589588}
   - component: {fileID: 1312589589}
   m_Layer: 5
-  m_Name: TemporaryIce-IceTurret
+  m_Name: TemporaryArcticTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22563,7 +22563,7 @@ GameObject:
   - component: {fileID: 1315825200}
   - component: {fileID: 1315825201}
   m_Layer: 5
-  m_Name: TemporaryFire-FireTurret
+  m_Name: TemporaryFlamethrowerTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22620,7 +22620,7 @@ GameObject:
   - component: {fileID: 1322833594}
   - component: {fileID: 1322833595}
   m_Layer: 5
-  m_Name: TemporaryIce-LightningTurret
+  m_Name: TemporaryShockFrostTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24636,7 +24636,7 @@ GameObject:
   - component: {fileID: 1449720458}
   - component: {fileID: 1449720459}
   m_Layer: 5
-  m_Name: TemporaryLightningTurret
+  m_Name: TemporaryShockTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25929,7 +25929,7 @@ GameObject:
   - component: {fileID: 1520910873}
   - component: {fileID: 1520910872}
   m_Layer: 5
-  m_Name: TemporaryNormalTurret
+  m_Name: TemporaryKineticTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28071,7 +28071,7 @@ GameObject:
   - component: {fileID: 1633964705}
   - component: {fileID: 1633964706}
   m_Layer: 5
-  m_Name: TemporaryNormal-IceTurret
+  m_Name: TemporaryFrostKineticTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31608,7 +31608,7 @@ GameObject:
   - component: {fileID: 1818426204}
   - component: {fileID: 1818426205}
   m_Layer: 5
-  m_Name: TemporaryLightning-LightningTurret
+  m_Name: TemporaryTeslaTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33154,7 +33154,7 @@ GameObject:
   - component: {fileID: 1909518262}
   - component: {fileID: 1909518263}
   m_Layer: 5
-  m_Name: TemporaryIceTurret
+  m_Name: TemporaryFrostTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34123,7 +34123,7 @@ GameObject:
   - component: {fileID: 1931560909}
   - component: {fileID: 1931560908}
   m_Layer: 5
-  m_Name: TemporaryFireTurret
+  m_Name: TemporaryFireTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
