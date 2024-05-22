@@ -23,6 +23,7 @@ public class TeslaTower : MonoBehaviour
     private float timeUntilFire = 0f;
     private bool soundIsPlaying = false;
     private float timeSinceLastTargetFoundOrKilled = 0f;
+    private int enemiesForMaxTotalDamage = 5;
 
     private void Start()
     {
@@ -92,8 +93,8 @@ public class TeslaTower : MonoBehaviour
             }
         }
 
-        float baseTotalDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, 5);
-        float adjustedDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseTotalDamage / validTargetsCount;
+        float baseTotalDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, enemiesForMaxTotalDamage);
+        float adjustedDamage = validTargetsCount <= enemiesForMaxTotalDamage ? turretStats.projectileDamage : baseTotalDamage / validTargetsCount;
 
         foreach (var enemy in enemies)
         {

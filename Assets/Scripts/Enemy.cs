@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class Enemy : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
     private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
     private Dictionary<ChillEffect, GameObject> iceIcons = new Dictionary<ChillEffect, GameObject>();
     private bool isMovingBackwards = false;
-    private float obsidianEffectDuration = 3f;
+    private float obsidianEffectDuration = 5f;
     private bool isAffectedByObsidian = false;
     private bool bossActive = false;
     
@@ -219,6 +220,11 @@ public class Enemy : MonoBehaviour
 
     public void ApplyChillEffect(float chillAmount, float duration, string sourceOfChill)
     {
+        if (isDead)
+        {
+            return;
+        }
+
         ChillEffect newChillEffect = new ChillEffect(chillAmount, duration, sourceOfChill);
         chillEffects.Add(newChillEffect);
 
@@ -311,20 +317,13 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        isDead = true; // Set the flag to true to indicate that the enemy has died
+        CleanupDebuffIcons();
+
+        isDead = true; 
         audioManager.Play("EnemyDeath");
         EnemySpawner.onEnemyDestroy.Invoke();
         animator.Play("Ghost_Death");
-
-        foreach (var fireIcon in fireIcons.Values)
-        {
-            Destroy(fireIcon);
-        }
-        foreach (var iceIcon in iceIcons.Values)
-        {
-            Destroy(iceIcon);
-        }
-
+ 
         if (bossNumber != 0)
         {
             bossActive = false;
@@ -333,6 +332,21 @@ public class Enemy : MonoBehaviour
             enemySpawner.bossHealthObject.SetActive(false);
         }
         Destroy(gameObject, 1f);
+    }
+
+    private void CleanupDebuffIcons()
+    {
+        foreach (var fireIcon in fireIcons.Values.ToList())
+        {
+            Destroy(fireIcon);
+        }
+        fireIcons.Clear();
+
+        foreach (var iceIcon in iceIcons.Values.ToList())
+        {
+            Destroy(iceIcon);
+        }
+        iceIcons.Clear();
     }
 
     private void RunBossBehaviour()

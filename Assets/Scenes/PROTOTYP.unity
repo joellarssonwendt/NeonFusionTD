@@ -26393,7 +26393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: {fileID: 1524868939}
   CountFPS: 60
-  Duration: 200
+  Duration: 1000
 --- !u!1 &1525949633
 GameObject:
   m_ObjectHideFlags: 0

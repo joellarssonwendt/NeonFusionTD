@@ -6,7 +6,7 @@ public class CrystalCounter : MonoBehaviour
 {
     public TextMeshProUGUI Text;
     public int CountFPS = 60;
-    public float Duration = 20f;
+    public float Duration = 1000f;
     private int _Value = 0;
 
     public int Value

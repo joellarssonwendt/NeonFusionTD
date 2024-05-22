@@ -23,6 +23,7 @@ public class SuperFireTurret : MonoBehaviour
     private float timeUntilFire = 0f;
     private bool soundIsPlaying = false;
     private float timeSinceLastTargetFoundOrKilled = 0f;
+    private int enemiesForMaxTotalDamage = 5;
 
     private void Start()
     {
@@ -105,10 +106,10 @@ public class SuperFireTurret : MonoBehaviour
             }
         }
 
-        float baseProjectileDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, 5);
-        float baseDoTDamage = turretStats.dotDamagePerSecond * Math.Min(validTargetsCount, 5);
-        float adjustedProjectileDamage = validTargetsCount <= 5 ? turretStats.projectileDamage : baseProjectileDamage / validTargetsCount;
-        float adjustedDoTDamage = validTargetsCount <= 5 ? turretStats.dotDamagePerSecond : baseDoTDamage / validTargetsCount;
+        float baseProjectileDamage = turretStats.projectileDamage * Math.Min(validTargetsCount, enemiesForMaxTotalDamage);
+        float baseDoTDamage = turretStats.dotDamagePerSecond * Math.Min(validTargetsCount, enemiesForMaxTotalDamage);
+        float adjustedProjectileDamage = validTargetsCount <= enemiesForMaxTotalDamage ? turretStats.projectileDamage : baseProjectileDamage / validTargetsCount;
+        float adjustedDoTDamage = validTargetsCount <= enemiesForMaxTotalDamage ? turretStats.dotDamagePerSecond : baseDoTDamage / validTargetsCount;
 
         //Debug.Log($"Base DoT Damage: {baseDoTDamage}, Enemies in range: {validTargetsCount}, Adjusted DoT damage Per Target: {adjustedDoTDamage}");
 
