@@ -22738,14 +22738,14 @@ MonoBehaviour:
     source: {fileID: 0}
     originalVolume: 0
   - name: Arctic
-    clip: {fileID: 8300000, guid: 720ecb80feeefc54881ad0b00bbc8947, type: 3}
-    volume: 2
+    clip: {fileID: 8300000, guid: c43fcddd0e368de4cb7081bd03f9e4e2, type: 3}
+    volume: 3
     pitch: 1
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
     source: {fileID: 0}
-    originalVolume: 0
+    originalVolume: 5
   MasterVolume: 0.5
   MusicVolume: 0.5
   SoundEffectsVolume: 0.5
