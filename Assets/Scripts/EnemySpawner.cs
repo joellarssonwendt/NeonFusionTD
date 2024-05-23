@@ -46,6 +46,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
     public bool activeRoundPlaying = false;
+    public float previousTimeScale = 1f;
     int enemyAmountCounter = 0;
     int enemyTypeCounter = 0;
 
@@ -109,6 +110,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     public void StartWave()
     {
         Debug.Log("Wave Started!");
+        Time.timeScale = previousTimeScale;
         if (currentWave <= handCraftedWaves.Count) enemiesPerSecond = handCraftedWaves[currentWave - 1].enemiesPerSecond;
         enemiesPerSecond += (currentWave * 0.05f);
 
@@ -116,6 +118,8 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         activeRoundPlaying = true;
         autoWaveCountdownSprite.SetActive(false);
         enemiesLeftToSpawn = EnemiesPerWave();
+        roundAndTimeToggle.SetTimeScaleSprite();
+        roundAndTimeToggle.OnNextWaveStarted();
     }
 
     private void EndWave()
@@ -128,6 +132,9 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         timeSinceLastSpawn = 0f;
         currentWave++;
         audioManager.GetComponent<AudioManager>().PlayUISoundEffect("NewWave");
+
+        previousTimeScale = Time.timeScale;
+        Time.timeScale = 1f;
 
         PlayerStats.AddBits(bitsGainPerRound);
         PlayerStats.AddCrystals(crystalGainPerRound);
