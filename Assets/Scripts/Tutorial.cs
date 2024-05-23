@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Tutorial : MonoBehaviour
 {
     private Animator animator;
     public EnemySpawner EnemySpawner;
-
-    public GameObject GameManager;
+    public BuildManager BuildManager;
+    public GameObject GhostHand;
+    
+    public LevelManager LevelManager;
     public int currentWave;
 
     public bool getWaveActive;
 
 
-
+    
+   
 
     void Start()
     {
@@ -35,38 +41,52 @@ public class Tutorial : MonoBehaviour
         int currentWave = EnemySpawner.currentWave;
         bool getWaveActive = EnemySpawner.getWaveActive;
 
+       /* if (EnemySpawner.getWaveActive == getWaveActive)
+        {
+            gameObject.SetActive(false);
+        }
+        if (EnemySpawner.getWaveActive != getWaveActive)
+        {
+            gameObject.SetActive(true);
+        }
+       */
+
+      if (gameObject.activeSelf)
+        {
+            
+        }
+
         if (currentWave == 1) 
         {
-           
+            //gameObject.SetActive(true);
             StartCoroutine(Placing());
         }
 
-        if (currentWave == 2)
+        if (currentWave == 2 )
         {
-            
+            //gameObject.SetActive(true);
             StartCoroutine(PlaceNew());
         }
 
         if (currentWave == 3)
         {
-            
+           // gameObject.SetActive(true);
             StartCoroutine(Merging());
+            if (GameObject.Find("KineticTower(clone)") != null)
+            {
+                StopCoroutine(PlaceNew());
+                StartCoroutine(Merging());
+            }
         }
         if (currentWave == 4)
         {
-            
+            //gameObject.SetActive(true);
             StartCoroutine(Moving());
         }
 
-        else if (getWaveActive == true)
-        {
-            StopCoroutine(Placing());
-            StopCoroutine(PlaceNew());
-            StopCoroutine(Merging());
-            StopCoroutine(Moving());
-        }
+        
     }
-
+   
     private IEnumerator Placing()
     {
         animator.SetTrigger("GhostHandPlace");

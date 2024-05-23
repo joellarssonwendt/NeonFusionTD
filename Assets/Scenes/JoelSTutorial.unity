@@ -13885,7 +13885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: -916}
+  m_AnchoredPosition: {x: -509, y: -632}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &883573291
@@ -13922,8 +13922,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemySpawner: {fileID: 906432740}
-  GameManager: {fileID: 1160034901}
+  LevelManager: {fileID: 0}
   currentWave: 0
+  getWaveActive: 0
 --- !u!114 &883573293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13937,7 +13938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0.47843137}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14206,6 +14207,7 @@ MonoBehaviour:
   roundAndTimeToggle: {fileID: 489971316}
   autoWaveCountdown: {fileID: 268708264}
   autoWaveCountdownSprite: {fileID: 268708258}
+  GhostHand: {fileID: 883573289}
   handCraftedWaves:
   - {fileID: 11400000, guid: cedd529291827ce42a19eb2aeafe6ec4, type: 2}
   - {fileID: 11400000, guid: e5da7b8dcb6b4a64c90e2ad2c04e98b7, type: 2}
