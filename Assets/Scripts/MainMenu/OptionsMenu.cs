@@ -19,11 +19,6 @@ public class OptionsMenu : MonoBehaviour
     
     private bool isSceneJustLoaded = true;
 
-    private void OnEnable()
-    {
-        UpdateSliders();
-    }
-
     private void Start()
     {
         options.SetActive(false);
@@ -59,6 +54,11 @@ public class OptionsMenu : MonoBehaviour
 
         isSceneJustLoaded = false;
 
+    }
+
+    private void OnEnable()
+    {
+        UpdateSliders();
     }
 
     public void OnMasterVolumeChanged(float value)
@@ -136,6 +136,11 @@ public class OptionsMenu : MonoBehaviour
         musicVolumeSlider.value = audioManager.MusicVolume;
         soundEffectsVolumeSlider.value = audioManager.SoundEffectsVolume;
         UISoundEffectsVolumeSlider.value = audioManager.UISoundEffectsVolume;
+
+        masterVolumeToggle.isOn = audioManager.isMasterVolumeMuted;
+        musicVolumeToggle.isOn = audioManager.isMusicVolumeMuted;
+        soundEffectsVolumeToggle.isOn = audioManager.isSoundEffectsVolumeMuted;
+        UISoundEffectsVolumeToggle.isOn = audioManager.isUISoundEffectsVolumeMuted;
     }
 
     public void OnMasterVolumeToggleChanged(bool isOn)

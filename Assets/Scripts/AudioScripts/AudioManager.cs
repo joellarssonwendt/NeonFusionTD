@@ -51,6 +51,11 @@ public class AudioManager : MonoBehaviour
         SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
         UISoundEffectsVolume = PlayerPrefs.GetFloat("UISoundEffectsVolume", 0.5f);
 
+        isMasterVolumeMuted = PlayerPrefs.GetInt("MasterVolumeMute", 0) == 1;
+        isMusicVolumeMuted = PlayerPrefs.GetInt("MusicVolumeMute", 0) == 1;
+        isSoundEffectsVolumeMuted = PlayerPrefs.GetInt("SoundEffectsVolumeMute", 0) == 1;
+        isUISoundEffectsVolumeMuted = PlayerPrefs.GetInt("UISoundEffectsVolumeMute", 0) == 1;
+
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>(); 
@@ -77,7 +82,16 @@ public class AudioManager : MonoBehaviour
                 s.source.loop = true;
             }
         }
+        ApplyInitialVolumeSettings();
         PlayMusic();
+    }
+
+    private void ApplyInitialVolumeSettings()
+    {
+        UpdateMasterVolume();
+        UpdateMusicVolume();
+        UpdateSoundEffectsVolume();
+        UpdateUISoundEffectsVolume();
     }
 
     public void Play (string name)
@@ -164,7 +178,7 @@ public class AudioManager : MonoBehaviour
         Sound music = Array.Find(sounds, sound => sound.isMusic);
         if (music != null)
         {
-            music.source.volume = isMusicVolumeMuted ? 0 : MusicVolume;
+            music.source.volume = isMusicVolumeMuted ? 0 : music.volume * MusicVolume;
         }
     }
 
@@ -174,7 +188,7 @@ public class AudioManager : MonoBehaviour
         {
             if (s.isUISound)
             {
-                s.source.volume = isUISoundEffectsVolumeMuted ? 0 : UISoundEffectsVolume;
+                s.source.volume = isUISoundEffectsVolumeMuted ? 0 : s.volume * UISoundEffectsVolume;
             }
         }
     }
@@ -185,7 +199,7 @@ public class AudioManager : MonoBehaviour
         {
             if (!s.isMusic && !s.isUISound)
             {
-                s.source.volume = isSoundEffectsVolumeMuted ? 0 : SoundEffectsVolume;
+                s.source.volume = isSoundEffectsVolumeMuted ? 0 : s.volume * SoundEffectsVolume;
             }
         }
     }

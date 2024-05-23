@@ -13,7 +13,6 @@ public class RoundAndTimeToggle : MonoBehaviour
     
     private EnemySpawner enemySpawner;
     private Image imgComp;
-    public PlayerMana playerMana;
     public OptionsMenu optionsMenu;
 
     [Range(0, 10)]
@@ -36,6 +35,7 @@ public class RoundAndTimeToggle : MonoBehaviour
     {
         isTimeScaleToggle = false;
         lastTimeScale = Time.timeScale;
+        Time.timeScale = 1f;
         UpdateButtonSprite();
     }
 
@@ -46,22 +46,21 @@ public class RoundAndTimeToggle : MonoBehaviour
 
     public void ToggleRoundAndTime()
     {
-        if (!isTimeScaleToggle)
+        if (!isTimeScaleToggle || !enemySpawner.activeRoundPlaying)
         {
             enemySpawner.StartWave();
             isTimeScaleToggle = true;
-            Time.timeScale = 1.0f;
-            playerMana.RestoreMana();
+            Time.timeScale = enemySpawner.previousTimeScale;
         }
         else
         {
-            if (Time.timeScale == 1f)
+            if (Time.timeScale == 2f)
             {
-                Time.timeScale = 2f;
+                Time.timeScale = 1f;
             }
             else
             {
-                Time.timeScale = 1f;
+                Time.timeScale = 2f;
             }
         }
         UpdateButtonSpriteBasedOnTimeScale(Time.timeScale);
@@ -71,6 +70,7 @@ public class RoundAndTimeToggle : MonoBehaviour
     {
         isTimeScaleToggle = true;
         lastTimeScale = Time.timeScale;
+        UpdateButtonSpriteBasedOnTimeScale(Time.timeScale);
     }
 
     public void UpdateButtonSprite()
@@ -81,14 +81,7 @@ public class RoundAndTimeToggle : MonoBehaviour
         }
         else
         {
-            if (Time.timeScale == 1f)
-            {
-                imgComp.sprite = speed1xSprite;
-            }
-            else
-            {
-                imgComp.sprite = speed2xSprite;
-            }
+            UpdateButtonSpriteBasedOnTimeScale(Time.timeScale);
         }
     }
 
@@ -102,5 +95,9 @@ public class RoundAndTimeToggle : MonoBehaviour
         {
             imgComp.sprite = speed2xSprite;
         }
+    }
+    public void SetTimeScaleSprite()
+    {
+        UpdateButtonSpriteBasedOnTimeScale(Time.timeScale);
     }
 }

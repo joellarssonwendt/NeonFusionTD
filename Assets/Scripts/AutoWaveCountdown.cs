@@ -10,7 +10,14 @@ public class AutoWaveCountdown : MonoBehaviour
     public OptionsMenu optionsMenu;
     public Image countdownRing; 
     public Sprite[] countdownSprites;
-    private Sprite initialCountdownSprite;
+    [SerializeField] private Sprite initialCountdownSprite;
+    AudioManager audioManager;
+    private Coroutine countdownCoroutine;
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
 
     private void Awake()
     {
@@ -27,34 +34,57 @@ public class AutoWaveCountdown : MonoBehaviour
     private void OnEnable()
     {
         ResetCountdownSprite();
-        StartCountdown(0f); 
+        StartCountdown(0f);
+        optionsMenu.autoPlayNextWaveToggle.onValueChanged.AddListener(OnAutoPlayNextWaveToggleChanged);
+    }
+
+    private void OnDisable()
+    {
+        optionsMenu.autoPlayNextWaveToggle.onValueChanged.RemoveListener(OnAutoPlayNextWaveToggleChanged);
     }
 
     public void StartCountdown(float delay)
     {
         if (!enemySpawner.activeRoundPlaying)
         {
-            StartCoroutine(CountdownToNextWave(delay));
+            if (countdownCoroutine != null)
+            {
+                StopCoroutine(countdownCoroutine);
+            }
+            countdownCoroutine = StartCoroutine(CountdownToNextWave(delay));
         }
     }
 
     public void ResetCountdownSprite()
     {
-        initialCountdownSprite = countdownRing.sprite;
+        countdownRing.sprite = initialCountdownSprite;
     }
 
     private IEnumerator CountdownToNextWave(float delay)
     {
-        if(optionsMenu.autoPlayNextWaveToggle.isOn) 
+        if (optionsMenu.autoPlayNextWaveToggle.isOn)
         {
+            audioManager.PlayUISoundEffect("Countdown");
+
             yield return new WaitForSecondsRealtime(delay);
 
             for (int i = 4; i > 0; i--)
             {
                 countdownRing.sprite = countdownSprites[i - 1];
-                yield return new WaitForSecondsRealtime(1f);
+                yield return new WaitForSecondsRealtime(1.5f);
             }
             enemySpawner.StartWave();
+            ResetCountdownSprite();
+        }
+    }
+
+    private void OnAutoPlayNextWaveToggleChanged(bool isOn)
+    {
+        if (!isOn && countdownCoroutine != null)
+        {
+            StopCoroutine(countdownCoroutine);
+            audioManager.Stop("Countdown");
+            countdownCoroutine = null;
             ResetCountdownSprite();
         }
     }

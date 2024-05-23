@@ -4521,7 +4521,7 @@ MonoBehaviour:
   sounds:
   - name: 
     clip: {fileID: 8300000, guid: db760daed72ec5c4fb150764c6033065, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     isMusic: 1
     isUISound: 0

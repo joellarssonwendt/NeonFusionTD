@@ -19,9 +19,11 @@ public class InGameMenu : MonoBehaviour
 
     public void toggleMenu()
     {
+        if(!inGameMenuUI.activeSelf )
+        {
+            originalTimeScale = Time.timeScale;
+        }
         inGameMenuUI.SetActive(!inGameMenuUI.activeSelf);
-
-        originalTimeScale = Time.timeScale;
 
         Time.timeScale = inGameMenuUI.activeSelf ? 0.0f : originalTimeScale;
     }
