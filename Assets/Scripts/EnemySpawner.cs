@@ -157,7 +157,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         audioManager.Stop("Arctic");
         autoWaveCountdown.ResetCountdownSprite();
 
-        if(currentWave % 5 == 0)
+        if (currentWave % 5 == 0)
         {
             levelAchievements.enableLevelPopUp(currentWave);
         }
@@ -194,6 +194,8 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
 
     private void SpawnEnemy()
     {
+        if (enemiesLeftToSpawn <= 0) return;
+
         GameObject enemyToSpawn = null;
 
         if (currentWave <= handCraftedWaves.Count)
