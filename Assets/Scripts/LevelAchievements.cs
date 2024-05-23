@@ -74,7 +74,7 @@ public class LevelAchievements : MonoBehaviour
                 ShowEndlessRoundAchievement();
             }
         }
-        Invoke("DisableLevelPopUp", 5f);
+        Invoke("DisableLevelPopUp", 2.5f);
     }
     public void DisableLevelPopUp()
     {
