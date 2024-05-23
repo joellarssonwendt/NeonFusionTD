@@ -593,6 +593,7 @@ public class Enemy : MonoBehaviour
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
         float healThreshold = maxHealth;
+        float defaultMoveSpeed = originalMoveSpeed;
 
         while (currentHealth > 0)
         {
@@ -627,6 +628,12 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 spriteRenderer.color = originalColor;
+                yield return new WaitForSeconds(1f);
+                originalMoveSpeed = 3f;
+                spriteRenderer.color = Color.white;
+                yield return new WaitForSeconds(1f);
+                spriteRenderer.color = originalColor;
+                originalMoveSpeed = defaultMoveSpeed;
             }
 
             yield return null;

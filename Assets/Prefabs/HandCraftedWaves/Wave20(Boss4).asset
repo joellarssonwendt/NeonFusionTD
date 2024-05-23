@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Wave20(Boss4)
   m_EditorClassIdentifier: 
   enemyTypes:
+  - {fileID: 7079963385403916101, guid: 686b7bf710d7a3d4bb15003d4255438e, type: 3}
   - {fileID: 8054526396113401650, guid: 4017ec4e12512784f83e6c3af38d75e2, type: 3}
-  enemyAmounts: 01000000
+  - {fileID: 8054526396113401650, guid: d342741e86792b84e87c60678b39e315, type: 3}
+  - {fileID: 5907289287979489079, guid: 6bfb3d9dbb2f6834fb78b46c0adc42c2, type: 3}
+  enemyAmounts: 05000000010000000500000003000000
   enemiesPerSecond: 1
