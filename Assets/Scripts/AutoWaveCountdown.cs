@@ -71,7 +71,7 @@ public class AutoWaveCountdown : MonoBehaviour
             for (int i = 4; i > 0; i--)
             {
                 countdownRing.sprite = countdownSprites[i - 1];
-                yield return new WaitForSecondsRealtime(1.25f);
+                yield return new WaitForSecondsRealtime(1.5f);
             }
             enemySpawner.StartWave();
             ResetCountdownSprite();
