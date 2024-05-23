@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394398b3735e7c7499884fdf23695477, type: 3}
   m_Name: BigBoy6
   m_EditorClassIdentifier: 
-  maxHealth: 120
+  maxHealth: 220
   moveSpeed: 2
   damageAmount: 10
   infinityMode: 0
