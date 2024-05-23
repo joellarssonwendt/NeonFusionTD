@@ -86,7 +86,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
 
         if (enemiesAlive <= 0 && enemiesLeftToSpawn <= 0)
         {
-            EndWave();
+            EndWave(); 
         }
 
     }
@@ -127,7 +127,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         bossHealthObject.SetActive(false);
         timeSinceLastSpawn = 0f;
         currentWave++;
-        audioManager.GetComponent<AudioManager>().PlaySoundEffect("NewWave");
+        audioManager.GetComponent<AudioManager>().PlayUISoundEffect("NewWave");
 
         PlayerStats.AddBits(bitsGainPerRound);
         PlayerStats.AddCrystals(crystalGainPerRound);
@@ -266,4 +266,26 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
             crystalGainPerRound = Mathf.Min(crystalGainPerRound + 1 * (currentWave - 1), 10);
         }
     }
+
+
+    public int CurrentWave
+    {
+        get {
+            return currentWave;
+        }
+
+    }
+    public bool getWaveActive
+    {
+        get
+        {
+            return activeRoundPlaying;
+        }
+    }
+    private void IncreaseWave()
+    {
+        currentWave++;
+
+    }
+
 }
