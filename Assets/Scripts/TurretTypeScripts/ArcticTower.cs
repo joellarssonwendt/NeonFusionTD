@@ -25,7 +25,7 @@ public class ArcticTower : MonoBehaviour
 
         // Find all enemies within the chill effect range
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, chillEffectRange, enemyMask);
-        bool enemyInRange = false;
+        enemiesInRange.Clear();
 
         // Add all found enemies to the list
         foreach (var enemy in enemies)
@@ -33,14 +33,17 @@ public class ArcticTower : MonoBehaviour
             Enemy enemyComponent = enemy.GetComponent<Enemy>();
             if (enemyComponent != null && !enemyComponent.isDead)
             {
-                enemyInRange = true;
+                enemiesInRange.Add(enemyComponent);
                 break;
             }
         }
 
-        if (enemyInRange)
+        if (enemiesInRange.Count > 0)
         {
-            iceAuraParticleSystem.Play();
+            if(!iceAuraParticleSystem.isPlaying)
+            {
+                iceAuraParticleSystem.Play();
+            }
 
             if(!soundIsPlaying)
             {
@@ -50,7 +53,11 @@ public class ArcticTower : MonoBehaviour
         }
         else
         {
-            iceAuraParticleSystem.Stop();
+            if(iceAuraParticleSystem.isPlaying) 
+            {
+                iceAuraParticleSystem.Stop();
+            }
+
             if(soundIsPlaying)
             {
                 soundIsPlaying = false;
