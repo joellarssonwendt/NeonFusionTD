@@ -55,7 +55,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
     {
         if (other.CompareTag("Enemy"))
         {
-            currentHealth -= other.GetComponent<EnemyStats>().damageAmount;
+            currentHealth -= other.gameObject.GetComponent<Enemy>().enemyStats.damageAmount;
             healthSlider.value = currentHealth;
 
             UpdateHealthBar();

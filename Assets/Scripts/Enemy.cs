@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
-    [SerializeField] private EnemyStats enemyStats;
+    [SerializeField] public EnemyStats enemyStats;
     [SerializeField] private GameObject fireIconPrefab;
     [SerializeField] private GameObject iceIconPrefab;
     [SerializeField] private int bossNumber = 0;
