@@ -178,7 +178,7 @@ public class AudioManager : MonoBehaviour
         Sound music = Array.Find(sounds, sound => sound.isMusic);
         if (music != null)
         {
-            music.source.volume = isMusicVolumeMuted ? 0 : MusicVolume;
+            music.source.volume = isMusicVolumeMuted ? 0 : music.volume * MusicVolume;
         }
     }
 
@@ -188,7 +188,7 @@ public class AudioManager : MonoBehaviour
         {
             if (s.isUISound)
             {
-                s.source.volume = isUISoundEffectsVolumeMuted ? 0 : UISoundEffectsVolume;
+                s.source.volume = isUISoundEffectsVolumeMuted ? 0 : s.volume * UISoundEffectsVolume;
             }
         }
     }
@@ -199,7 +199,7 @@ public class AudioManager : MonoBehaviour
         {
             if (!s.isMusic && !s.isUISound)
             {
-                s.source.volume = isSoundEffectsVolumeMuted ? 0 : SoundEffectsVolume;
+                s.source.volume = isSoundEffectsVolumeMuted ? 0 : s.volume * SoundEffectsVolume;
             }
         }
     }

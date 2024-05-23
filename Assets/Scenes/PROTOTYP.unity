@@ -26689,7 +26689,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: MoveTower
     clip: {fileID: 8300000, guid: 81d4d678784995245862a0be97aab3d7, type: 3}
-    volume: 1
+    volume: 0.15
     pitch: 1
     isMusic: 0
     isUISound: 0
@@ -26950,7 +26950,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: Countdown
     clip: {fileID: 8300000, guid: 646a9efc34ba2ca4ab389b5d8e65dee5, type: 3}
-    volume: 0.4
+    volume: 1
     pitch: 1
     isMusic: 0
     isUISound: 1
