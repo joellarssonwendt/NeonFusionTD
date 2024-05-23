@@ -1,5 +1,8 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,13 +10,18 @@ using UnityEngine.SceneManagement;
 public class LevelAchievements : MonoBehaviour
 {
     public DataPersistenceManager dataPersistenceManager;
+    [SerializeField] private GameObject healthManager;
     [SerializeField] private GameObject levelManager;
+    [SerializeField] private GameObject endlessPopUp;
+    [SerializeField] private GameObject numberImageHolder;
     [SerializeField] private GameObject level30PopUp;
     [SerializeField] private GameObject level25PopUp;
     [SerializeField] private GameObject level20PopUp;
     [SerializeField] private GameObject level15PopUp;
     [SerializeField] private GameObject level10PopUp;
     [SerializeField] private GameObject level5PopUp;
+    private int levelCount;
+    private static System.Random random = new System.Random();
     private EnemySpawner enemySpawner;
     AudioManager audioManager;
     void Start()
@@ -23,7 +31,11 @@ public class LevelAchievements : MonoBehaviour
     }
     public void enableLevelPopUp(int levelNumber)
     {
-        //play sound
+        if(healthManager.GetComponent<HealthSystem>().currentHealth <= 0)
+        {
+            return;
+        }
+
         if(levelNumber == 30)
         {
             audioManager.GetComponent<AudioManager>().PlayUISoundEffect("round30WIN");
@@ -57,13 +69,16 @@ public class LevelAchievements : MonoBehaviour
         }
         else
         {
-            //här kan man lägga en som kör var 5e runda med text som skrivs in automatiskt
-            //även köra ett random ljud
+            if (enemySpawner.currentWave % 5 == 0)
+            {
+                ShowEndlessRoundAchievement();
+            }
         }
         Invoke("DisableLevelPopUp", 5f);
     }
     public void DisableLevelPopUp()
     {
+        endlessPopUp.SetActive(false);
         level30PopUp.SetActive(false);
         level25PopUp.SetActive(false);
         level20PopUp.SetActive(false);
@@ -72,9 +87,43 @@ public class LevelAchievements : MonoBehaviour
         level5PopUp.SetActive(false);
     }
 
-    
+    public void ShowEndlessRoundAchievement()
+    {
+            levelCount = enemySpawner.currentWave;
+            numberImageHolder.GetComponent<TextMeshProUGUI>().text = levelCount.ToString();
+            endlessPopUp.SetActive(true);
 
-
+            int randomInt = GenerateRandomInt(1, 5);
+            PickRandomAchievementSound(randomInt);
+    }
+    private int GenerateRandomInt(int minNum, int maxNum)
+    {
+        int randomIntInRange = random.Next(minNum, maxNum);
+        return randomIntInRange;
+    }
+    private void PickRandomAchievementSound(int number)
+    {
+        if(number == 1)
+        {
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement1");
+        }
+        else if(number == 2)
+        {
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement2");
+        }
+        else if( number == 3)
+        {
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement3");
+        }
+        else if (number == 4)
+        {
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement4");
+        }
+        else
+        {
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement5");
+        }
+    }
 
     public void ExitToMainMenu()
     {
