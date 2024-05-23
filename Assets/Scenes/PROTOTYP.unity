@@ -26395,7 +26395,7 @@ MonoBehaviour:
     isUISound: 0
     isSoundFX: 1
     source: {fileID: 0}
-    originalVolume: 1
+    originalVolume: 0
   - name: ShockAttack
     clip: {fileID: 8300000, guid: 457ba99533793834ab144c95507c6967, type: 3}
     volume: 0.5
