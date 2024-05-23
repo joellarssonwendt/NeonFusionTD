@@ -51,6 +51,11 @@ public class AudioManager : MonoBehaviour
         SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
         UISoundEffectsVolume = PlayerPrefs.GetFloat("UISoundEffectsVolume", 0.5f);
 
+        isMasterVolumeMuted = PlayerPrefs.GetInt("MasterVolumeMute", 0) == 1;
+        isMusicVolumeMuted = PlayerPrefs.GetInt("MusicVolumeMute", 0) == 1;
+        isSoundEffectsVolumeMuted = PlayerPrefs.GetInt("SoundEffectsVolumeMute", 0) == 1;
+        isUISoundEffectsVolumeMuted = PlayerPrefs.GetInt("UISoundEffectsVolumeMute", 0) == 1;
+
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>(); 
@@ -77,7 +82,16 @@ public class AudioManager : MonoBehaviour
                 s.source.loop = true;
             }
         }
+        ApplyInitialVolumeSettings();
         PlayMusic();
+    }
+
+    private void ApplyInitialVolumeSettings()
+    {
+        UpdateMasterVolume();
+        UpdateMusicVolume();
+        UpdateSoundEffectsVolume();
+        UpdateUISoundEffectsVolume();
     }
 
     public void Play (string name)
