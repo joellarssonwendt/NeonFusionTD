@@ -128,7 +128,6 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == soundName && !sound.isMusic && !sound.isUISound);
         if (s != null)
         {
-            Debug.Log("Sound effect played");
             s.source.pitch = pitch; 
             s.source.PlayOneShot(s.clip);
         }

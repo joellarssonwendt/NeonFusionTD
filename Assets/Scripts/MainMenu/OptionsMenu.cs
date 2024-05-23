@@ -16,6 +16,8 @@ public class OptionsMenu : MonoBehaviour
     public Toggle UISoundEffectsVolumeToggle;
     public Toggle autoPlayNextWaveToggle;
     public AudioManager audioManager;
+    
+    private bool isSceneJustLoaded = true;
 
     private void OnEnable()
     {
@@ -54,6 +56,8 @@ public class OptionsMenu : MonoBehaviour
         autoPlayNextWaveToggle.isOn = PlayerPrefs.GetInt("AutoPlayNextWave", 0) == 1;
         autoPlayNextWaveToggle.onValueChanged.AddListener(OnAutoPlayNextWaveToggleChanged);
         OnAutoPlayNextWaveToggleChanged(autoPlayNextWaveToggle.isOn);
+
+        isSceneJustLoaded = false;
 
     }
 
@@ -96,6 +100,11 @@ public class OptionsMenu : MonoBehaviour
 
         audioManager.UpdateSoundEffectsVolume();
 
+        if (!isSceneJustLoaded)
+        {
+            audioManager.PlayUISoundEffect("KineticAttack");
+        }
+
         if (soundEffectsVolumeToggle.isOn && value > 0)
         {
             soundEffectsVolumeToggle.isOn = false;
@@ -110,6 +119,11 @@ public class OptionsMenu : MonoBehaviour
         PlayerPrefs.Save();
 
         audioManager.UpdateUISoundEffectsVolume();
+
+        if (!isSceneJustLoaded)
+        {
+            audioManager.PlayUISoundEffect("Button");
+        }
 
         if (UISoundEffectsVolumeToggle.isOn && value > 0)
         {
