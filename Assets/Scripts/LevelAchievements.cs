@@ -55,7 +55,7 @@ public class LevelAchievements : MonoBehaviour
         else if(levelNumber == 15)
         {
             audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement3");
-            level20PopUp.SetActive(true);
+            level15PopUp.SetActive(true);
         }
         else if(levelNumber == 10)
         {
