@@ -15,5 +15,5 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 8054526396113401650, guid: d342741e86792b84e87c60678b39e315, type: 3}
   - {fileID: 7079963385403916101, guid: 67e0d04a1ab136a45ab32cfd63df3f86, type: 3}
-  enemyAmounts: 0a0000000a000000
+  enemyAmounts: 0800000008000000
   enemiesPerSecond: 1
