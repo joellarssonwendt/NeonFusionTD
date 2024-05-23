@@ -12,6 +12,7 @@ public class AutoWaveCountdown : MonoBehaviour
     public Sprite[] countdownSprites;
     [SerializeField] private Sprite initialCountdownSprite;
     AudioManager audioManager;
+    private Coroutine countdownCoroutine;
 
     private void Start()
     {
@@ -33,25 +34,35 @@ public class AutoWaveCountdown : MonoBehaviour
     private void OnEnable()
     {
         ResetCountdownSprite();
-        StartCountdown(0f); 
+        StartCountdown(0f);
+        optionsMenu.autoPlayNextWaveToggle.onValueChanged.AddListener(OnAutoPlayNextWaveToggleChanged);
+    }
+
+    private void OnDisable()
+    {
+        optionsMenu.autoPlayNextWaveToggle.onValueChanged.RemoveListener(OnAutoPlayNextWaveToggleChanged);
     }
 
     public void StartCountdown(float delay)
     {
         if (!enemySpawner.activeRoundPlaying)
         {
-            StartCoroutine(CountdownToNextWave(delay));
+            if (countdownCoroutine != null)
+            {
+                StopCoroutine(countdownCoroutine);
+            }
+            countdownCoroutine = StartCoroutine(CountdownToNextWave(delay));
         }
     }
 
     public void ResetCountdownSprite()
     {
-        initialCountdownSprite = countdownRing.sprite;
+        countdownRing.sprite = initialCountdownSprite;
     }
 
     private IEnumerator CountdownToNextWave(float delay)
     {
-        if (optionsMenu.autoPlayNextWaveToggle.isOn) 
+        if (optionsMenu.autoPlayNextWaveToggle.isOn)
         {
             audioManager.PlayUISoundEffect("Countdown");
 
@@ -63,6 +74,17 @@ public class AutoWaveCountdown : MonoBehaviour
                 yield return new WaitForSecondsRealtime(1.25f);
             }
             enemySpawner.StartWave();
+            ResetCountdownSprite();
+        }
+    }
+
+    private void OnAutoPlayNextWaveToggleChanged(bool isOn)
+    {
+        if (!isOn && countdownCoroutine != null)
+        {
+            StopCoroutine(countdownCoroutine);
+            audioManager.Stop("Countdown");
+            countdownCoroutine = null;
             ResetCountdownSprite();
         }
     }
