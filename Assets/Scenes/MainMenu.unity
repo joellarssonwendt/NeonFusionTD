@@ -4522,7 +4522,7 @@ MonoBehaviour:
   - name: 
     clip: {fileID: 8300000, guid: db760daed72ec5c4fb150764c6033065, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 1
     isUISound: 0
     isSoundFX: 0
@@ -4531,10 +4531,19 @@ MonoBehaviour:
   - name: Button
     clip: {fileID: 8300000, guid: 3da05e4cf180473458ae67c9c0f34138, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     isMusic: 0
     isUISound: 1
     isSoundFX: 0
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: KineticAttack
+    clip: {fileID: 8300000, guid: d26855bf97bc23f4cad76d734c383db0, type: 3}
+    volume: 0.1
+    pitch: 1
+    isMusic: 0
+    isUISound: 0
+    isSoundFX: 1
     source: {fileID: 0}
     originalVolume: 0
   MasterVolume: 0.5
