@@ -26,33 +26,33 @@ public class LevelAchievements : MonoBehaviour
         //play sound
         if(levelNumber == 30)
         {
-            audioManager.GetComponent<AudioManager>().PlaySoundEffect("round30WIN");
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("round30WIN");
             level30PopUp.SetActive(true);
             return;
         }
         else if(levelNumber == 25)
         {
-            audioManager.GetComponent<AudioManager>().PlaySoundEffect("roundAchievement5");
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement5");
             level25PopUp.SetActive(true);
         }
         else if(levelNumber == 20)
         {
-            audioManager.GetComponent<AudioManager>().PlaySoundEffect("roundAchievement4");
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement4");
             level20PopUp.SetActive(true);  
         }
         else if(levelNumber == 15)
         {
-            audioManager.GetComponent<AudioManager>().PlaySoundEffect("roundAchievement3");
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement3");
             level20PopUp.SetActive(true);
         }
         else if(levelNumber == 10)
         {
-            audioManager.GetComponent<AudioManager>().PlaySoundEffect("roundAchievement2");
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement2");
             level10PopUp.SetActive(true);
         }
         else if(levelNumber == 5)
         {
-            audioManager.GetComponent<AudioManager>().PlaySoundEffect("roundAchievement1");
+            audioManager.GetComponent<AudioManager>().PlayUISoundEffect("roundAchievement1");
             level5PopUp.SetActive(true); 
         }
         else
