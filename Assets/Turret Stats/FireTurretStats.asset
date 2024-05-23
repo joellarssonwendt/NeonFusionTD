@@ -15,7 +15,7 @@ MonoBehaviour:
   targetingRange: 5.2
   rotationSpeed: 650
   projectilesPerSecond: 2
-  projectileDamage: 0.1
+  projectileDamage: 0.001
   dotDamagePerSecond: 2.2
   dotDuration: 3
   chillAmount: 0
