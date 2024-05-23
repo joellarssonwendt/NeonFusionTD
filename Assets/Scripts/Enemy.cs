@@ -507,13 +507,13 @@ public class Enemy : MonoBehaviour
 
             if (currentHealth < healThreshold)
             {
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(5f);
                 spriteRenderer.color = Color.white;
-                currentHealth += 10;
+                currentHealth += 5;
                 yield return new WaitForSeconds(0.1f);
-                currentHealth += 10;
+                currentHealth += 5;
                 yield return new WaitForSeconds(0.1f);
-                currentHealth += 10;
+                currentHealth += 5;
                 if (currentHealth > healThreshold) currentHealth = healThreshold;
                 enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
