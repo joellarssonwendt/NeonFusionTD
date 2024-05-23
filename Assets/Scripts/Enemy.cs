@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject iceIconPrefab;
     [SerializeField] private int bossNumber = 0;
     [SerializeField] private bool obsidianResistant = false;
+    [SerializeField] private bool immuneToFrost = false;
     [SerializeField] private Color fireColor1, fireColor2;
 
     private AudioManager audioManager;
@@ -115,7 +116,8 @@ public class Enemy : MonoBehaviour
         }
 
         Vector2 direction = (target.position - transform.position).normalized;
-        if (rb.bodyType == RigidbodyType2D.Kinematic) rb.velocity = direction * chilledMoveSpeed;
+        if (rb.bodyType == RigidbodyType2D.Kinematic && !immuneToFrost) rb.velocity = direction * chilledMoveSpeed;
+        else if (rb.bodyType == RigidbodyType2D.Kinematic && immuneToFrost) rb.velocity = direction * originalMoveSpeed;
     }
 
     public void TakeDamage(float damage)
@@ -460,13 +462,18 @@ public class Enemy : MonoBehaviour
 
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
+        float defaultMoveSpeed = originalMoveSpeed;
 
         while (currentHealth > 0)
         {
             if (currentHealth < maxHealth)
             {
                 yield return new WaitForSeconds(3f);
-                // Do something
+                originalMoveSpeed = 3f;
+                spriteRenderer.color = Color.white;
+                yield return new WaitForSeconds(0.5f);
+                spriteRenderer.color = originalColor;
+                originalMoveSpeed = defaultMoveSpeed;
             }
 
             yield return null;
@@ -507,7 +514,6 @@ public class Enemy : MonoBehaviour
                 currentHealth += 10;
                 yield return new WaitForSeconds(0.1f);
                 currentHealth += 10;
-                yield return new WaitForSeconds(0.1f);
                 if (currentHealth > healThreshold) currentHealth = healThreshold;
                 enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
@@ -527,12 +533,18 @@ public class Enemy : MonoBehaviour
 
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
+        float defaultMoveSpeed = originalMoveSpeed;
 
         while (currentHealth > 0)
         {
             if (currentHealth < maxHealth)
             {
+                yield return new WaitForSeconds(3f);
+                originalMoveSpeed = 4f;
+                spriteRenderer.color = Color.white;
                 yield return new WaitForSeconds(1f);
+                spriteRenderer.color = originalColor;
+                originalMoveSpeed = defaultMoveSpeed;
             }
 
             yield return null;
@@ -580,15 +592,35 @@ public class Enemy : MonoBehaviour
 
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
+        float healThreshold = maxHealth;
 
         while (currentHealth > 0)
         {
-            if (currentHealth < maxHealth)
+            if (currentHealth <= maxHealth * 0.75f)
+            {
+                healThreshold = maxHealth * 0.75f;
+            }
+
+            if (currentHealth <= maxHealth * 0.5f)
+            {
+                healThreshold = maxHealth * 0.5f;
+            }
+
+            if (currentHealth <= maxHealth * 0.25f)
+            {
+                healThreshold = maxHealth * 0.25f;
+            }
+
+            if (currentHealth < healThreshold)
             {
                 yield return new WaitForSeconds(3f);
                 spriteRenderer.color = Color.white;
-                currentHealth += 30;
-                if (currentHealth > maxHealth) currentHealth = maxHealth;
+                currentHealth += (maxHealth * 0.033f);
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += (maxHealth * 0.033f);
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += (maxHealth * 0.033f);
+                if (currentHealth > healThreshold) currentHealth = healThreshold;
                 enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
                 rb.bodyType = RigidbodyType2D.Static;
