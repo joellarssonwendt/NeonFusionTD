@@ -15,3 +15,4 @@ MonoBehaviour:
   maxHealth: 150
   moveSpeed: 1
   damageAmount: 50
+  infinityMode: 0

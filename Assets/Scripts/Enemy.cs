@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
-    [SerializeField] private EnemyStats enemyStats;
+    [SerializeField] public EnemyStats enemyStats;
     [SerializeField] private GameObject fireIconPrefab;
     [SerializeField] private GameObject iceIconPrefab;
     [SerializeField] private int bossNumber = 0;
@@ -475,15 +475,36 @@ public class Enemy : MonoBehaviour
     {
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
+        float healThreshold = maxHealth;
 
         while (currentHealth > 0)
         {
-            if (currentHealth < maxHealth)
+            if (currentHealth <= maxHealth * 0.75f)
+            {
+                healThreshold = maxHealth * 0.75f;
+            }
+
+            if (currentHealth <= maxHealth * 0.5f)
+            {
+                healThreshold = maxHealth * 0.5f;
+            }
+
+            if (currentHealth <= maxHealth * 0.25f)
+            {
+                healThreshold = maxHealth * 0.25f;
+            }
+
+            if (currentHealth < healThreshold)
             {
                 yield return new WaitForSeconds(3f);
                 spriteRenderer.color = Color.white;
-                currentHealth += 20;
-                if (currentHealth > maxHealth) currentHealth = maxHealth;
+                currentHealth += 10;
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += 10;
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += 10;
+                yield return new WaitForSeconds(0.1f);
+                if (currentHealth > healThreshold) currentHealth = healThreshold;
                 enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
                 rb.bodyType = RigidbodyType2D.Static;
@@ -500,21 +521,36 @@ public class Enemy : MonoBehaviour
     {
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
+        float originalSpeed = enemyStats.moveSpeed;
 
         while (currentHealth > 0)
         {
             if (currentHealth < maxHealth)
             {
-                yield return new WaitForSeconds(3f);
-                spriteRenderer.color = Color.white;
-                currentHealth += 30;
-                if (currentHealth > maxHealth) currentHealth = maxHealth;
-                enemySpawner.bossHealthSlider.value = currentHealth;
-                Debug.Log(currentHealth);
-                rb.bodyType = RigidbodyType2D.Static;
                 yield return new WaitForSeconds(1f);
-                rb.bodyType = RigidbodyType2D.Kinematic;
+                enemyStats.moveSpeed = originalSpeed * 0.9f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.8f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.7f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.6f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.5f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.4f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.3f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.2f;
+                yield return new WaitForSeconds(0.1f);
+                enemyStats.moveSpeed = originalSpeed * 0.1f;
+                yield return new WaitForSeconds(0.1f);
+                spriteRenderer.color = Color.white;
+                enemyStats.moveSpeed = originalSpeed * 4.0f;
+                yield return new WaitForSeconds(1f);
                 spriteRenderer.color = originalColor;
+                enemyStats.moveSpeed = originalSpeed;
             }
 
             yield return null;

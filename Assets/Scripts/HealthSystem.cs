@@ -55,7 +55,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
     {
         if (other.CompareTag("Enemy"))
         {
-            currentHealth -= other.GetComponent<EnemyStats>().damageAmount;
+            currentHealth -= other.gameObject.GetComponent<Enemy>().enemyStats.damageAmount;
             healthSlider.value = currentHealth;
 
             UpdateHealthBar();
@@ -79,7 +79,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
             fillColor.color = redHealth;
         }
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             dataPersistenceManager.playerDied = true;
             audioManager.GetComponent<AudioManager>().PlaySoundEffect("GameOver");
