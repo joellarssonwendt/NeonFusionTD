@@ -46,8 +46,9 @@ public class Enemy : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         target = LevelManager.main.pathingNodes[pathIndex];
         currentHealth = enemyStats.maxHealth;
-        if (enemyStats.infinityMode == true) currentHealth *= enemySpawner.GetComponent<EnemySpawner>().currentWave;
+        if (enemyStats.infinityMode == true) currentHealth *= 1 + (0.1f * enemySpawner.GetComponent<EnemySpawner>().currentWave);
         originalMoveSpeed = enemyStats.moveSpeed;
+        if (enemyStats.infinityMode == true) originalMoveSpeed *= 1 + (0.01f * enemySpawner.GetComponent<EnemySpawner>().currentWave);
         chilledMoveSpeed = originalMoveSpeed;
     }
 
