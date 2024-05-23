@@ -79,7 +79,7 @@ public class HealthSystem : MonoBehaviour, IDataPersistence
             fillColor.color = redHealth;
         }
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             dataPersistenceManager.playerDied = true;
             audioManager.GetComponent<AudioManager>().PlaySoundEffect("GameOver");
