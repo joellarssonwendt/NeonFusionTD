@@ -12,6 +12,8 @@ public class ArcticTower : MonoBehaviour
 
     private List<Enemy> enemiesInRange = new List<Enemy>();
     private bool soundIsPlaying = false;
+    private float timeSinceLastTargetFound = 0f;
+
     private void Start()
     {
         audioManager = AudioManager.instance;
@@ -43,9 +45,11 @@ public class ArcticTower : MonoBehaviour
             if(!iceAuraParticleSystem.isPlaying)
             {
                 iceAuraParticleSystem.Play();
+                timeSinceLastTargetFound = Time.time;
+
             }
 
-            if(!soundIsPlaying)
+            if (!soundIsPlaying)
             {
                 soundIsPlaying = true;
                 audioManager.PlaySoundEffect("Arctic");
@@ -60,8 +64,12 @@ public class ArcticTower : MonoBehaviour
 
             if(soundIsPlaying)
             {
-                soundIsPlaying = false;
-                audioManager.Stop("Arctic");
+                if (timeSinceLastTargetFound >= 0.5f && enemiesInRange.Count == 0)
+                {
+                    audioManager.Stop("Arctic");
+                    soundIsPlaying = false;
+                }
+                timeSinceLastTargetFound = Time.time;
             }
         }
 

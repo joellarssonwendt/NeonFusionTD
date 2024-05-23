@@ -120,6 +120,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         enemiesLeftToSpawn = EnemiesPerWave();
         roundAndTimeToggle.SetTimeScaleSprite();
         roundAndTimeToggle.OnNextWaveStarted();
+        audioManager.Stop("Countdown");
     }
 
     private void EndWave()
@@ -152,6 +153,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         CheckAndUpdateShopButtons();
         audioManager.Stop("Flamethrower");
         audioManager.Stop("TeslaTower");
+        audioManager.Stop("Arctic");
         autoWaveCountdown.ResetCountdownSprite();
 
         if(currentWave % 5 == 0)
