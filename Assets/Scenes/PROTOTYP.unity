@@ -26545,8 +26545,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
+    isUISound: 1
+    isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
   - name: roundAchievement1
@@ -26554,8 +26554,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
+    isUISound: 1
+    isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
   - name: roundAchievement2
@@ -26563,8 +26563,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
+    isUISound: 1
+    isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
   - name: roundAchievement3
@@ -26572,8 +26572,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
+    isUISound: 1
+    isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
   - name: roundAchievement4
@@ -26581,8 +26581,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
+    isUISound: 1
+    isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
   - name: roundAchievement5
@@ -26590,8 +26590,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
+    isUISound: 1
+    isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
   - name: round30WIN
@@ -26599,8 +26599,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isMusic: 0
-    isUISound: 0
-    isSoundFX: 1
+    isUISound: 1
+    isSoundFX: 0
     source: {fileID: 0}
     originalVolume: 0
   MasterVolume: 0.5
