@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BigBoy5
   m_EditorClassIdentifier: 
   maxHealth: 300
-  moveSpeed: 1.5
+  moveSpeed: 2
   damageAmount: 9
+  infinityMode: 0

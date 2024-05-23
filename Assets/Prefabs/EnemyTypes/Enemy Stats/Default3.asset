@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Default3
   m_EditorClassIdentifier: 
   maxHealth: 30
-  moveSpeed: 3
+  moveSpeed: 3.5
   damageAmount: 5
+  infinityMode: 0

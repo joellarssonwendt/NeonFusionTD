@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: INF_DefaultEnemy
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  moveSpeed: 4
+  moveSpeed: 5
   damageAmount: 20
   infinityMode: 1
