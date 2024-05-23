@@ -230,7 +230,7 @@ public class Enemy : MonoBehaviour
         ChillEffect newChillEffect = new ChillEffect(chillAmount, duration, sourceOfChill);
         chillEffects.Add(newChillEffect);
 
-        if (iceIcons.Count == 0)
+        if (iceIcons.Count == 0 && !immuneToFrost)
         {
             CreateIceIcon(newChillEffect);
         }

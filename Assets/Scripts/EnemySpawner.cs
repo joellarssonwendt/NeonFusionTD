@@ -184,7 +184,9 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
             return Mathf.RoundToInt(baseAmount * Mathf.Pow(currentWave, difficultyScalingFactor));
         }
 
-            int enemiesPerWave = 0;
+        // Calculate amount of enemies
+        int enemiesPerWave = 0;
+
         for (int i = 0; i < handCraftedWaves[currentWave - 1].enemyTypes.Count; i++)
         {
             enemiesPerWave += handCraftedWaves[currentWave - 1].enemyAmounts[i];
@@ -225,7 +227,6 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         {
             // Spawnar random fiende-typ om det inte finns några fler HandCraftedWaves
             enemyToSpawn = randomEnemyArray[Random.Range(0, randomEnemyArray.Length)];
-            //enemyToSpawn.GetComponent<Enemy>().currentHealth = Mathf.RoundToInt(enemyToSpawn.GetComponent<Enemy>().currentHealth * Mathf.Pow(currentWave, difficultyScalingFactor));
         }
 
         if (currentWave > handCraftedWaves.Count && currentWave % 5 == 0)
