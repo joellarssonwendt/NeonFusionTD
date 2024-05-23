@@ -5899,6 +5899,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5738a68fc7006654b96f8369437bbca8, type: 3}
   - {fileID: 21300000, guid: 26d2909483f8761488656f635418529b, type: 3}
   - {fileID: 21300000, guid: 2c6f819b6aca2bd4f921172117c75a70, type: 3}
+  initialCountdownSprite: {fileID: 21300000, guid: 50b1a75a6de58244c8fc5a87c956ed34, type: 3}
 --- !u!1 &270916694
 GameObject:
   m_ObjectHideFlags: 0
@@ -11126,7 +11127,6 @@ MonoBehaviour:
   startRoundSprite: {fileID: 21300000, guid: 2f135d79bd703f942b46d4a9943ecec9, type: 3}
   speed1xSprite: {fileID: 21300000, guid: 2f135d79bd703f942b46d4a9943ecec9, type: 3}
   speed2xSprite: {fileID: 21300000, guid: 97b8375c581f9cc44a28bfb71181b4a5, type: 3}
-  playerMana: {fileID: 2128506252}
   optionsMenu: {fileID: 1155754435}
 --- !u!114 &489971317
 MonoBehaviour:
@@ -17006,6 +17006,7 @@ MonoBehaviour:
   levelAchievementsGameObject: {fileID: 871640793}
   currentWave: 1
   activeRoundPlaying: 0
+  previousTimeScale: 1
 --- !u!114 &906432741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26940,6 +26941,15 @@ MonoBehaviour:
     originalVolume: 0
   - name: round30WIN
     clip: {fileID: 8300000, guid: 75205e3a67f6b3a40bb243afef7957d5, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    isUISound: 1
+    isSoundFX: 0
+    source: {fileID: 0}
+    originalVolume: 0
+  - name: Countdown
+    clip: {fileID: 8300000, guid: 646a9efc34ba2ca4ab389b5d8e65dee5, type: 3}
     volume: 1
     pitch: 1
     isMusic: 0

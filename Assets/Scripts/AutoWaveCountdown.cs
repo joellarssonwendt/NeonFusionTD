@@ -10,7 +10,13 @@ public class AutoWaveCountdown : MonoBehaviour
     public OptionsMenu optionsMenu;
     public Image countdownRing; 
     public Sprite[] countdownSprites;
-    private Sprite initialCountdownSprite;
+    [SerializeField] private Sprite initialCountdownSprite;
+    AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
 
     private void Awake()
     {
@@ -45,14 +51,16 @@ public class AutoWaveCountdown : MonoBehaviour
 
     private IEnumerator CountdownToNextWave(float delay)
     {
-        if(optionsMenu.autoPlayNextWaveToggle.isOn) 
+        audioManager.PlayUISoundEffect("Countdown");
+
+        if (optionsMenu.autoPlayNextWaveToggle.isOn) 
         {
             yield return new WaitForSecondsRealtime(delay);
 
             for (int i = 4; i > 0; i--)
             {
                 countdownRing.sprite = countdownSprites[i - 1];
-                yield return new WaitForSecondsRealtime(1f);
+                yield return new WaitForSecondsRealtime(1.25f);
             }
             enemySpawner.StartWave();
             ResetCountdownSprite();
