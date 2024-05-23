@@ -527,6 +527,7 @@ public class Enemy : MonoBehaviour
         {
             if (currentHealth < maxHealth)
             {
+                yield return new WaitForSeconds(1f);
                 enemyStats.moveSpeed = originalSpeed * 0.9f;
                 yield return new WaitForSeconds(0.1f);
                 enemyStats.moveSpeed = originalSpeed * 0.8f;
@@ -546,7 +547,7 @@ public class Enemy : MonoBehaviour
                 enemyStats.moveSpeed = originalSpeed * 0.1f;
                 yield return new WaitForSeconds(0.1f);
                 spriteRenderer.color = Color.white;
-                enemyStats.moveSpeed = originalSpeed * 4f;
+                enemyStats.moveSpeed = originalSpeed * 4.0f;
                 yield return new WaitForSeconds(1f);
                 spriteRenderer.color = originalColor;
                 enemyStats.moveSpeed = originalSpeed;

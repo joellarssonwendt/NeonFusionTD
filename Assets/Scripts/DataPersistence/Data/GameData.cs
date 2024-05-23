@@ -21,7 +21,7 @@ public class GameData
         this.Bits = 120;
         this.Crystals = 1;
         this.currentWave = 1;
-        this.currentHealth = 10;
+        this.currentHealth = 100;
         turretPrefabNames = new SerializableDictionary<string, string>();
         turretPositions = new SerializableDictionary<string, Vector3>();
         MergeDictionary = new SerializableDictionary<string, bool>();
