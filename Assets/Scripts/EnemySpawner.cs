@@ -121,6 +121,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         roundAndTimeToggle.SetTimeScaleSprite();
         roundAndTimeToggle.OnNextWaveStarted();
         audioManager.Stop("Countdown");
+        autoWaveCountdown.ResetCountdownSprite();
     }
 
     private void EndWave()

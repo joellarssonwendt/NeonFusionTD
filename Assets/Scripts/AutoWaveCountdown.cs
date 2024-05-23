@@ -51,10 +51,10 @@ public class AutoWaveCountdown : MonoBehaviour
 
     private IEnumerator CountdownToNextWave(float delay)
     {
-        audioManager.PlayUISoundEffect("Countdown");
-
         if (optionsMenu.autoPlayNextWaveToggle.isOn) 
         {
+            audioManager.PlayUISoundEffect("Countdown");
+
             yield return new WaitForSecondsRealtime(delay);
 
             for (int i = 4; i > 0; i--)
