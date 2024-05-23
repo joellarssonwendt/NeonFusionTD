@@ -6546,7 +6546,7 @@ MonoBehaviour:
   greenHealth: {r: 0.2901961, g: 1, b: 0.5372549, a: 1}
   redHealth: {r: 0.7735849, g: 0, b: 0, a: 1}
   startingHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   gameOver: {fileID: 1389632440}
   passAmount: 1
   gameOverDelay: 6
