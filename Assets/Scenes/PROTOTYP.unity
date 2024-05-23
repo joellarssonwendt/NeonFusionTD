@@ -26725,7 +26725,7 @@ MonoBehaviour:
     originalVolume: 0
   - name: ObsidianAttack
     clip: {fileID: 8300000, guid: 2493c232cba91e1438f3dba2875fba27, type: 3}
-    volume: 0.1
+    volume: 0.08
     pitch: 0.78
     isMusic: 0
     isUISound: 0
@@ -26734,8 +26734,8 @@ MonoBehaviour:
     originalVolume: 0
   - name: FrostAttack
     clip: {fileID: 8300000, guid: ff59dbcda4037534495a584e2f0ebaad, type: 3}
-    volume: 0.05
-    pitch: 1
+    volume: 0.03
+    pitch: 0.8
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
@@ -26770,7 +26770,7 @@ MonoBehaviour:
     originalVolume: 1
   - name: ShockFrostAttack
     clip: {fileID: 8300000, guid: e1a607d1d8fd79a458a9c6a0b54aad26, type: 3}
-    volume: 0.1
+    volume: 0.08
     pitch: 1
     isMusic: 0
     isUISound: 0
@@ -26779,7 +26779,7 @@ MonoBehaviour:
     originalVolume: 1
   - name: Flamethrower
     clip: {fileID: 8300000, guid: b0974ab83c3fb23429bb6fbded7babfd, type: 3}
-    volume: 0.8
+    volume: 1
     pitch: 1
     isMusic: 0
     isUISound: 0
@@ -26851,8 +26851,8 @@ MonoBehaviour:
     originalVolume: 0
   - name: FrostKineticAttack
     clip: {fileID: 8300000, guid: 7c03a4b9ca951ea4a970ad1f743c8b0a, type: 3}
-    volume: 0.05
-    pitch: 1
+    volume: 0.03
+    pitch: 0.8
     isMusic: 0
     isUISound: 0
     isSoundFX: 1
