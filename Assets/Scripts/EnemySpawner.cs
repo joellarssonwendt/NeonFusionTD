@@ -157,12 +157,6 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
             roundAndTimeToggle.UpdateButtonSprite();
         }
 
-
-        if (optionsMenu.autoPlayNextWaveToggle.isOn)
-        {
-            StartCoroutine(StartNextWaveAfterDelay(5f));
-        }
-
         else
         {
             Debug.Log("Auto-start next wave is disabled");
@@ -246,12 +240,6 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
             shopNormalTurretButton.GetComponent<ShopTurretButton>().EnableFireTowerButton();
             lockFire.SetActive(false);
         }
-    }
-    private IEnumerator StartNextWaveAfterDelay(float delay)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-        StartWave();
-        NotifyTimeScaleChange(Time.timeScale);
     }
 
     public void NotifyTimeScaleChange(float timeScale)

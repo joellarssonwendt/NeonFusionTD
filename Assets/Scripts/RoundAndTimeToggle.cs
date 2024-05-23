@@ -13,7 +13,6 @@ public class RoundAndTimeToggle : MonoBehaviour
     
     private EnemySpawner enemySpawner;
     private Image imgComp;
-    public PlayerMana playerMana;
     public OptionsMenu optionsMenu;
 
     [Range(0, 10)]
@@ -46,12 +45,11 @@ public class RoundAndTimeToggle : MonoBehaviour
 
     public void ToggleRoundAndTime()
     {
-        if (!isTimeScaleToggle)
+        if (!isTimeScaleToggle || !enemySpawner.activeRoundPlaying)
         {
             enemySpawner.StartWave();
             isTimeScaleToggle = true;
             Time.timeScale = 1.0f;
-            playerMana.RestoreMana();
         }
         else
         {
