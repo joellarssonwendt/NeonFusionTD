@@ -599,11 +599,11 @@ public class Enemy : MonoBehaviour
             {
                 yield return new WaitForSeconds(3f);
                 spriteRenderer.color = Color.white;
-                currentHealth += (maxHealth * 0.033f);
+                currentHealth += (maxHealth * 0.01f);
                 yield return new WaitForSeconds(0.1f);
-                currentHealth += (maxHealth * 0.033f);
+                currentHealth += (maxHealth * 0.01f);
                 yield return new WaitForSeconds(0.1f);
-                currentHealth += (maxHealth * 0.033f);
+                currentHealth += (maxHealth * 0.01f);
                 if (currentHealth > healThreshold) currentHealth = healThreshold;
                 enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
@@ -612,7 +612,7 @@ public class Enemy : MonoBehaviour
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 spriteRenderer.color = originalColor;
                 yield return new WaitForSeconds(1f);
-                originalMoveSpeed = 3f;
+                originalMoveSpeed = 4f;
                 spriteRenderer.color = Color.white;
                 yield return new WaitForSeconds(1f);
                 spriteRenderer.color = originalColor;
@@ -653,11 +653,15 @@ public class Enemy : MonoBehaviour
             {
                 yield return new WaitForSeconds(3f);
                 spriteRenderer.color = Color.white;
-                currentHealth += (maxHealth * 0.033f);
+                currentHealth += (maxHealth * 0.01f);
                 yield return new WaitForSeconds(0.1f);
-                currentHealth += (maxHealth * 0.033f);
+                currentHealth += (maxHealth * 0.01f);
                 yield return new WaitForSeconds(0.1f);
-                currentHealth += (maxHealth * 0.033f);
+                currentHealth += (maxHealth * 0.01f);
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += (maxHealth * 0.01f);
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += (maxHealth * 0.01f);
                 if (currentHealth > healThreshold) currentHealth = healThreshold;
                 enemySpawner.bossHealthSlider.value = currentHealth;
                 Debug.Log(currentHealth);
@@ -666,7 +670,7 @@ public class Enemy : MonoBehaviour
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 spriteRenderer.color = originalColor;
                 yield return new WaitForSeconds(1f);
-                originalMoveSpeed = 3f;
+                originalMoveSpeed = 4f;
                 spriteRenderer.color = Color.white;
                 yield return new WaitForSeconds(1f);
                 spriteRenderer.color = originalColor;
