@@ -15,7 +15,8 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
     public GameObject autoWaveCountdownSprite;
     AudioManager audioManager;
 
-    public GameObject GhostHand;
+    public GameObject GhostHand, tutorialtower1, tutorialtower2, tutorialtower3, tutorialtower4;
+    
 
     // Events
     public static UnityEvent onEnemyDestroy = new UnityEvent();
@@ -127,6 +128,10 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
 
 
         GhostHand.SetActive(false);
+        tutorialtower1.SetActive(false);
+        tutorialtower2.SetActive(false);
+        tutorialtower3.SetActive(false);
+        tutorialtower4.SetActive(false);
     }
 
     private void EndWave()
@@ -141,6 +146,10 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         audioManager.GetComponent<AudioManager>().PlayUISoundEffect("NewWave");
 
         GhostHand.SetActive(true);
+        tutorialtower1.SetActive(true);
+        tutorialtower2.SetActive(true);
+        tutorialtower3.SetActive(true);
+        tutorialtower4.SetActive(true);
 
         previousTimeScale = Time.timeScale;
         Time.timeScale = 1f;

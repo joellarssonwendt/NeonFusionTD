@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 1755632338217789497}
   - component: {fileID: 8384288936273065032}
   - component: {fileID: 7959640257808012915}
+  - component: {fileID: -12101194929763517}
   m_Layer: 8
   m_Name: TutorialTowerMega
   m_TagString: normal
@@ -228,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 6503107001025073591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8999983, y: 8.150002, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -283,11 +284,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63f3438c2e6859468f4dc88a5f5fc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 0}
-  EnemySpawner: {fileID: 0}
-  LevelManager: {fileID: 0}
-  currentWave: 0
-  TutorialgigaTower: {fileID: 6503107001025073591}
+--- !u!95 &-12101194929763517
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503107001025073591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16cf2c86ba90ab5468f9c5c5e07cbeb8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8785369076606474411
 GameObject:
   m_ObjectHideFlags: 0

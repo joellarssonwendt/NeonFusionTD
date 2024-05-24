@@ -10,159 +10,81 @@ using UnityEngine.UIElements;
 public class Tutorial : MonoBehaviour
 {
     private Animator animator;
-    public EnemySpawner EnemySpawner;
-    public BuildManager BuildManager;
-    public GameObject GhostHand;
     
+    
+    public GameObject GhostHand;
+    public EnemySpawner EnemySpawner;
     public LevelManager LevelManager;
     public int currentWave;
 
     public bool getWaveActive;
 
+    public GameObject TutorialTower1;
+    public GameObject TutorialTower2;
 
-    
-   
+    public GameObject TutorialgigaTower;
+    public GameObject TutorialgigaTower2;
+
 
     void Start()
     {
         gameObject.SetActive(true);
-        // Start the ghost hand animation loop
-        animator = GetComponent<Animator>();
-       // EnemySpawner = GetComponent<EnemySpawner>();
-       // currentWave = GetComponent<EnemySpawner>().currentWave;
-        
-
+        animator = GetComponent<Animator>();      
     }
 
     private void Update()
     {
-       //animator.SetInteger("thiswave", currentWave);
-
+       
         int currentWave = EnemySpawner.currentWave;
         bool getWaveActive = EnemySpawner.getWaveActive;
-
-       /* if (EnemySpawner.getWaveActive == getWaveActive)
-        {
-            gameObject.SetActive(false);
-        }
-        if (EnemySpawner.getWaveActive != getWaveActive)
-        {
-            gameObject.SetActive(true);
-        }
-       */
-
-      if (gameObject.activeSelf)
-        {
-            
-        }
-
+      
         if (currentWave == 1) 
         {
-            //gameObject.SetActive(true);
-            StartCoroutine(Placing());
+            StartCoroutine(Placing());            
         }
 
-        if (currentWave == 2 )
+        if (currentWave == 2)
         {
-            //gameObject.SetActive(true);
-            StartCoroutine(PlaceNew());
+            StartCoroutine(PlaceNew());           
         }
 
         if (currentWave == 3)
         {
-           // gameObject.SetActive(true);
-            StartCoroutine(Merging());
-            if (GameObject.Find("KineticTower(clone)") != null)
-            {
-                StopCoroutine(PlaceNew());
-                StartCoroutine(Merging());
-            }
+            StartCoroutine(Moving());          
         }
         if (currentWave == 4)
         {
-            //gameObject.SetActive(true);
-            StartCoroutine(Moving());
+            StartCoroutine(Merging());
         }
 
-        
+        if (currentWave == 5)
+        {
+            GhostHand.SetActive(false);
+        }
     }
    
     private IEnumerator Placing()
     {
+        yield return new WaitForSeconds((5f));
         animator.SetTrigger("GhostHandPlace");
-        yield return new WaitForSeconds((5));
-
+            
     }
-
+    private IEnumerator PlaceNew()
+    {
+        yield return new WaitForSeconds((5f));
+        animator.SetTrigger("GhostHandPlaceNew");
+    }
+        
+        
     private IEnumerator Merging()
     {
-        animator.SetTrigger("GhostHandPlaceNew");
-        yield return new WaitForSeconds((5));
-        animator.SetTrigger("GhostHandMerging");
+        yield return new WaitForSeconds((5f));
+        animator.SetTrigger("GhostHandMerging");  
     }
     
     private IEnumerator Moving()
     {
-        animator.SetTrigger("GhostHandMoving");
-            yield return new WaitForSeconds((5));
+        yield return new WaitForSeconds((1f));
+        animator.SetTrigger("GhostHandMoving");       
     }
-
-    private IEnumerator PlaceNew()
-    {
-        animator.SetTrigger("GhostHandPlaceNew");
-        yield return new WaitForSeconds((5));
-    }
-
-    /* private void newWave()
-     {
-         int wave = thisWave;
-         if (enemiesAlive == 0 ||  enemiesLeftToSpawn == 0)
-         {
-             thisWave++;
-         }
-
-     }
-     private IEnumerator PlayGhostHandAnimation()
-     {
-             animator.Play("GhostHandPlacing");
-             yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-     }
-
-     private IEnumerator PlayMergeHandAnimation()
-     {
-
-             animator.Play("GhostHandMerging");
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
-     }
-
-     public void startMergeTutorial()
-     {
-         if (currentWave == 2)
-         {
-             StartCoroutine(PlayMergeHandAnimation());
-         }
-         else
-         {
-             StopGhostHand();
-         }
-     }
-
-     public void startTutorial()
-     {
-         if (currentWave == 1)
-         {
-             StartCoroutine(PlayGhostHandAnimation());
-         }
-         else
-         {
-             StopGhostHand();
-         }
-     }
-     public void StopGhostHand()
-     {
-
-         animator.StopPlayback(); // Optional: Stop the animator immediately
-         gameObject.SetActive(false); // Hide the ghost hand
-     }*/
 }

@@ -5,65 +5,97 @@ using UnityEngine;
 
 public class TutorialTower : MonoBehaviour
 {
-    [SerializeField] private GameObject tilePrefab;
+    private Animator animator;
+
     public EnemySpawner EnemySpawner;
     public LevelManager LevelManager;
-    
     public int currentWave;
 
+    public bool getWaveActive;
+
+    public GameObject TutorialTower1;
+    public GameObject TutorialTower2;
+
     public GameObject TutorialgigaTower;
+    public GameObject TutorialgigaTower2;
 
-
-    float torn1x = -4.505f;
     
-    float torn2x = -2.699999998f;
-    float torn3x = -0.8999983f;
-
-    float tornY = 8.15000002f;
-    float tornZ = 0f;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        //gameObject.SetActive(false);
-
-        
-        
+        animator = GetComponent<Animator>();
+    }
+    private IEnumerator towerOne()
+    {
+        yield return new WaitForSeconds((5f));
+        animator.SetTrigger("TutorialTowerShow1");
         
     }
+    private IEnumerator towerTwo()
+    {
+        yield return new WaitForSeconds((5f));
+        animator.SetTrigger("TutorialTowerShow2");   
+    }
+    private IEnumerator towerMove()
+    {      
+        yield return new WaitForSeconds((1f));
+        animator.SetTrigger("TutorialTowerShow3");        
+    }
+    private IEnumerator towerMerge()
+    {     
+        yield return new WaitForSeconds((5f));
+        animator.SetTrigger("TutorialTowerShow4");               
+    }
 
+    
+
+    
     // Update is called once per frame
     void Update()
     {
-
         int currentWave = EnemySpawner.currentWave;
-
-
+        bool getWaveActive = EnemySpawner.getWaveActive;
         //Runda 1 instantiera första tornet, tile 42 (koordinater -4.505, 8.15000002, 0)
         if (currentWave == 1)
         {
-            Vector3 torn1 = new Vector3(torn1x, tornY, 0);
-            Instantiate(this, torn1, Quaternion.identity);
+ 
+            StartCoroutine(towerOne());
+
         }
+
         // runda 2 instantiera andra tornet, tile 62 (koordinater -2.699999998, 8.15000002, 0)
         if (currentWave == 2)
         {
-            Vector3 torn2 = new Vector3(torn2x, tornY, 0);
-            Instantiate(this, torn2, Quaternion.identity);
+            
+            StartCoroutine(towerTwo());
+
         }
 
         //runda 3 instantiera uppgraderat torn på andra tornets plats, ta bort första tornet
         if (currentWave == 3)
         {
-            Vector3 torn3 = new Vector3(torn3x, tornY, 0);
-            Instantiate(this, torn3, Quaternion.identity);
+            
+            StartCoroutine(towerMove());
+            
         }
 
-
-
-
         //runda 4 Flytta tornet till tile 82(-0.8999983, 8.150002, 0)  ta bort tornen från 42 & 62
+        if (currentWave == 4)
+        {
+            
+            StartCoroutine(towerMerge());
 
+        }
         //runda 5 deaktivera spelobjekten
-    }
+
+        if (currentWave == 5) 
+        {
+            TutorialTower1.SetActive(false);
+            TutorialTower2.SetActive(false);
+            TutorialgigaTower.SetActive(false);
+            TutorialgigaTower2.SetActive(false);
+
+        }
+    }        
 }
+
