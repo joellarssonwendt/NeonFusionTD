@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - {fileID: 7079963385403916101, guid: 2fe98e3c57070964db0cc6389de8f095, type: 3}
-  enemyAmounts: 14000000
+  enemyAmounts: 1e000000
   enemiesPerSecond: 3
