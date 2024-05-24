@@ -126,7 +126,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         autoWaveCountdown.ResetCountdownSprite();
 
 
-        //GhostHand.SetActive(false);
+        GhostHand.SetActive(false);
     }
 
     private void EndWave()
@@ -140,7 +140,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         currentWave++;
         audioManager.GetComponent<AudioManager>().PlayUISoundEffect("NewWave");
 
-        //GhostHand.SetActive(true);
+        GhostHand.SetActive(true);
 
         previousTimeScale = Time.timeScale;
         Time.timeScale = 1f;
