@@ -18,7 +18,7 @@ public class ScaleUI : MonoBehaviour
     private float moveUpperIconsValue = 120f;
     private float shopScaleWideScreen = 0.8f;
     private float shopHeightWideScreen = 180f;
-    private float healthBarPositionYWideScreen = 290f;
+    private float healthBarPositionYWideScreen = -90f;
     private float healthBarScaleWideScreen = 0.79f;
     private float mergeWideScreenMoveValue = 100f;
     private float nextRoundButtonWideMoveValue = 80f;
@@ -31,15 +31,24 @@ public class ScaleUI : MonoBehaviour
     private float healthBarPositionValueThinScreen = 10f;
 
     //normal settings
-    private float upperIconsMoveNormalValue = 40f;
+    private float upperIconsMoveNormalValue = 60f;
+
+    //almostWide settings
+    private float cameraPositionAlmostWide = -0.3f;
+    private float shopHeightAlmostWideScreen = 195f;
+    private float shopScaleAlmostWideScreen = 0.8f;
+    private float healthBarPositionYAlmostWideScreen = -55f;
+    private float healthBarScaleAlmostWideScreen = 0.79f;
+    private float upperIconsMoveAlmostWideValue = 105f;
 
     void Start()
     {
         m_MainCamera = Camera.main;
         float aspectRatio = (float)Screen.width / Screen.height;
+        float aspectRatioWide = 0.7f; // lite större än 2:3
         float aspectRatioWidthLimitWide = 9f / 16f;
         float aspectRatioWidthLimitThin = 9f / 18f;
-        if (aspectRatio > aspectRatioWidthLimitWide)
+        if (aspectRatio > aspectRatioWide)
         {
             Debug.Log("Nu händer de grejer för skärmen är bred.");
             MoveCameraWhenWide();
@@ -54,6 +63,15 @@ public class ScaleUI : MonoBehaviour
             MoveCameraWhenThin();
             MoveShopWhenThin();
             MoveHealthbarWhenThin();
+        }
+        else if(aspectRatio > aspectRatioWidthLimitWide && aspectRatio <= aspectRatioWide)
+        {
+            Debug.Log("Nu Händer de grejer för skärmen är almost wide");
+            MoveCameraWhenAlmostWide();
+            MoveShopWhenAlmostWide();
+            ScaleMoveHealthbarWhenAlmostWide();
+            MoveUpperIconsAlmostWide();
+            ScaleMoveShopWhenAlmostWide();
         }
         else
         {
@@ -85,7 +103,7 @@ public class ScaleUI : MonoBehaviour
     }
     private void ScaleMoveHealthbarWhenWide()
     {
-       healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBarPositionYWideScreen, healthBar.transform.position.z);
+       healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y + healthBarPositionYWideScreen, healthBar.transform.position.z);
        healthBar.transform.localScale = new Vector3(healthBarScaleWideScreen, 0.65f, healthBar.transform.localScale.z);
     }
     private void MoveNextRoundButtonWhenWide()
@@ -116,6 +134,32 @@ public class ScaleUI : MonoBehaviour
         diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y + upperIconsMoveNormalValue, diamondIcon.transform.position.z);
         menuIcon.transform.position = new Vector3(menuIcon.transform.position.x, menuIcon.transform.position.y + upperIconsMoveNormalValue, menuIcon.transform.position.z);
         mergeArchive.transform.position = new Vector3(mergeArchive.transform.position.x, mergeArchive.transform.position.y + upperIconsMoveNormalValue, mergeArchive.transform.position.z);
+    }
+    //metoder för almostWide
+    private void MoveCameraWhenAlmostWide()
+    {
+        m_MainCamera.transform.position = new Vector3(m_MainCamera.transform.position.x, cameraPositionAlmostWide, m_MainCamera.transform.position.z);
+    }
+    private void MoveShopWhenAlmostWide()
+    {
+        shop.GetComponent<RectTransform>().sizeDelta = new Vector2(shop.GetComponent<RectTransform>().sizeDelta.x, shopHeightAlmostWideScreen);
+    }
+    
+    private void MoveUpperIconsAlmostWide()
+    {
+        diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y + upperIconsMoveAlmostWideValue, diamondIcon.transform.position.z);
+        menuIcon.transform.position = new Vector3(menuIcon.transform.position.x, menuIcon.transform.position.y + upperIconsMoveAlmostWideValue, menuIcon.transform.position.z);
+        mergeArchive.transform.position = new Vector3(mergeArchive.transform.position.x, mergeArchive.transform.position.y + upperIconsMoveAlmostWideValue, mergeArchive.transform.position.z);
+    }
+    private void ScaleMoveShopWhenAlmostWide()
+    {
+        shop.GetComponent<RectTransform>().sizeDelta = new Vector2(shop.GetComponent<RectTransform>().sizeDelta.x, shopHeightAlmostWideScreen);
+        shop.transform.localScale = new Vector3(shopScaleAlmostWideScreen, shopScaleAlmostWideScreen, shop.transform.localScale.z);
+    }
+    private void ScaleMoveHealthbarWhenAlmostWide()
+    {
+        healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y + healthBarPositionYAlmostWideScreen, healthBar.transform.position.z);
+        healthBar.transform.localScale = new Vector3(healthBarScaleAlmostWideScreen, 0.65f, healthBar.transform.localScale.z);
     }
 
 }
