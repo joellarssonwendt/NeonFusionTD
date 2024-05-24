@@ -56,8 +56,10 @@ MonoBehaviour:
   iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
   bossNumber: 5
   obsidianResistant: 1
+  immuneToFrost: 1
   fireColor1: {r: 1, g: 0, b: 0, a: 0}
   fireColor2: {r: 1, g: 0.5309945, b: 0, a: 0}
+  currentHealth: 0
   isDead: 0
 --- !u!95 &5546459295073055965
 Animator:

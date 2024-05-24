@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: INFINITY_BOSS
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  moveSpeed: 2
+  moveSpeed: 1
   damageAmount: 50
   infinityMode: 1
