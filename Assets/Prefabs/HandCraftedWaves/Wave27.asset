@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wave27
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 8054526396113401650, guid: 77ffed2fd28c72f41ae68c6ab617077c, type: 3}
+  - {fileID: 5907289287979489079, guid: 9d899cc4eabc20440896856c0576c945, type: 3}
   enemyAmounts: 14000000
-  enemiesPerSecond: 1
+  enemiesPerSecond: 0.5

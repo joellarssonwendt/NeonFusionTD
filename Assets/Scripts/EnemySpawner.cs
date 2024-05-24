@@ -127,11 +127,11 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         autoWaveCountdown.ResetCountdownSprite();
 
 
-        GhostHand.SetActive(false);
-        tutorialtower1.SetActive(false);
-        tutorialtower2.SetActive(false);
-        tutorialtower3.SetActive(false);
-        tutorialtower4.SetActive(false);
+        //GhostHand.SetActive(false);
+        //tutorialtower1.SetActive(false);
+        //tutorialtower2.SetActive(false);
+        //tutorialtower3.SetActive(false);
+        //tutorialtower4.SetActive(false);
     }
 
     private void EndWave()
@@ -145,11 +145,11 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         currentWave++;
         audioManager.GetComponent<AudioManager>().PlayUISoundEffect("NewWave");
 
-        GhostHand.SetActive(true);
-        tutorialtower1.SetActive(true);
-        tutorialtower2.SetActive(true);
-        tutorialtower3.SetActive(true);
-        tutorialtower4.SetActive(true);
+        //GhostHand.SetActive(true);
+        //tutorialtower1.SetActive(true);
+        //tutorialtower2.SetActive(true);
+        //tutorialtower3.SetActive(true);
+        //tutorialtower4.SetActive(true);
 
         previousTimeScale = Time.timeScale;
         Time.timeScale = 1f;

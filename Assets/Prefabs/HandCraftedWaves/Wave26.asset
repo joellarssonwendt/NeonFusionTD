@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wave26
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 8054526396113401650, guid: 77ffed2fd28c72f41ae68c6ab617077c, type: 3}
-  enemyAmounts: 0a000000
-  enemiesPerSecond: 1
+  - {fileID: 7079963385403916101, guid: 6bad1a9ce44939f4781a6b3ba5c07cf8, type: 3}
+  enemyAmounts: 14000000
+  enemiesPerSecond: 0.5

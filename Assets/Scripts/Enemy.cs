@@ -575,12 +575,48 @@ public class Enemy : MonoBehaviour
 
         Color originalColor = spriteRenderer.color;
         float maxHealth = currentHealth;
+        float healThreshold = maxHealth;
+        float defaultMoveSpeed = originalMoveSpeed;
 
         while (currentHealth > 0)
         {
-            if (currentHealth < maxHealth)
+            if (currentHealth <= maxHealth * 0.75f)
             {
+                healThreshold = maxHealth * 0.75f;
+            }
+
+            if (currentHealth <= maxHealth * 0.5f)
+            {
+                healThreshold = maxHealth * 0.5f;
+            }
+
+            if (currentHealth <= maxHealth * 0.25f)
+            {
+                healThreshold = maxHealth * 0.25f;
+            }
+
+            if (currentHealth < healThreshold)
+            {
+                yield return new WaitForSeconds(3f);
+                spriteRenderer.color = Color.white;
+                currentHealth += (maxHealth * 0.033f);
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += (maxHealth * 0.033f);
+                yield return new WaitForSeconds(0.1f);
+                currentHealth += (maxHealth * 0.033f);
+                if (currentHealth > healThreshold) currentHealth = healThreshold;
+                enemySpawner.bossHealthSlider.value = currentHealth;
+                Debug.Log(currentHealth);
+                rb.bodyType = RigidbodyType2D.Static;
                 yield return new WaitForSeconds(1f);
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                spriteRenderer.color = originalColor;
+                yield return new WaitForSeconds(1f);
+                originalMoveSpeed = 3f;
+                spriteRenderer.color = Color.white;
+                yield return new WaitForSeconds(1f);
+                spriteRenderer.color = originalColor;
+                originalMoveSpeed = defaultMoveSpeed;
             }
 
             yield return null;

@@ -16955,6 +16955,10 @@ MonoBehaviour:
   autoWaveCountdown: {fileID: 268708264}
   autoWaveCountdownSprite: {fileID: 268708258}
   GhostHand: {fileID: 0}
+  tutorialtower1: {fileID: 0}
+  tutorialtower2: {fileID: 0}
+  tutorialtower3: {fileID: 0}
+  tutorialtower4: {fileID: 0}
   handCraftedWaves:
   - {fileID: 11400000, guid: cedd529291827ce42a19eb2aeafe6ec4, type: 2}
   - {fileID: 11400000, guid: e5da7b8dcb6b4a64c90e2ad2c04e98b7, type: 2}
@@ -16981,18 +16985,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31c703f712ad2974e963be71b5b0f149, type: 2}
   - {fileID: 11400000, guid: 20b53f219ade1634bac77ab8fbcbe173, type: 2}
   - {fileID: 11400000, guid: 9bb9c7feea87d3d4f84cc560e7c20f19, type: 2}
-  - {fileID: 11400000, guid: 835473fb350414943bebb938067e04e0, type: 2}
-  - {fileID: 11400000, guid: 8eaf61ae2a6b6a14e9d794658c47fc83, type: 2}
   - {fileID: 11400000, guid: ac9c1c1f3745a7945b60957ccfa3a9ac, type: 2}
   - {fileID: 11400000, guid: f7a8b4899064bce4784bfffa81dc7d27, type: 2}
+  - {fileID: 11400000, guid: 835473fb350414943bebb938067e04e0, type: 2}
+  - {fileID: 11400000, guid: 8eaf61ae2a6b6a14e9d794658c47fc83, type: 2}
   - {fileID: 11400000, guid: f1ca5bc8516578f4aac206b6e48b9864, type: 2}
   randomEnemyArray:
   - {fileID: 8054526396113401650, guid: 9c800daac9c21244bac9ba4c5a2714b2, type: 3}
   - {fileID: 8054526396113401650, guid: 4367b565aeb8bfe499d166c189e2a28d, type: 3}
   - {fileID: 8054526396113401650, guid: 0ed163158e2a1cf48a63a84569bb3d6a, type: 3}
-  baseAmount: 10
+  baseAmount: 1
   enemiesPerSecond: 0.75
-  difficultyScalingFactor: 0.75
+  difficultyScalingFactor: 0.6
   nextRoundButton: {fileID: 489971314}
   shopNormalTurretButton: {fileID: 1745063078}
   shopIceTurretButton: {fileID: 143825232}
@@ -18696,12 +18700,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3a7c01edcb78341b30576bf8a5421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpawner: {fileID: 0}
-  BuildManager: {fileID: 0}
   GhostHand: {fileID: 0}
+  EnemySpawner: {fileID: 0}
   LevelManager: {fileID: 0}
   currentWave: 0
   getWaveActive: 0
+  TutorialTower1: {fileID: 0}
+  TutorialTower2: {fileID: 0}
+  TutorialgigaTower: {fileID: 0}
+  TutorialgigaTower2: {fileID: 0}
 --- !u!114 &1024044900
 MonoBehaviour:
   m_ObjectHideFlags: 0
