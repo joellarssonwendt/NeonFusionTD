@@ -9,6 +9,7 @@ public class BitsCounter : MonoBehaviour
     public float Duration = 2f;
     private int _Value = 0;
 
+    // Property to get or set the bits value and update the UI text
     public int Value
     {
         get => _Value;
@@ -19,12 +20,12 @@ public class BitsCounter : MonoBehaviour
         }
     }
 
-    private Coroutine CountingCoroutine;
+    private Coroutine CountingCoroutine;     // Coroutine reference for the counting animation
 
     private void Awake()
     {
         Text = GetComponent<TextMeshProUGUI>();
-        PlayerStats.OnBitsChanged += UpdateBitsDisplay;
+        PlayerStats.OnBitsChanged += UpdateBitsDisplay;      // Subscribe to the OnBitsChanged event from PlayerStats
 
         StartCoroutine(DelayedUpdateBitsDisplay());
     }
@@ -50,6 +51,7 @@ public class BitsCounter : MonoBehaviour
         UpdateBitsDisplay(PlayerStats.Bits);
     }
 
+    // Coroutine to animate the counting of the text from the current value to the new value
     private IEnumerator CountText(int newValue)
     {
         WaitForSeconds Wait = new WaitForSeconds(1f / CountFPS);
@@ -57,6 +59,7 @@ public class BitsCounter : MonoBehaviour
         int stepAmount;
         int difference = newValue - lastValue;
 
+        // Determine the step amount based on whether the difference is positive or negative
         if (difference < 0) 
         {
             stepAmount = Mathf.FloorToInt((difference) / (CountFPS * Duration));
@@ -68,10 +71,12 @@ public class BitsCounter : MonoBehaviour
 
         }
 
+        // Loop through the number of steps required to reach the new value
         for (int i = 0; i < Mathf.Abs(difference); i++)
         {
             lastValue += stepAmount;
 
+            // Ensure the last value does not overshoot the new value
             if ((lastValue > newValue && difference > 0) || (lastValue < newValue && difference < 0))
             {
                 lastValue = newValue;

@@ -46,16 +46,19 @@ public class AudioManager : MonoBehaviour
         }
         instance = this;
 
+        // Load volume settings from player preferences
         MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
         MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f); 
         SoundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume", 0.5f);
         UISoundEffectsVolume = PlayerPrefs.GetFloat("UISoundEffectsVolume", 0.5f);
 
+        // Load mute settings from player preferences
         isMasterVolumeMuted = PlayerPrefs.GetInt("MasterVolumeMute", 0) == 1;
         isMusicVolumeMuted = PlayerPrefs.GetInt("MusicVolumeMute", 0) == 1;
         isSoundEffectsVolumeMuted = PlayerPrefs.GetInt("SoundEffectsVolumeMute", 0) == 1;
         isUISoundEffectsVolumeMuted = PlayerPrefs.GetInt("UISoundEffectsVolumeMute", 0) == 1;
 
+        // Initialize each sound in the sounds array
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>(); 
@@ -64,6 +67,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume * MasterVolume;
             s.source.pitch = s.pitch;
 
+            // Adjust volume based on the type of sound
             if (s.isMusic)
             {
                 s.source.volume = s.volume * MusicVolume;
@@ -142,7 +146,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == soundName && !sound.isMusic && !sound.isUISound);
         if (s != null)
         {
-            s.source.pitch = pitch; 
+            s.source.pitch = s.pitch; 
             s.source.PlayOneShot(s.clip);
         }
         else

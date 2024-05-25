@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         if (bossNumber != 0) enemySpawner.bossHealthSlider.value = currentHealth;
 
-        if (currentHealth <= 0 && !isDead) // Check if the enemy is not already dead
+        if (currentHealth <= 0 && !isDead)
         {
             Die();
         }
@@ -141,6 +141,7 @@ public class Enemy : MonoBehaviour
 
         dotEffects.Add(new DotEffect(dotDamage, dotProjectile.dotDuration));
 
+        // Create a fire icon if it doesn't already exist
         if (!fireIcons.ContainsKey(dotProjectile))
         {
             CreateFireIcon(dotProjectile);
@@ -179,7 +180,7 @@ public class Enemy : MonoBehaviour
     {
         float iconOffset = 0.25f;
         GameObject fireIcon = Instantiate(fireIconPrefab, transform.position + Vector3.up * 1.0f + Vector3.right * iconOffset, Quaternion.identity, transform);
-        fireIcons.Add(dotProjectile, fireIcon);
+        fireIcons.Add(dotProjectile, fireIcon);     // Add the fire icon to the dictionary
 
     }
 
@@ -263,7 +264,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        // Check if there are no more active chill effects
+        // Reset move speed when there are no chill effects
         if (chillEffects.Count == 0)
         {
             // Destroy all ice icons associated with the enemy
@@ -426,35 +427,6 @@ public class Enemy : MonoBehaviour
             this.sourceOfChill = sourceOfChill;
         }
     }
-
-
-    // Coroutines för eld och is-effekter
-    /* private IEnumerator FireEffect()
-     {
-         Color orginialColor = spriteRenderer.color;
-         float elapsedTime = 0f;  
-         while(accumulatedDotDamage < elapsedTime)
-         {
-             float interval = 0.25f;
-
-             spriteRenderer.color = spriteRenderer.color;
-             yield return new WaitForSeconds(interval);
-
-             spriteRenderer.color = fireColor1;
-             yield return new WaitForSeconds(interval);
-
-             spriteRenderer.color = fireColor2;
-             yield return new WaitForSeconds(interval);
-
-             if (accumulatedDotDamage <= 0)
-             {
-                 spriteRenderer.color = orginialColor; // Restore the original color
-
-             }
-
-         }
-     }*/
-
 
     // Boss beteenden
     private IEnumerator Boss1()

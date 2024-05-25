@@ -65,7 +65,6 @@ public class PulverizerTower : MonoBehaviour
         projectileScript.SetDamage(turretStats.projectileDamage);
         projectileScript.SetTarget(target);
 
-        // Toggle the flag for the next shot
         useFiringPoint1 = !useFiringPoint1;
     }
 

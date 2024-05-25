@@ -5,14 +5,15 @@ using UnityEngine.UI;
 public class AutoWaveCountdown : MonoBehaviour
 {
     public static AutoWaveCountdown Instance { get; private set; }
-
+    
+    [SerializeField] private Sprite initialCountdownSprite;
     public EnemySpawner enemySpawner;
     public OptionsMenu optionsMenu;
     public Image countdownRing; 
     public Sprite[] countdownSprites;
-    [SerializeField] private Sprite initialCountdownSprite;
-    AudioManager audioManager;
     private Coroutine countdownCoroutine;
+    AudioManager audioManager;
+
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class AutoWaveCountdown : MonoBehaviour
     {
         ResetCountdownSprite();
         StartCountdown(0f);
-        optionsMenu.autoPlayNextWaveToggle.onValueChanged.AddListener(OnAutoPlayNextWaveToggleChanged);
+        optionsMenu.autoPlayNextWaveToggle.onValueChanged.AddListener(OnAutoPlayNextWaveToggleChanged);     // Add listener for the auto play toggle change
     }
 
     private void OnDisable()
@@ -59,8 +60,9 @@ public class AutoWaveCountdown : MonoBehaviour
     {
         countdownRing.sprite = initialCountdownSprite;
     }
-
-    private IEnumerator CountdownToNextWave(float delay)
+    
+    // Coroutine to handle the countdown process
+    private IEnumerator CountdownToNextWave(float delay)     
     {
         if (optionsMenu.autoPlayNextWaveToggle.isOn)
         {
@@ -80,7 +82,7 @@ public class AutoWaveCountdown : MonoBehaviour
 
     private void OnAutoPlayNextWaveToggleChanged(bool isOn)
     {
-        if (!isOn && countdownCoroutine != null)
+        if (!isOn && countdownCoroutine != null)       // If the auto play is turned off and a countdown is running, stop it
         {
             StopCoroutine(countdownCoroutine);
             audioManager.Stop("Countdown");

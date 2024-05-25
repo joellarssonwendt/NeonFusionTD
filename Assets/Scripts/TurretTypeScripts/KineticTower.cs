@@ -91,7 +91,8 @@ private void FindTarget()
         // Calculate angle between turret and target, and rotate turret towards target
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));   // Create a rotation to point the turret towards the target
+        // Smoothly rotate the turret towards the target
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, turretStats.rotationSpeed * Time.deltaTime);
     }
 }
