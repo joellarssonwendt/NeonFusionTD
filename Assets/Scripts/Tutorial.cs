@@ -65,6 +65,11 @@ public class Tutorial : MonoBehaviour
         {
             StartCoroutine(Merging());
         }
+
+        if (currentWave >= 5)
+        {
+            GhostHand.SetActive(false);
+        }
     }
    
     private IEnumerator Placing()
