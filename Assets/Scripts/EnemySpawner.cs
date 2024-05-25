@@ -160,7 +160,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         {
             bitsGainPerRound += 10;
         }
-        if(crystalGainPerRound < 10)
+        if(crystalGainPerRound < 8)
         {
             crystalGainPerRound += 1;
         }
