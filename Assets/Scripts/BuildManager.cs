@@ -181,7 +181,7 @@ public class BuildManager : MonoBehaviour
                     //här deselectas turreten samt Temp sprites försvinner för att man missar rutan.
                     deselectBuiltTurret();
                     Debug.Log("deselect");
-                    audioManager.GetComponent<AudioManager>().Play("Error");
+                    audioManager.GetComponent<AudioManager>().Play("ErrorShopButton");
                 }
             }
 
