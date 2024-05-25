@@ -31,10 +31,13 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        gameObject.SetActive(true);
-        animator = GetComponent<Animator>();
+        if(currentWave < 5) 
+        {
+            gameObject.SetActive(true);
+            animator = GetComponent<Animator>();
 
-        
+        }
+
     }
 
     
@@ -61,11 +64,6 @@ public class Tutorial : MonoBehaviour
         if (currentWave == 4)
         {
             StartCoroutine(Merging());
-        }
-
-        if (currentWave == 5)
-        {
-            GhostHand.SetActive(false);
         }
     }
    
