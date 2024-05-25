@@ -148,7 +148,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         GhostHand.SetActive(true);
         tutorialtower1.SetActive(true);
         tutorialtower2.SetActive(true);
-        tutorialtower3.SetActive(true);
+       // tutorialtower3.SetActive(true);
         tutorialtower4.SetActive(true);
 
         previousTimeScale = Time.timeScale;

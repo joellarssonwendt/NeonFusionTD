@@ -26,12 +26,18 @@ public class Tutorial : MonoBehaviour
     public GameObject TutorialgigaTower2;
 
 
+
+    
+
     void Start()
     {
         gameObject.SetActive(true);
-        animator = GetComponent<Animator>();      
+        animator = GetComponent<Animator>();
+
+        
     }
 
+    
     private void Update()
     {
        
@@ -65,26 +71,54 @@ public class Tutorial : MonoBehaviour
    
     private IEnumerator Placing()
     {
+        int normalTowers = GameObject.FindGameObjectsWithTag("normal").Length;
         yield return new WaitForSeconds((5f));
         animator.SetTrigger("GhostHandPlace");
-            
+
+        if (normalTowers == 1)
+        {
+            GhostHand.SetActive(false);
+
+        }
+
+
     }
     private IEnumerator PlaceNew()
     {
+        int normalTowers = GameObject.FindGameObjectsWithTag("normal").Length;
         yield return new WaitForSeconds((3.5f));
         animator.SetTrigger("GhostHandPlaceNew");
+        if (normalTowers == 2)
+        {
+            GhostHand.SetActive(false);
+
+        }
     }
-        
-        
+
+
     private IEnumerator Merging()
     {
+        int gigaTowers = GameObject.FindGameObjectsWithTag("supernormal").Length;
+
         yield return new WaitForSeconds((0.1f));
-        animator.SetTrigger("GhostHandMerging");  
+        animator.SetTrigger("GhostHandMerging");
+        if (gigaTowers == 1)
+        {
+            GhostHand.SetActive(false);
+        }
     }
-    
     private IEnumerator Moving()
     {
         yield return new WaitForSeconds((0.1f));
-        animator.SetTrigger("GhostHandMoving");       
+        animator.SetTrigger("GhostHandMoving");
+
+        Vector3 movedTower = new Vector3(3.291216f, 2.323133f, 5.841029f);
+
+        if (Vector3.Distance(transform.position, movedTower) < 0.001f)
+        {
+            GhostHand.SetActive(false);
+        }
     }
+
 }
+

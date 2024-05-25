@@ -4520,7 +4520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: 
-    clip: {fileID: 8300000, guid: db760daed72ec5c4fb150764c6033065, type: 3}
+    clip: {fileID: 8300000, guid: be06b4ce5a3bbe54984f43aec3a1d709, type: 3}
     volume: 0.6
     pitch: 1
     isMusic: 1

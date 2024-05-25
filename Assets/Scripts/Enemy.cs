@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     private float obsidianEffectDuration = 5f;
     private bool isAffectedByObsidian = false;
     private bool bossActive = false;
-    
+    public ParticleSystem obsidianParticle;
 
     private void Start()
     {
@@ -316,6 +316,7 @@ public class Enemy : MonoBehaviour
         isMovingBackwards = false;
         target = LevelManager.main.pathingNodes[pathIndex];
         isAffectedByObsidian = false;
+        obsidianParticle.Play();
         //Debug.Log("New target after backward movement duration expired: " + target.name);
     }
 
