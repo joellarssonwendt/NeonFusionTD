@@ -14,32 +14,39 @@ public class ScaleUI : MonoBehaviour
     private Camera m_MainCamera;
 
     //wide settings
-    private float cameraPositionWide = -0.4f;
-    private float moveUpperIconsValue = 120f;
-    private float shopScaleWideScreen = 0.8f;
-    private float shopHeightWideScreen = 180f;
-    private float healthBarPositionYWideScreen = -90f;
-    private float healthBarScaleWideScreen = 0.79f;
-    private float mergeWideScreenMoveValue = 100f;
-    private float nextRoundButtonWideMoveValue = 80f;
+    [Header("wide settings")]
+    [SerializeField] private float cameraPositionWide = -0.4f;
+    [SerializeField] private float moveUpperIconsValue = 1.5f;
+    [SerializeField] private float shopScaleWideScreen = 0.8f;
+    [SerializeField] private float shopHeightWideScreen = 180f;
+    [SerializeField] private float healthBarPositionYWideScreen = -1.3f;
+    [SerializeField] private float healthBarScaleWideScreen = 0.79f;
+    [SerializeField] private float mergeWideScreenMoveValue = 2f;
+    [SerializeField] private float nextRoundButtonWideMoveValue = -1.3f;
 
 
 
     //thin settings
-    private float cameraPositionThinMobile = 0.8f;
-    private float shopHeightThinScreen = 200f;
-    private float healthBarPositionValueThinScreen = 10f;
+    [Header("thin settings")]
+
+    [SerializeField] private float cameraPositionThinMobile = 0.8f;
+    [SerializeField] private float shopHeightThinScreen = 200f;
+    [SerializeField] private float healthBarPositionValueThinScreen = 10f;
 
     //normal settings
-    private float upperIconsMoveNormalValue = 60f;
+    [Header("normal settings")]
+
+    [SerializeField] private float upperIconsMoveNormalValue = 60f;
 
     //almostWide settings
-    private float cameraPositionAlmostWide = -0.3f;
-    private float shopHeightAlmostWideScreen = 195f;
-    private float shopScaleAlmostWideScreen = 0.8f;
-    private float healthBarPositionYAlmostWideScreen = -55f;
-    private float healthBarScaleAlmostWideScreen = 0.79f;
-    private float upperIconsMoveAlmostWideValue = 105f;
+    [Header("almostWide settings")]
+
+    [SerializeField] private float cameraPositionAlmostWide = -0.3f;
+    [SerializeField] private float shopHeightAlmostWideScreen = 195f;
+    [SerializeField] private float shopScaleAlmostWideScreen = 0.8f;
+    [SerializeField] private float healthBarPositionYAlmostWideScreen = -55f;
+    [SerializeField] private float healthBarScaleAlmostWideScreen = 0.79f;
+    [SerializeField] private float upperIconsMoveAlmostWideValue = 105f;
 
     void Start()
     {
@@ -92,9 +99,9 @@ public class ScaleUI : MonoBehaviour
     }
     private void MoveIconsWhenWide()
     {
-        diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y + moveUpperIconsValue, diamondIcon.transform.position.z);
-        menuIcon.transform.position = new Vector3(menuIcon.transform.position.x -20f, menuIcon.transform.position.y + moveUpperIconsValue, menuIcon.transform.position.z);
-        mergeArchive.transform.position = new Vector3(menuIcon.transform.position.x, mergeArchive.transform.position.y - mergeWideScreenMoveValue, mergeArchive.transform.position.z);
+        diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y * moveUpperIconsValue, diamondIcon.transform.position.z);
+        menuIcon.transform.position = new Vector3(menuIcon.transform.position.x , menuIcon.transform.position.y * moveUpperIconsValue, menuIcon.transform.position.z);
+        mergeArchive.transform.position = new Vector3(menuIcon.transform.position.x, mergeArchive.transform.position.y * mergeWideScreenMoveValue, mergeArchive.transform.position.z);
     }
     private void ScaleMoveShopWhenWide()
     {
@@ -103,12 +110,12 @@ public class ScaleUI : MonoBehaviour
     }
     private void ScaleMoveHealthbarWhenWide()
     {
-       healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y + healthBarPositionYWideScreen, healthBar.transform.position.z);
+       healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y * healthBarPositionYWideScreen, healthBar.transform.position.z);
        healthBar.transform.localScale = new Vector3(healthBarScaleWideScreen, 0.65f, healthBar.transform.localScale.z);
     }
     private void MoveNextRoundButtonWhenWide()
     {
-        playNextRoundButton.transform.position = new Vector3(playNextRoundButton.transform.position.x, playNextRoundButton.transform.position.y - nextRoundButtonWideMoveValue, playNextRoundButton.transform.position.z);
+        playNextRoundButton.transform.position = new Vector3(playNextRoundButton.transform.position.x, playNextRoundButton.transform.position.y * nextRoundButtonWideMoveValue, playNextRoundButton.transform.position.z);
     }
 
 
@@ -124,16 +131,16 @@ public class ScaleUI : MonoBehaviour
     }
     private void MoveHealthbarWhenThin()
     {
-        healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y + healthBarPositionValueThinScreen, healthBar.transform.position.z);
+        healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y * healthBarPositionValueThinScreen, healthBar.transform.position.z);
        
     }
 
     //få metoder för det vanliga läget()
     private void MoveUpperIconsNormalScreen()
     {
-        diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y + upperIconsMoveNormalValue, diamondIcon.transform.position.z);
-        menuIcon.transform.position = new Vector3(menuIcon.transform.position.x, menuIcon.transform.position.y + upperIconsMoveNormalValue, menuIcon.transform.position.z);
-        mergeArchive.transform.position = new Vector3(mergeArchive.transform.position.x, mergeArchive.transform.position.y + upperIconsMoveNormalValue, mergeArchive.transform.position.z);
+        diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y * upperIconsMoveNormalValue, diamondIcon.transform.position.z);
+        menuIcon.transform.position = new Vector3(menuIcon.transform.position.x, menuIcon.transform.position.y * upperIconsMoveNormalValue, menuIcon.transform.position.z);
+        mergeArchive.transform.position = new Vector3(mergeArchive.transform.position.x, mergeArchive.transform.position.y * upperIconsMoveNormalValue, mergeArchive.transform.position.z);
     }
     //metoder för almostWide
     private void MoveCameraWhenAlmostWide()
@@ -147,9 +154,9 @@ public class ScaleUI : MonoBehaviour
     
     private void MoveUpperIconsAlmostWide()
     {
-        diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y + upperIconsMoveAlmostWideValue, diamondIcon.transform.position.z);
-        menuIcon.transform.position = new Vector3(menuIcon.transform.position.x, menuIcon.transform.position.y + upperIconsMoveAlmostWideValue, menuIcon.transform.position.z);
-        mergeArchive.transform.position = new Vector3(mergeArchive.transform.position.x, mergeArchive.transform.position.y + upperIconsMoveAlmostWideValue, mergeArchive.transform.position.z);
+        diamondIcon.transform.position = new Vector3(diamondIcon.transform.position.x, diamondIcon.transform.position.y * upperIconsMoveAlmostWideValue, diamondIcon.transform.position.z);
+        menuIcon.transform.position = new Vector3(menuIcon.transform.position.x, menuIcon.transform.position.y * upperIconsMoveAlmostWideValue, menuIcon.transform.position.z);
+        mergeArchive.transform.position = new Vector3(mergeArchive.transform.position.x, mergeArchive.transform.position.y * upperIconsMoveAlmostWideValue, mergeArchive.transform.position.z);
     }
     private void ScaleMoveShopWhenAlmostWide()
     {
@@ -158,7 +165,7 @@ public class ScaleUI : MonoBehaviour
     }
     private void ScaleMoveHealthbarWhenAlmostWide()
     {
-        healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y + healthBarPositionYAlmostWideScreen, healthBar.transform.position.z);
+        healthBar.transform.position = new Vector3(healthBar.transform.position.x, healthBar.transform.position.y * healthBarPositionYAlmostWideScreen, healthBar.transform.position.z);
         healthBar.transform.localScale = new Vector3(healthBarScaleAlmostWideScreen, 0.65f, healthBar.transform.localScale.z);
     }
 
