@@ -27,6 +27,6 @@ public class MergeBookMenu : MonoBehaviour
     {
         mergeRecipeMenu.SetActive (false);
 
-        Time.timeScale = 1.0f;
+        Time.timeScale = originalTimeScale;
     }
 }
