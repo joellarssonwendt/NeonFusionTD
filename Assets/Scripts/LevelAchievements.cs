@@ -31,12 +31,13 @@ public class LevelAchievements : MonoBehaviour
     }
     public void enableLevelPopUp(int levelNumber)
     {
+        Debug.Log(levelNumber);
         if(healthManager.GetComponent<HealthSystem>().currentHealth <= 0)
         {
             return;
         }
 
-        if(levelNumber == 30)
+        if(levelNumber == 31)
         {
             audioManager.GetComponent<AudioManager>().PlayUISoundEffect("round30WIN");
             level30PopUp.SetActive(true);
@@ -69,7 +70,7 @@ public class LevelAchievements : MonoBehaviour
         }
         else
         {
-            if (enemySpawner.currentWave % 5 == 0)
+            if (levelNumber > 31 && levelNumber % 5 == 0)
             {
                 ShowEndlessRoundAchievement();
             }

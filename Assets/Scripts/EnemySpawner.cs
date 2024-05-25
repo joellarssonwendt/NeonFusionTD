@@ -173,7 +173,7 @@ public class EnemySpawner : MonoBehaviour, IDataPersistence
         audioManager.Stop("Arctic");
         autoWaveCountdown.ResetCountdownSprite();
 
-        if (currentWave % 5 == 0)
+        if (currentWave == 31 || currentWave % 5 == 0)
         {
             levelAchievements.enableLevelPopUp(currentWave);
         }
