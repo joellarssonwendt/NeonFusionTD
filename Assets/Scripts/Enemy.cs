@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     private Dictionary<DotProjectile, GameObject> fireIcons = new Dictionary<DotProjectile, GameObject>();
     private Dictionary<ChillEffect, GameObject> iceIcons = new Dictionary<ChillEffect, GameObject>();
     private bool isMovingBackwards = false;
-    private float obsidianEffectDuration = 5f;
+    private float obsidianEffectDuration = 3f;
     private bool isAffectedByObsidian = false;
     private bool bossActive = false;
     public ParticleSystem obsidianParticle;
