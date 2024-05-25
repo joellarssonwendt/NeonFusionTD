@@ -55,9 +55,12 @@ MonoBehaviour:
   iceIconPrefab: {fileID: 1718851811787073051, guid: fff2335cadf17f34086ff4a9fdfc7e3b, type: 3}
   bossNumber: 0
   obsidianResistant: 1
+  immuneToFrost: 0
   fireColor1: {r: 1, g: 0, b: 0, a: 0}
   fireColor2: {r: 1, g: 0.5309945, b: 0, a: 0}
+  currentHealth: 0
   isDead: 0
+  obsidianParticle: {fileID: 0}
 --- !u!95 &157038425207311015
 Animator:
   serializedVersion: 5
@@ -121,7 +124,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: -987325758, guid: 67773d5f1f6899247904facdfb6782f4, type: 3}
-  m_Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  m_Color: {r: 0.20754719, g: 0, b: 0.08772474, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

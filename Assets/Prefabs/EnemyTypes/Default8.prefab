@@ -61,6 +61,7 @@ MonoBehaviour:
   fireColor2: {r: 1, g: 0.5309945, b: 0, a: 0}
   currentHealth: 0
   isDead: 0
+  obsidianParticle: {fileID: 0}
 --- !u!212 &6377493838693588582
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +104,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -987325758, guid: 67773d5f1f6899247904facdfb6782f4, type: 3}
-  m_Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  m_Color: {r: 0.20784314, g: 0, b: 0.09019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
