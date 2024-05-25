@@ -16976,11 +16976,11 @@ MonoBehaviour:
   roundAndTimeToggle: {fileID: 489971316}
   autoWaveCountdown: {fileID: 268708264}
   autoWaveCountdownSprite: {fileID: 268708258}
-  GhostHand: {fileID: 0}
-  tutorialtower1: {fileID: 0}
-  tutorialtower2: {fileID: 0}
-  tutorialtower3: {fileID: 0}
-  tutorialtower4: {fileID: 0}
+  GhostHand: {fileID: 1024044896}
+  tutorialtower1: {fileID: 2008489483}
+  tutorialtower2: {fileID: 1232047944}
+  tutorialtower3: {fileID: 1711558371}
+  tutorialtower4: {fileID: 1639685052}
   handCraftedWaves:
   - {fileID: 11400000, guid: cedd529291827ce42a19eb2aeafe6ec4, type: 2}
   - {fileID: 11400000, guid: e5da7b8dcb6b4a64c90e2ad2c04e98b7, type: 2}
@@ -18744,15 +18744,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3a7c01edcb78341b30576bf8a5421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GhostHand: {fileID: 0}
-  EnemySpawner: {fileID: 0}
-  LevelManager: {fileID: 0}
+  GhostHand: {fileID: 1024044896}
+  EnemySpawner: {fileID: 906432740}
+  LevelManager: {fileID: 906432741}
   currentWave: 0
   getWaveActive: 0
-  TutorialTower1: {fileID: 0}
-  TutorialTower2: {fileID: 0}
-  TutorialgigaTower: {fileID: 0}
-  TutorialgigaTower2: {fileID: 0}
+  TutorialTower1: {fileID: 2008489483}
+  TutorialTower2: {fileID: 1232047944}
+  TutorialgigaTower: {fileID: 1711558371}
+  TutorialgigaTower2: {fileID: 1639685052}
 --- !u!114 &1024044900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22854,11 +22854,11 @@ PrefabInstance:
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: EnemySpawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432740}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: LevelManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432741}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: TutorialTower1
       value: 
@@ -30022,11 +30022,11 @@ PrefabInstance:
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: EnemySpawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432740}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: LevelManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432741}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: TutorialTower1
       value: 
@@ -31401,11 +31401,11 @@ PrefabInstance:
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: EnemySpawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432740}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: LevelManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432741}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: TutorialTower1
       value: 
@@ -48108,11 +48108,11 @@ PrefabInstance:
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: EnemySpawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432740}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: LevelManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 906432741}
     - target: {fileID: -6638713892085888669, guid: f7160e4e308234445b43c5912b8e2fcb, type: 3}
       propertyPath: TutorialTower1
       value: 

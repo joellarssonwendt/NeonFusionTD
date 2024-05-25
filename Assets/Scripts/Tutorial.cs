@@ -71,20 +71,20 @@ public class Tutorial : MonoBehaviour
     }
     private IEnumerator PlaceNew()
     {
-        yield return new WaitForSeconds((5f));
+        yield return new WaitForSeconds((3.5f));
         animator.SetTrigger("GhostHandPlaceNew");
     }
         
         
     private IEnumerator Merging()
     {
-        yield return new WaitForSeconds((5f));
+        yield return new WaitForSeconds((0.1f));
         animator.SetTrigger("GhostHandMerging");  
     }
     
     private IEnumerator Moving()
     {
-        yield return new WaitForSeconds((1f));
+        yield return new WaitForSeconds((0.1f));
         animator.SetTrigger("GhostHandMoving");       
     }
 }
