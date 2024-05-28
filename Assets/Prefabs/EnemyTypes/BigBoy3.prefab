@@ -61,6 +61,7 @@ MonoBehaviour:
   fireColor2: {r: 1, g: 0.5309945, b: 0, a: 0}
   currentHealth: 0
   isDead: 0
+  obsidianParticle: {fileID: 3510377069153561357, guid: 8c93db08399d79c40a136d587d10009f, type: 3}
 --- !u!95 &9213958403180328280
 Animator:
   serializedVersion: 5
