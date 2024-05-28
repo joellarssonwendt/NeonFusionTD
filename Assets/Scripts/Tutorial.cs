@@ -10,34 +10,32 @@ using UnityEngine.UIElements;
 public class Tutorial : MonoBehaviour
 {
     private Animator animator;
-    
-    
+
     public GameObject GhostHand;
     public EnemySpawner EnemySpawner;
     public LevelManager LevelManager;
-    public int currentWave;
 
-    public bool getWaveActive;
 
+    public Graphic hand, tower1, tower2, towerMove, towerMerge;
+ 
     public GameObject TutorialTower1;
     public GameObject TutorialTower2;
 
-    public GameObject TutorialgigaTower;
+   /* public GameObject TutorialgigaTower;
     public GameObject TutorialgigaTower2;
+   */
 
-
-
-    
-
+    /* Potentiell lösning:
+    Lägg till image enable 1.5 sekunder på varje ände av animationerna, samt börja och sluta allting med gameobject.setactive true
+    Hopefully this fucking works */
     void Start()
     {
-        gameObject.SetActive(true);
-        animator = GetComponent<Animator>();
-
         
+        animator = GetComponent<Animator>();
+        
+
     }
 
-    
     private void Update()
     {
        
@@ -46,79 +44,124 @@ public class Tutorial : MonoBehaviour
       
         if (currentWave == 1) 
         {
-            StartCoroutine(Placing());            
+            
+            StartCoroutine(Placing());
+            
         }
 
         if (currentWave == 2)
         {
-            StartCoroutine(PlaceNew());           
+            
+            StartCoroutine(PlaceNew());
+            
         }
-
         if (currentWave == 3)
         {
-            StartCoroutine(Moving());          
-        }
-        if (currentWave == 4)
-        {
-            StartCoroutine(Merging());
+
+            
+
         }
 
-        if (currentWave == 5)
+        if (currentWave == 4)
+        {
+            
+            StartCoroutine(Merging());
+           
+        }
+
+        if (currentWave >= 5)
         {
             GhostHand.SetActive(false);
+            TutorialTower1.SetActive(false);
+            TutorialTower2.SetActive(false);
+          
         }
     }
    
     private IEnumerator Placing()
     {
+
+        
         int normalTowers = GameObject.FindGameObjectsWithTag("normal").Length;
-        yield return new WaitForSeconds((5f));
+        yield return new WaitForSeconds((0f));
         animator.SetTrigger("GhostHandPlace");
+        animator.SetTrigger("towerIdle");
+        
 
         if (normalTowers == 1)
         {
-            GhostHand.SetActive(false);
+            animator.SetInteger("normalTowers", 1);
+            animator.SetTrigger("GhostHandIdle");
+            animator.SetTrigger("towerIdle");
 
+           // GhostHand.SetActive(false);
+            //TutorialTower1.SetActive(false);
         }
-
-
     }
+
     private IEnumerator PlaceNew()
     {
+       
         int normalTowers = GameObject.FindGameObjectsWithTag("normal").Length;
-        yield return new WaitForSeconds((3.5f));
+        yield return new WaitForSeconds((0f));
         animator.SetTrigger("GhostHandPlaceNew");
+        animator.SetTrigger("towerIdle");
+
+
         if (normalTowers == 2)
         {
-            GhostHand.SetActive(false);
+            animator.SetInteger("normalTowers", 2);
+            animator.SetTrigger("GhostHandIdle");
+            animator.SetTrigger("towerIdle");
 
+           // GhostHand.SetActive(false);
+            //TutorialTower2.SetActive(false);
         }
     }
 
-
+    
     private IEnumerator Merging()
     {
-        int gigaTowers = GameObject.FindGameObjectsWithTag("supernormal").Length;
 
-        yield return new WaitForSeconds((0.1f));
+        
+        int bigTurret = GameObject.FindGameObjectsWithTag("supernormal").Length; 
+        yield return new WaitForSeconds((0f));
         animator.SetTrigger("GhostHandMerging");
+        animator.SetTrigger("towerIdle");
+
+
+        if (bigTurret == 1)
+        {
+            
+            animator.SetInteger("bigTurret", 1);
+            animator.SetTrigger("GhostHandIdle");
+            animator.SetTrigger("towerIdle");
+
+            GhostHand.SetActive(false);
+            //TutorialgigaTower.SetActive(false);
+        }
+    }
+
+
+/*
+    private IEnumerator Merging()
+    {
+        
+
+        yield return new WaitForSeconds((0f));
+        animator.SetTrigger("GhostHandMerging");
+        
+        
+
+        int gigaTowers = GameObject.FindGameObjectsWithTag("supernormal").Length;
         if (gigaTowers == 1)
         {
-            GhostHand.SetActive(false);
+            
+            TutorialgigaTower2.SetActive(false);
         }
     }
-    private IEnumerator Moving()
-    {
-        yield return new WaitForSeconds((0.1f));
-        animator.SetTrigger("GhostHandMoving");
+*/
 
-        Vector3 movedTower = new Vector3(3.291216f, 2.323133f, 5.841029f);
-
-        if (Vector3.Distance(transform.position, movedTower) < 0.001f)
-        {
-            GhostHand.SetActive(false);
-        }
-    }
-
+    
 }
 

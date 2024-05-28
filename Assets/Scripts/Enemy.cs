@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
     private float obsidianEffectDuration = 5f;
     private bool isAffectedByObsidian = false;
     private bool bossActive = false;
+
+
     public ParticleSystem obsidianParticle;
 
     private void Start()

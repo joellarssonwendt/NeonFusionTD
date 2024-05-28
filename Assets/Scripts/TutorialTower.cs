@@ -29,22 +29,41 @@ public class TutorialTower : MonoBehaviour
     {
         yield return new WaitForSeconds((5f));
         animator.SetTrigger("TutorialTowerShow1");
-        
+
+        if (EnemySpawner.activeRoundPlaying)
+        {
+            StopCoroutine(towerOne());
+        }
     }
     private IEnumerator towerTwo()
     {
         yield return new WaitForSeconds((5f));
-        animator.SetTrigger("TutorialTowerShow2");   
+        animator.SetTrigger("TutorialTowerShow2");
+
+        if (EnemySpawner.activeRoundPlaying)
+        {
+            StopCoroutine(towerTwo());
+        }
     }
     private IEnumerator towerMove()
     {      
         yield return new WaitForSeconds((1f));
-        animator.SetTrigger("TutorialTowerShow3");        
+        animator.SetTrigger("TutorialTowerShow3");
+
+        if (EnemySpawner.activeRoundPlaying)
+        {
+            StopCoroutine((towerMove()));
+        }
     }
     private IEnumerator towerMerge()
     {     
         yield return new WaitForSeconds((5f));
-        animator.SetTrigger("TutorialTowerShow4");               
+        animator.SetTrigger("TutorialTowerShow4");
+
+        if (EnemySpawner.activeRoundPlaying)
+        {
+            StopCoroutine(towerMerge());
+        }
     }
 
     
@@ -88,7 +107,7 @@ public class TutorialTower : MonoBehaviour
         }
         //runda 5 deaktivera spelobjekten
 
-        if (currentWave == 5) 
+        if (currentWave >= 5) 
         {
             TutorialTower1.SetActive(false);
             TutorialTower2.SetActive(false);
