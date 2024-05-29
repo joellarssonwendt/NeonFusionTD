@@ -18752,7 +18752,6 @@ MonoBehaviour:
   tower2: {fileID: 2086078666}
   towerMove: {fileID: 0}
   towerMerge: {fileID: 0}
-  toggle: 0
   TutorialTower1: {fileID: 2008489483}
   TutorialTower2: {fileID: 2086078665}
 --- !u!114 &1024044900
@@ -22931,7 +22930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1248605448
 Transform:
   m_ObjectHideFlags: 0
@@ -36100,7 +36099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1943694805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47826,7 +47825,6 @@ MonoBehaviour:
   tower2: {fileID: 2086078666}
   towerMove: {fileID: 0}
   towerMerge: {fileID: 0}
-  toggle: 0
   TutorialTower1: {fileID: 2008489483}
   TutorialTower2: {fileID: 2086078665}
 --- !u!114 &2008489491
@@ -49420,7 +49418,6 @@ MonoBehaviour:
   tower2: {fileID: 2086078666}
   towerMove: {fileID: 0}
   towerMerge: {fileID: 0}
-  toggle: 0
   TutorialTower1: {fileID: 2008489483}
   TutorialTower2: {fileID: 2086078665}
 --- !u!95 &2086078668
