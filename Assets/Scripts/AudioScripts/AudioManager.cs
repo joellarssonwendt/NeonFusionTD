@@ -173,7 +173,22 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sounds)
         {
-            s.source.volume = isMasterVolumeMuted ? 0 : s.volume * MasterVolume;
+            if (s.isMusic)
+            {
+                s.source.volume = isMusicVolumeMuted ? 0 : (isMasterVolumeMuted ? 0 : s.volume * MasterVolume * MusicVolume);
+            }
+            else if (s.isUISound)
+            {
+                s.source.volume = isUISoundEffectsVolumeMuted ? 0 : (isMasterVolumeMuted ? 0 : s.volume * MasterVolume * UISoundEffectsVolume);
+            }
+            else if (s.isSoundFX)
+            {
+                s.source.volume = isSoundEffectsVolumeMuted ? 0 : (isMasterVolumeMuted ? 0 : s.volume * MasterVolume * SoundEffectsVolume);
+            }
+            else
+            {
+                s.source.volume = isMasterVolumeMuted ? 0 : s.volume * MasterVolume;
+            }
         }
     }
 
